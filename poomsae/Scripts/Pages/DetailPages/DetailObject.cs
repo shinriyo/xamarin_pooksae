@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 
-namespace taekwondo
+namespace poomsae
 {
 //	public class Singleton<T> where T : class, new()
 //	{
@@ -30,9 +30,9 @@ namespace taekwondo
 		public View page {get;protected set;}
 
 		/// <summary>
-		/// Returns a <see cref="System.String"/> that represents the current <see cref="taekwondo.DetailObject"/>.
+		/// Returns a <see cref="System.String"/> that represents the current <see cref="poomsae.DetailObject"/>.
 		/// </summary>
-		/// <returns>A <see cref="System.String"/> that represents the current <see cref="taekwondo.DetailObject"/>.</returns>
+		/// <returns>A <see cref="System.String"/> that represents the current <see cref="poomsae.DetailObject"/>.</returns>
 		public override string ToString ()
 		{
 			// これがそのままタイトルになるので.

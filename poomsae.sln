@@ -68,4 +68,10 @@ Global
 		{93E1BBAC-B92D-4786-92DE-350680BC6873}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{93E1BBAC-B92D-4786-92DE-350680BC6873}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = None
+		$1.ResourceNamePolicy = FileFormatDefault
+	EndGlobalSection
 EndGlobal

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace taekwondo
+namespace poomsae
 {
 	public class PoomsaeDetail : DetailObject
 	{

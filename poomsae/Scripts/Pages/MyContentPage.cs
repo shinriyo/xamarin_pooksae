@@ -3,7 +3,7 @@ using Xamarin.Forms;
 
 using System.Diagnostics;
 
-namespace taekwondo
+namespace poomsae
 {
 	class MyContentPage : ContentPage, IDetail {
 		public ContentPage Init()

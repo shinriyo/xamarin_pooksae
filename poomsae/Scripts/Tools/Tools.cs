@@ -3,7 +3,7 @@ using System.IO;
 using System.Text;
 using System.Collections.Generic;
 
-namespace taekwondo
+namespace poomsae
 {
 	/// <summary>
 	/// Tools.

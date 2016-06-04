@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 
-namespace taekwondo
+namespace poomsae
 {
 	//メインのページ
 	class MainPage : ContentPage, IDetail {
