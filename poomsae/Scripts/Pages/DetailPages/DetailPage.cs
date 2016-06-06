@@ -3,40 +3,26 @@ using Xamarin.Forms;
 
 namespace poomsae
 {
+	/// <summary>
+	/// I detail.
+	/// </summary>
 	public interface IDetail{
-//		Page Init();
 		ContentPage Init();
 	}
 
+	/// <summary>
+	/// Detail factory.
+	/// </summary>
 	public static class DetailFactory
 	{
-		public static ContentPage Instantiate(IDetail obj)
+		/// <summary>
+		/// Instantiate the specified obj.
+		/// こいつで転送.
+		/// </summary>
+		/// <param name="obj">Object.</param>
+		public static ContentPage CreateObject(IDetail obj)
 		{
 			return obj.Init();
-		}
-	}
-
-	/// <summary>
-	/// 詳細ページ.
-	/// </summary>
-	public class DetailPage : ContentPage
-	{
-		public DetailPage(IDetail obj)
-		{
-			obj.Init();
-		}
-
-		public DetailPage(DetailObject obj)
-		{
-			this.Title = obj.title;
-			this.Content = obj.page;
-//			this.Content = new Label
-//			{
-//				// テキストを中央に表示する.
-//				Text = obj.title,
-//				HorizontalOptions = LayoutOptions.Center,
-//				VerticalOptions = LayoutOptions.Center
-//			};
 		}
 	}
 }

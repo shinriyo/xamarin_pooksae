@@ -9,18 +9,16 @@ namespace poomsae
 	/// </summary>
 	class MyMasterDetailPage : MasterDetailPage
 	{
+		/// <summary>
+		/// Initializes a new instance of the <see cref="poomsae.MyMasterDetailPage"/> class.
+		/// </summary>
 		public MyMasterDetailPage()
 		{
-			// TODO: 今のところタイトルだが後で変える.
-//			var items = new[] { "Ietm1", "Item2", "Item3" };
-//			var items = new DetailObject[] {
-//				new MainDetail(),
-//				new PoomsaeDetail(),
-//				new OptionDetail(),
-//			};
+			// ココにページを詰める.
 			var items = new ContentPage[] {
 				new MyContentPage(),
-				new MainPage()
+				new MainPage(),
+				new OptionDetail(),
 			};
 
 			ListView listView = new ListView
@@ -43,9 +41,7 @@ namespace poomsae
 			// リストが選択された際のイベント処理.
 			listView.ItemSelected += (s, args) => {
 				// プロパティDetailに新しいページをセットする.
-//				this.Detail = new NavigationPage(new DetailPage((DetailObject)args.SelectedItem))
-				this.Detail = new NavigationPage(DetailFactory.Instantiate((IDetail)args.SelectedItem))
-//				this.Detail = new NavigationPage((Page)args.SelectedItem)
+				this.Detail = new NavigationPage(DetailFactory.CreateObject((IDetail)args.SelectedItem))
 				{
 					//  タイトルバーの背景色や文字色は、NavigationPageのプロパティをセットする.
 					BarBackgroundColor = Color.FromRgba(0.2, 0.6, 0.86, 1),

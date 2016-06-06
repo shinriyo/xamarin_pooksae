@@ -7,6 +7,11 @@ namespace poomsae
 		public Localize ()
 		{
 		}
+
+		public string Get ()
+		{
+			return string.Empty;
+		}
 	}
 }
 
