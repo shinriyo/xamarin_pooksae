@@ -4,6 +4,9 @@ using System.Diagnostics;
 
 namespace poomsae
 {
+	/// <summary>
+	/// Option detail.
+	/// </summary>
 	public class OptionDetail : ContentPage, IDetail
 	{
 		/// <summary>
@@ -29,9 +32,15 @@ namespace poomsae
 			base.Title = "オプション"; //ページのタイトル
 
 			var dc = new DogController ();
-			Debug.WriteLine(dc.FindById(0));
-			dc.FindById(0);
-			dc.FindById(1);
+			Debug.WriteLine(new string('-', 10));
+			var dogs = dc.FindAll();
+			Debug.WriteLine(dc.Count());
+			Debug.WriteLine(dc.Count());
+			foreach(var dog in dogs)
+			{
+				Debug.WriteLine(dog.SSN);
+				Debug.WriteLine(dog.Name);
+			}
 
 			var uri = "http://www.sapporoworks.ne.jp/main.jpg";
 			var layout = new StackLayout();
@@ -45,10 +54,11 @@ namespace poomsae
 			};
 
 			var label = new Label() {
-				FontSize = 15,
+				FontSize = 40,
 				XAlign = TextAlignment.Center,
 				Text = "選択"
 			};
+
 			layout.Children.Add(label);
 
 			// ボタンを生成.

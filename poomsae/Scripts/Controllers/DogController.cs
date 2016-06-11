@@ -19,7 +19,9 @@ namespace poomsae
 			// Use LINQ to query
 			var puppies = realm.All<Dog>().Where(d => d.Age < 2);
 
-			puppies.Count(); // => 0 because no dogs have been added yet
+			Debug.WriteLine("カウント");
+			var cnt = puppies.Count(); // => 0 because no dogs have been added yet
+			Debug.WriteLine(cnt);
 
 			// Update and persist objects with a thread-safe transaction
 			realm.Write(() => 
@@ -32,21 +34,23 @@ namespace poomsae
 			realm.Write(() => 
 				{
 					var mydog = realm.CreateObject<Dog>();
-					mydog.Name = "threeee";
-					mydog.Age = 3;
+					mydog.Name = "30才の犬";
+					mydog.Age = 30;
 				});
-			
+
+			Debug.WriteLine("カウント");
 			// Queries are updated in real-time
-			puppies.Count(); // => 1
+			cnt = puppies.Count(); // => 1
+			Debug.WriteLine(cnt);
 
 			// LINQ query syntax works as well
 			var oldDogs = from d in realm.All<Dog>() where d.Age > 8 select d;
-			Debug.WriteLine("==========");
+
+			Debug.WriteLine("爺さん犬");
 			foreach (var d in oldDogs) 
 			{
 				Debug.WriteLine(d.Name);
 			}
-			Debug.WriteLine("==========");
 
 			// Query and update from any thread
 //			new Thread(() =>
@@ -80,39 +84,40 @@ namespace poomsae
 			}
 		}
 
-		public Dog FindById (int id)
+		public Dog FindById (string id)
 		{
-//			return realm.All<Dog> ().Where (d => d.SSN == "1").First ();
-			return null;
+			return this.realm.All<Dog>().Where(d => d.SSN == id.ToString()).FirstOrDefault();
 		}
 
-		public RealmResults<Dog> FindAll()
+		public Dog[] FindAll()
 		{
-			return (realm.All<Dog>());
+			return this.realm.All<Dog>().ToArray();
 		}
 
 		public int Count()
 		{
-			return (realm.All<Dog>()).Count();
+			return (this.realm.All<Dog>()).Count();
 		}
 
 		public void Delete()
 		{
-			// トランザクションを開始してオブジェクトを削除します
+			// トランザクションを開始してオブジェクトを削除します.
 			using (var trans = realm.BeginWrite())
 			{
-				foreach (var dog in realm.All<Dog>()) {
-					realm.Remove(dog);
+				foreach (var dog in realm.All<Dog>())
+				{
+					this.realm.Remove(dog);
 					trans.Commit();
 				}
 			}
 		}
 
-		public void DeleteById(int id)
+		public void DeleteById(string id)
 		{
 			// Delete an object with a transaction
 			using (var trans = realm.BeginWrite ()) {
-				realm.Remove(realm.All<Dog>().Where(d => d.SSN == id.ToString()).First());
+				realm.Remove(realm.All<Dog>().Where(d => d.SSN == id).First());
+				trans.Commit();
 			}
 		}
 	}
