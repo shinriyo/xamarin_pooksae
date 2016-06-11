@@ -5,9 +5,14 @@ using Realms;
 namespace poomsae
 {
 	// Define your models like regular C# classes
-	public class Localie : RealmObject 
+	public class Localize : Model
 	{
-		public string Name { get; set; }
-		public int Age { get; set; }
+		public Country CountryId { get; set; }
+	}
+
+	public class Country : RealmObject 
+	{
+		public string SSN { get; set; }
+		public string Name{ get; set; }
 	}
 }

@@ -31,11 +31,23 @@ namespace poomsae
 		{
 			base.Title = "オプション"; //ページのタイトル
 
+			var lc = new Controller<Localize> ();
+//			var newLoc = lc.Create();
+//			lc.Insert(newLoc);
+
 			var dc = new DogController ();
+			var myDog = new Dog()
+			{
+				Name = "Rex",
+				Age = 1
+			};
+			dc.Insert(myDog);
+
 			Debug.WriteLine(new string('-', 10));
 			var dogs = dc.FindAll();
 			Debug.WriteLine(dc.Count());
 			Debug.WriteLine(dc.Count());
+
 			foreach(var dog in dogs)
 			{
 				Debug.WriteLine(dog.SSN);
