@@ -25,7 +25,7 @@ namespace poomsae
 
 		public PoomsaeDetail ()
 		{
-			this.Title = "";
+			this.Title = "プンセ";
 
 			var uri = "http://www.sapporoworks.ne.jp/main.jpg";
 			var layout = new StackLayout();
@@ -33,7 +33,8 @@ namespace poomsae
 				Source = ImageSource.FromUri(new Uri(uri))
 			};
 			layout.Children.Add(img);
-			// 生成したラベルをこのビューの子要素とする
+
+			// 生成したラベルをこのビューの子要素とする.
 			base.Content = layout;
 		}
 	}

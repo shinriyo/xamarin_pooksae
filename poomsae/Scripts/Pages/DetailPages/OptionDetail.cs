@@ -13,7 +13,7 @@ namespace poomsae
 		public override string ToString ()
 		{
 			// これがそのままタイトルになるので.
-			return string.Format ("title={0}", this.Title);
+			return string.Format ("{0}", this.Title);
 		}
 
 		/// <summary>
@@ -26,19 +26,45 @@ namespace poomsae
 
 		public OptionDetail ()
 		{
+			base.Title = "オプション"; //ページのタイトル
+
 			var dc = new DogController ();
 			Debug.WriteLine(dc.FindById(0));
 			dc.FindById(0);
 			dc.FindById(1);
-
 
 			var uri = "http://www.sapporoworks.ne.jp/main.jpg";
 			var layout = new StackLayout();
 			var img = new Image {
 				Source = ImageSource.FromUri(new Uri(uri))
 			};
+
+			var someImage = new Image() {
+				Aspect = Aspect.AspectFit,
+				Source = ImageSource.FromUri(new Uri("http://xamarin.com/content/images/pages/branding/assets/xamagon.png")),
+			};
+
+			var label = new Label() {
+				FontSize = 15,
+				XAlign = TextAlignment.Center,
+				Text = "選択"
+			};
+			layout.Children.Add(label);
+
+			// ボタンを生成.
+			var languages = new string[3]{"日本語", "英語", "韓国語"};
+
+			foreach (var language in languages)
+			{
+				var button = new Button { Text = language };
+				layout.Children.Add(button);
+			}
+
+
 			layout.Children.Add(img);
-			// 生成したラベルをこのビューの子要素とする
+			layout.Children.Add(someImage);
+
+			// 生成したラベルをこのビューの子要素とする.
 			base.Content = layout;
 		}
 	}

@@ -82,7 +82,8 @@ namespace poomsae
 
 		public Dog FindById (int id)
 		{
-			return realm.All<Dog>().Where(d => d.SSN == id.ToString()).First();
+//			return realm.All<Dog> ().Where (d => d.SSN == "1").First ();
+			return null;
 		}
 
 		public RealmResults<Dog> FindAll()
