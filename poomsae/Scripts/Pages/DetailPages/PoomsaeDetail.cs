@@ -12,7 +12,7 @@ namespace poomsae
 		public override string ToString ()
 		{
 			// これがそのままタイトルになるので.
-			return string.Format ("title={0}", this.Title);
+			return this.Title;
 		}
 
 		/// <summary>
@@ -25,6 +25,8 @@ namespace poomsae
 
 		public PoomsaeDetail ()
 		{
+			this.Title = "";
+
 			var uri = "http://www.sapporoworks.ne.jp/main.jpg";
 			var layout = new StackLayout();
 			var img = new Image {

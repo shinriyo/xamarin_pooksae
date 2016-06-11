@@ -6,12 +6,12 @@ namespace poomsae
 	{
 		public Localize ()
 		{
+			//
 		}
 
-		public string Get ()
+		public string Get (string key)
 		{
 			return string.Empty;
 		}
 	}
 }
-

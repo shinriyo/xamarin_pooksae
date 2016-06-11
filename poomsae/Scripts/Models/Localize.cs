@@ -11,4 +11,3 @@ namespace poomsae
 		public int Age { get; set; }
 	}
 }
-

@@ -21,6 +21,7 @@ namespace poomsae
 		public MyContentPage()
 		{
 			Debug.WriteLine("ログ用");
+			this.Title = "";
 
 			// iPhoneにおいて、ステータスバーとの重なりを防ぐためパディングを調整する.
 			base.Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
@@ -41,7 +42,7 @@ namespace poomsae
 		public override string ToString ()
 		{
 			// これがそのままタイトルになるので.
-			return string.Format ("title={0}", this.Title);
+			return this.Title;
 		}
 	}
 

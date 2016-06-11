@@ -10,9 +10,11 @@ namespace poomsae
 {
 	public class DogController
 	{
+		private Realm realm;
 		public DogController ()
 		{
-			var realm = Realm.GetInstance();
+//			var realm = Realm.GetInstance();
+			this.realm = Realm.GetInstance();
 
 			// Use LINQ to query
 			var puppies = realm.All<Dog>().Where(d => d.Age < 2);
@@ -55,6 +57,62 @@ namespace poomsae
 					var theDog = realm2.All<Dog>().Where(d => d.Age == 1).First();
 					realm2.Write(() => theDog.Age = 3);
 				}).Start();
+		}
+
+		public void Insert()
+		{
+			realm.Write(() => 
+				{
+					var mydog = realm.CreateObject<Dog>();
+					mydog.Name = "Rex";
+					mydog.Age = 1;
+				});
+		}
+
+		public void Update(int id, Dog dog)
+		{
+			var res = realm.All<Dog>().Where(d => d.SSN == id.ToString()).First();
+			using (var trans = realm.BeginWrite ())
+			{
+				res.Name = dog.Name;
+				res.Age = dog.Age;
+				res.Owner = dog.Owner;
+			}
+		}
+
+		public Dog FindById (int id)
+		{
+			return realm.All<Dog>().Where(d => d.SSN == id.ToString()).First();
+		}
+
+		public RealmResults<Dog> FindAll()
+		{
+			return (realm.All<Dog>());
+		}
+
+		public int Count()
+		{
+			return (realm.All<Dog>()).Count();
+		}
+
+		public void Delete()
+		{
+			// トランザクションを開始してオブジェクトを削除します
+			using (var trans = realm.BeginWrite())
+			{
+				foreach (var dog in realm.All<Dog>()) {
+					realm.Remove(dog);
+					trans.Commit();
+				}
+			}
+		}
+
+		public void DeleteById(int id)
+		{
+			// Delete an object with a transaction
+			using (var trans = realm.BeginWrite ()) {
+				realm.Remove(realm.All<Dog>().Where(d => d.SSN == id.ToString()).First());
+			}
 		}
 	}
 }

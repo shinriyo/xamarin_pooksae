@@ -1,5 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
+using System.Diagnostics;
 
 namespace poomsae
 {
@@ -26,6 +27,10 @@ namespace poomsae
 		public OptionDetail ()
 		{
 			var dc = new DogController ();
+			Debug.WriteLine(dc.FindById(0));
+			dc.FindById(0);
+			dc.FindById(1);
+
 
 			var uri = "http://www.sapporoworks.ne.jp/main.jpg";
 			var layout = new StackLayout();

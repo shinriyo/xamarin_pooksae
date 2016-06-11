@@ -13,7 +13,7 @@ namespace poomsae
 		public override string ToString ()
 		{
 			// これがそのままタイトルになるので.
-			return string.Format ("title={0}", this.Title);
+			return this.Title;
 		}
 
 		/// <summary>
@@ -29,7 +29,8 @@ namespace poomsae
 		/// </summary>
 		public MainPage()
 		{
-			this.Title = "MainPage"; //ページのタイトル
+			this.Title = "age"; //ページのタイトル
+
 			//ボタンを生成
 			var button1 = new Button { Text = "NextPageへ移動" };
 			//ボタンクリック時の処理
