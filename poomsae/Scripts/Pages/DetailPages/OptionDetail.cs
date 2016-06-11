@@ -31,29 +31,6 @@ namespace poomsae
 		{
 			base.Title = "オプション"; //ページのタイトル
 
-			var lc = new Controller<Localize> ();
-//			var newLoc = lc.Create();
-//			lc.Insert(newLoc);
-
-			var dc = new DogController ();
-			var myDog = new Dog()
-			{
-				Name = "Rex",
-				Age = 1
-			};
-			dc.Insert(myDog);
-
-			Debug.WriteLine(new string('-', 10));
-			var dogs = dc.FindAll();
-			Debug.WriteLine(dc.Count());
-			Debug.WriteLine(dc.Count());
-
-			foreach(var dog in dogs)
-			{
-				Debug.WriteLine(dog.SSN);
-				Debug.WriteLine(dog.Name);
-			}
-
 			var uri = "http://www.sapporoworks.ne.jp/main.jpg";
 			var layout = new StackLayout();
 			var img = new Image {
@@ -80,14 +57,63 @@ namespace poomsae
 			{
 				var button = new Button { Text = language };
 				layout.Children.Add(button);
+				button.Clicked += async(s, a) => {
+					this.SetDB();
+				};
 			}
-
 
 			layout.Children.Add(img);
 			layout.Children.Add(someImage);
 
 			// 生成したラベルをこのビューの子要素とする.
 			base.Content = layout;
+		}
+
+		private void SetDB()
+		{
+			//var lc = new Controller<Localize>();
+			var cc = new Controller<Country>();
+			var newCon = new Country()
+			{
+				Name = "Japan"	
+			};
+
+			var newCon2 = new Country()
+			{
+				Name = "Japan"	
+			};
+
+			//			cc.Insert(newCon);
+			//			cc.Insert(newCon2);
+			//			Debug.WriteLine(new string('*', 10));
+			//			foreach(var c in cc.FindAll())
+			//			{
+			//				Debug.WriteLine(c.SSN);
+			//				Debug.WriteLine(c.Name);
+			//			}
+			Debug.WriteLine(new string('*', 10));
+
+			var dc = new DogController ();
+			dc.DeleteAll();
+
+			var myDog = new Dog() { Name = "一郎", Age = 10 };
+			var myDog2 = new Dog() { Name = "次郎", Age = 11 };
+			var myDog3 = new Dog() { Name = "三郎", Age = 12 };
+			dc.Insert(myDog);
+			dc.Insert(myDog2);
+			dc.Insert(myDog3);
+
+			Debug.WriteLine(new string('=', 10));
+			var dogs = dc.FindAll();
+
+			Debug.WriteLine("count:{0}", dc.Count());
+
+			foreach(var dog in dogs)
+			{
+				Debug.WriteLine("id:{0}, name:{1}, age:{2}",
+					dog.SSN, dog.Name, dog.Age);
+				Debug.WriteLine(new string('-', 10));
+			}	
 		}
 	}
 }

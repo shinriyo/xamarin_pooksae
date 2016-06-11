@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Reflection;
 
 namespace poomsae
 {
@@ -20,18 +21,28 @@ namespace poomsae
 			this.realm = Realm.GetInstance();
 		}
 
-		public T Create()
+		public void Insert(T selfObj)
 		{
-			return this.realm.CreateObject<T>();
-		}
+			this.realm.Write(() => 
+				{
+					Debug.WriteLine(new string('=', 10));
+					Debug.WriteLine(typeof(T));
+					var toObj = this.realm.CreateObject<T>();
+					System.Type type = typeof(T);
+					foreach (System.Reflection.PropertyInfo pi in type.GetTypeInfo().DeclaredProperties)
+					{
+//						object selfValue = type.GetProperty(selfObj.Name).GetValue(self, null);
+//						object toValue = type.GetProperty(toObj.Name).GetValue(to, null);
+						var selfValue = pi.GetValue(selfObj);
+						var toValue = pi.GetValue(toObj);
 
-		public void Insert(T newobj)
-		{
-//			this.realm.Write(() => 
-//				{
-//					var myObj = this.realm.CreateObject<T>();
-//					newobj;
-//				});
+//						if (selfValue != toValue && (selfValue == null || !selfValue.Equals(toValue)))
+						if (selfValue != toValue && (selfValue == null || !selfValue.Equals(toValue)))
+						{
+							pi.SetValue(toObj, selfValue, null);
+						}
+					}
+				});
 		}
 
 		public void Update(int id, T obj)
@@ -40,6 +51,7 @@ namespace poomsae
 			using (var trans = realm.BeginWrite ())
 			{
 				res = obj;
+				trans.Commit();
 			}
 		}
 
@@ -58,7 +70,7 @@ namespace poomsae
 			return this.realm.All<T>().Count();
 		}
 
-		public void Delete()
+		public void DeleteAll()
 		{
 			// トランザクションを開始してオブジェクトを削除します.
 			using (var trans = this.realm.BeginWrite())
@@ -66,8 +78,8 @@ namespace poomsae
 				foreach (var obj in realm.All<T>())
 				{
 					this.realm.Remove(obj);
-					trans.Commit();
 				}
+				trans.Commit();
 			}
 		}
 

@@ -11,6 +11,7 @@ namespace poomsae
 	public class DogController
 	{
 		private Realm realm;
+
 		public DogController ()
 		{
 			this.realm = Realm.GetInstance();
@@ -18,27 +19,30 @@ namespace poomsae
 
 		public void Insert(Dog newDog)
 		{
-			this.realm.Write(() => 
-				{
-					var mydog = realm.CreateObject<Dog>();
-					mydog.Name = newDog.Name;
-					mydog.Age = newDog.Age;
-
-				});
+			// トランザクションを用いてオブジェクトを保存・更新します.
+			this.realm.Write(() =>
+			{
+				var id = this.Count();	
+				var mydog = realm.CreateObject<Dog>();
+//				mydog.SSN = (id).ToString ();
+				mydog.Name = newDog.Name;
+				mydog.Age = newDog.Age;
+			});
 		}
 
 		public void Update(int id, Dog dog)
 		{
 			var res = this.realm.All<Dog>().Where(d => d.SSN == id.ToString()).First();
-			using (var trans = realm.BeginWrite ())
+			using(var trans = realm.BeginWrite())
 			{
 				res.Name = dog.Name;
 				res.Age = dog.Age;
 				res.Owner = dog.Owner;
+				trans.Commit();
 			}
 		}
 
-		public Dog FindById (string id)
+		public Dog FindById(string id)
 		{
 			return this.realm.All<Dog>().Where(d => d.SSN == id.ToString()).FirstOrDefault();
 		}
@@ -53,16 +57,17 @@ namespace poomsae
 			return this.realm.All<Dog>().Count();
 		}
 
-		public void Delete()
+		public void DeleteAll()
 		{
 			// トランザクションを開始してオブジェクトを削除します.
 			using (var trans = this.realm.BeginWrite())
 			{
-				foreach (var dog in realm.All<Dog>())
-				{
-					this.realm.Remove(dog);
-					trans.Commit();
-				}
+//				foreach (var dog in realm.All<Dog>())
+//				{
+//					this.realm.Remove(dog);
+//				}
+				this.realm.RemoveAll<Dog>();
+				trans.Commit();
 			}
 		}
 

@@ -10,9 +10,8 @@ namespace poomsae
 		public Country CountryId { get; set; }
 	}
 
-	public class Country : RealmObject 
+	public class Country : Model 
 	{
-		public string SSN { get; set; }
-		public string Name{ get; set; }
+		public string Name { get; set; }
 	}
 }
