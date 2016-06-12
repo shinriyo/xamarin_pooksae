@@ -24,7 +24,7 @@ namespace poomsae
 			{
 				var id = this.Count();	
 				var mydog = realm.CreateObject<Dog>();
-//				mydog.SSN = (id).ToString ();
+				mydog.SSN = (id).ToString ();
 				mydog.Name = newDog.Name;
 				mydog.Age = newDog.Age;
 			});
@@ -62,6 +62,7 @@ namespace poomsae
 			// トランザクションを開始してオブジェクトを削除します.
 			using (var trans = this.realm.BeginWrite())
 			{
+				// これはだめ.
 //				foreach (var dog in realm.All<Dog>())
 //				{
 //					this.realm.Remove(dog);
