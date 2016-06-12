@@ -57,7 +57,7 @@ namespace poomsae
 			{
 				var button = new Button { Text = language };
 				layout.Children.Add(button);
-				button.Clicked += async(s, a) => {
+				button.Clicked += (s, a) => {
 					this.SetDB();
 				};
 			}
@@ -104,9 +104,9 @@ namespace poomsae
 			dc.Insert(myDog3);
 
 			Debug.WriteLine(new string('=', 10));
-			var dogs = dc.FindAll();
 
 			Debug.WriteLine("count:{0}", dc.Count());
+			var dogs = dc.FindAll();
 
 			foreach(var dog in dogs)
 			{

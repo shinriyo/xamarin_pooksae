@@ -26,13 +26,34 @@ namespace poomsae
 			// iPhoneにおいて、ステータスバーとの重なりを防ぐためパディングを調整する.
 			base.Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
 
+			var layout = new StackLayout();
+
 			// ラベルを１つ生成.
-			var label1 = new Label {
-				FontSize = 40,
-				Text = "Developers.IO"
+			var titleLabel = new Label {
+				//FontSize = 40,
+				FontSize = 20,
+				Text = "Tewkwondo App"
 			};
+
+			// ラベルを１つ生成.
+			var campanyLabel = new Label
+			{
+				//FontSize = 40,
+				FontSize = 20,
+				Text = "(c)shinriyo"
+			};
+			layout.Children.Add(titleLabel);
+			layout.Children.Add(campanyLabel);
+
+			var button = new Button { Text = "start" };
+			layout.Children.Add(button);
+			button.Clicked += (s, a) =>
+			{
+				
+			};
+
 			// 生成したラベルをこのビューの子要素とする
-			base.Content = label1;
+			base.Content = layout;
 		}
 
 		/// <summary>

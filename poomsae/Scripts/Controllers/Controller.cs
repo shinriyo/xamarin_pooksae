@@ -27,7 +27,8 @@ namespace poomsae
 				{
 					Debug.WriteLine(new string('=', 10));
 					Debug.WriteLine(typeof(T));
-					T toObj = this.realm.CreateObject<T>();
+					this.realm.CreateObject<T>();
+				/*
 					System.Type type = typeof(T);
 					foreach (System.Reflection.PropertyInfo pi in type.GetTypeInfo().DeclaredProperties)
 					{
@@ -42,6 +43,7 @@ namespace poomsae
 							pi.SetValue(toObj, selfValue, null);
 						}
 					}
+				*/
 				});
 		}
 
