@@ -73,7 +73,7 @@ namespace poomsae
 		{
 			//var lc = new Controller<Localize>();
 			var cc = new Controller<Country>();
-			var newCon = new Country()
+			Country newCon = new Country()
 			{
 				Name = "Japan"	
 			};
@@ -83,7 +83,7 @@ namespace poomsae
 				Name = "Japan"	
 			};
 
-			//			cc.Insert(newCon);
+			cc.Insert(newCon);
 			//			cc.Insert(newCon2);
 			//			Debug.WriteLine(new string('*', 10));
 			//			foreach(var c in cc.FindAll())

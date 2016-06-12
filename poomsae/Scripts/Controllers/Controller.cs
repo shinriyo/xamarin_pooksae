@@ -27,7 +27,7 @@ namespace poomsae
 				{
 					Debug.WriteLine(new string('=', 10));
 					Debug.WriteLine(typeof(T));
-					var toObj = this.realm.CreateObject<T>();
+					T toObj = this.realm.CreateObject<T>();
 					System.Type type = typeof(T);
 					foreach (System.Reflection.PropertyInfo pi in type.GetTypeInfo().DeclaredProperties)
 					{
@@ -75,10 +75,7 @@ namespace poomsae
 			// トランザクションを開始してオブジェクトを削除します.
 			using (var trans = this.realm.BeginWrite())
 			{
-				foreach (var obj in realm.All<T>())
-				{
-					this.realm.Remove(obj);
-				}
+				this.realm.RemoveAll<T>();
 				trans.Commit();
 			}
 		}
