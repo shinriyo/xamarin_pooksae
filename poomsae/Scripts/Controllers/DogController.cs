@@ -30,9 +30,14 @@ namespace poomsae
 			});
 		}
 
-		public void Update(int id, Dog dog)
+		public void Update(string id, Dog dog)
 		{
-			var res = this.realm.All<Dog>().Where(d => d.SSN == id.ToString()).First();
+			if (this.CountById(id) == 0)
+			{
+				return;
+			}
+
+			var res = this.realm.All<Dog>().Where(d => d.SSN == id).Single();
 			using(var trans = realm.BeginWrite())
 			{
 				res.Name = dog.Name;
@@ -44,7 +49,12 @@ namespace poomsae
 
 		public Dog FindById(string id)
 		{
-			return this.realm.All<Dog>().Where(d => d.SSN == id.ToString()).FirstOrDefault();
+			if (this.CountById(id) == 0)
+			{
+				return null;
+			}
+
+			return this.realm.All<Dog>().Where(d => d.SSN == id).Single();
 		}
 
 		public Dog[] FindAll()
@@ -55,6 +65,11 @@ namespace poomsae
 		public int Count()
 		{
 			return this.realm.All<Dog>().Count();
+		}		
+
+		public int CountById(string id)
+		{
+			return this.realm.All<Dog>().Where(d => d.SSN == id).Count();
 		}
 
 		public void DeleteAll()
@@ -74,9 +89,15 @@ namespace poomsae
 
 		public void DeleteById(string id)
 		{
+			var obj = this.FindById(id);
+			if (obj == null)
+			{
+				return; 
+			}
+
 			// Delete an object with a transaction
 			using (var trans = this.realm.BeginWrite ()) {
-				this.realm.Remove(realm.All<Dog>().Where(d => d.SSN == id).First());
+				this.realm.Remove(obj);
 				trans.Commit();
 			}
 		}

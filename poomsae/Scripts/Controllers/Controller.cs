@@ -23,9 +23,9 @@ namespace poomsae
 
 		public void Insert(T selfObj)
 		{
+			Debug.WriteLine(new string('=', 10));
 			this.realm.Write(() => 
 				{
-					Debug.WriteLine(new string('=', 10));
 					Debug.WriteLine(typeof(T));
 					this.realm.CreateObject<T>();
 				/*

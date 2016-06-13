@@ -37,12 +37,14 @@ namespace poomsae
 				Source = ImageSource.FromUri(new Uri(uri))
 			};
 
-			var someImage = new Image() {
+			var someImage = new Image()
+			{
 				Aspect = Aspect.AspectFit,
 				Source = ImageSource.FromUri(new Uri("http://xamarin.com/content/images/pages/branding/assets/xamagon.png")),
 			};
 
-			var label = new Label() {
+			var label = new Label()
+			{
 				FontSize = 40,
 				XAlign = TextAlignment.Center,
 				Text = "選択"
@@ -83,7 +85,7 @@ namespace poomsae
 				Name = "Japan"	
 			};
 
-			cc.Insert(newCon);
+			//cc.Insert(newCon);
 			//			cc.Insert(newCon2);
 			//			Debug.WriteLine(new string('*', 10));
 			//			foreach(var c in cc.FindAll())
@@ -103,17 +105,33 @@ namespace poomsae
 			dc.Insert(myDog2);
 			dc.Insert(myDog3);
 
-			Debug.WriteLine(new string('=', 10));
+			Debug.WriteLine(new string('*', 10));
 
 			Debug.WriteLine("count:{0}", dc.Count());
 			var dogs = dc.FindAll();
+			this.Dump(dogs);
 
-			foreach(var dog in dogs)
+			dc.DeleteById("1");
+			dc.DeleteById("1");
+
+			dogs = dc.FindAll();
+			this.Dump(dogs);
+
+			var newDog = new Dog() { Name = "ネオドッグ", Age = 22 };
+			dc.Update("5", newDog);
+			dogs = dc.FindAll();
+			this.Dump(dogs);
+		}
+
+		private void Dump(Dog[] dogs)
+		{
+			// ダンプする.
+			foreach (var dog in dogs)
 			{
 				Debug.WriteLine("id:{0}, name:{1}, age:{2}",
 					dog.SSN, dog.Name, dog.Age);
 				Debug.WriteLine(new string('-', 10));
-			}	
+			}
 		}
 	}
 }
