@@ -31,6 +31,30 @@ namespace poomsae
 		{
 			this.Title = "age"; //ページのタイトル
 
+			var uri = "http://www.sapporoworks.ne.jp/main.jpg";
+			var layout = new StackLayout();
+			var img = new Image
+			{
+				Source = ImageSource.FromUri(new Uri(uri))
+			};
+
+			var someImage = new Image()
+			{
+				Aspect = Aspect.AspectFit,
+				Source = ImageSource.FromUri(new Uri("http://xamarin.com/content/images/pages/branding/assets/xamagon.png")),
+			};
+
+			layout.Children.Add(someImage);
+
+			var label = new Label()
+			{
+				FontSize = 30,
+				XAlign = TextAlignment.Center,
+				Text = "選択"
+			};
+
+			layout.Children.Add(label);
+
 			//ボタンを生成
 			var button1 = new Button { Text = "NextPageへ移動" };
 			//ボタンクリック時の処理
@@ -39,7 +63,9 @@ namespace poomsae
 				await Navigation.PushAsync(new NextPage());
 			};
 
-			Content = button1;
+			layout.Children.Add(button1);
+
+			this.Content = layout;
 		}
 	}
 
@@ -51,6 +77,8 @@ namespace poomsae
 		public NextPage()
 		{
 			this.Title = "NextPage"; //ページのタイトル
+
+
 		}
 	}
 }

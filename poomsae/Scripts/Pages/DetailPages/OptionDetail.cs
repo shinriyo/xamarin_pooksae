@@ -82,45 +82,18 @@ namespace poomsae
 
 			var newCon2 = new Country()
 			{
-				Name = "Japan"	
+				Name = "Korea"	
 			};
 
-			//cc.Insert(newCon);
-			//			cc.Insert(newCon2);
-			//			Debug.WriteLine(new string('*', 10));
-			//			foreach(var c in cc.FindAll())
-			//			{
-			//				Debug.WriteLine(c.SSN);
-			//				Debug.WriteLine(c.Name);
-			//			}
+			cc.Insert(newCon);
+			cc.Insert(newCon2);
 			Debug.WriteLine(new string('*', 10));
-
-			var dc = new DogController ();
-			dc.DeleteAll();
-
-			var myDog = new Dog() { Name = "一郎", Age = 10 };
-			var myDog2 = new Dog() { Name = "次郎", Age = 11 };
-			var myDog3 = new Dog() { Name = "三郎", Age = 12 };
-			dc.Insert(myDog);
-			dc.Insert(myDog2);
-			dc.Insert(myDog3);
-
+			//foreach(var c in cc.FindAll())
+			//{
+			//	Debug.WriteLine(c.SSN);
+			//	Debug.WriteLine(c.Name);
+			//}
 			Debug.WriteLine(new string('*', 10));
-
-			Debug.WriteLine("count:{0}", dc.Count());
-			var dogs = dc.FindAll();
-			this.Dump(dogs);
-
-			dc.DeleteById("1");
-			dc.DeleteById("1");
-
-			dogs = dc.FindAll();
-			this.Dump(dogs);
-
-			var newDog = new Dog() { Name = "ネオドッグ", Age = 22 };
-			dc.Update("5", newDog);
-			dogs = dc.FindAll();
-			this.Dump(dogs);
 		}
 
 		private void Dump(Dog[] dogs)

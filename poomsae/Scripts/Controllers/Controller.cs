@@ -7,13 +7,21 @@ using System.Reflection;
 
 namespace poomsae
 {
-	public class Model : RealmObject
+	//public class Model : RealmObject
+	//{
+	//	[ObjectId]
+	//	public string SSN { get; set; }
+	//}
+
+	public interface IModel
 	{
 		[ObjectId]
-		public string SSN { get; set; }
+		string SSN { get; set; }
 	}
 
-	public class Controller<T> where T : Model, new()
+	//public class Controller<T> where T : RealmObject, new()
+	//public class Controller<T> where T : Model, new()
+	public class Controller<T> where T : RealmObject, IModel, new()
 	{
 		private Realm realm;
 		public Controller()
@@ -23,43 +31,51 @@ namespace poomsae
 
 		public void Insert(T selfObj)
 		{
-			Debug.WriteLine(new string('=', 10));
 			this.realm.Write(() => 
 				{
 					Debug.WriteLine(typeof(T));
-					this.realm.CreateObject<T>();
-				/*
-					System.Type type = typeof(T);
-					foreach (System.Reflection.PropertyInfo pi in type.GetTypeInfo().DeclaredProperties)
-					{
-//						object selfValue = type.GetProperty(selfObj.Name).GetValue(self, null);
-//						object toValue = type.GetProperty(toObj.Name).GetValue(to, null);
-						var selfValue = pi.GetValue(selfObj);
-						var toValue = pi.GetValue(toObj);
 
-//						if (selfValue != toValue && (selfValue == null || !selfValue.Equals(toValue)))
-						if (selfValue != toValue && (selfValue == null || !selfValue.Equals(toValue)))
-						{
-							pi.SetValue(toObj, selfValue, null);
-						}
-					}
-				*/
+					// Error.
+					this.realm.Manage<T>(selfObj);
+					// Error.
+					var obj = this.realm.CreateObject<T>();
+
+					// TODO: I will write later.
+					//System.Type type = typeof(T);
+					//foreach (System.Reflection.PropertyInfo pi in type.GetTypeInfo().DeclaredProperties)
+					//{
+					//	object selfValue = type.GetProperty(selfObj.Name).GetValue(self, null);
+					//	object toValue = type.GetProperty(toObj.Name).GetValue(to, null);
+					//	var selfValue = pi.GetValue(selfObj);
+					//	var toValue = pi.GetValue(toObj);
+
+					//	if (selfValue != toValue && (selfValue == null || !selfValue.Equals(toValue)))
+					//	{
+					//		pi.SetValue(toObj, selfValue, null);
+					//	}
+					//}
 				});
 		}
 
-		public void Update(int id, T obj)
+		public void Update(string id, T obj)
 		{
-			var res = this.realm.All<T>().Where(d => d.SSN == id.ToString()).First();
-			using (var trans = realm.BeginWrite ())
+			var res = this.realm.All<T>().Where(d => d.SSN == id).Single();
+			using (var trans = realm.BeginWrite())
 			{
-				res = obj;
+				// TODO: use reflection later.
+				//res.Hoge = obj.Hoge;
 				trans.Commit();
 			}
 		}
 
-		public T FindById (string id)
+		public T FindById(string id)
 		{
-			return this.realm.All<T>().Where(d => d.SSN == id.ToString()).FirstOrDefault();
+			if (this.CountById(id) == 0)
+			{
+				return null;
+			}
+
+			return this.realm.All<T>().Where(d => d.SSN == id).Single();
 		}
 
 		public T[] FindAll()
@@ -72,9 +88,14 @@ namespace poomsae
 			return this.realm.All<T>().Count();
 		}
 
+		public int CountById(string id)
+		{
+			return this.realm.All<T>().Where(d => d.SSN == id).Count();
+		}
+
 		public void DeleteAll()
 		{
-			// トランザクションを開始してオブジェクトを削除します.
+			// Delete an object with a transaction
 			using (var trans = this.realm.BeginWrite())
 			{
 				this.realm.RemoveAll<T>();
