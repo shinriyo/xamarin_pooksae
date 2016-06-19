@@ -37,11 +37,8 @@ namespace poomsae
 		{
 			this.realm.Write(() => 
 			{
-				Debug.WriteLine(new string('*', 10));
-				Debug.WriteLine(typeof(T));
-
-				// this.realm.CreateObject<T>();でエラーにならないおまじない.
 				this.realm.Manage<T>(selfObj);
+				/*
 				var toObj = this.realm.CreateObject<T>();
 				var type = toObj.GetType();
 
@@ -58,6 +55,7 @@ namespace poomsae
 						pi.SetValue(toObj, selfValue, null);
 					}
 				}
+				*/
 			});
 		}
 

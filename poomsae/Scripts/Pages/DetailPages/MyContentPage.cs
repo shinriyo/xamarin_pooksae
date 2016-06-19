@@ -40,7 +40,7 @@ namespace poomsae
 			// ラベルを１つ生成.
 			var titleLabel = new Label {
 				FontSize = 40,
-				VerticalOptions = LayoutOptions.Center,
+				HorizontalOptions = LayoutOptions.Center,
 				Text = "Taekwon-Do"
 			};
 
@@ -48,17 +48,23 @@ namespace poomsae
 
 			var button = new Button { Text = "初期化" };
 			layout.Children.Add(button);
-			button.Clicked += (s, a) =>
+			button.Clicked += async (sender, e) =>
 			{
-				// TODO:
-				SetDB();
+				var ok = "削除";
+				var cancel = "キャンセル";
+				var message = "初期化しますがよろしいですか？";
+				var result = await DisplayActionSheet(message, cancel, ok);
+				if(result == ok)
+				{
+					this.SetDB();	
+				}
 			};
 
 			// ラベルを１つ生成.
 			var campanyLabel = new Label
 			{
 				FontSize = 20,
-				VerticalOptions = LayoutOptions.Center,
+				HorizontalOptions = LayoutOptions.Center,
 				Text = "(c)shinriyo"
 			};
 			layout.Children.Add(campanyLabel);
@@ -82,6 +88,8 @@ namespace poomsae
 		{
 			//var lc = new Controller<Localize>();
 			var cc = new Controller<Country>();
+			cc.DeleteAll();
+
 			Country newCon = new Country()
 			{
 				Name = "Japan"
@@ -98,9 +106,9 @@ namespace poomsae
 
 			foreach (var c in cc.FindAll())
 			{
-				Debug.WriteLine(new string('&', 10));
-				Debug.WriteLine(c.id);
-				Debug.WriteLine(c.Name);
+				Debug.WriteLine(c);
+				//Debug.WriteLine(c.id);
+				//Debug.WriteLine(c.Name);
 			}
 			Debug.WriteLine(new string('*', 10));
 		}
