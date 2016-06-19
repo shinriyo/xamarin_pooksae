@@ -10,7 +10,9 @@ namespace poomsae
 	/// </summary>
 	public class Localize : RealmObject, IModel
 	{
-		public string id { get; set; }
+		public string Id { get; set; }
+		public DateTimeOffset Created { get; set; }
+		public DateTimeOffset Updated { get; set; }
 
 		/// <summary>
 		/// キー.
@@ -31,7 +33,7 @@ namespace poomsae
 		/// <returns>The string.</returns>
 		public override string ToString()
 		{
-			return string.Format("[Localize: id={0}, Key={1}, Name={2}, CountryId={3}]", id, Key, Name, CountryId);
+			return string.Format("[Localize: id={0}, Key={1}, Name={2}, CountryId={3}]", Id, Key, Name, CountryId);
 		}
 	}
 
@@ -40,7 +42,10 @@ namespace poomsae
 	/// </summary>
 	public class Country : RealmObject, IModel 
 	{
-		public string id { get; set; }
+		public string Id { get; set; }
+		public DateTimeOffset Created { get; set; }
+		public DateTimeOffset Updated { get; set; }
+
 		public string Name { get; set; }
 
 		/// <summary>
@@ -49,7 +54,7 @@ namespace poomsae
 		/// <returns>The string.</returns>
 		public override string ToString()
 		{
-			return string.Format("[Country: id={0}, Name={1}]", id, Name);
+			return string.Format("[Country: id={0}, Name={1}]", Id, Name);
 		}
 	}
 }

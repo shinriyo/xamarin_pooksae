@@ -1,4 +1,7 @@
 ﻿using Realms;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
@@ -11,7 +14,22 @@ namespace Realms.Tool
 	public interface IModel
 	{
 		[ObjectId]
-		string id { get; set; }
+		string Id { get; set; }
+		DateTimeOffset Created { get; set; }
+		DateTimeOffset Updated { get; set; }
+	}
+
+	/// <summary>
+	/// 拡張メソッド.
+	/// </summary>
+	public static class Extend
+	{
+		public static T FirstOrNull<T>(this IEnumerable<T> sequence) where T : RealmObject, IModel, new()
+		{
+			foreach (T item in sequence)
+				return item;
+			return null;
+		}
 	}
 
 	/// <summary>
@@ -30,47 +48,34 @@ namespace Realms.Tool
 		}
 
 		/// <summary>
+		/// インクリメント.
+		/// </summary>
+		public int Increment()
+		{
+			var res = this.realm.All<T>().OrderByDescending(i => i.Created).FirstOrNull<T>();
+			if (res != null)
+			{
+				var id = int.Parse(res.Id) + 1;
+				return id;
+			}
+
+			return 1;
+		}
+
+		/// <summary>
 		/// Insert the specified selfObj.
 		/// </summary>
 		/// <param name="selfObj">Self object.</param>
 		public void Insert(T selfObj)
 		{
 			// 1開始.
-			//var id = 1;
-			//if (this.Count() > 0)
-			//{
-			//	// インクリメント.
-			//	id = int.Parse(this.realm.All<T>().OrderByDescending(i => i.id).Single().id) + 1;
-			//	Debug.WriteLine(id);
-			//}
-			Debug.WriteLine("-----");
-			var id = (this.Count() + 1).ToString();
-			selfObj.id = id;
+			selfObj.Id = this.Increment().ToString();
+			selfObj.Created = DateTimeOffset.Now;
+			selfObj.Updated = DateTimeOffset.Now;
 
-			this.realm.Write(() => 
+			this.realm.Write(() =>
 			{
 				this.realm.Manage<T>(selfObj);
-				//var toObj = this.realm.CreateObject<T>();
-				//var type = toObj.GetType();
-
-				//foreach (System.Reflection.PropertyInfo pi in type.GetTypeInfo().DeclaredProperties)
-				//{
-				//	object selfValue = pi.GetValue(selfObj, null);
-
-				//	if (selfValue != null)
-				//	{
-				//		if (pi.Name == "id")
-				//		{
-				//			toObj.id = id.ToString();
-				//		}
-				//		else
-				//		{
-				//			Debug.WriteLine(new string('-', 10));
-				//			Debug.WriteLine("selfValue: {0}", selfValue);
-				//			pi.SetValue(toObj, selfValue, null);
-				//		}
-				//	}
-				//}
 			});
 		}
 
@@ -87,7 +92,7 @@ namespace Realms.Tool
 				return;
 			}
 
-			var toObj = this.realm.All<T>().Where(d => d.id == id).Single();
+			var toObj = this.realm.All<T>().Where(d => d.Id == id).Single();
 			var type = toObj.GetType();
 
 			using (var trans = realm.BeginWrite())
@@ -95,7 +100,7 @@ namespace Realms.Tool
 				foreach (System.Reflection.PropertyInfo pi in type.GetTypeInfo().DeclaredProperties)
 				{
 					// idのみ上書きさしない.
-					if (pi.Name == "id")
+					if (pi.Name == "Id" || pi.Name == "Updated" || pi.Name == "Created")
 					{
 						continue;
 					}
@@ -112,6 +117,7 @@ namespace Realms.Tool
 					}
 				}
 
+				selfObj.Updated = DateTimeOffset.Now;
 				trans.Commit();
 			}
 		}
@@ -128,7 +134,7 @@ namespace Realms.Tool
 				return null;
 			}
 
-			return this.realm.All<T>().Where(d => d.id == id).Single();
+			return this.realm.All<T>().Where(d => d.Id == id).Single();
 		}
 
 		/// <summary>
@@ -155,7 +161,7 @@ namespace Realms.Tool
 		/// <param name="id">Identifier.</param>
 		public int CountById(string id)
 		{
-			return this.realm.All<T>().Where(d => d.id == id).Count();
+			return this.realm.All<T>().Where(d => d.Id == id).Count();
 		}
 
 		/// <summary>
@@ -181,7 +187,7 @@ namespace Realms.Tool
 		{
 			// Delete an object with a transaction
 			using (var trans = this.realm.BeginWrite ()) {
-				this.realm.Remove(realm.All<T>().Where(d => d.id == id).Single());
+				this.realm.Remove(realm.All<T>().Where(d => d.Id == id).Single());
 				trans.Commit();
 			}
 		}
