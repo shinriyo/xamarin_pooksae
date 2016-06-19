@@ -45,12 +45,16 @@ namespace poomsae
 			// ボタンを生成.
 			var languages = GetLanguages();
 
-			foreach (var language in languages)
+			foreach (var item in languages.Select((v, i) => new { Value = v, Index = i }))
 			{
+				var index = item.Index;
+				var language = item.Value;
 				var button = new Button { Text = language };
 				layout.Children.Add(button);
-				button.Clicked += (s, a) => {
-					// TODO:
+				var title = "変更完了";
+				button.Clicked += (s, a) =>
+				{
+					DisplayAlert(title, language + "に変更されました", "OK");
 				};
 			}
 

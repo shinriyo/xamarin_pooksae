@@ -47,7 +47,7 @@ namespace poomsae
 			layout.Children.Add(button);
 			button.Clicked += async (sender, e) =>
 			{
-				var ok = "削除";
+				var ok = "実行";
 				var cancel = "キャンセル";
 				var message = "初期化しますがよろしいですか？";
 				var result = await DisplayActionSheet(message, cancel, ok);
