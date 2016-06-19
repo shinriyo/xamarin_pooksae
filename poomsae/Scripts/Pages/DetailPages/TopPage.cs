@@ -35,7 +35,8 @@ namespace poomsae
 			layout.Children.Add(logoImage);
 
 			// ラベルを１つ生成.
-			var titleLabel = new Label {
+			var titleLabel = new Label
+			{
 				FontSize = 40,
 				HorizontalOptions = LayoutOptions.Center,
 				Text = "Taekwon-Do"

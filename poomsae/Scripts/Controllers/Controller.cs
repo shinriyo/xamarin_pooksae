@@ -35,33 +35,42 @@ namespace Realms.Tool
 		/// <param name="selfObj">Self object.</param>
 		public void Insert(T selfObj)
 		{
+			// 1開始.
+			//var id = 1;
+			//if (this.Count() > 0)
+			//{
+			//	// インクリメント.
+			//	id = int.Parse(this.realm.All<T>().OrderByDescending(i => i.id).Single().id) + 1;
+			//	Debug.WriteLine(id);
+			//}
+			Debug.WriteLine("-----");
+			var id = (this.Count() + 1).ToString();
+			selfObj.id = id;
+
 			this.realm.Write(() => 
 			{
-				// 1開始.
-				var id = this.Count() + 1;
-				//id = realm.All<T>().Max(item => int.Parse(item.id)) + 1;
-
-				// インクリメント.
-				selfObj.id = id.ToString();
 				this.realm.Manage<T>(selfObj);
-				/*
-				var toObj = this.realm.CreateObject<T>();
-				var type = toObj.GetType();
+				//var toObj = this.realm.CreateObject<T>();
+				//var type = toObj.GetType();
 
-				foreach (System.Reflection.PropertyInfo pi in type.GetTypeInfo().DeclaredProperties)
-				{
-					object selfValue = pi.GetValue(selfObj, null);
+				//foreach (System.Reflection.PropertyInfo pi in type.GetTypeInfo().DeclaredProperties)
+				//{
+				//	object selfValue = pi.GetValue(selfObj, null);
 
-					if (selfValue == null)
-					{
-						Debug.WriteLine(new string('-', 10));
-						Debug.WriteLine("selfValue: {0}", selfValue);						
-
-						// ここで実際にInsertされる.
-						pi.SetValue(toObj, selfValue, null);
-					}
-				}
-				*/
+				//	if (selfValue != null)
+				//	{
+				//		if (pi.Name == "id")
+				//		{
+				//			toObj.id = id.ToString();
+				//		}
+				//		else
+				//		{
+				//			Debug.WriteLine(new string('-', 10));
+				//			Debug.WriteLine("selfValue: {0}", selfValue);
+				//			pi.SetValue(toObj, selfValue, null);
+				//		}
+				//	}
+				//}
 			});
 		}
 
@@ -172,7 +181,7 @@ namespace Realms.Tool
 		{
 			// Delete an object with a transaction
 			using (var trans = this.realm.BeginWrite ()) {
-				this.realm.Remove(realm.All<T>().Where(d => d.id == id).First());
+				this.realm.Remove(realm.All<T>().Where(d => d.id == id).Single());
 				trans.Commit();
 			}
 		}
