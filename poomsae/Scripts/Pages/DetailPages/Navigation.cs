@@ -37,11 +37,13 @@ namespace poomsae
 			{
 				Source = ImageSource.FromUri(new Uri(uri))
 			};
+			layout.Children.Add(img);
 
+			var imageUri = "http://xamarin.com/content/images/pages/branding/assets/xamagon.png";
 			var someImage = new Image()
 			{
 				Aspect = Aspect.AspectFit,
-				Source = ImageSource.FromUri(new Uri("http://xamarin.com/content/images/pages/branding/assets/xamagon.png")),
+				Source = ImageSource.FromUri(new Uri(imageUri))
 			};
 
 			layout.Children.Add(someImage);

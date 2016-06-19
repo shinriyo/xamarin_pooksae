@@ -35,15 +35,8 @@ namespace poomsae
 				Text = "Tewkwondo App"
 			};
 
-			// ラベルを１つ生成.
-			var campanyLabel = new Label
-			{
-				//FontSize = 40,
-				FontSize = 20,
-				Text = "(c)shinriyo"
-			};
+
 			layout.Children.Add(titleLabel);
-			layout.Children.Add(campanyLabel);
 
 			var button = new Button { Text = "start" };
 			layout.Children.Add(button);
@@ -51,6 +44,15 @@ namespace poomsae
 			{
 				
 			};
+
+			// ラベルを１つ生成.
+			var campanyLabel = new Label
+			{
+				//FontSize = 40,
+				FontSize = 20,
+				Text = "(c)shinriyo"
+			};
+			layout.Children.Add(campanyLabel);
 
 			// 生成したラベルをこのビューの子要素とする
 			base.Content = layout;

@@ -45,7 +45,7 @@ namespace poomsae
 
 			var label = new Label()
 			{
-				FontSize = 40,
+				FontSize = 30,
 				XAlign = TextAlignment.Center,
 				Text = "選択"
 			};
@@ -88,11 +88,13 @@ namespace poomsae
 			cc.Insert(newCon);
 			cc.Insert(newCon2);
 			Debug.WriteLine(new string('*', 10));
-			//foreach(var c in cc.FindAll())
-			//{
-			//	Debug.WriteLine(c.SSN);
-			//	Debug.WriteLine(c.Name);
-			//}
+
+			foreach(var c in cc.FindAll())
+			{
+				Debug.WriteLine(new string('&', 10));
+				Debug.WriteLine(c.id);
+				Debug.WriteLine(c.Name);
+			}
 			Debug.WriteLine(new string('*', 10));
 		}
 
