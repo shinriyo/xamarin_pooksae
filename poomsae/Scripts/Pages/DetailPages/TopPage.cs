@@ -53,8 +53,27 @@ namespace poomsae
 				var result = await DisplayActionSheet(message, cancel, ok);
 				if(result == ok)
 				{
-					//Tools.DownloadFile();	
 					Tools.InitializeDB();	
+				}
+			};
+
+			var dlButton = new Button { Text = "ダウンロード" };
+			layout.Children.Add(dlButton);
+			var dlLabel = new Label
+			{
+				FontSize = 10,
+				HorizontalOptions = LayoutOptions.Center,
+			};
+			layout.Children.Add(dlLabel);
+
+			dlButton.Clicked += (sender, args) =>
+			{
+				using (System.Net.Http.HttpClient httpClient = new System.Net.Http.HttpClient())
+				{
+					var url = "http://vps6-d.kuku.lu/files/20160619-1533_82a335b14b41d4fb9f72ab726a64a9c6.csv";
+					var csvString = httpClient.GetStringAsync(url).Result;
+					dlLabel.Text = csvString;
+					Tools.SplitCSV(csvString);
 				}
 			};
 
