@@ -33,7 +33,7 @@ namespace poomsae
 		/// <returns>The string.</returns>
 		public override string ToString()
 		{
-			return string.Format("[Localize: id={0}, Key={1}, Name={2}, CountryId={3}]", Id, Key, Name, CountryId);
+			return string.Format("[Localize: Id={0}, Created={1}, Updated={2}, Key={3}, Name={4}, CountryId={5}]", Id, Created, Updated, Key, Name, CountryId);
 		}
 	}
 
@@ -54,7 +54,7 @@ namespace poomsae
 		/// <returns>The string.</returns>
 		public override string ToString()
 		{
-			return string.Format("[Country: id={0}, Name={1}]", Id, Name);
+			return string.Format("[Country: Id={0}, Created={1}, Updated={2}, Name={3}]", Id, Created, Updated, Name);
 		}
 	}
 }
