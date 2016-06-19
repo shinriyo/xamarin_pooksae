@@ -50,6 +50,14 @@ namespace poomsae
 				Name = "韓国語",
 				CountryId = korea
 			};
+
+			var sc = new Controller<Setting>();
+			var setting = new Setting()
+			{
+				country = japan,
+				version = "0.1"
+			};
+			sc.Insert(setting);
 		}
 	}
 }

@@ -79,6 +79,12 @@ namespace Realms.Tool
 			{
 				foreach (System.Reflection.PropertyInfo pi in type.GetTypeInfo().DeclaredProperties)
 				{
+					// idのみ上書きさしない.
+					if (pi.Name == "id")
+					{
+						continue;
+					}
+
 					object selfValue = pi.GetValue(selfObj, null);
 
 					if (selfValue == null)

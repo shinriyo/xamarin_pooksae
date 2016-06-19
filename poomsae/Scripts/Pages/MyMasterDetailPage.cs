@@ -18,6 +18,7 @@ namespace poomsae
 			var items = new ContentPage[] {
 				new MyContentPage(),
 				new MainPage(),
+				new ArtsPage(),
 				new OptionDetail(),
 			};
 

@@ -3,6 +3,7 @@ using Xamarin.Forms;
 
 namespace poomsae
 {
+	// TODO: 消すかも？
 	public class PoomsaeDetail : ContentPage, IDetail
 	{
 		/// <summary>

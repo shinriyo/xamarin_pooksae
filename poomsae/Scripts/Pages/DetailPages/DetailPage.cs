@@ -6,7 +6,8 @@ namespace poomsae
 	/// <summary>
 	/// I detail.
 	/// </summary>
-	public interface IDetail{
+	public interface IDetail
+	{
 		ContentPage Init();
 	}
 

@@ -1,4 +1,5 @@
 ﻿using Realms.Tool;
+using System;
 using System.Linq;
 using Xamarin.Forms;
 
@@ -37,7 +38,7 @@ namespace poomsae
 			{
 				FontSize = 30,
 				XAlign = TextAlignment.Center,
-				Text = "選択"
+				Text = "言語選択"
 			};
 
 			layout.Children.Add(label);
@@ -57,6 +58,22 @@ namespace poomsae
 					DisplayAlert(title, language + "に変更されました", "OK");
 				};
 			}
+
+			var appointmentLabel = new Label()
+			{
+				FontSize = 30,
+				XAlign = TextAlignment.Center,
+				Text = "連絡"
+			};
+			layout.Children.Add(appointmentLabel);
+
+			var appointmentButton = new Button { Text = "Eメール" };
+			appointmentButton.Clicked += (s, a) =>
+			{
+				var uri = "http://xamarin.com/";
+				//DependencyService.Get<IWebBrowserService>().Open(new Uri(uri)); // open in WebBrowser
+			};
+			layout.Children.Add(appointmentButton);
 
 			// 生成したラベルをこのビューの子要素とする.
 			base.Content = layout;
