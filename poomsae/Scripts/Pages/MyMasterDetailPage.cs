@@ -16,8 +16,8 @@ namespace poomsae
 		{
 			// ココにページを詰める.
 			var items = new ContentPage[] {
-				new MyContentPage(),
-				new MainPage(),
+				new TopPage(),
+				new PoomsaePage(),
 				new ArtsPage(),
 				new OptionDetail(),
 			};

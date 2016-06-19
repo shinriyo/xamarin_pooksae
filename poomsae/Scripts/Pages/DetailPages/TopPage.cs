@@ -6,20 +6,20 @@ namespace poomsae
 	/// メイン.
 	/// My content page.
 	/// </summary>
-	class MyContentPage : ContentPage, IDetail
+	class TopPage : ContentPage, IDetail
 	{
 		/// <summary>
 		/// Init this instance.
 		/// </summary>
 		public ContentPage Init()
 		{
-			return new MyContentPage();
+			return new TopPage();
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="poomsae.MyContentPage"/> class.
+		/// Initializes a new instance of the <see cref="poomsae.TopPage"/> class.
 		/// </summary>
-		public MyContentPage()
+		public TopPage()
 		{
 			base.Title = "TOP"; //ページのタイトル
 
@@ -53,6 +53,7 @@ namespace poomsae
 				var result = await DisplayActionSheet(message, cancel, ok);
 				if(result == ok)
 				{
+					//Tools.DownloadFile();	
 					Tools.InitializeDB();	
 				}
 			};
@@ -80,7 +81,5 @@ namespace poomsae
 			return this.Title;
 		}
 	}
-
-//	public T
 }
 

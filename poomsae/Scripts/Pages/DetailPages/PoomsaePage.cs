@@ -6,7 +6,7 @@ namespace poomsae
 	/// <summary>
 	/// ナビゲーション.
 	/// </summary>
-	class MainPage : ContentPage, IDetail
+	class PoomsaePage : ContentPage, IDetail
 	{
 		/// <summary>
 		/// Returns a <see cref="System.String"/> that represents the current <see cref="poomsae.DetailObject"/>.
@@ -23,13 +23,13 @@ namespace poomsae
 		/// </summary>
 		public ContentPage Init()
 		{
-			return new MainPage ();
+			return new PoomsaePage ();
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="poomsae.MainPage"/> class.
+		/// Initializes a new instance of the <see cref="poomsae.PoomsaePage"/> class.
 		/// </summary>
-		public MainPage()
+		public PoomsaePage()
 		{
 			this.Title = "Poomsae"; //ページのタイトル
 
@@ -45,11 +45,11 @@ namespace poomsae
 			layout.Children.Add(label);
 
 			// ボタンを生成.
-			var button1 = new Button { Text = "NextPageへ移動" };
+			var button1 = new Button { Text = "詳細へ移動" };
 			//ボタンクリック時の処理
 			button1.Clicked += async (s, a) => {
 				// ページを遷移する.
-				await Navigation.PushAsync(new NextPage());
+				await Navigation.PushAsync(new PoomsaeDetailPage());
 			};
 
 			layout.Children.Add(button1);
@@ -59,13 +59,13 @@ namespace poomsae
 	}
 
 	/// <summary>
-	/// Next page.
+	/// プンセの詳細.
 	/// </summary>
-	class NextPage : ContentPage
+	class PoomsaeDetailPage : ContentPage
 	{
-		public NextPage()
+		public PoomsaeDetailPage()
 		{
-			this.Title = "NextPage"; //ページのタイトル
+			this.Title = "プンセ詳細"; //ページのタイトル
 		}
 	}
 }
