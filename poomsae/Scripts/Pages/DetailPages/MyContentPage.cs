@@ -1,7 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
-// ログ.
-using System.Diagnostics;
+﻿using Xamarin.Forms;
 
 namespace poomsae
 {
@@ -56,7 +53,7 @@ namespace poomsae
 				var result = await DisplayActionSheet(message, cancel, ok);
 				if(result == ok)
 				{
-					this.SetDB();	
+					Tools.InitializeDB();	
 				}
 			};
 
@@ -81,36 +78,6 @@ namespace poomsae
 		{
 			// これがそのままタイトルになるので.
 			return this.Title;
-		}
-
-		// TODO: 後で消す.
-		private void SetDB()
-		{
-			//var lc = new Controller<Localize>();
-			var cc = new Controller<Country>();
-			cc.DeleteAll();
-
-			Country newCon = new Country()
-			{
-				Name = "Japan"
-			};
-
-			var newCon2 = new Country()
-			{
-				Name = "Korea"
-			};
-
-			cc.Insert(newCon);
-			cc.Insert(newCon2);
-			Debug.WriteLine(new string('*', 10));
-
-			foreach (var c in cc.FindAll())
-			{
-				Debug.WriteLine(c);
-				//Debug.WriteLine(c.id);
-				//Debug.WriteLine(c.Name);
-			}
-			Debug.WriteLine(new string('*', 10));
 		}
 	}
 

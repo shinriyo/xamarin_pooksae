@@ -66,8 +66,6 @@ namespace poomsae
 		public NextPage()
 		{
 			this.Title = "NextPage"; //ページのタイトル
-
-
 		}
 	}
 }

@@ -1,7 +1,6 @@
-﻿using System;
+﻿using Realms.Tool;
 using System.Linq;
 using Xamarin.Forms;
-using System.Diagnostics;
 
 namespace poomsae
 {

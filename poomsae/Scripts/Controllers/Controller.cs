@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 
-namespace poomsae
+namespace Realms.Tool
 {
 	/// <summary>
 	/// Model用インターフェイス.
