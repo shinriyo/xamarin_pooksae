@@ -71,6 +71,7 @@ namespace poomsae
 			lc.Insert(koreanName);
 
 			var sc = new Controller<Setting>();
+			sc.DeleteAll();
 			var setting = new Setting()
 			{
 				country = japan,

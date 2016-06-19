@@ -79,6 +79,7 @@ namespace Realms.Tool
 			});
 		}
 
+		/*
 		/// <summary>
 		/// Update the specified id and obj.
 		/// </summary>
@@ -121,6 +122,7 @@ namespace Realms.Tool
 				trans.Commit();
 			}
 		}
+		*/
 
 		/// <summary>
 		/// Finds the by identifier.
