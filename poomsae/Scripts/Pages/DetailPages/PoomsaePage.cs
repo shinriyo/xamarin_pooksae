@@ -45,7 +45,7 @@ namespace poomsae
 			layout.Children.Add(label);
 
 			// ボタンを生成.
-			var button1 = new Button { Text = "詳細へ移動" };
+			var button1 = new Button { Text = "プンセ詳細" };
 			//ボタンクリック時の処理
 			button1.Clicked += async (s, a) => {
 				// ページを遷移する.

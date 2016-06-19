@@ -37,6 +37,12 @@ namespace Realms.Tool
 		{
 			this.realm.Write(() => 
 			{
+				// 1開始.
+				var id = this.Count() + 1;
+				//id = realm.All<T>().Max(item => int.Parse(item.id)) + 1;
+
+				// インクリメント.
+				selfObj.id = id.ToString();
 				this.realm.Manage<T>(selfObj);
 				/*
 				var toObj = this.realm.CreateObject<T>();

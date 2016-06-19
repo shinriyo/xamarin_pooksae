@@ -25,7 +25,7 @@ namespace poomsae
 
 		public ArtsPage()
 		{
-			base.Title = "技系"; //ページのタイトル
+			base.Title = "技辞典"; //ページのタイトル
 
 			var layout = new StackLayout();
 
