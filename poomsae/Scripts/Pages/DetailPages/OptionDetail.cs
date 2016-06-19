@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Xamarin.Forms;
 using System.Diagnostics;
 
@@ -31,17 +32,7 @@ namespace poomsae
 		{
 			base.Title = "オプション"; //ページのタイトル
 
-			var uri = "http://www.sapporoworks.ne.jp/main.jpg";
 			var layout = new StackLayout();
-			var img = new Image {
-				Source = ImageSource.FromUri(new Uri(uri))
-			};
-
-			var someImage = new Image()
-			{
-				Aspect = Aspect.AspectFit,
-				Source = ImageSource.FromUri(new Uri("http://xamarin.com/content/images/pages/branding/assets/xamagon.png")),
-			};
 
 			var label = new Label()
 			{
@@ -53,60 +44,26 @@ namespace poomsae
 			layout.Children.Add(label);
 
 			// ボタンを生成.
-			var languages = new string[3]{"日本語", "英語", "韓国語"};
+			var languages = GetLanguages();
 
 			foreach (var language in languages)
 			{
 				var button = new Button { Text = language };
 				layout.Children.Add(button);
 				button.Clicked += (s, a) => {
-					this.SetDB();
+					// TODO:
 				};
 			}
-
-			layout.Children.Add(img);
-			layout.Children.Add(someImage);
 
 			// 生成したラベルをこのビューの子要素とする.
 			base.Content = layout;
 		}
 
-		private void SetDB()
+		private string[] GetLanguages()
 		{
-			//var lc = new Controller<Localize>();
 			var cc = new Controller<Country>();
-			Country newCon = new Country()
-			{
-				Name = "Japan"	
-			};
-
-			var newCon2 = new Country()
-			{
-				Name = "Korea"	
-			};
-
-			cc.Insert(newCon);
-			cc.Insert(newCon2);
-			Debug.WriteLine(new string('*', 10));
-
-			foreach(var c in cc.FindAll())
-			{
-				Debug.WriteLine(new string('&', 10));
-				Debug.WriteLine(c.id);
-				Debug.WriteLine(c.Name);
-			}
-			Debug.WriteLine(new string('*', 10));
-		}
-
-		private void Dump(Dog[] dogs)
-		{
-			// ダンプする.
-			foreach (var dog in dogs)
-			{
-				Debug.WriteLine("id:{0}, name:{1}, age:{2}",
-					dog.SSN, dog.Name, dog.Age);
-				Debug.WriteLine(new string('-', 10));
-			}
+			var countries = cc.FindAll();
+			return countries.Select(item=>item.Name).ToArray();
 		}
 	}
 }

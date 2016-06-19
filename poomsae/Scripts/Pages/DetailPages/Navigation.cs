@@ -3,7 +3,9 @@ using Xamarin.Forms;
 
 namespace poomsae
 {
-	//メインのページ
+	/// <summary>
+	/// ナビゲーション.
+	/// </summary>
 	class MainPage : ContentPage, IDetail
 	{
 		/// <summary>
@@ -29,24 +31,9 @@ namespace poomsae
 		/// </summary>
 		public MainPage()
 		{
-			this.Title = "age"; //ページのタイトル
+			this.Title = "Poomsae"; //ページのタイトル
 
-			var uri = "http://www.sapporoworks.ne.jp/main.jpg";
 			var layout = new StackLayout();
-			var img = new Image
-			{
-				Source = ImageSource.FromUri(new Uri(uri))
-			};
-			layout.Children.Add(img);
-
-			var imageUri = "http://xamarin.com/content/images/pages/branding/assets/xamagon.png";
-			var someImage = new Image()
-			{
-				Aspect = Aspect.AspectFit,
-				Source = ImageSource.FromUri(new Uri(imageUri))
-			};
-
-			layout.Children.Add(someImage);
 
 			var label = new Label()
 			{
@@ -57,11 +44,11 @@ namespace poomsae
 
 			layout.Children.Add(label);
 
-			//ボタンを生成
+			// ボタンを生成.
 			var button1 = new Button { Text = "NextPageへ移動" };
 			//ボタンクリック時の処理
 			button1.Clicked += async (s, a) => {
-				//ページを遷移する
+				// ページを遷移する.
 				await Navigation.PushAsync(new NextPage());
 			};
 

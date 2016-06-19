@@ -5,6 +5,10 @@ using System.Diagnostics;
 
 namespace poomsae
 {
+	/// <summary>
+	/// メイン.
+	/// My content page.
+	/// </summary>
 	class MyContentPage : ContentPage, IDetail
 	{
 		/// <summary>
@@ -20,36 +24,41 @@ namespace poomsae
 		/// </summary>
 		public MyContentPage()
 		{
-			Debug.WriteLine("ログ用");
 			base.Title = "ベース"; //ページのタイトル
 
 			// iPhoneにおいて、ステータスバーとの重なりを防ぐためパディングを調整する.
 			base.Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
 
 			var layout = new StackLayout();
+			var logoImage = new Image()
+			{
+				Aspect = Aspect.AspectFit,
+				Source = ImageSource.FromFile("World_Taekwondo_Federation_Logo.png")
+			};
+			layout.Children.Add(logoImage);
 
 			// ラベルを１つ生成.
 			var titleLabel = new Label {
-				//FontSize = 40,
-				FontSize = 20,
-				Text = "Tewkwondo App"
+				FontSize = 40,
+				VerticalOptions = LayoutOptions.Center,
+				Text = "Taekwon-Do"
 			};
-
 
 			layout.Children.Add(titleLabel);
 
-			var button = new Button { Text = "start" };
+			var button = new Button { Text = "初期化" };
 			layout.Children.Add(button);
 			button.Clicked += (s, a) =>
 			{
-				
+				// TODO:
+				SetDB();
 			};
 
 			// ラベルを１つ生成.
 			var campanyLabel = new Label
 			{
-				//FontSize = 40,
 				FontSize = 20,
+				VerticalOptions = LayoutOptions.Center,
 				Text = "(c)shinriyo"
 			};
 			layout.Children.Add(campanyLabel);
@@ -66,6 +75,34 @@ namespace poomsae
 		{
 			// これがそのままタイトルになるので.
 			return this.Title;
+		}
+
+		// TODO: 後で消す.
+		private void SetDB()
+		{
+			//var lc = new Controller<Localize>();
+			var cc = new Controller<Country>();
+			Country newCon = new Country()
+			{
+				Name = "Japan"
+			};
+
+			var newCon2 = new Country()
+			{
+				Name = "Korea"
+			};
+
+			cc.Insert(newCon);
+			cc.Insert(newCon2);
+			Debug.WriteLine(new string('*', 10));
+
+			foreach (var c in cc.FindAll())
+			{
+				Debug.WriteLine(new string('&', 10));
+				Debug.WriteLine(c.id);
+				Debug.WriteLine(c.Name);
+			}
+			Debug.WriteLine(new string('*', 10));
 		}
 	}
 
