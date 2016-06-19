@@ -32,29 +32,29 @@ namespace poomsae
 		public void Insert(T selfObj)
 		{
 			this.realm.Write(() => 
+			{
+				Debug.WriteLine(new string('*', 10));
+				Debug.WriteLine(typeof(T));
+
+				// this.realm.CreateObject<T>();でエラーにならないおまじない.
+				this.realm.Manage<T>(selfObj);
+				var toObj = this.realm.CreateObject<T>();
+				var type = toObj.GetType();
+
+				foreach (System.Reflection.PropertyInfo pi in type.GetTypeInfo().DeclaredProperties)
 				{
-					Debug.WriteLine(typeof(T));
+					object selfValue = pi.GetValue(selfObj, null);
 
-					// Error.
-					this.realm.Manage<T>(selfObj);
-					// Error.
-					var obj = this.realm.CreateObject<T>();
+					if (selfValue == null)
+					{
+						Debug.WriteLine(new string('-', 10));
+						Debug.WriteLine("selfValue: {0}", selfValue);						
 
-					// TODO: I will write later.
-					//System.Type type = typeof(T);
-					//foreach (System.Reflection.PropertyInfo pi in type.GetTypeInfo().DeclaredProperties)
-					//{
-					//	object selfValue = type.GetProperty(selfObj.Name).GetValue(self, null);
-					//	object toValue = type.GetProperty(toObj.Name).GetValue(to, null);
-					//	var selfValue = pi.GetValue(selfObj);
-					//	var toValue = pi.GetValue(toObj);
-
-					//	if (selfValue != toValue && (selfValue == null || !selfValue.Equals(toValue)))
-					//	{
-					//		pi.SetValue(toObj, selfValue, null);
-					//	}
-					//}
-				});
+						// ここで実際にInsertされる.
+						pi.SetValue(toObj, selfValue, null);
+					}
+				}
+			});
 		}
 
 		public void Update(string id, T obj)
