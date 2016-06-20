@@ -32,7 +32,6 @@
   <ItemGroup>
     <Compile Include="poomsae.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scripts\Models\Dog.cs" />
     <Compile Include="Scripts\Pages\CarouselPageItem.cs" />
     <Compile Include="Scripts\Pages\MyMasterDetailPage.cs" />
     <Compile Include="Scripts\Pages\TabbedPageItem.cs" />
@@ -41,7 +40,7 @@
     <Compile Include="Scripts\Tools\Tools.cs" />
     <Compile Include="Scripts\Pages\DetailPages\TopPage.cs" />
     <Compile Include="Scripts\Pages\DetailPages\PoomsaePage.cs" />
-    <Compile Include="Scripts\Controllers\DogController.cs" />
+    <Compile Include="Scripts\Controllers\LocalizeController.cs" />
     <Compile Include="Scripts\Models\Localize.cs" />
     <Compile Include="Scripts\Controllers\Controller.cs" />
     <Compile Include="Scripts\Pages\Kick.xaml.cs">

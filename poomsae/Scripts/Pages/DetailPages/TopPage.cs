@@ -34,12 +34,14 @@ namespace poomsae
 			};
 			layout.Children.Add(logoImage);
 
+			// TODO: ローカライズ.
+
 			// ラベルを１つ生成.
 			var titleLabel = new Label
 			{
 				FontSize = 40,
 				HorizontalOptions = LayoutOptions.Center,
-				Text = "Taekwon-Do"
+				Text = "Taekwon-Do Dictionry"
 			};
 
 			layout.Children.Add(titleLabel);

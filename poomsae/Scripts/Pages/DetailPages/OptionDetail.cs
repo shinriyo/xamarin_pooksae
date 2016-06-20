@@ -34,22 +34,28 @@ namespace poomsae
 
 		public OptionDetail ()
 		{
-			base.Title = "オプション"; //ページのタイトル
+			// TODO: ローカライズ.
+			var title =  "オプション";
+			base.Title = title;
 
 			var layout = new StackLayout();
+			// TODO: ローカライズ.
+			var selectTitle =  "言語選択";
 
 			var label = new Label()
 			{
 				FontSize = 30,
 				XAlign = TextAlignment.Center,
-				Text = "言語選択"
+				Text = selectTitle
 			};
 
 			layout.Children.Add(label);
 
 			// ボタンを生成.
 			var languages = this.GetCountries();
-			var mySetting = this.GetMySetting();
+			//var mySetting = this.GetMySetting();
+			var lc = new LocalizeController();
+			var mySetting = lc.GetMySetting();
 
 			List<Button> buttons = new List<Button>();
 			foreach (var item in languages.Select((v, i) => new { Value = v, Index = i }))
@@ -66,10 +72,11 @@ namespace poomsae
 				buttons.Add(button);
 
 				layout.Children.Add(button);
-				var title = "変更完了";
+				// TODO: ローカライズ.
+				var dialogTitle = "変更完了";
 				button.Clicked += (s, a) =>
 				{
-					DisplayAlert(title, langName + "に変更されました", "OK");
+					DisplayAlert(dialogTitle, langName + "に変更されました", "OK");
 					using (var trans = Realm.GetInstance().BeginWrite())
 					{
 						// トランザクションがないと怒られる.
@@ -88,6 +95,7 @@ namespace poomsae
 				};
 			}
 
+			/*
 			var appointmentLabel = new Label()
 			{
 				FontSize = 30,
@@ -103,23 +111,23 @@ namespace poomsae
 				//DependencyService.Get<IWebBrowserService>().Open(new Uri(uri)); // open in WebBrowser
 			};
 			layout.Children.Add(appointmentButton);
-
+			*/
 			// 生成したラベルをこのビューの子要素とする.
 			base.Content = layout;
 		}
 		#endregion
 
 		#region Private Methods
-		/// <summary>
-		/// Gets my setting.
-		/// </summary>
-		/// <returns>The my setting.</returns>
-		private Setting GetMySetting()
-		{
-			var sc = new Controller<Setting>();
-			var setting = sc.FindAll().FirstOrNull();
-			return setting;
-		}
+		///// <summary>
+		///// Gets my setting.
+		///// </summary>
+		///// <returns>The my setting.</returns>
+		//private Setting GetMySetting()
+		//{
+		//	var sc = new Controller<Setting>();
+		//	var setting = sc.FindAll().FirstOrNull();
+		//	return setting;
+		//}
 
 		/*
 		private void UpdateMySetting(Setting setting, Country country)
