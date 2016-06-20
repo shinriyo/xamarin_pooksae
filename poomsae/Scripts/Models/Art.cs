@@ -8,15 +8,15 @@ namespace poomsae
 	public class Art : RealmObject, IModel
 	{
 		public string Id { get; set; }
-		public string Name { get; set; }
 		public DateTimeOffset Created { get; set; }
 		public DateTimeOffset Updated { get; set; }
 
-		public ArtDetail detail { get; set; }
+		public Country CountryId { get; set; }
+		public ArtDetail ArtDetailId { get; set; }
 
 		public override string ToString()
 		{
-			return string.Format("[Art: Id={0}, Name={1}, Created={2}, Updated={3}, detail={4}]", Id, Name, Created, Updated, detail);
+			return string.Format("[Art: Id={0}, Created={1}, Updated={2}, CountryId={3}, ArtDetailId={4}]", Id, Created, Updated, CountryId, ArtDetailId);
 		}
 	}
 
@@ -26,11 +26,12 @@ namespace poomsae
 		public DateTimeOffset Created { get; set; }
 		public DateTimeOffset Updated { get; set; }
 
+		public Country CountryId { get; set; }
 		public string Description { get; set; }
 
 		public override string ToString()
 		{
-			return string.Format("[ArtDetail: Id={0}, Created={1}, Updated={2}, Description={3}]", Id, Created, Updated, Description);
+			return string.Format("[ArtDetail: Id={0}, Created={1}, Updated={2}, CountryId={3}, Description={4}]", Id, Created, Updated, CountryId, Description);
 		}
 	}
 }

@@ -38,6 +38,7 @@ namespace poomsae
 
 			layout.Children.Add(label);
 
+			// TODO: ローカライズ.
 			var artTypes = new string[]
 			{
 				"パンチ系",
@@ -75,8 +76,21 @@ namespace poomsae
 	{
 		public ArtDetailPage()
 		{
-			this.Title = "技詳細"; //ページのタイトル
+			// TODO: ローカライズ.
+			this.Title = "技詳細";
 
+			var layout = new StackLayout();
+			var label = new Label()
+			{
+				FontSize = 30,
+				XAlign = TextAlignment.Center,
+				Text = "技の解説"
+			};
+
+			layout.Children.Add(label);
+
+			// 生成したラベルをこのビューの子要素とする.
+			base.Content = layout;
 		}
 
 		public override string ToString()

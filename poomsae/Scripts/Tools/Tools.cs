@@ -23,6 +23,10 @@ namespace poomsae
 			}
 		}
 
+		/// <summary>
+		/// Initializes the db.
+		/// </summary>
+		/// <returns>The db.</returns>
 		public static void InitializeDB()
 		{
 			var cc = new Controller<Country>();
@@ -46,7 +50,8 @@ namespace poomsae
 			lc.DeleteAll();
 
 			// 名前系.
-			var japanName = new Localize() {
+			var japanName = new Localize()
+			{
 				Key = "Language",
 				Name = "日本",
 				CountryId = japan
@@ -78,6 +83,21 @@ namespace poomsae
 				version = "0.1"
 			};
 			sc.Insert(setting);
+
+			// 技の初期化.
+			// TODO: CSVでやる？.
+			var ac = new Controller<Art>();
+			var apchaiDesc = new ArtDetail
+			{
+				CountryId = japan,
+				Description = "前に蹴る",
+			};
+
+			var apchagi = new Art
+			{
+				CountryId = japan,
+				ArtDetailId = apchaiDesc
+			};
 		}
 	}
 }
