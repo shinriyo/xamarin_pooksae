@@ -13,7 +13,6 @@ namespace Realms.Tool
 	/// </summary>
 	public interface IModel
 	{
-		[ObjectId]
 		string Id { get; set; }
 		DateTimeOffset Created { get; set; }
 		DateTimeOffset Updated { get; set; }

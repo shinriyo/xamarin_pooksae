@@ -10,6 +10,7 @@ namespace poomsae
 	/// </summary>
 	public class Localize : RealmObject, IModel
 	{
+		[ObjectId]
 		public string Id { get; set; }
 		public DateTimeOffset Created { get; set; }
 		public DateTimeOffset Updated { get; set; }
@@ -42,6 +43,7 @@ namespace poomsae
 	/// </summary>
 	public class Country : RealmObject, IModel 
 	{
+		[ObjectId]
 		public string Id { get; set; }
 		public DateTimeOffset Created { get; set; }
 		public DateTimeOffset Updated { get; set; }

@@ -52,21 +52,21 @@ namespace poomsae
 			// 名前系.
 			var japanName = new Localize()
 			{
-				Key = "Language",
+				Key = "LANGUAGE",
 				Name = "日本",
 				CountryId = japan
 			};
 
 			var englishName = new Localize()
 			{
-				Key = "Language",
+				Key = "LANGUAGE",
 				Name = "英語",
 				CountryId = english
 			};
 
 			var koreanName = new Localize()
 			{
-				Key = "Language",
+				Key = "LANGUAGE",
 				Name = "韓国語",
 				CountryId = korea
 			};
@@ -87,6 +87,7 @@ namespace poomsae
 			// 技の初期化.
 			// TODO: CSVでやる？.
 			var ac = new Controller<Art>();
+			var adc = new Controller<ArtDetail>();
 			var apchaiDesc = new ArtDetail
 			{
 				CountryId = japan,
@@ -98,6 +99,8 @@ namespace poomsae
 				CountryId = japan,
 				ArtDetailId = apchaiDesc
 			};
+			ac.Insert(apchagi);
+			adc.Insert(apchaiDesc);
 		}
 	}
 }

@@ -29,11 +29,12 @@ namespace poomsae
 
 			var layout = new StackLayout();
 
+			var subTitle = "技の解説";
 			var label = new Label()
 			{
 				FontSize = 30,
 				XAlign = TextAlignment.Center,
-				Text = "技の解説"
+				Text = subTitle
 			};
 
 			layout.Children.Add(label);
@@ -80,11 +81,13 @@ namespace poomsae
 			this.Title = "技詳細";
 
 			var layout = new StackLayout();
+			var subTitle = "技の解説";
+
 			var label = new Label()
 			{
 				FontSize = 30,
 				XAlign = TextAlignment.Center,
-				Text = "技の解説"
+				Text = subTitle
 			};
 
 			layout.Children.Add(label);
