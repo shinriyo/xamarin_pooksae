@@ -41,7 +41,7 @@ namespace poomsae
 	/// <summary>
 	/// Country.
 	/// </summary>
-	public class Country : RealmObject, IModel 
+	public class Country : RealmObject, IModel
 	{
 		[ObjectId]
 		public string Id { get; set; }

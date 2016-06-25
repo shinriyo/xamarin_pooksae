@@ -5,12 +5,14 @@ namespace poomsae
 {
 	public class CarouselPageItem : ContentPage
 	{
-		public CarouselPageItem(Color color) {
-			//ページの区切りが分かりやすいように背景色を設定する
+		public CarouselPageItem(Color color)
+		{
+			// ページの区切りが分かりやすいように背景色を設定する.
 			BackgroundColor = color;
-			//ラベルを生成
-			var label1 = new Label {
-				FontSize=40,
+			// ラベルを生成>
+			var label1 = new Label
+			{
+				FontSize = 40,
 				//ビューの中央に配置
 				HorizontalOptions = LayoutOptions.Center,
 				VerticalOptions = LayoutOptions.Center,
