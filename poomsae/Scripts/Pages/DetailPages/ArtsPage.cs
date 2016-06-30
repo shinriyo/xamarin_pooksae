@@ -75,13 +75,19 @@ namespace poomsae
 	/// </summary>
 	class ArtDetailPage : ContentPage
 	{
+		/// <summary>
+		/// Data.
+		/// </summary>
 		private class Data
 		{ // <-1
 			public String Name { get; set; }
-			public String Phone { get; set; }
-			public String Icon { get; set; }
+			public String Description { get; set; }
+			public String Picture { get; set; }
 		}
 
+		/// <summary>
+		/// Group.
+		/// </summary>
 		private class Group : ObservableCollection<Data>
 		{ // <-1
 			public string Title { get; private set; }
@@ -110,14 +116,14 @@ namespace poomsae
 
 			//http://www.buildinsider.net/mobile/xamarintips/0038
 			var ar = new ObservableCollection<Group> { // <-2
-		        new Group("Man") {
-				  new Data {Name = "Brent M. Soltis", Phone = "601-400-3356", Icon = "man.png"},
-				  new Data {Name = "Joel K. Coffey", Phone = "360-403-0486", Icon = "man.png"},
-				  new Data {Name = "Michael H. White", Phone = "620-625-0916", Icon = "man.png"}
+		        new Group("9級") {
+				  new Data {Name = "アプチャギ", Description = "601-400-3356", Picture = "man.png"},
+				  new Data {Name = "トルリョチャギ", Description = "360-403-0486", Picture = "man.png"},
+				  new Data {Name = "ネリョチャギ", Description = "620-625-0916", Picture = "man.png"}
 				},
-				new Group("Woman") {
-				  new Data {Name = "Rhonda J. Bailey", Phone = "801-617-8209", Icon = "woman.png"},
-				  new Data {Name = "Elizabeth E. McClellan", Phone = "415-771-0336", Icon = "woman.png"},
+				new Group("8級") {
+				  new Data {Name = "ヨプチャギ", Description = "801-617-8209", Picture = "woman.png"},
+				  new Data {Name = "ティッチャギ", Description = "415-771-0336", Picture = "woman.png"},
 				}
 			};
 
