@@ -1,6 +1,7 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using CellTool;
+using System;
 using System.Collections.ObjectModel;
+using Xamarin.Forms;
 
 namespace poomsae
 {
@@ -44,9 +45,11 @@ namespace poomsae
 			{
 				"パンチ系",
 				"キック系",
+				"手刀系",
 				"その他",
 			};
 
+			int i = 0;
 			// ボタンを生成.
 			foreach (var artType in artTypes)
 			{
@@ -55,13 +58,17 @@ namespace poomsae
 					Text = artType
 				};
 
+				// 詳細がどれか.
+				int detailType = i;
+				string name = artTypes[i];
+
 				// ボタンクリック時の処理.
 				button.Clicked += async (s, a) =>
 				{
 					// ページを遷移する.
-					await Navigation.PushAsync(new ArtDetailPage());
+					await Navigation.PushAsync(new ArtDetailPage(detailType, name));
 				};
-
+				i++;
 				layout.Children.Add(button);
 			}
 
@@ -75,49 +82,33 @@ namespace poomsae
 	/// </summary>
 	class ArtDetailPage : ContentPage
 	{
-		/// <summary>
-		/// Data.
-		/// </summary>
-		private class Data
-		{
-			public String Name { get; set; }
-			public String Description { get; set; }
-			public String Picture { get; set; }
-		}
-
-		/// <summary>
-		/// Group.
-		/// </summary>
-		private class Group : ObservableCollection<Data>
-		{
-			public string Title { get; private set; }
-			public Group(string title)
-			{
-				Title = title;
-			}
-		}
-
 		public ArtDetailPage()
+		{ }
+
+		public ArtDetailPage(int i, string name)
 		{
 			// TODO: ローカライズ.
-			this.Title = "技詳細";
+			this.Title = string.Format("技詳細:{0}", name);
+			ObservableCollection<Group> ar = null;
+			int pageType = i;
 
 			//http://www.buildinsider.net/mobile/xamarintips/0038
-			var ar = new ObservableCollection<Group> { // <-2
-		        new Group("9級") {
-					new Data {Name = "アプチャギ", Description = "前に蹴る", Picture = "man.png"},
-					new Data {Name = "トルリョチャギ", Description = "回して蹴る", Picture = "man.png"},
-					new Data {Name = "ネリョチャギ", Description = "かかと落とし", Picture = "man.png"}
-				},
-				new Group("8級") {
-					new Data {Name = "ヨプチャギ", Description = "横蹴り", Picture = "woman.png"},
-					new Data {Name = "ティッチャギ", Description = "後ろ蹴り", Picture = "woman.png"},
-				},
-				new Group("7級") {
-					new Data {Name = "ヨプチャギ", Description = "横蹴り", Picture = "woman.png"},
-					new Data {Name = "ティッチャギ", Description = "後ろ蹴り", Picture = "woman.png"},
-				}
-			};
+			if (pageType == 0)
+			{
+				ar = EmptyClass.GetPunches();
+			}
+			else if (pageType == 1)
+			{
+				ar = EmptyClass.GetKicks();
+			}
+			else if (pageType == 2)
+			{
+				ar = EmptyClass.GetKnives();
+			}
+			else if (pageType == 3)
+			{
+				ar = EmptyClass.GetKnives();
+			}
 
 			// テンプレートの作成（ImageCell使用）.
 			var cell = new DataTemplate(typeof(ImageCell)); // <-3
@@ -155,5 +146,4 @@ namespace poomsae
 		}
 	}
 }
-
 

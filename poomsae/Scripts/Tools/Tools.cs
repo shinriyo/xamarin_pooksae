@@ -1,7 +1,32 @@
 ﻿using Realms.Tool;
+using System;
 using System.Diagnostics;
-using System.Net.Http;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
+
+namespace CellTool
+{
+	/// <summary>
+	/// Data.
+	/// </summary>
+	public class Data
+	{
+		public String Name { get; set; }
+		public String Description { get; set; }
+		public String Picture { get; set; }
+	}
+
+	/// <summary>
+	/// Group.
+	/// </summary>
+	public class Group : ObservableCollection<Data>
+	{
+		public string Title { get; private set; }
+		public Group(string title)
+		{
+			Title = title;
+		}
+	}
+}
 
 namespace poomsae
 {
@@ -10,6 +35,8 @@ namespace poomsae
 	/// </summary>
 	public static class Tools
 	{
+
+
 		public static void SplitCSV(string csvString)
 		{
 			foreach (var line in csvString.Split('\n'))
