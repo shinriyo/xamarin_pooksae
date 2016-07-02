@@ -1,5 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
+using System.Collections.ObjectModel;
 
 namespace poomsae
 {
@@ -12,7 +13,7 @@ namespace poomsae
 		/// Returns a <see cref="System.String"/> that represents the current <see cref="poomsae.DetailObject"/>.
 		/// </summary>
 		/// <returns>A <see cref="System.String"/> that represents the current <see cref="poomsae.DetailObject"/>.</returns>
-		public override string ToString ()
+		public override string ToString()
 		{
 			// これがそのままタイトルになるので.
 			return this.Title;
@@ -23,7 +24,7 @@ namespace poomsae
 		/// </summary>
 		public ContentPage Init()
 		{
-			return new PoomsaePage ();
+			return new PoomsaePage();
 		}
 
 		/// <summary>
@@ -47,7 +48,8 @@ namespace poomsae
 			// ボタンを生成.
 			var button1 = new Button { Text = "プンセ詳細" };
 			//ボタンクリック時の処理
-			button1.Clicked += async (s, a) => {
+			button1.Clicked += async (s, a) =>
+			{
 				// ページを遷移する.
 				await Navigation.PushAsync(new PoomsaeDetailPage());
 			};
@@ -63,9 +65,76 @@ namespace poomsae
 	/// </summary>
 	class PoomsaeDetailPage : ContentPage
 	{
+		/// <summary>
+		/// Data.
+		/// </summary>
+		private class Data
+		{ // <-1
+			public String Name { get; set; }
+			public String Description { get; set; }
+			public String Picture { get; set; }
+		}
+
+		/// <summary>
+		/// Group.
+		/// </summary>
+		private class Group : ObservableCollection<Data>
+		{ // <-1
+			public string Title { get; private set; }
+			public Group(string title)
+			{
+				Title = title;
+			}
+		}
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="T:poomsae.PoomsaeDetailPage"/> class.
+		/// </summary>
 		public PoomsaeDetailPage()
 		{
 			this.Title = "プンセ詳細"; //ページのタイトル
+
+			var ar = new ObservableCollection<Group> { // <-2
+		        new Group("太極9章") {
+				  new Data {Name = "アプチャギ", Description = "601-400-3356", Picture = "man.png"},
+				  new Data {Name = "トルリョチャギ", Description = "360-403-0486", Picture = "man.png"},
+				  new Data {Name = "ネリョチャギ", Description = "620-625-0916", Picture = "man.png"}
+				},
+				new Group("太極8章") {
+				  new Data {Name = "ヨプチャギ", Description = "801-617-8209", Picture = "woman.png"},
+				  new Data {Name = "ティッチャギ", Description = "415-771-0336", Picture = "woman.png"},
+				},
+				new Group("太極7章") {
+				  new Data {Name = "ヨプチャギ", Description = "801-617-8209", Picture = "woman.png"},
+				  new Data {Name = "ティッチャギ", Description = "415-771-0336", Picture = "woman.png"},
+				}
+			};
+
+			// テンプレートの作成（ImageCell使用）.
+			var cell = new DataTemplate(typeof(ImageCell));        // <-3
+			cell.SetBinding(ImageCell.TextProperty, "Name");        // <-4
+			cell.SetBinding(ImageCell.DetailProperty, "Description");     // <-5
+			cell.SetBinding(ImageCell.ImageSourceProperty, "Picture"); // <-6
+
+			// リストビューを生成する.
+			var listView = new ListView
+			{
+				ItemsSource = ar,
+				ItemTemplate = cell,
+				IsGroupingEnabled = true,  // <-3
+				GroupDisplayBinding = new Binding("Title"),  // <-4
+			};
+
+			//layout.Children.Add(listView);
+
+			// 生成したラベルをこのビューの子要素とする.
+			//base.Content = layout;
+
+			base.Content = new StackLayout
+			{
+				Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0), // iOSのみ上部にマージンをとる
+				Children = { listView }
+			};
 		}
 	}
 }

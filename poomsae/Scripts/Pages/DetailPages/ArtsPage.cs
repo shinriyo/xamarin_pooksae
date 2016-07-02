@@ -79,7 +79,7 @@ namespace poomsae
 		/// Data.
 		/// </summary>
 		private class Data
-		{ // <-1
+		{
 			public String Name { get; set; }
 			public String Description { get; set; }
 			public String Picture { get; set; }
@@ -89,7 +89,7 @@ namespace poomsae
 		/// Group.
 		/// </summary>
 		private class Group : ObservableCollection<Data>
-		{ // <-1
+		{
 			public string Title { get; private set; }
 			public Group(string title)
 			{
@@ -102,36 +102,28 @@ namespace poomsae
 			// TODO: ローカライズ.
 			this.Title = "技詳細";
 
-			//var layout = new StackLayout();
-			//var subTitle = "技の解説";
-
-			//var label = new Label()
-			//{
-			//	FontSize = 30,
-			//	XAlign = TextAlignment.Center,
-			//	Text = subTitle
-			//};
-
-			//layout.Children.Add(label);
-
 			//http://www.buildinsider.net/mobile/xamarintips/0038
 			var ar = new ObservableCollection<Group> { // <-2
 		        new Group("9級") {
-				  new Data {Name = "アプチャギ", Description = "601-400-3356", Picture = "man.png"},
-				  new Data {Name = "トルリョチャギ", Description = "360-403-0486", Picture = "man.png"},
-				  new Data {Name = "ネリョチャギ", Description = "620-625-0916", Picture = "man.png"}
+					new Data {Name = "アプチャギ", Description = "前に蹴る", Picture = "man.png"},
+					new Data {Name = "トルリョチャギ", Description = "回して蹴る", Picture = "man.png"},
+					new Data {Name = "ネリョチャギ", Description = "かかと落とし", Picture = "man.png"}
 				},
 				new Group("8級") {
-				  new Data {Name = "ヨプチャギ", Description = "801-617-8209", Picture = "woman.png"},
-				  new Data {Name = "ティッチャギ", Description = "415-771-0336", Picture = "woman.png"},
+					new Data {Name = "ヨプチャギ", Description = "横蹴り", Picture = "woman.png"},
+					new Data {Name = "ティッチャギ", Description = "後ろ蹴り", Picture = "woman.png"},
+				},
+				new Group("7級") {
+					new Data {Name = "ヨプチャギ", Description = "横蹴り", Picture = "woman.png"},
+					new Data {Name = "ティッチャギ", Description = "後ろ蹴り", Picture = "woman.png"},
 				}
 			};
 
 			// テンプレートの作成（ImageCell使用）.
-			var cell = new DataTemplate(typeof(ImageCell));        // <-3
-			cell.SetBinding(ImageCell.TextProperty, "Name");        // <-4
-			cell.SetBinding(ImageCell.DetailProperty, "Phone");     // <-5
-			cell.SetBinding(ImageCell.ImageSourceProperty, "Icon"); // <-6
+			var cell = new DataTemplate(typeof(ImageCell)); // <-3
+			cell.SetBinding(ImageCell.TextProperty, "Name"); // <-4
+			cell.SetBinding(ImageCell.DetailProperty, "Description"); // <-5
+			cell.SetBinding(ImageCell.ImageSourceProperty, "Picture"); // <-6
 
 			// リストビューを生成する.
 			var listView = new ListView
@@ -149,8 +141,10 @@ namespace poomsae
 
 			base.Content = new StackLayout
 			{
-				Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0), // iOSのみ上部にマージンをとる
-				Children = { listView }
+				// iOSのみ上部にマージンをとる.
+				Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0),
+				Children = { listView
+	}
 			};
 		}
 
