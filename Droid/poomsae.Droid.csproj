@@ -97,6 +97,10 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable\menu.png" />
     <AndroidResource Include="Resources\drawable\World_Taekwondo_Federation_Logo.png" />
+    <AndroidResource Include="Resources\drawable\kick_icon.png" />
+    <AndroidResource Include="Resources\drawable\punch_icon.png" />
+    <AndroidResource Include="Resources\drawable\guard_icon.png" />
+    <AndroidResource Include="Resources\drawable\chop_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.3.5.6335\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.3.5.6335\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

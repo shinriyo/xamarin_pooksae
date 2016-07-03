@@ -89,25 +89,29 @@ namespace poomsae
 		{
 			// TODO: ローカライズ.
 			this.Title = string.Format("技詳細:{0}", name);
-			ObservableCollection<Group> ar = null;
+			ObservableCollection<Group> groups = null;
 			int pageType = i;
 
 			//http://www.buildinsider.net/mobile/xamarintips/0038
 			if (pageType == 0)
 			{
-				ar = EmptyClass.GetPunches();
+				// パンチ系.
+				groups = EmptyClass.GetPunches();
 			}
 			else if (pageType == 1)
 			{
-				ar = EmptyClass.GetKicks();
+				// キック系.
+				groups = EmptyClass.GetKicks();
 			}
 			else if (pageType == 2)
 			{
-				ar = EmptyClass.GetKnives();
+				// 手刀系.
+				groups = EmptyClass.GetKnives();
 			}
 			else if (pageType == 3)
 			{
-				ar = EmptyClass.GetKnives();
+				// 受け系.
+				groups = EmptyClass.GetGuards();
 			}
 
 			// テンプレートの作成（ImageCell使用）.
@@ -119,7 +123,7 @@ namespace poomsae
 			// リストビューを生成する.
 			var listView = new ListView
 			{
-				ItemsSource = ar,
+				ItemsSource = groups,
 				ItemTemplate = cell,
 				IsGroupingEnabled = true,  // <-3
 				GroupDisplayBinding = new Binding("Title"),  // <-4

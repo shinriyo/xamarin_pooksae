@@ -128,5 +128,9 @@
   <ItemGroup>
     <BundleResource Include="Resources\menu.png" />
     <BundleResource Include="Resources\World_Taekwondo_Federation_Logo.png" />
+    <BundleResource Include="Resources\kick_icon.png" />
+    <BundleResource Include="Resources\punch_icon.png" />
+    <BundleResource Include="Resources\guard_icon.png" />
+    <BundleResource Include="Resources\chop_icon.png" />
   </ItemGroup>
 </Project>
