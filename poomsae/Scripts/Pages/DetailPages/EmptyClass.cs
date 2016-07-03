@@ -1,15 +1,15 @@
 ﻿using CellTool;
 using System;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace poomsae
 {
 	public class EmptyClass
 	{
-		public static ObservableCollection<Group> GetPunches()
+		public static ObservableCollection<Group> GetPunches(Action<int> action)
 		{
+			int id = 10;
 			// TOD: コレは後で消す.
 			// パンチ系.
 			var groups = new ObservableCollection<Group>
@@ -18,7 +18,7 @@ namespace poomsae
 					new Data {
 						Name = "パンチ", Description = "パンチ", Picture = "punch_icon.png",
 						OnClick = new Command(() => {
-							System.Diagnostics.Debug.WriteLine("押さてたぜ!");
+							action(id);
 						})
 					},
 				}
@@ -26,14 +26,20 @@ namespace poomsae
 			return groups;
 		}
 
-		public static ObservableCollection<Group> GetKnives()
+		public static ObservableCollection<Group> GetKnives(Action<int> action)
 		{
 			// TOD: コレは後で消す.
+			int id = 10;
 			// 手刀系.
 			var groups = new ObservableCollection<Group>
 			{
 				new Group("9級") {
-					new Data {Name = "ソンナルモクチギ", Description = "手刀受け", Picture = "chop_icon.png"}
+					new Data {
+						Name = "ソンナルモクチギ", Description = "手刀受け", Picture = "chop_icon.png",
+							OnClick = new Command(() => {
+							action(id);
+						})
+					}
 				},
 				new Group("8級") {
 					new Data {Name = "アギソンモクチギ", Description = "両手刀受け", Picture = "chop_icon.png"},
@@ -45,7 +51,7 @@ namespace poomsae
 			return groups;
 		}
 
-		public static ObservableCollection<Group> GetKicks()
+		public static ObservableCollection<Group> GetKicks(Action<int> action)
 		{
 			// TOD: コレは後で消す.
 			// キック系.
@@ -68,7 +74,7 @@ namespace poomsae
 			return groups;
 		}
 
-		public static ObservableCollection<Group> GetGuards()
+		public static ObservableCollection<Group> GetGuards(Action<int> action)
 		{
 			// TOD: コレは後で消す.
 			// 受け系.

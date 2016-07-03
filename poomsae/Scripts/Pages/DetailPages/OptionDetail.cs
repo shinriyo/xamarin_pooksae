@@ -18,10 +18,10 @@ namespace poomsae
 		/// Returns a <see cref="System.String"/> that represents the current <see cref="poomsae.DetailObject"/>.
 		/// </summary>
 		/// <returns>A <see cref="System.String"/> that represents the current <see cref="poomsae.DetailObject"/>.</returns>
-		public override string ToString ()
+		public override string ToString()
 		{
 			// これがそのままタイトルになるので.
-			return string.Format ("{0}", this.Title);
+			return string.Format("{0}", this.Title);
 		}
 
 		/// <summary>
@@ -29,18 +29,18 @@ namespace poomsae
 		/// </summary>
 		public ContentPage Init()
 		{
-			return new OptionDetail ();
+			return new OptionDetail();
 		}
 
-		public OptionDetail ()
+		public OptionDetail()
 		{
 			// TODO: ローカライズ.
-			var title =  "オプション";
+			var title = "オプション";
 			base.Title = title;
 
 			var layout = new StackLayout();
 			// TODO: ローカライズ.
-			var selectTitle =  "言語選択";
+			var selectTitle = "言語選択";
 
 			var label = new Label()
 			{
@@ -65,7 +65,7 @@ namespace poomsae
 				bool isEnable = (mySetting.country.Name != item.Value.Name);
 				string langName = country.Name;
 				var button = new Button
-				{ 
+				{
 					Text = langName,
 					IsEnabled = isEnable
 				};
@@ -76,7 +76,7 @@ namespace poomsae
 				var dialogTitle = "変更完了";
 				button.Clicked += (s, a) =>
 				{
-					DisplayAlert(dialogTitle, langName + "に変更されました", "OK");
+					base.DisplayAlert(dialogTitle, langName + "に変更されました", "OK");
 					using (var trans = Realm.GetInstance().BeginWrite())
 					{
 						// トランザクションがないと怒られる.
@@ -146,7 +146,7 @@ namespace poomsae
 		{
 			var cc = new Controller<Country>();
 			var countries = cc.FindAll();
-			return countries.Select(item=>item).ToArray();
+			return countries.Select(item => item).ToArray();
 		}
 		#endregion
 	}

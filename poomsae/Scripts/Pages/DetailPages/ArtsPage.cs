@@ -85,6 +85,28 @@ namespace poomsae
 		public ArtDetailPage()
 		{ }
 
+		/// <summary>
+		/// Opens the alert.
+		/// </summary>
+		/// <returns>The alert.</returns>
+		public void OpenAlert(int id)
+		{
+			base.DisplayAlert("TODO: タイトル." + id, "TODO: まだ。", "OK");
+
+			var alert = new UIAlertView();
+			alert.Title = "Title";
+			alert.AddButton("OK");
+			alert.Message = "Please Enter a Value.";
+			alert.AlertViewStyle = UIAlertViewStyle.PlainTextInput;
+			alert.Clicked += (object s, UIButtonEventArgs ev) =>
+			{
+				// handle click event here
+				// user input will be in alert.GetTextField(0).Text;
+			};
+
+			alert.Show();
+		}
+
 		public ArtDetailPage(int i, string name)
 		{
 			// TODO: ローカライズ.
@@ -96,22 +118,22 @@ namespace poomsae
 			if (pageType == 0)
 			{
 				// パンチ系.
-				groups = EmptyClass.GetPunches();
+				groups = EmptyClass.GetPunches(this.OpenAlert);
 			}
 			else if (pageType == 1)
 			{
 				// キック系.
-				groups = EmptyClass.GetKicks();
+				groups = EmptyClass.GetKicks(this.OpenAlert);
 			}
 			else if (pageType == 2)
 			{
 				// 手刀系.
-				groups = EmptyClass.GetKnives();
+				groups = EmptyClass.GetKnives(this.OpenAlert);
 			}
 			else if (pageType == 3)
 			{
 				// 受け系.
-				groups = EmptyClass.GetGuards();
+				groups = EmptyClass.GetGuards(this.OpenAlert);
 			}
 
 			// テンプレートの作成（ImageCell使用）.
