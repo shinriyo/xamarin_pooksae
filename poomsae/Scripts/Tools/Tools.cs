@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace CellTool
 {
@@ -13,6 +14,7 @@ namespace CellTool
 		public String Name { get; set; }
 		public String Description { get; set; }
 		public String Picture { get; set; }
+		public ICommand OnClick { get; set; }
 	}
 
 	/// <summary>

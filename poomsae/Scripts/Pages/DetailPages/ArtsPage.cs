@@ -46,7 +46,7 @@ namespace poomsae
 				"パンチ系",
 				"キック系",
 				"手刀系",
-				"その他",
+				"受け系",
 			};
 
 			int i = 0;
@@ -115,31 +115,28 @@ namespace poomsae
 			}
 
 			// テンプレートの作成（ImageCell使用）.
-			var cell = new DataTemplate(typeof(ImageCell)); // <-3
-			cell.SetBinding(ImageCell.TextProperty, "Name"); // <-4
-			cell.SetBinding(ImageCell.DetailProperty, "Description"); // <-5
-			cell.SetBinding(ImageCell.ImageSourceProperty, "Picture"); // <-6
+			var cell = new DataTemplate(typeof(ImageCell));
+
+			// Dataの中のプロパティに対応した文字.
+			cell.SetBinding(ImageCell.TextProperty, "Name");
+			cell.SetBinding(ImageCell.DetailProperty, "Description");
+			cell.SetBinding(ImageCell.ImageSourceProperty, "Picture");
+			cell.SetBinding(ImageCell.CommandProperty, "OnClick");
 
 			// リストビューを生成する.
 			var listView = new ListView
 			{
 				ItemsSource = groups,
 				ItemTemplate = cell,
-				IsGroupingEnabled = true,  // <-3
-				GroupDisplayBinding = new Binding("Title"),  // <-4
+				IsGroupingEnabled = true,
+				GroupDisplayBinding = new Binding("Title"),
 			};
-
-			//layout.Children.Add(listView);
-
-			// 生成したラベルをこのビューの子要素とする.
-			//base.Content = layout;
 
 			base.Content = new StackLayout
 			{
 				// iOSのみ上部にマージンをとる.
 				Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0),
-				Children = { listView
-	}
+				Children = { listView }
 			};
 		}
 

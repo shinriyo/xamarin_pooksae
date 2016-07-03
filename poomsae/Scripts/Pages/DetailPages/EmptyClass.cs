@@ -1,6 +1,8 @@
-﻿using System;
+﻿using CellTool;
+using System;
 using System.Collections.ObjectModel;
-using CellTool;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace poomsae
 {
@@ -13,7 +15,12 @@ namespace poomsae
 			var groups = new ObservableCollection<Group>
 			{
 				new Group("9級") {
-					new Data {Name = "パンチ", Description = "パンチ", Picture = "punch_icon.png"},
+					new Data {
+						Name = "パンチ", Description = "パンチ", Picture = "punch_icon.png",
+						OnClick = new Command(() => {
+							System.Diagnostics.Debug.WriteLine("押さてたぜ!");
+						})
+					},
 				}
 			};
 			return groups;
