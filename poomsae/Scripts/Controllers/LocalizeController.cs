@@ -1,59 +1,84 @@
-﻿using Realms;
-using Realms.Tool;
-using System.Diagnostics;
-using System.Linq;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace Poomsae
+﻿namespace Poomsae
 {
-	public class LocalizeController
-	{
-		private Realm realm;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Realms;
+    using Realms.Tool;
 
-		public LocalizeController ()
-		{
-			this.realm = Realm.GetInstance();
-		}
+    /// <summary>
+    /// Localize controller.
+    /// </summary>
+    public class LocalizeController
+    {
+        /// <summary>
+        /// The realm.
+        /// </summary>
+        private Realm realm;
 
-		/// <summary>
-		/// Gets my setting.
-		/// </summary>
-		/// <returns>The my setting.</returns>
-		public Setting GetMySetting()
-		{
-			var sc = new Controller<Setting>();
-			var setting = sc.FindAll().FirstOrNull();
-			return setting;
-		}
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:Poomsae.LocalizeController"/> class.
+        /// </summary>
+        public LocalizeController()
+        {
+            this.realm = Realm.GetInstance();
+        }
 
-		public Localize FindByKey(string key)
-		{
-			if (this.CountByKey(key) == 0)
-			{
-				return null;
-			}
+        /// <summary>
+        /// Gets my setting.
+        /// </summary>
+        /// <returns>The my setting.</returns>
+        public Setting GetMySetting()
+        {
+            var sc = new Controller<Setting>();
+            var setting = sc.FindAll().FirstOrNull();
+            return setting;
+        }
 
-			var mysertting = this.GetMySetting();
-			return this.realm.All<Localize>()
-				       .Where(d => d.Key == key && d.CountryId == mysertting.country)
-			           .Single();
-		}
+        /// <summary>
+        /// Finds the by key.
+        /// </summary>
+        /// <returns>The by key.</returns>
+        /// <param name="key">Key.</param>
+        public Localize FindByKey(string key)
+        {
+            if (this.CountByKey(key) == 0)
+            {
+                return null;
+            }
 
-		public Localize[] FindAll()
-		{
-			return this.realm.All<Localize>().ToArray();
-		}
+            var mysertting = this.GetMySetting();
+            return this.realm.All<Localize>()
+                       .Where(d => d.Key == key && d.CountryId == mysertting.country)
+                       .Single();
+        }
 
-		public int Count()
-		{
-			return this.realm.All<Localize>().Count();
-		}		
+        /// <summary>
+        /// Finds all.
+        /// </summary>
+        /// <returns>The all.</returns>
+        public Localize[] FindAll()
+        {
+            return this.realm.All<Localize>().ToArray();
+        }
 
-		public int CountByKey(string key)
-		{
-			return this.realm.All<Localize>().Where(d => d.Key == key).Count();
-		}
-	}
+        /// <summary>
+        /// Count this instance.
+        /// </summary>
+        public int Count()
+        {
+            return this.realm.All<Localize>().Count();
+        }
+
+        /// <summary>
+        /// Counts the by key.
+        /// </summary>
+        /// <returns>The by key.</returns>
+        /// <param name="key">Key.</param>
+        public int CountByKey(string key)
+        {
+            return this.realm.All<Localize>().Where(d => d.Key == key).Count();
+        }
+    }
 }
-

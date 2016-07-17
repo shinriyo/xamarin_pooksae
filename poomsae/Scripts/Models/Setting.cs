@@ -1,20 +1,49 @@
-﻿using Realms;
-using Realms.Tool;
-using System;
-using System.Collections.Generic;
+﻿//-----------------------------------------------------------------------
+// <copyright file="Setting.cs" company="shinriyo">
+//     Company copyright tag.
+// </copyright>
+//-----------------------------------------------------------------------
 
 namespace Poomsae
 {
-	/// <summary>
-	/// 現在の設定.
-	/// </summary>
-	public class Setting : RealmObject, IModel
-	{
-		public string Id { get; set; }
-		public DateTimeOffset Created { get; set; }
-		public DateTimeOffset Updated { get; set; }
+    using System;
+    using System.Collections.Generic;
+    using Realms;
+    using Realms.Tool;
 
-		public Country country { get; set; }
-		public string version { get; set; }
-	}
+    /// <summary>
+    /// 現在の設定.
+    /// </summary>
+    public class Setting : RealmObject, IModel
+    {
+        /// <summary>
+        /// Gets or sets the identifier.
+        /// </summary>
+        /// <value>The identifier.</value>
+        public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the created.
+        /// </summary>
+        /// <value>The created.</value>
+        public DateTimeOffset Created { get; set; }
+
+        /// <summary>
+        /// Gets or sets the updated.
+        /// </summary>
+        /// <value>The updated.</value>
+        public DateTimeOffset Updated { get; set; }
+
+        /// <summary>
+        /// Gets or sets the country.
+        /// </summary>
+        /// <value>The country.</value>
+        public Country country { get; set; }
+
+        /// <summary>
+        /// Gets or sets the version.
+        /// </summary>
+        /// <value>The version.</value>
+        public string version { get; set; }
+    }
 }
