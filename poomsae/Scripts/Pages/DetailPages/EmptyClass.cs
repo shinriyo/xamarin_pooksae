@@ -87,7 +87,19 @@ namespace poomsae
 					new Data {Name = "ソンナルマッキ", Description = "両手刀受け", Picture = "guard_icon.png"},
 				},
 				new Group("7級") {
-					new Data {Name = "へっチョンマッキ", Description = "両端受け", Picture = "guard_icon.png"},
+					new Data {Name = "ヘッチョンマッキ", Description = "両端受け", Picture = "guard_icon.png"},
+				},
+				new Group("6級") {
+					new Data {Name = "パタンソンマッキ", Description = "掌底受け", Picture = "guard_icon.png"},
+				},
+				new Group("5級") {
+					new Data {Name = "TODO", Description = "両端受け", Picture = "guard_icon.png"},
+				},
+				new Group("4級") {
+					new Data {Name = "TODO", Description = "両端受け", Picture = "guard_icon.png"},
+				},
+				new Group("3級") {
+					new Data {Name = "TODO", Description = "両端受け", Picture = "guard_icon.png"},
 				}
 			};
 			return groups;

@@ -1,172 +1,184 @@
-﻿using CellTool;
-using System;
-using System.Collections.ObjectModel;
-using Xamarin.Forms;
-
-namespace poomsae
+﻿namespace poomsae
 {
-	public class ArtsPage : ContentPage, IDetail
-	{
-		/// <summary>
-		/// Returns a <see cref="System.String"/> that represents the current <see cref="poomsae.DetailObject"/>.
-		/// </summary>
-		/// <returns>A <see cref="System.String"/> that represents the current <see cref="poomsae.DetailObject"/>.</returns>
-		public override string ToString()
-		{
-			// これがそのままタイトルになるので.
-			return string.Format("{0}", this.Title);
-		}
+    using CellTool;
+    using System;
+    using System.Collections.ObjectModel;
+    using Xamarin.Forms;
 
-		/// <summary>
-		/// Init this instance.
-		/// </summary>
-		public ContentPage Init()
-		{
-			return new ArtsPage();
-		}
+    /// <summary>
+    /// Arts page.
+    /// </summary>
+    public class ArtsPage : ContentPage, IDetail
+    {
+        /// <summary>
+        /// Returns a <see cref="System.String"/> that represents the current <see cref="poomsae.DetailObject"/>.
+        /// </summary>
+        /// <returns>A <see cref="System.String"/> that represents the current <see cref="poomsae.DetailObject"/>.</returns>
+        public override string ToString()
+        {
+            // これがそのままタイトルになるので.
+            return string.Format("{0}", this.Title);
+        }
 
-		public ArtsPage()
-		{
-			base.Title = "技辞典"; // ページのタイトル.
-			var layout = new StackLayout();
+        /// <summary>
+        /// Init this instance.
+        /// </summary>
+        public ContentPage Init()
+        {
+            return new ArtsPage();
+        }
 
-			var subTitle = "技の解説";
-			var label = new Label()
-			{
-				FontSize = 30,
-				XAlign = TextAlignment.Center,
-				Text = subTitle
-			};
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:poomsae.ArtsPage"/> class.
+        /// </summary>
+        public ArtsPage()
+        {
+            base.Title = "技辞典"; // ページのタイトル.
+            var layout = new StackLayout();
 
-			layout.Children.Add(label);
+            var subTitle = "技の解説";
+            var label = new Label()
+            {
+                FontSize = 30,
+                XAlign = TextAlignment.Center,
+                Text = subTitle
+            };
 
-			// TODO: ローカライズ.
-			var artTypes = new string[]
-			{
-				"パンチ系",
-				"キック系",
-				"手刀系",
-				"受け系",
-			};
+            layout.Children.Add(label);
 
-			int i = 0;
-			// ボタンを生成.
-			foreach (var artType in artTypes)
-			{
-				var button = new Button
-				{
-					Text = artType
-				};
+            // TODO: ローカライズ.
+            var artTypes = new string[]
+            {
+                "パンチ系",
+                "キック系",
+                "手刀系",
+                "受け系",
+            };
 
-				// 詳細がどれか.
-				int detailType = i;
-				string name = artTypes[i];
+            int i = 0;
 
-				// ボタンクリック時の処理.
-				button.Clicked += async (s, a) =>
-				{
-					// ページを遷移する.
-					await Navigation.PushAsync(new ArtDetailPage(detailType, name));
-				};
-				i++;
-				layout.Children.Add(button);
-			}
+            // ボタンを生成.
+            foreach (var artType in artTypes)
+            {
+                var button = new Button
+                {
+                    Text = artType
+                };
 
-			// 生成したラベルをこのビューの子要素とする.
-			base.Content = layout;
-		}
-	}
+                // 詳細がどれか.
+                int detailType = i;
+                string name = artTypes[i];
 
-	/// <summary>
-	/// 技詳細
-	/// </summary>
-	class ArtDetailPage : ContentPage
-	{
-		public ArtDetailPage()
-		{ }
+                // ボタンクリック時の処理.
+                button.Clicked += async (s, a) =>
+                {
+                    // ページを遷移する.
+                    await Navigation.PushAsync(new ArtDetailPage(detailType, name));
+                };
+                i++;
+                layout.Children.Add(button);
+            }
 
-		/// <summary>
-		/// Opens the alert.
-		/// </summary>
-		/// <returns>The alert.</returns>
-		public void OpenAlert(int id)
-		{
-			base.DisplayAlert("TODO: タイトル." + id, "TODO: まだ。", "OK");
+            // 生成したラベルをこのビューの子要素とする.
+            Content = layout;
+        }
+    }
 
-			var alert = new UIAlertView();
-			alert.Title = "Title";
-			alert.AddButton("OK");
-			alert.Message = "Please Enter a Value.";
-			alert.AlertViewStyle = UIAlertViewStyle.PlainTextInput;
-			alert.Clicked += (object s, UIButtonEventArgs ev) =>
-			{
-				// handle click event here
-				// user input will be in alert.GetTextField(0).Text;
-			};
+    /// <summary>
+    /// 技詳細.
+    /// </summary>
+    class ArtDetailPage : ContentPage
+    {
+        public ArtDetailPage()
+        { }
 
-			alert.Show();
-		}
+        /// <summary>
+        /// Opens the alert.
+        /// </summary>
+        /// <returns>The alert.</returns>
+        public void OpenAlert(int id)
+        {
+            base.DisplayAlert("TODO: タイトル." + id, "TODO: まだ。", "OK");
 
-		public ArtDetailPage(int i, string name)
-		{
-			// TODO: ローカライズ.
-			this.Title = string.Format("技詳細:{0}", name);
-			ObservableCollection<Group> groups = null;
-			int pageType = i;
+            // var alert = new UIAlertView();
+            // alert.Title = "Title";
+            // alert.AddButton("OK");
+            // alert.Message = "Please Enter a Value.";
+            // alert.AlertViewStyle = UIAlertViewStyle.PlainTextInput;
+            // alert.Clicked += (object s, UIButtonEventArgs ev) =>
+            // {
+            // // handle click event here
+            // // user input will be in alert.GetTextField(0).Text;
+            // };
 
-			//http://www.buildinsider.net/mobile/xamarintips/0038
-			if (pageType == 0)
-			{
-				// パンチ系.
-				groups = EmptyClass.GetPunches(this.OpenAlert);
-			}
-			else if (pageType == 1)
-			{
-				// キック系.
-				groups = EmptyClass.GetKicks(this.OpenAlert);
-			}
-			else if (pageType == 2)
-			{
-				// 手刀系.
-				groups = EmptyClass.GetKnives(this.OpenAlert);
-			}
-			else if (pageType == 3)
-			{
-				// 受け系.
-				groups = EmptyClass.GetGuards(this.OpenAlert);
-			}
+            // alert.Show();
+        }
 
-			// テンプレートの作成（ImageCell使用）.
-			var cell = new DataTemplate(typeof(ImageCell));
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:poomsae.ArtDetailPage"/> class.
+        /// </summary>
+        /// <param name="i">The index.</param>
+        /// <param name="name">Name.</param>
+        public ArtDetailPage(int i, string name)
+        {
+            // TODO: ローカライズ.
+            this.Title = string.Format("技詳細:{0}", name);
+            ObservableCollection<Group> groups = null;
+            int pageType = i;
 
-			// Dataの中のプロパティに対応した文字.
-			cell.SetBinding(ImageCell.TextProperty, "Name");
-			cell.SetBinding(ImageCell.DetailProperty, "Description");
-			cell.SetBinding(ImageCell.ImageSourceProperty, "Picture");
-			cell.SetBinding(ImageCell.CommandProperty, "OnClick");
+            //http://www.buildinsider.net/mobile/xamarintips/0038
+            if (pageType == 0)
+            {
+                // パンチ系.
+                groups = EmptyClass.GetPunches(this.OpenAlert);
+            }
+            else if (pageType == 1)
+            {
+                // キック系.
+                groups = EmptyClass.GetKicks(this.OpenAlert);
+            }
+            else if (pageType == 2)
+            {
+                // 手刀系.
+                groups = EmptyClass.GetKnives(this.OpenAlert);
+            }
+            else if (pageType == 3)
+            {
+                // 受け系.
+                groups = EmptyClass.GetGuards(this.OpenAlert);
+            }
 
-			// リストビューを生成する.
-			var listView = new ListView
-			{
-				ItemsSource = groups,
-				ItemTemplate = cell,
-				IsGroupingEnabled = true,
-				GroupDisplayBinding = new Binding("Title"),
-			};
+            // テンプレートの作成（ImageCell使用）.
+            var cell = new DataTemplate(typeof(ImageCell));
 
-			base.Content = new StackLayout
-			{
-				// iOSのみ上部にマージンをとる.
-				Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0),
-				Children = { listView }
-			};
-		}
+            // Dataの中のプロパティに対応した文字.
+            cell.SetBinding(ImageCell.TextProperty, "Name");
+            cell.SetBinding(ImageCell.DetailProperty, "Description");
+            cell.SetBinding(ImageCell.ImageSourceProperty, "Picture");
+            cell.SetBinding(ImageCell.CommandProperty, "OnClick");
 
-		public override string ToString()
-		{
-			// これがそのままタイトルになるので.
-			return string.Format("{0}", this.Title);
-		}
-	}
+            // リストビューを生成する.
+            var listView = new ListView
+            {
+                ItemsSource = groups,
+                ItemTemplate = cell,
+                IsGroupingEnabled = true,
+                GroupDisplayBinding = new Binding("Title"),
+            };
+
+            base.Content = new StackLayout
+            {
+                // iOSのみ上部にマージンをとる.
+                Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0),
+                Children = { listView }
+            };
+        }
+
+        public override string ToString()
+        {
+            // これがそのままタイトルになるので.
+            return string.Format("{0}", this.Title);
+        }
+    }
 }
 
