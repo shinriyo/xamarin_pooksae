@@ -43,4 +43,9 @@
 	<key>CFBundleName</key>
 	<string>poomsae</string>
 </dict>
+<key>NSAppTransportSecurity</key>
+<dict>
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
+</dict>
 </plist>

@@ -106,11 +106,11 @@
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="Octane.Xam.VideoPlayer">
-      <HintPath>..\packages\Octane.Xam.VideoPlayer.1.1.4.0\lib\MonoAndroid10\Octane.Xam.VideoPlayer.dll</HintPath>
+    <Reference Include="Xam.Plugins.VideoPlayer">
+      <HintPath>..\packages\Xam.Plugins.VideoPlayer.1.0.0-pre07\lib\monoandroid\Xam.Plugins.VideoPlayer.dll</HintPath>
     </Reference>
-    <Reference Include="Octane.Xam.VideoPlayer.Android">
-      <HintPath>..\packages\Octane.Xam.VideoPlayer.1.1.4.0\lib\MonoAndroid10\Octane.Xam.VideoPlayer.Android.dll</HintPath>
+    <Reference Include="Xam.Plugins.VideoPlayer.Droid">
+      <HintPath>..\packages\Xam.Plugins.VideoPlayer.1.0.0-pre07\lib\monoandroid\Xam.Plugins.VideoPlayer.Droid.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -130,6 +130,7 @@
     <None Include="Assets\AboutAssets.txt" />
     <None Include="packages.config" />
     <None Include="FodyWeavers.xml" />
+    <None Include="Xam.Plugins.VideoPlayer.md" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\layout\" />

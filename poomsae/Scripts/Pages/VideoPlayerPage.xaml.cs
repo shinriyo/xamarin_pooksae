@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using Xamarin.Forms;
 
-namespace poomsae
+namespace Poomsae
 {
     public partial class VideoPlayerPage : ContentPage
     {

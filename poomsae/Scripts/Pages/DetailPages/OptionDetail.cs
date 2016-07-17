@@ -54,7 +54,7 @@ namespace Poomsae
             var label = new Label()
             {
                 FontSize = 30,
-                XAlign = TextAlignment.Center,
+                HorizontalTextAlignment = TextAlignment.Center,
                 Text = selectTitle
             };
 

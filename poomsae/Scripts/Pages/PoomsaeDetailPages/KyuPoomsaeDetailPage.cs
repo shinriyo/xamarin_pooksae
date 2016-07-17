@@ -110,6 +110,17 @@
                 //Children = { browser }
                 Children = { listView, webView }
             };
+
+            //ボタンを生成
+            var button1 = new Button { Text = "NextPageへ移動" };
+            //ボタンクリック時の処理
+            button1.Clicked += async (s, a) =>
+            {
+                //ページを遷移する
+                await Navigation.PushAsync(new VideoPlayerPage());
+            };
+
+            Content = button1;
         }
 
         /// <summary>
