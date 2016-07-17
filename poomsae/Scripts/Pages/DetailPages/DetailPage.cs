@@ -1,4 +1,10 @@
-﻿namespace Poomsae
+﻿//-----------------------------------------------------------------------
+// <copyright file="DetailPage.cs" company="shinriyo">
+//     Company copyright tag.
+// </copyright>
+//-----------------------------------------------------------------------
+
+namespace Poomsae
 {
     using System;
     using Xamarin.Forms;

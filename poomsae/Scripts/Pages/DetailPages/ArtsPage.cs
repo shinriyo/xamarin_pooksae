@@ -1,7 +1,13 @@
-﻿namespace Poomsae
+﻿//-----------------------------------------------------------------------
+// <copyright file="PoomsaePage.cs" company="shinriyo">
+//     Company copyright tag.
+// </copyright>
+//-----------------------------------------------------------------------
+
+namespace Poomsae
 {
-    using CellTool;
     using System;
+    using CellTool;
     using System.Collections.ObjectModel;
     using Xamarin.Forms;
 
@@ -80,7 +86,7 @@
             }
 
             // 生成したラベルをこのビューの子要素とする.
-            Content = layout;
+            base.Content = layout;
         }
     }
 
@@ -89,8 +95,12 @@
     /// </summary>
     class ArtDetailPage : ContentPage
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:Poomsae.ArtDetailPage"/> class.
+        /// </summary>
         public ArtDetailPage()
-        { }
+        {
+        }
 
         /// <summary>
         /// Opens the alert.
@@ -126,7 +136,7 @@
             ObservableCollection<Group> groups = null;
             int pageType = i;
 
-            //http://www.buildinsider.net/mobile/xamarintips/0038
+            // http://www.buildinsider.net/mobile/xamarintips/0038
             if (pageType == 0)
             {
                 // パンチ系.
@@ -174,6 +184,10 @@
             };
         }
 
+        /// <summary>
+        /// Tostring override.
+        /// </summary>
+        /// <returns>The string.</returns>
         public override string ToString()
         {
             // これがそのままタイトルになるので.
@@ -181,4 +195,3 @@
         }
     }
 }
-

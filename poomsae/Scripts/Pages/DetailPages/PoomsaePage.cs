@@ -1,4 +1,9 @@
-﻿/////
+﻿//-----------------------------------------------------------------------
+// <copyright file="PoomsaePage.cs" company="shinriyo">
+//     Company copyright tag.
+// </copyright>
+//-----------------------------------------------------------------------
+
 namespace Poomsae
 {
     using System;

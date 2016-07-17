@@ -1,4 +1,10 @@
-﻿namespace Poomsae
+﻿//-----------------------------------------------------------------------
+// <copyright file="EmptyClass.cs" company="shinriyo">
+//     Company copyright tag.
+// </copyright>
+//-----------------------------------------------------------------------
+
+namespace Poomsae
 {
     using CellTool;
     using System;
