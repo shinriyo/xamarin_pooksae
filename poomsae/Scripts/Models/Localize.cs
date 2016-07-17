@@ -1,18 +1,38 @@
-﻿using Realms;
-using Realms.Tool;
-using System;
-using System.Collections.Generic;
+﻿//-----------------------------------------------------------------------
+// <copyright file="Localize.cs" company="shinriyo">
+//     Company copyright tag.
+// </copyright>
+//-----------------------------------------------------------------------
 
 namespace Poomsae
 {
+    using System;
+    using System.Collections.Generic;
+    using Realms;
+    using Realms.Tool;
+
     /// <summary>
-    /// Localize.
+    /// Localize Realm.
     /// </summary>
     public class Localize : RealmObject, IModel
     {
+        /// <summary>
+        /// Gets or sets the identifier.
+        /// </summary>
+        /// <value>The identifier.</value>
         [ObjectId]
         public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the created.
+        /// </summary>
+        /// <value>The created.</value>
         public DateTimeOffset Created { get; set; }
+
+        /// <summary>
+        /// Gets or sets the updated.
+        /// </summary>
+        /// <value>The updated.</value>
         public DateTimeOffset Updated { get; set; }
 
         /// <summary>
@@ -26,6 +46,11 @@ namespace Poomsae
         /// </summary>
         /// <value>The name.</value>
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the country identifier.
+        /// </summary>
+        /// <value>The country identifier.</value>
         public Country CountryId { get; set; }
 
         /// <summary>
@@ -43,11 +68,29 @@ namespace Poomsae
     /// </summary>
     public class Country : RealmObject, IModel
     {
+        /// <summary>
+        /// Gets or sets the identifier.
+        /// </summary>
+        /// <value>The identifier.</value>
         [ObjectId]
         public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the created.
+        /// </summary>
+        /// <value>The created.</value>
         public DateTimeOffset Created { get; set; }
+
+        /// <summary>
+        /// Gets or sets the updated.
+        /// </summary>
+        /// <value>The updated.</value>
         public DateTimeOffset Updated { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        /// <value>The name.</value>
         public string Name { get; set; }
 
         /// <summary>
