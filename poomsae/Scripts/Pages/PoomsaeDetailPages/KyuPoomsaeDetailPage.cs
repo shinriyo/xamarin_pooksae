@@ -4,13 +4,14 @@
     using System.Collections.ObjectModel;
     using System.Windows.Input;
     using Xamarin.Forms;
-    using Octane.;
 
     /// <summary>
     /// プンセの詳細 ページクラス.
     /// </summary>
     class KyuPoomsaeDetailPage : ContentPage
     {
+        WebView webView = new WebView();
+
         /// <summary>
         /// Data.
         /// </summary>
@@ -51,7 +52,7 @@
                             this.OpenAlert(1);
                         })
                     },
-                  new Data {Name = "動画", Description = "動画再生", Picture = "movie_icon.png"}
+                    new Data {Name = "動画", Description = "動画再生", Picture = "movie_icon.png"}
                 },
                 new Group("太極2章") {
                 },
@@ -63,9 +64,20 @@
                 },
                 new Group("太極6章") {
                 },
-                new Group("太極7章") {
-                  new Data {Name = "順序", Description = "順序", Picture = "note_icon.png"},
-                  new Data {Name = "動画", Description = "動画再生", Picture = "movie_icon.png"}
+                new Group("太極7章")
+                {
+                    new Data
+                    {
+                        Name = "順序", Description = "順序", Picture = "note_icon.png",
+                        OnClick = new Command(() => {
+                            this.OpenAlert(1);
+                        })
+                    },
+                    new Data {Name = "動画", Description = "動画再生", Picture = "movie_icon.png",
+                        OnClick = new Command(() => {
+                            this.OpenAlert(1);
+                        })
+                    },
                 }
             };
 
@@ -74,6 +86,9 @@
             cell.SetBinding(ImageCell.TextProperty, "Name");
             cell.SetBinding(ImageCell.DetailProperty, "Description");
             cell.SetBinding(ImageCell.ImageSourceProperty, "Picture");
+
+            // クリックの対応.
+            cell.SetBinding(ImageCell.CommandProperty, "OnClick");
 
             // リストビューを生成する.
             var listView = new ListView
@@ -84,16 +99,17 @@
                 GroupDisplayBinding = new Binding("Title"),
             };
 
-            // layout.Children.Add(listView);
-
-            // 生成したラベルをこのビューの子要素とする.
-            // base.Content = layout;
-
+            var browser = new WebView();
+            browser = new WebView
+            {
+                Source = "http://xamarin.com"
+            };
             base.Content = new StackLayout
             {
                 // iOSのみ上部にマージンをとる.
                 Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0),
-                Children = { listView }
+                Children = { browser }
+                //Children = { listView, webView }
             };
         }
 
@@ -103,9 +119,23 @@
         /// <returns>The alert.</returns>
         private void OpenAlert(int id)
         {
-            // first define the Online Video URL you want to play 
-            VideoPlayer
-            // base.DisplayAlert("TODO: タイトル." + id, "TODO: まだ。", "OK");
+            base.DisplayAlert("TODO: タイトル." + id, "TODO: まだ。", "OK");
+
+
+            //var webView = new WebView();
+            var htmlSource = new HtmlWebViewSource();
+            htmlSource.Html = @"<html>
+            <head>
+            <link rel=""stylesheet"" href=""default.css"">
+            </head>
+            <body>
+            <h1>Xamarin.Forms</h1>
+            <p>The CSS and image are loaded from local files!</p>
+            <img src='Images/XamarinLogo.png'/>
+            <p><a href=""local.html"">next page</a></p>
+            </body>
+            </html>";
+            webView.Source = htmlSource;
 
             // var alert = new UIAlertView();
             // alert.Title = "Title";
