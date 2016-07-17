@@ -52,7 +52,11 @@
                             this.OpenAlert(1);
                         })
                     },
-                    new Data {Name = "動画", Description = "動画再生", Picture = "movie_icon.png"}
+                    new Data {Name = "動画", Description = "動画再生", Picture = "movie_icon.png",
+                        OnClick = new Command(() => {
+                            this.OpenAlert(1);
+                        })
+                    }
                 },
                 new Group("太極2章") {
                 },
@@ -99,17 +103,12 @@
                 GroupDisplayBinding = new Binding("Title"),
             };
 
-            var browser = new WebView();
-            browser = new WebView
-            {
-                Source = "http://xamarin.com"
-            };
             base.Content = new StackLayout
             {
                 // iOSのみ上部にマージンをとる.
                 Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0),
-                Children = { browser }
-                //Children = { listView, webView }
+                //Children = { browser }
+                Children = { listView, webView }
             };
         }
 
@@ -120,35 +119,6 @@
         private void OpenAlert(int id)
         {
             base.DisplayAlert("TODO: タイトル." + id, "TODO: まだ。", "OK");
-
-
-            //var webView = new WebView();
-            var htmlSource = new HtmlWebViewSource();
-            htmlSource.Html = @"<html>
-            <head>
-            <link rel=""stylesheet"" href=""default.css"">
-            </head>
-            <body>
-            <h1>Xamarin.Forms</h1>
-            <p>The CSS and image are loaded from local files!</p>
-            <img src='Images/XamarinLogo.png'/>
-            <p><a href=""local.html"">next page</a></p>
-            </body>
-            </html>";
-            webView.Source = htmlSource;
-
-            // var alert = new UIAlertView();
-            // alert.Title = "Title";
-            // alert.AddButton("OK");
-            // alert.Message = "Please Enter a Value.";
-            // alert.AlertViewStyle = UIAlertViewStyle.PlainTextInput;
-            // alert.Clicked += (object s, UIButtonEventArgs ev) =>
-            // {
-            // // handle click event here
-            // // user input will be in alert.GetTextField(0).Text;
-            // };
-
-            // alert.Show();
         }
     }
 }

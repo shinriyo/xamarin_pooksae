@@ -6,9 +6,9 @@
 
 namespace Poomsae
 {
-    using CellTool;
     using System;
     using System.Collections.ObjectModel;
+    using CellTool;
     using Xamarin.Forms;
 
 
@@ -66,6 +66,11 @@ namespace Poomsae
             return groups;
         }
 
+        /// <summary>
+        /// Gets the kicks.
+        /// </summary>
+        /// <returns>The kicks.</returns>
+        /// <param name="action">Action.</param>
         public static ObservableCollection<Group> GetKicks(Action<int> action)
         {
             // TOD: コレは後で消す.
