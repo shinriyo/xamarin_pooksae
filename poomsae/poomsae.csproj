@@ -32,7 +32,6 @@
   <ItemGroup>
     <Compile Include="poomsae.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scripts\Pages\CarouselPageItem.cs" />
     <Compile Include="Scripts\Pages\MyMasterDetailPage.cs" />
     <Compile Include="Scripts\Pages\TabbedPageItem.cs" />
     <Compile Include="Scripts\Pages\DetailPages\DetailPage.cs" />
