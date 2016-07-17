@@ -46,7 +46,7 @@ namespace Poomsae
             var label = new Label()
             {
                 FontSize = 30,
-                XAlign = TextAlignment.Center,
+                HorizontalTextAlignment = TextAlignment.Center,
                 Text = subTitle
             };
 
@@ -106,7 +106,7 @@ namespace Poomsae
         /// Opens the alert.
         /// </summary>
         /// <returns>The alert.</returns>
-        public void OpenAlert(int id)
+        private void OpenAlert(int id)
         {
             base.DisplayAlert("TODO: タイトル." + id, "TODO: まだ。", "OK");
 

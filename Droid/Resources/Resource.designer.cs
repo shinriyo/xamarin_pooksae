@@ -11,7 +11,7 @@
 
 [assembly: Android.Runtime.ResourceDesignerAttribute("poomsae.Droid.Resource", IsApplication=true)]
 
-namespace Poomsae.Droid
+namespace poomsae.Droid
 {
 	
 	
@@ -26,6 +26,7 @@ namespace Poomsae.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::poomsae.Droid.Resource.Attribute.actionBarSize;
 		}
 		
 		public partial class Attribute
@@ -60,10 +61,16 @@ namespace Poomsae.Droid
 			public const int menu = 2130837508;
 			
 			// aapt resource value: 0x7f020005
-			public const int punch_icon = 2130837509;
+			public const int movie_icon = 2130837509;
 			
 			// aapt resource value: 0x7f020006
-			public const int World_Taekwondo_Federation_Logo = 2130837510;
+			public const int note_icon = 2130837510;
+			
+			// aapt resource value: 0x7f020007
+			public const int punch_icon = 2130837511;
+			
+			// aapt resource value: 0x7f020008
+			public const int World_Taekwondo_Federation_Logo = 2130837512;
 			
 			static Drawable()
 			{
