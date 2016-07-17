@@ -37,8 +37,11 @@ namespace Poomsae
     /// </summary>
     public static class Tools
     {
-
-
+        /// <summary>
+        /// Splits the csv.
+        /// </summary>
+        /// <returns>The csv.</returns>
+        /// <param name="csvString">Csv string.</param>
         public static void SplitCSV(string csvString)
         {
             foreach (var line in csvString.Split('\n'))
@@ -133,4 +136,3 @@ namespace Poomsae
         }
     }
 }
-
