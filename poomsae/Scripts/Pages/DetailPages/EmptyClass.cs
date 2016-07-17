@@ -1,4 +1,4 @@
-﻿namespace poomsae
+﻿namespace Poomsae
 {
     using CellTool;
     using System;

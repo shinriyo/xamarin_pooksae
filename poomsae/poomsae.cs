@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace poomsae
+namespace Poomsae
 {
 	public class App : Application
 	{

@@ -1,4 +1,4 @@
-﻿namespace poomsae
+﻿namespace Poomsae
 {
     using CellTool;
     using System;
@@ -11,9 +11,9 @@
     public class ArtsPage : ContentPage, IDetail
     {
         /// <summary>
-        /// Returns a <see cref="System.String"/> that represents the current <see cref="poomsae.DetailObject"/>.
+        /// Returns a <see cref="System.String"/> that represents the current <see cref="Poomsae.DetailObject"/>.
         /// </summary>
-        /// <returns>A <see cref="System.String"/> that represents the current <see cref="poomsae.DetailObject"/>.</returns>
+        /// <returns>A <see cref="System.String"/> that represents the current <see cref="Poomsae.DetailObject"/>.</returns>
         public override string ToString()
         {
             // これがそのままタイトルになるので.

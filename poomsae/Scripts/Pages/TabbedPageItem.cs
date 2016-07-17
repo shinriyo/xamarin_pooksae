@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 
-namespace poomsae
+namespace Poomsae
 {
 	public class TabbedPageItem : ContentPage {
 		public TabbedPageItem(string title) {

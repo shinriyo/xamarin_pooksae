@@ -11,7 +11,7 @@
 
 [assembly: Android.Runtime.ResourceDesignerAttribute("poomsae.Droid.Resource", IsApplication=true)]
 
-namespace poomsae.Droid
+namespace Poomsae.Droid
 {
 	
 	

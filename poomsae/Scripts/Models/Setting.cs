@@ -3,7 +3,7 @@ using Realms.Tool;
 using System;
 using System.Collections.Generic;
 
-namespace poomsae
+namespace Poomsae
 {
 	/// <summary>
 	/// 現在の設定.

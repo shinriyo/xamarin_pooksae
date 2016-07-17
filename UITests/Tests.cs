@@ -5,7 +5,7 @@ using NUnit.Framework;
 using Xamarin.UITest;
 using Xamarin.UITest.Queries;
 
-namespace poomsae.UITests
+namespace Poomsae.UITests
 {
 	[TestFixture (Platform.Android)]
 	[TestFixture (Platform.iOS)]

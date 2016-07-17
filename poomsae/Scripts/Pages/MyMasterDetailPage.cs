@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 
-namespace poomsae
+namespace Poomsae
 {
 	/// <summary>
 	/// My master detail page.
@@ -10,7 +10,7 @@ namespace poomsae
 	class MyMasterDetailPage : MasterDetailPage
 	{
 		/// <summary>
-		/// Initializes a new instance of the <see cref="poomsae.MyMasterDetailPage"/> class.
+		/// Initializes a new instance of the <see cref="Poomsae.MyMasterDetailPage"/> class.
 		/// </summary>
 		public MyMasterDetailPage()
 		{

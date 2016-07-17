@@ -5,7 +5,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace poomsae
+namespace Poomsae
 {
 	public class LocalizeController
 	{

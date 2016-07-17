@@ -1,4 +1,4 @@
-﻿namespace poomsae
+﻿namespace Poomsae
 {
     using Xamarin.Forms;
 
@@ -17,7 +17,7 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="poomsae.TopPage"/> class.
+        /// Initializes a new instance of the <see cref="Poomsae.TopPage"/> class.
         /// </summary>
         public TopPage()
         {
@@ -94,9 +94,9 @@
         }
 
         /// <summary>
-        /// Returns a <see cref="System.String"/> that represents the current <see cref="poomsae.DetailObject"/>.
+        /// Returns a <see cref="System.String"/> that represents the current <see cref="Poomsae.DetailObject"/>.
         /// </summary>
-        /// <returns>A <see cref="System.String"/> that represents the current <see cref="poomsae.DetailObject"/>.</returns>
+        /// <returns>A <see cref="System.String"/> that represents the current <see cref="Poomsae.DetailObject"/>.</returns>
         public override string ToString()
         {
             // これがそのままタイトルになるので.

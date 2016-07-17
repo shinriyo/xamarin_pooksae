@@ -4,7 +4,7 @@ using System.Linq;
 using Xamarin.UITest;
 using Xamarin.UITest.Queries;
 
-namespace poomsae.UITests
+namespace Poomsae.UITests
 {
 	public class AppInitializer
 	{

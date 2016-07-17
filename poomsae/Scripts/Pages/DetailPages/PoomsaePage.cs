@@ -1,4 +1,5 @@
-﻿namespace poomsae
+﻿/////
+namespace Poomsae
 {
     using System;
     using Xamarin.Forms;
@@ -11,9 +12,9 @@
     class PoomsaePage : ContentPage, IDetail
     {
         /// <summary>
-        /// Returns a <see cref="System.String"/> that represents the current <see cref="poomsae.DetailObject"/>.
+        /// Returns a <see cref="System.String"/> that represents the current <see cref="Poomsae.DetailObject"/>.
         /// </summary>
-        /// <returns>A <see cref="System.String"/> that represents the current <see cref="poomsae.DetailObject"/>.</returns>
+        /// <returns>A <see cref="System.String"/> that represents the current <see cref="Poomsae.DetailObject"/>.</returns>
         public override string ToString()
         {
             // これがそのままタイトルになるので.
@@ -29,7 +30,7 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="poomsae.PoomsaePage"/> class.
+        /// Initializes a new instance of the <see cref="Poomsae.PoomsaePage"/> class.
         /// </summary>
         public PoomsaePage()
         {
@@ -48,6 +49,7 @@
 
             // ボタンを生成.
             var button1 = new Button { Text = "プンセ詳細" };
+
             //ボタンクリック時の処理
             button1.Clicked += async (s, a) =>
             {
@@ -62,7 +64,7 @@
     }
 
     /// <summary>
-    /// プンセの詳細.
+    /// プンセの詳細 ページクラス.
     /// </summary>
     class PoomsaeDetailPage : ContentPage
     {
@@ -70,7 +72,7 @@
         /// Data.
         /// </summary>
         private class Data
-        { // <-1
+        {
             public String Name { get; set; }
             public String Description { get; set; }
             public String Picture { get; set; }
@@ -80,7 +82,7 @@
         /// Group.
         /// </summary>
         private class Group : ObservableCollection<Data>
-        { // <-1
+        {
             public string Title { get; private set; }
             public Group(string title)
             {
@@ -95,8 +97,8 @@
         {
             this.Title = "プンセ詳細"; //ページのタイトル
 
-            var ar = new ObservableCollection<Group> { // <-2
-		        new Group("太極9章") {
+            var ar = new ObservableCollection<Group> {
+                new Group("太極9章") {
                   new Data {Name = "アプチャギ", Description = "601-400-3356", Picture = "man.png"},
                   new Data {Name = "トルリョチャギ", Description = "360-403-0486", Picture = "man.png"},
                   new Data {Name = "ネリョチャギ", Description = "620-625-0916", Picture = "man.png"}
@@ -112,10 +114,10 @@
             };
 
             // テンプレートの作成（ImageCell使用）.
-            var cell = new DataTemplate(typeof(ImageCell));        // <-3
-            cell.SetBinding(ImageCell.TextProperty, "Name");        // <-4
-            cell.SetBinding(ImageCell.DetailProperty, "Description");     // <-5
-            cell.SetBinding(ImageCell.ImageSourceProperty, "Picture"); // <-6
+            var cell = new DataTemplate(typeof(ImageCell));
+            cell.SetBinding(ImageCell.TextProperty, "Name");
+            cell.SetBinding(ImageCell.DetailProperty, "Description");
+            cell.SetBinding(ImageCell.ImageSourceProperty, "Picture");
 
             // リストビューを生成する.
             var listView = new ListView
@@ -126,10 +128,10 @@
                 GroupDisplayBinding = new Binding("Title"),  // <-4
             };
 
-            //layout.Children.Add(listView);
+            // layout.Children.Add(listView);
 
             // 生成したラベルをこのビューの子要素とする.
-            //base.Content = layout;
+            // base.Content = layout;
 
             base.Content = new StackLayout
             {
