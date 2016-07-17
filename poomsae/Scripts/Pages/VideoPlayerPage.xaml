@@ -6,7 +6,7 @@
 		</ResourceDictionary>
 	</ContentPage.Resources>
 	<StackLayout Orientation="Vertical">
-		<videoPlayer:VideoPlayer x:Name="video" BindingContext="{Binding SelectedVideo}" HeightRequest="300" VideoSource="{Binding PlaybackUrl}" WidthRequest="600" />
+		<videoPlayer:VideoPlayer x:Name="video" BindingContext="yuk_jang.mp4" HeightRequest="300" VideoSource="yuk_jang.mp4" WidthRequest="600" />
 		<StackLayout Orientation="Horizontal">
 			<Button Command="{Binding Path=SeekCommand, Source={x:Reference video}, Converter={StaticResource intToTimeSpanConverter}, ConverterParameter=-5}" Text="Rewind" />
 			<Button Command="{Binding Path=PlayCommand, Source={x:Reference video}}" Text="Play" />

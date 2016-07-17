@@ -45,6 +45,7 @@ namespace Poomsae
             //					new TabbedPageItem("Tab3")
             //				}
             //			};
+            //this.MainPage = new VideoPlayerPage { BindingContext = new VideoPlayerViewModel() };
         }
 
         /// <summary>
