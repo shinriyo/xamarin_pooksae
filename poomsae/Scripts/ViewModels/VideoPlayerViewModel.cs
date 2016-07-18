@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 
 namespace Poomsae
 {
-    //[PropertyChanged.ImplementPropertyChanged]
+    [PropertyChanged.ImplementPropertyChanged]
     public class VideoPlayerViewModel
     {
         public VideoPlayerViewModel()
@@ -14,7 +14,7 @@ namespace Poomsae
             Videos.Add(new VideoItem
             {
                 Title = "Dash MSE Test - Car",
-                PlaybackUrl = "http://yt-dash-mse-test.commondatastorage.googleapis.com/media/car-20120827-87.mp4"
+                PlaybackUrl = "yuk_jan.mp4"
             });
         }
 

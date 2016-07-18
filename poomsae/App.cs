@@ -45,7 +45,8 @@ namespace Poomsae
             //					new TabbedPageItem("Tab3")
             //				}
             //			};
-            //this.MainPage = new VideoPlayerPage { BindingContext = new VideoPlayerViewModel() };
+            // mpeg4のテスト.
+            this.MainPage = new VideoPlayerPage { BindingContext = new VideoPlayerViewModel() };
         }
 
         /// <summary>

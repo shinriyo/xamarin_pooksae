@@ -126,6 +126,9 @@
     <Reference Include="Xam.Plugins.VideoPlayer.IOS">
       <HintPath>..\packages\Xam.Plugins.VideoPlayer.1.0.0-pre07\lib\xamarinios\Xam.Plugins.VideoPlayer.IOS.dll</HintPath>
     </Reference>
+    <Reference Include="PropertyChanged">
+      <HintPath>..\packages\PropertyChanged.Fody.1.51.3\Lib\portable-net4+sl4+wp8+win8+wpa81+MonoAndroid16+MonoTouch40\PropertyChanged.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\poomsae\poomsae.csproj">
