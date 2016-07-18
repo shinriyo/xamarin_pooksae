@@ -22,7 +22,7 @@ namespace Poomsae
         public VideoItem SelectedVideo { get; set; }
     }
 
-    //[PropertyChanged.ImplementPropertyChanged]
+    [PropertyChanged.ImplementPropertyChanged]
     public class VideoItem
     {
         public string Title { get; set; }
