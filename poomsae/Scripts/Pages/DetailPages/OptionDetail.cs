@@ -104,23 +104,30 @@ namespace Poomsae
                 };
             }
 
-            /*
 			var appointmentLabel = new Label()
 			{
 				FontSize = 30,
-				XAlign = TextAlignment.Center,
+                HorizontalTextAlignment = TextAlignment.Center,
 				Text = "連絡"
 			};
 			layout.Children.Add(appointmentLabel);
 
+            var officialSiteButton = new Button { Text = "公式サイト" };
+            officialSiteButton.Clicked += (sender, a) =>
+            {
+                var uri = new Uri("http://shinriyo.hateblo.jp");
+                Device.OpenUri(uri);
+            };
+            layout.Children.Add(officialSiteButton);
+
 			var appointmentButton = new Button { Text = "Eメール" };
-			appointmentButton.Clicked += (s, a) =>
+			appointmentButton.Clicked += (sender, a) =>
 			{
-				var uri = "http://xamarin.com/";
-				//DependencyService.Get<IWebBrowserService>().Open(new Uri(uri)); // open in WebBrowser
+                var uri = new Uri("mailto:shinriyo@gmail.com");
+                Device.OpenUri(uri);
 			};
 			layout.Children.Add(appointmentButton);
-			*/
+
             // 生成したラベルをこのビューの子要素とする.
             base.Content = layout;
         }
