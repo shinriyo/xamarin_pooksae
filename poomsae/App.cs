@@ -23,19 +23,6 @@ namespace Poomsae
         public App()
         {
             // The root page of your application
-            /*
-			MainPage = new ContentPage {
-				Content = new StackLayout {
-					VerticalOptions = LayoutOptions.Center,
-					Children = {
-						new Label {
-							XAlign = TextAlignment.Center,
-							Text = "Welcome to Xamarin Forms!"
-						}
-					}
-				}
-			};*/
-
             // MasterDetailPageを継承したクラスを生成してMainPageとする
             this.MainPage = new MyMasterDetailPage();
             //			MainPage = new TabbedPage() {
@@ -46,7 +33,14 @@ namespace Poomsae
             //				}
             //			};
             // mpeg4のテスト.
-            this.MainPage = new VideoPlayerPage { BindingContext = new VideoPlayerViewModel() };
+            //try
+            //{
+            //    this.MainPage = new VideoPlayerPage { BindingContext = new VideoPlayerViewModel() };
+            //}
+            //catch (Exception ex)
+            //{
+            //    System.Diagnostics.Debug.WriteLine(ex.ToString());
+            //}
         }
 
         /// <summary>

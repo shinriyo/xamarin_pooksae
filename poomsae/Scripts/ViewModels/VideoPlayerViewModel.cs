@@ -11,11 +11,11 @@ namespace Poomsae
             Videos = new ObservableCollection<VideoItem>();
 
             Videos.Add(new VideoItem { Title = "Big Buck Bunny", PlaybackUrl = "http://download.openbricks.org/sample/H264/big_buck_bunny_1080p_H264_AAC_25fps_7200K.MP4" });
-            Videos.Add(new VideoItem
-            {
-                Title = "Dash MSE Test - Car",
-                PlaybackUrl = "yuk_jan.mp4"
-            });
+            //Videos.Add(new VideoItem
+            //{
+            //    Title = "Dash MSE Test - Car",
+            //    PlaybackUrl = "yuk_jan.mp4"
+            //});
         }
 
         public ICollection<VideoItem> Videos { get; set; }
