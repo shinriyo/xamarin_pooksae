@@ -1,8 +1,9 @@
 ﻿namespace Poomsae
 {
     using System;
-    using Xamarin.Forms;
     using System.Collections.ObjectModel;
+    using System.Windows.Input;
+    using Xamarin.Forms;
 
     /// <summary>
     /// プンセの詳細 ページクラス.
@@ -17,6 +18,7 @@
             public String Name { get; set; }
             public String Description { get; set; }
             public String Picture { get; set; }
+            public ICommand OnClick { get; set; }
         }
 
         /// <summary>
@@ -32,6 +34,37 @@
         }
 
         /// <summary>
+        /// Creates the data.
+        /// </summary>
+        /// <returns>The data.</returns>
+        private Group CreateGroup(string title)
+        {
+            return new Group(title)
+            {
+                new Data
+                {
+                    Name = "順序",
+                    Description = "順序",
+                    Picture = "note_icon.png",
+                    OnClick = new Command(() =>
+                    {
+                        this.OpenAlert(1);
+                    })
+                },
+                new Data
+                {
+                    Name = "動画",
+                    Description = "動画再生",
+                    Picture = "movie_icon.png",
+                    OnClick = new Command(() =>
+                    {
+                        this.OpenAlert(1);
+                    })
+                }
+            };
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="T:poomsae.DanPoomsaeDetailPage"/> class.
         /// </summary>
         public DanPoomsaeDetailPage()
@@ -39,10 +72,11 @@
             this.Title = "段プンセ詳細"; //ページのタイトル
 
             var ar = new ObservableCollection<Group> {
-                new Group("太極1章") {
-                  new Data {Name = "順序", Description = "601-400-3356", Picture = "man.png"},
-                  new Data {Name = "動画", Description = "620-625-0916", Picture = "man.png"}
-                }
+                this.CreateGroup("高麗"),
+                this.CreateGroup("金剛"),
+                this.CreateGroup("太白"),
+                this.CreateGroup("平原"),
+                this.CreateGroup("十進"),
             };
 
             // テンプレートの作成（ImageCell使用）.
@@ -50,6 +84,9 @@
             cell.SetBinding(ImageCell.TextProperty, "Name");
             cell.SetBinding(ImageCell.DetailProperty, "Description");
             cell.SetBinding(ImageCell.ImageSourceProperty, "Picture");
+
+            // クリックの対応.
+            cell.SetBinding(ImageCell.CommandProperty, "OnClick");
 
             // リストビューを生成する.
             var listView = new ListView
@@ -71,6 +108,15 @@
                 Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0),
                 Children = { listView }
             };
+        }
+
+        /// <summary>
+        /// Opens the alert.
+        /// </summary>
+        /// <returns>The alert.</returns>
+        private void OpenAlert(int id)
+        {
+            base.DisplayAlert("TODO: タイトル." + id, "TODO: まだ。", "OK");
         }
     }
 }
