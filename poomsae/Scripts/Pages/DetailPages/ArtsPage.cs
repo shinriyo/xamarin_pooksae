@@ -108,20 +108,15 @@ namespace Poomsae
         /// <returns>The alert.</returns>
         private void OpenAlert(int id)
         {
-            base.DisplayAlert("TODO: タイトル." + id, "TODO: まだ。", "OK");
-
-            // var alert = new UIAlertView();
-            // alert.Title = "Title";
-            // alert.AddButton("OK");
-            // alert.Message = "Please Enter a Value.";
-            // alert.AlertViewStyle = UIAlertViewStyle.PlainTextInput;
-            // alert.Clicked += (object s, UIButtonEventArgs ev) =>
-            // {
-            // // handle click event here
-            // // user input will be in alert.GetTextField(0).Text;
-            // };
-
-            // alert.Show();
+            try
+            {
+                // ページを遷移する.
+                Navigation.PushAsync(new ArtDetailPage());
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
+            }
         }
 
         /// <summary>
