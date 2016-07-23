@@ -34,6 +34,37 @@
         }
 
         /// <summary>
+        /// Creates the data.
+        /// </summary>
+        /// <returns>The data.</returns>
+        private Group CreateGroup(string title)
+        {
+            return new Group(title)
+            {
+                new Data
+                {
+                    Name = "順序",
+                    Description = "順序",
+                    Picture = "note_icon.png",
+                    OnClick = new Command(() =>
+                    {
+                        this.OpenAlert(1);
+                    })
+                },
+                new Data
+                {
+                    Name = "動画",
+                    Description = "動画再生",
+                    Picture = "movie_icon.png",
+                    OnClick = new Command(() =>
+                    {
+                        this.OpenAlert(1);
+                    })
+                }
+            };
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="T:poomsae.KyuPoomsaeDetailPage"/> class.
         /// </summary>
         public KyuPoomsaeDetailPage()
@@ -41,46 +72,13 @@
             this.Title = "級プンセ詳細"; //ページのタイトル
 
             var ar = new ObservableCollection<Group> {
-                new Group("太極1章")
-                {
-                    new Data
-                    {
-                        Name = "順序", Description = "順序", Picture = "note_icon.png",
-                        OnClick = new Command(() => {
-                            this.OpenAlert(1);
-                        })
-                    },
-                    new Data {Name = "動画", Description = "動画再生", Picture = "movie_icon.png",
-                        OnClick = new Command(() => {
-                            this.OpenAlert(1);
-                        })
-                    }
-                },
-                new Group("太極2章") {
-                },
-                new Group("太極3章") {
-                },
-                new Group("太極4章") {
-                },
-                new Group("太極5章") {
-                },
-                new Group("太極6章") {
-                },
-                new Group("太極7章")
-                {
-                    new Data
-                    {
-                        Name = "順序", Description = "順序", Picture = "note_icon.png",
-                        OnClick = new Command(() => {
-                            this.OpenAlert(1);
-                        })
-                    },
-                    new Data {Name = "動画", Description = "動画再生", Picture = "movie_icon.png",
-                        OnClick = new Command(() => {
-                            this.OpenAlert(1);
-                        })
-                    },
-                }
+                this.CreateGroup("太極1章"),
+                this.CreateGroup("太極2章"),
+                this.CreateGroup("太極3章"),
+                this.CreateGroup("太極4章"),
+                this.CreateGroup("太極5章"),
+                this.CreateGroup("太極6章"),
+                this.CreateGroup("太極7章"),
             };
 
             // テンプレートの作成（ImageCell使用）.

@@ -36,7 +36,9 @@ namespace Poomsae
         /// </summary>
         public PoomsaePage()
         {
-            this.Title = "Poomsae"; //ページのタイトル
+            // ページのタイトル.
+            // TODO: Poomsae.
+            this.Title = "プンセ";
 
             var layout = new StackLayout();
 
