@@ -52,7 +52,7 @@ namespace Poomsae
             layout.Children.Add(label);
 
             // ボタンを生成.
-            var button1 = new Button { Text = "詳細(級)" };
+            var button1 = new Button { Text = "級" };
 
             //ボタンクリック時の処理
             button1.Clicked += async (s, a) =>
@@ -66,7 +66,7 @@ namespace Poomsae
             this.Content = layout;
 
             // ボタンを生成.
-            var button2 = new Button { Text = "詳細(段)" };
+            var button2 = new Button { Text = "段" };
 
             //ボタンクリック時の処理
             button2.Clicked += async (s, a) =>
