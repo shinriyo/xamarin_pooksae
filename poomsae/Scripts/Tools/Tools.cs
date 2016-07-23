@@ -61,25 +61,25 @@ namespace Poomsae
         /// <returns>The db.</returns>
         public static void InitializeDB()
         {
-            var cc = new Controller<Country>();
-            cc.DeleteAll();
+            var countryController = new Controller<Country>();
+            countryController.DeleteAll();
 
             var japan = new Country() { Name = "Japan" };
             var korea = new Country() { Name = "Korea" };
             var english = new Country() { Name = "English" };
 
-            cc.Insert(japan);
-            cc.Insert(korea);
-            cc.Insert(english);
+            countryController.Insert(japan);
+            countryController.Insert(korea);
+            countryController.Insert(english);
 
-            foreach (var c in cc.FindAll())
+            foreach (var countryItem in countryController.FindAll())
             {
-                Debug.WriteLine(c);
+                Debug.WriteLine(countryItem);
             }
 
             Debug.WriteLine(new string('*', 10));
-            var lc = new Controller<Localize>();
-            lc.DeleteAll();
+            var languageController = new Controller<Localize>();
+            languageController.DeleteAll();
 
             // 名前系.
             var japanName = new Localize()
@@ -103,9 +103,9 @@ namespace Poomsae
                 CountryId = korea
             };
 
-            lc.Insert(japanName);
-            lc.Insert(englishName);
-            lc.Insert(koreanName);
+            languageController.Insert(japanName);
+            languageController.Insert(englishName);
+            languageController.Insert(koreanName);
 
             var sc = new Controller<Setting>();
             sc.DeleteAll();
