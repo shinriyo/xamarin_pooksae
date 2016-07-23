@@ -72,13 +72,14 @@
             this.Title = "級プンセ詳細"; //ページのタイトル
 
             var ar = new ObservableCollection<Group> {
-                this.CreateGroup("太極1章"),
-                this.CreateGroup("太極2章"),
-                this.CreateGroup("太極3章"),
-                this.CreateGroup("太極4章"),
-                this.CreateGroup("太極5章"),
-                this.CreateGroup("太極6章"),
-                this.CreateGroup("太極7章"),
+                this.CreateGroup("太極1章(テグ イルジャン)"),
+                this.CreateGroup("太極2章(テグ イージャン)"),
+                this.CreateGroup("太極3章(テグ サムジャン)"),
+                this.CreateGroup("太極4章(テグ サージャン)"),
+                this.CreateGroup("太極5章(テグ オージャン)"),
+                this.CreateGroup("太極6章(テグ ユッジャン)"),
+                this.CreateGroup("太極7章(テグ チルジャン)"),
+                this.CreateGroup("太極8章(テグ パルジャン)"),
             };
 
             // テンプレートの作成（ImageCell使用）.

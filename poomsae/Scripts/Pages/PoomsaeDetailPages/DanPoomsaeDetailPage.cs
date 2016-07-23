@@ -72,11 +72,11 @@
             this.Title = "段プンセ詳細"; //ページのタイトル
 
             var ar = new ObservableCollection<Group> {
-                this.CreateGroup("高麗"),
-                this.CreateGroup("金剛"),
-                this.CreateGroup("太白"),
-                this.CreateGroup("平原"),
-                this.CreateGroup("十進"),
+                this.CreateGroup("高麗(コウリョ)"),
+                this.CreateGroup("金剛(クンガン)"),
+                this.CreateGroup("太白(テベック)"),
+                this.CreateGroup("平原(ピョンウォン)"),
+                this.CreateGroup("十進(シッチン)"),
             };
 
             // テンプレートの作成（ImageCell使用）.
