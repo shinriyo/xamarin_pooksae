@@ -15,7 +15,7 @@ namespace Poomsae
     public class EmptyClass
     {
         private static Data CreateData(int num,
-            string name, string desc, string imageName, Action<int> action)
+            string name, string desc, string imageName, Action<int, string> action)
         {
             var data = new Data
             {
@@ -24,13 +24,13 @@ namespace Poomsae
                 Picture = imageName,
                 OnClick = new Command(() =>
                 {
-                    action(num);
+                    action(num, name);
                 })
             };
             return data;
         }
 
-        public static ObservableCollection<Group> GetPunches(Action<int> action)
+        public static ObservableCollection<Group> GetPunches(Action<int, string> action)
         {
             string png = "punch_icon.png";
 
@@ -47,7 +47,7 @@ namespace Poomsae
             return groups;
         }
 
-        public static ObservableCollection<Group> GetKnives(Action<int> action)
+        public static ObservableCollection<Group> GetKnives(Action<int, string> action)
         {
             string png = "chop_icon.png";
 
@@ -72,7 +72,7 @@ namespace Poomsae
         /// </summary>
         /// <returns>The kicks.</returns>
         /// <param name="action">Action.</param>
-        public static ObservableCollection<Group> GetKicks(Action<int> action)
+        public static ObservableCollection<Group> GetKicks(Action<int, string> action)
         {
             string png = "kick_icon.png";
 
@@ -94,7 +94,7 @@ namespace Poomsae
             return groups;
         }
 
-        public static ObservableCollection<Group> GetGuards(Action<int> action)
+        public static ObservableCollection<Group> GetGuards(Action<int, string> action)
         {
             string png = "guard_icon.png";
 

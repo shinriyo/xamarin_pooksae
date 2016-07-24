@@ -107,10 +107,9 @@ namespace Poomsae
         /// </summary>
         /// <returns>The detail.</returns>
         /// <param name="id">Identifier.</param>
-        private void OpenDetail(int id)
+        private void OpenDetail(int id, string title)
         {
             // TODO:
-            var title = "タイトル";
             var desc = "説明";
 
             try

@@ -36,9 +36,15 @@
         /// <value>The value.</value>
         public string Desc { get; set; }
 
+        /// <summary>
+        /// 画像.
+        /// </summary>
+        /// <value>The value.</value>
+        public string Image { get; set; }
+
         public override string ToString()
         {
-            return string.Format("[ArtModel: Id={0}, Created={1}, Updated={2}, Country={3}]", Id, Created, Updated, Country);
+            return string.Format("[ArtModel: Id={0}, Created={1}, Updated={2}, Country={3}, Key={4}, Name={5}, Desc={6}]", Id, Created, Updated, Country, Key, Name, Desc);
         }
     }
 }
