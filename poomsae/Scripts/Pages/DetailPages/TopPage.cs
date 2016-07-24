@@ -34,8 +34,6 @@
             };
             layout.Children.Add(logoImage);
 
-            // TODO: ローカライズ.
-
             // ラベルを１つ生成.
             var titleLabel = new Label
             {
@@ -46,6 +44,7 @@
 
             layout.Children.Add(titleLabel);
 
+            // TODO: ローカライズ.
             var button = new Button { Text = "初期化" };
             layout.Children.Add(button);
             button.Clicked += async (sender, e) =>

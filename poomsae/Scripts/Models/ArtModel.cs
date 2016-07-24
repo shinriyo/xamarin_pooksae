@@ -24,6 +24,8 @@
         /// <value>The key.</value>
         public string Key { get; set; }
 
+        public string Kyu { get; set; }
+
         /// <summary>
         /// 実際の文字列の値.
         /// </summary>
