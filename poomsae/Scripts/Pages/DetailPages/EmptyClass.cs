@@ -14,8 +14,9 @@ namespace Poomsae
 
     public class EmptyClass
     {
-        private static Data CreateData(int num,
-            string name, string desc, string imageName, Action<int, string> action)
+        private static Data CreateData(
+            string name, string desc, string detail, string imageName,
+            Action<string, string> action)
         {
             var data = new Data
             {
@@ -24,13 +25,13 @@ namespace Poomsae
                 Picture = imageName,
                 OnClick = new Command(() =>
                 {
-                    action(num, name);
+                    action(name, detail);
                 })
             };
             return data;
         }
 
-        public static ObservableCollection<Group> GetPunches(Action<int, string> action)
+        public static ObservableCollection<Group> GetPunches(Action<string, string> action)
         {
             string png = "punch_icon.png";
 
@@ -38,16 +39,16 @@ namespace Poomsae
             var groups = new ObservableCollection<Group>
             {
                 new Group("9級") {
-                    CreateData(9, "チュモクチルギ", "パンチ", png, action),
+                    CreateData("チュモクチルギ", "パンチ", "パンチします.", png, action),
                 },
                 new Group("8級") {
-                    CreateData(8, "ジョチョチルギ", "両手突き", png, action),
+                    CreateData("ジョチョチルギ", "両手突き", "両手でパンチします.", png, action),
                 }
             };
             return groups;
         }
 
-        public static ObservableCollection<Group> GetKnives(Action<int, string> action)
+        public static ObservableCollection<Group> GetKnives(Action<string, string> action)
         {
             string png = "chop_icon.png";
 
@@ -55,13 +56,13 @@ namespace Poomsae
             var groups = new ObservableCollection<Group>
             {
                 new Group("9級") {
-                    CreateData(9, "ソンナルモクチギ", "手刀受け", png, action),
+                    CreateData("ソンナルモクチギ", "手刀受け", "手刀受け", png, action),
                 },
                 new Group("8級") {
-                    CreateData(8, "アギソンモクチギ", "両手刀受け", png, action),
+                    CreateData("アギソンモクチギ", "両手刀受け", "両手刀受け", png, action),
                 },
                 new Group("7級") {
-                    CreateData(7, "チェッピブンモクチギ", "両手刀受け", png, action),
+                    CreateData("チェッピブンモクチギ", "両手刀受け", "両手刀受け", png, action),
                 }
             };
             return groups;
@@ -72,7 +73,7 @@ namespace Poomsae
         /// </summary>
         /// <returns>The kicks.</returns>
         /// <param name="action">Action.</param>
-        public static ObservableCollection<Group> GetKicks(Action<int, string> action)
+        public static ObservableCollection<Group> GetKicks(Action<string, string> action)
         {
             string png = "kick_icon.png";
 
@@ -80,13 +81,13 @@ namespace Poomsae
             var groups = new ObservableCollection<Group>
             {
                 new Group("9級") {
-                    CreateData(1, "アプチャギ", "前に蹴る", png, action),
-                    CreateData(2, "トルリョチャギ", "回して蹴る", png, action),
-                    CreateData(3, "ネリョチャギ", "かかと落とし", png, action),
+                    CreateData("アプチャギ", "前に蹴る", "前に蹴る", png, action),
+                    CreateData("トルリョチャギ", "回して蹴る", "回して蹴る", png, action),
+                    CreateData("ネリョチャギ", "かかと落とし", "かかと落とし", png, action),
                 },
                 new Group("8級") {
-                    CreateData(4, "ヨプチャギ", "横蹴り", png, action),
-                    CreateData(5, "ティッチャギ", "後ろ蹴り", png, action),
+                    CreateData("ヨプチャギ", "横蹴り", "横蹴り", png, action),
+                    CreateData("ティッチャギ", "後ろ蹴り", "後ろ蹴り", png, action),
                 },
                 new Group("7級") {
                 }
@@ -94,7 +95,7 @@ namespace Poomsae
             return groups;
         }
 
-        public static ObservableCollection<Group> GetGuards(Action<int, string> action)
+        public static ObservableCollection<Group> GetGuards(Action<string, string> action)
         {
             string png = "guard_icon.png";
 
@@ -102,22 +103,22 @@ namespace Poomsae
             var groups = new ObservableCollection<Group>
             {
                 new Group("9級") {
-                    CreateData(1, "ソンナルマッキ", "手刀受け", png, action),
+                    CreateData("ソンナルマッキ", "手刀受け", "手刀受け", png, action),
                 },
                 new Group("8級") {
-                    CreateData(2, "ヤンソンナルマッキ", "両手刀受け", png, action),
+                    CreateData("ヤンソンナルマッキ", "両手刀受け", "両手刀受け", png, action),
                 },
                 new Group("7級") {
-                    CreateData(3, "ヘッチョンマッキ", "両端受け", png, action),
+                    CreateData("ヘッチョンマッキ", "両端受け", "両端受け", png, action),
                 },
                 new Group("6級") {
-                    CreateData(4, "パタンソンマッキ", "両端受け", png, action),
+                    CreateData("パタンソンマッキ", "両端受け", "両端受け", png, action),
                 },
                 new Group("5級") {
-                    CreateData(5, "ピットロマッキ", "ひねり受け", png, action),
+                    CreateData("ピットロマッキ", "ひねり受け", "ひねり受け", png, action),
                 },
                 new Group("4級") {
-                    CreateData(6, "サントゥルマッキ", "上段両受け", png, action),
+                    CreateData("サントゥルマッキ", "上段両受け", "上段両受け", png, action),
                 },
                 new Group("3級") {
                 }

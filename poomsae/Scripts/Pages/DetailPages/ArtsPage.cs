@@ -106,12 +106,10 @@ namespace Poomsae
         /// Opens the detail.
         /// </summary>
         /// <returns>The detail.</returns>
-        /// <param name="id">Identifier.</param>
-        private void OpenDetail(int id, string title)
+        /// <param name="name">Name.</param>
+        /// <param name="detail">Detail.</param>
+        private void OpenDetail(string name, string detail)
         {
-            // TODO:
-            var desc = "説明";
-
             try
             {
                 // ページを遷移する.
@@ -119,9 +117,9 @@ namespace Poomsae
                 {
                     BindingContext = new ArtDescPageViewModel()
                     {
-                        Name = title,
+                        Name = name,
                         Source = ImageSource.FromResource(@"poomsae.Resources.Punch.VerticalPunch.jpg"),
-                        Desc = desc
+                        Desc = detail
                     }
                 });
             }

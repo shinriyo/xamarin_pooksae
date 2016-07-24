@@ -65,7 +65,7 @@ namespace Poomsae
 
             // ボタンを生成.
             List<Button> buttons = new List<Button>();
-            var languageNames = new string[] { "ja", "kr", "en" };
+            var languageNames = new string[] { "ja", "kr", "en", "vi" };
             foreach (var language in languageNames)
             {
                 string myLang = mySetting == null ? "ja" : mySetting.language;
