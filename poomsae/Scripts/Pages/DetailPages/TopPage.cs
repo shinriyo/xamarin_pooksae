@@ -1,5 +1,14 @@
-﻿namespace Poomsae
+﻿//-----------------------------------------------------------------------
+// <copyright file="TopPage.cs" company="shinriyo">
+//     Company copyright tag.
+// </copyright>
+//-----------------------------------------------------------------------
+
+namespace Poomsae
 {
+    using System.Diagnostics;
+    using System.IO;
+    using CsvHelper;
     using Xamarin.Forms;
 
     /// <summary>
@@ -75,7 +84,17 @@
                     var url = "http://vps6-d.kuku.lu/files/20160619-1533_82a335b14b41d4fb9f72ab726a64a9c6.csv";
                     var csvString = httpClient.GetStringAsync(url).Result;
                     dlLabel.Text = csvString;
-                    Tools.SplitCSV(csvString);
+
+                    var csv = new CsvReader(new StringReader(csvString));
+                    while (csv.Read())
+                    {
+                        var records = csv.GetField<string>(0);
+                        Debug.WriteLine("{0} ", records);
+                    }
+
+                    var localizeUrl = "http://vps6-d.kuku.lu/files/20160725-0035_2b21358ee0d5a871860a15789270a433.csv";
+                    csvString = httpClient.GetStringAsync(localizeUrl).Result;
+                    dlLabel.Text += csvString;
                 }
             };
 
@@ -103,3 +122,4 @@
         }
     }
 }
+

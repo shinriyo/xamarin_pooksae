@@ -1,11 +1,9 @@
-﻿using Realms.Tool;
-using System;
-using System.Diagnostics;
-using System.Collections.ObjectModel;
-using System.Windows.Input;
-
-namespace CellTool
+﻿namespace CellTool
 {
+    using System;
+    using System.Collections.ObjectModel;
+    using System.Windows.Input;
+
     /// <summary>
     /// Data.
     /// </summary>
@@ -32,29 +30,14 @@ namespace CellTool
 
 namespace Poomsae
 {
+    using Realms.Tool;
+    using System.Diagnostics;
+
     /// <summary>
     /// Tools.
     /// </summary>
     public static class Tools
     {
-        /// <summary>
-        /// Splits the csv.
-        /// </summary>
-        /// <returns>The csv.</returns>
-        /// <param name="csvString">Csv string.</param>
-        public static void SplitCSV(string csvString)
-        {
-            foreach (var line in csvString.Split('\n'))
-            {
-                var values = line.Split(',');
-                // 出力する
-                foreach (var value in values)
-                {
-                    Debug.WriteLine("{0} ", value);
-                }
-            }
-        }
-
         /// <summary>
         /// Initializes the db.
         /// </summary>
