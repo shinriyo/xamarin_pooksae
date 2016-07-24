@@ -1,7 +1,9 @@
--- Key, Name, CountryId
-LANGUAGE, 日本, japan
-LANGUAGE, 日本, korea
-LANGUAGE, , english
-TITLE, , english
-TITLE, , english
-"Taekwon-Do Dict
+-- Key, Value
+"title", "Taekwon-Do Dict"
+"arts-dict", "技辞典"
+"aets-desc", 技の解説
+"about-punch", "パンチ系"
+"about-kick", "キック系"
+"about-chop", "手刀系"
+"about-guard", "受け系"
+"arts-detail","技詳細"

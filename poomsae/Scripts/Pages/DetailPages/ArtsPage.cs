@@ -108,7 +108,8 @@ namespace Poomsae
         /// <returns>The detail.</returns>
         /// <param name="name">Name.</param>
         /// <param name="detail">Detail.</param>
-        private void OpenDetail(string name, string detail)
+        /// <param name="image">詳細画像.</param>
+        private void OpenDetail(string name, string detail, string image)
         {
             try
             {
@@ -118,7 +119,7 @@ namespace Poomsae
                     BindingContext = new ArtDescPageViewModel()
                     {
                         Name = name,
-                        Source = ImageSource.FromResource(@"poomsae.Resources.Punch.VerticalPunch.jpg"),
+                        Source = ImageSource.FromResource(image),
                         Desc = detail
                     }
                 });
@@ -155,7 +156,7 @@ namespace Poomsae
             else if (pageType == 2)
             {
                 // 手刀系.
-                groups = EmptyClass.GetKnives(this.OpenDetail);
+                groups = EmptyClass.GetChops(this.OpenDetail);
             }
             else if (pageType == 3)
             {
