@@ -109,13 +109,6 @@ namespace Poomsae
         /// <param name="id">Identifier.</param>
         private void OpenDetail(int id)
         {
-            // Imageビューの生成
-            var image = new Image
-            {
-                // 画像を読み込んでSourceプロパティに設定
-                Source = ImageSource.FromResource(@"poomsae.Resources.Punch.VerticalPunch.jpg"),
-            };
-
             try
             {
                 // ページを遷移する.
