@@ -61,78 +61,36 @@ namespace Poomsae
         /// <returns>The db.</returns>
         public static void InitializeDB()
         {
-            var countryController = new Controller<Country>();
-            countryController.DeleteAll();
-
-            var japan = new Country() { Name = "Japan" };
-            var korea = new Country() { Name = "Korea" };
-            var english = new Country() { Name = "English" };
-
-            countryController.Insert(japan);
-            countryController.Insert(korea);
-            countryController.Insert(english);
-
-            foreach (var countryItem in countryController.FindAll())
-            {
-                Debug.WriteLine(countryItem);
-            }
-
             Debug.WriteLine(new string('*', 10));
             var languageController = new Controller<Localize>();
+            // 一旦消して.
             languageController.DeleteAll();
 
-            // 名前系.
-            var japanName = new Localize()
-            {
-                Key = "LANGUAGE",
-                Name = "日本",
-                CountryId = japan
-            };
-
-            var englishName = new Localize()
-            {
-                Key = "LANGUAGE",
-                Name = "英語",
-                CountryId = english
-            };
-
-            var koreanName = new Localize()
-            {
-                Key = "LANGUAGE",
-                Name = "韓国語",
-                CountryId = korea
-            };
-
-            languageController.Insert(japanName);
-            languageController.Insert(englishName);
-            languageController.Insert(koreanName);
+            var ja = new Localize { Country = "ja" };
+            var enUS = new Localize { Country = "en-US" };
+            var kr = new Localize { Country = "kr" };
+            languageController.Insert(ja);
+            languageController.Insert(enUS);
+            languageController.Insert(kr);
 
             var sc = new Controller<Setting>();
             sc.DeleteAll();
             var setting = new Setting()
             {
-                country = japan,
+                language = "Japan",
                 version = "0.1"
             };
             sc.Insert(setting);
 
             // 技の初期化.
             // TODO: CSVでやる？.
-            var ac = new Controller<Art>();
-            var adc = new Controller<ArtDetail>();
-            var apchaiDesc = new ArtDetail
-            {
-                CountryId = japan,
-                Description = "前に蹴る",
-            };
+            var artModelController = new Controller<ArtModel>();
 
-            var apchagi = new Art
+            var apchagi = new ArtModel
             {
-                CountryId = japan,
-                ArtDetailId = apchaiDesc
+                Country = "ja",
             };
-            ac.Insert(apchagi);
-            adc.Insert(apchaiDesc);
+            artModelController.Insert(apchagi);
         }
     }
 }

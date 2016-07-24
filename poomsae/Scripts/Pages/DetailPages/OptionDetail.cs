@@ -60,22 +60,20 @@ namespace Poomsae
 
             layout.Children.Add(label);
 
-            // ボタンを生成.
-            var languages = this.GetCountries();
-            //var mySetting = this.GetMySetting();
             var lc = new LocalizeController();
             var mySetting = lc.GetMySetting();
 
+            // ボタンを生成.
             List<Button> buttons = new List<Button>();
-            foreach (var item in languages.Select((v, i) => new { Value = v, Index = i }))
+            var languageNames = new string[] { "ja", "kr", "en" };
+            foreach (var language in languageNames)
             {
-                var index = item.Index;
-                Country country = item.Value;
-                bool isEnable = (mySetting.country.Name != item.Value.Name);
-                string langName = country.Name;
+                string myLang = mySetting == null ? "ja" : mySetting.language;
+                bool isEnable = (myLang != language);
+
                 var button = new Button
                 {
-                    Text = langName,
+                    Text = language,
                     IsEnabled = isEnable
                 };
                 buttons.Add(button);
@@ -85,32 +83,30 @@ namespace Poomsae
                 var dialogTitle = "変更完了";
                 button.Clicked += (s, a) =>
                 {
-                    base.DisplayAlert(dialogTitle, langName + "に変更されました", "OK");
+                    base.DisplayAlert(dialogTitle, language + "に変更されました", "OK");
                     using (var trans = Realm.GetInstance().BeginWrite())
                     {
                         // トランザクションがないと怒られる.
-                        country.Name = langName;
-                        mySetting.country = country;
-                        //this.UpdateMySetting(mySetting, country);
+                        mySetting.language = language;
                         trans.Commit();
                     }
 
                     // ON/OFF切り替え.
                     foreach (var itemBtn in buttons)
                     {
-                        bool isSelected = (itemBtn.Text == langName);
+                        bool isSelected = (itemBtn.Text == language);
                         itemBtn.IsEnabled = !isSelected;
                     }
                 };
             }
 
-			var appointmentLabel = new Label()
-			{
-				FontSize = 30,
+            var appointmentLabel = new Label()
+            {
+                FontSize = 30,
                 HorizontalTextAlignment = TextAlignment.Center,
-				Text = "連絡"
-			};
-			layout.Children.Add(appointmentLabel);
+                Text = "連絡"
+            };
+            layout.Children.Add(appointmentLabel);
 
             var officialSiteButton = new Button { Text = "公式サイト" };
             officialSiteButton.Clicked += (sender, a) =>
@@ -120,13 +116,13 @@ namespace Poomsae
             };
             layout.Children.Add(officialSiteButton);
 
-			var appointmentButton = new Button { Text = "Eメール" };
-			appointmentButton.Clicked += (sender, a) =>
-			{
+            var appointmentButton = new Button { Text = "Eメール" };
+            appointmentButton.Clicked += (sender, a) =>
+            {
                 var uri = new Uri("mailto:shinriyo@gmail.com");
                 Device.OpenUri(uri);
-			};
-			layout.Children.Add(appointmentButton);
+            };
+            layout.Children.Add(appointmentButton);
 
             // 生成したラベルをこのビューの子要素とする.
             base.Content = layout;
@@ -134,36 +130,6 @@ namespace Poomsae
         #endregion
 
         #region Private Methods
-        ///// <summary>
-        ///// Gets my setting.
-        ///// </summary>
-        ///// <returns>The my setting.</returns>
-        //private Setting GetMySetting()
-        //{
-        //	var sc = new Controller<Setting>();
-        //	var setting = sc.FindAll().FirstOrNull();
-        //	return setting;
-        //}
-
-        /*
-		private void UpdateMySetting(Setting setting, Country country)
-		{
-			var sc = new Controller<Setting>();
-			setting.country = country;
-			sc.Update(setting.Id, setting);
-		}
-		*/
-
-        /// <summary>
-        /// Gets the countries.
-        /// </summary>
-        /// <returns>The countries.</returns>
-        private Country[] GetCountries()
-        {
-            var cc = new Controller<Country>();
-            var countries = cc.FindAll();
-            return countries.Select(item => item).ToArray();
-        }
         #endregion
     }
 }

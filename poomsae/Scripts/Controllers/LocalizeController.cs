@@ -50,7 +50,7 @@
 
             var mysertting = this.GetMySetting();
             return this.realm.All<Localize>()
-                       .Where(d => d.Key == key && d.CountryId == mysertting.country)
+                       .Where(d => d.Key == key && d.Country == mysertting.language)
                        .Single();
         }
 

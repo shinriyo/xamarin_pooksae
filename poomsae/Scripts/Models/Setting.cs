@@ -38,7 +38,7 @@ namespace Poomsae
         /// Gets or sets the country.
         /// </summary>
         /// <value>The country.</value>
-        public Country country { get; set; }
+        public string language { get; set; }
 
         /// <summary>
         /// Gets or sets the version.

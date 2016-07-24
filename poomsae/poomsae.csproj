@@ -44,7 +44,7 @@
     <Compile Include="Scripts\Controllers\Controller.cs" />
     <Compile Include="Scripts\Models\Setting.cs" />
     <Compile Include="Scripts\Pages\DetailPages\ArtsPage.cs" />
-    <Compile Include="Scripts\Models\Art.cs" />
+    <Compile Include="Scripts\Models\ArtModel.cs" />
     <Compile Include="Scripts\Pages\DetailPages\EmptyClass.cs" />
     <Compile Include="Scripts\Tools\UIButtonExtensions.cs" />
     <Compile Include="Scripts\Pages\PoomsaeDetailPages\KyuPoomsaeDetailPage.cs" />
