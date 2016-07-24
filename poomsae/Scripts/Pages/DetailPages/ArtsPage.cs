@@ -109,6 +109,10 @@ namespace Poomsae
         /// <param name="id">Identifier.</param>
         private void OpenDetail(int id)
         {
+            // TODO:
+            var title = "タイトル";
+            var desc = "説明";
+
             try
             {
                 // ページを遷移する.
@@ -116,9 +120,9 @@ namespace Poomsae
                 {
                     BindingContext = new ArtDescPageViewModel()
                     {
-                        Name = "タイトル",
+                        Name = title,
                         Source = ImageSource.FromResource(@"poomsae.Resources.Punch.VerticalPunch.jpg"),
-                        Desc = "説明"
+                        Desc = desc
                     }
                 });
             }
