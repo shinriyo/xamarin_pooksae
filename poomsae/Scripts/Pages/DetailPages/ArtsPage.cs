@@ -109,6 +109,13 @@ namespace Poomsae
         /// <param name="id">Identifier.</param>
         private void OpenDetail(int id)
         {
+            // Imageビューの生成
+            var image = new Image
+            {
+                // 画像を読み込んでSourceプロパティに設定
+                Source = ImageSource.FromResource(@"poomsae.Resources.Punch.VerticalPunch.jpg"),
+            };
+
             try
             {
                 // ページを遷移する.
@@ -117,12 +124,7 @@ namespace Poomsae
                     BindingContext = new ArtDescPageViewModel()
                     {
                         Name = "タイトル",
-                        Source = new Image
-                        {
-                            Source = ImageSource.FromFile("icon.png"),
-                            BackgroundColor = Color.Blue
-                        },
-                        //ImageUri = new Uri(@"note_icon.png"),
+                        Source = ImageSource.FromResource(@"poomsae.Resources.Punch.VerticalPunch.jpg"),
                         Desc = "説明"
                     }
                 });

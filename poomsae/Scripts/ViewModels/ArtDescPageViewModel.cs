@@ -6,7 +6,7 @@
     public class ArtDescPageViewModel
     {
         public string Name { get; set; }
-        public Image Source { get; set; }
+        public ImageSource Source { get; set; }
         public string Desc { get; set; }
     }
 }
