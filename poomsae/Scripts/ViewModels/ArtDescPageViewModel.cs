@@ -2,7 +2,6 @@
 {
     using Xamarin.Forms;
 
-    //[PropertyChanged.ImplementPropertyChanged]
     public class ArtDescPageViewModel
     {
         public string Name { get; set; }
