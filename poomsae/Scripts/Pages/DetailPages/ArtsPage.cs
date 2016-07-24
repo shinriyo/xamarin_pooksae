@@ -103,15 +103,29 @@ namespace Poomsae
         }
 
         /// <summary>
-        /// Opens the alert.
+        /// Opens the detail.
         /// </summary>
-        /// <returns>The alert.</returns>
-        private void OpenAlert(int id)
+        /// <returns>The detail.</returns>
+        /// <param name="id">Identifier.</param>
+        private void OpenDetail(int id)
         {
             try
             {
                 // ページを遷移する.
-                Navigation.PushAsync(new ArtDetailPage());
+                Navigation.PushAsync(new ArtDescPage
+                {
+                    BindingContext = new ArtDescPageViewModel()
+                    {
+                        Name = "タイトル",
+                        Source = new Image
+                        {
+                            Source = ImageSource.FromFile("icon.png"),
+                            BackgroundColor = Color.Blue
+                        },
+                        //ImageUri = new Uri(@"note_icon.png"),
+                        Desc = "説明"
+                    }
+                });
             }
             catch (Exception ex)
             {
@@ -135,22 +149,22 @@ namespace Poomsae
             if (pageType == 0)
             {
                 // パンチ系.
-                groups = EmptyClass.GetPunches(this.OpenAlert);
+                groups = EmptyClass.GetPunches(this.OpenDetail);
             }
             else if (pageType == 1)
             {
                 // キック系.
-                groups = EmptyClass.GetKicks(this.OpenAlert);
+                groups = EmptyClass.GetKicks(this.OpenDetail);
             }
             else if (pageType == 2)
             {
                 // 手刀系.
-                groups = EmptyClass.GetKnives(this.OpenAlert);
+                groups = EmptyClass.GetKnives(this.OpenDetail);
             }
             else if (pageType == 3)
             {
                 // 受け系.
-                groups = EmptyClass.GetGuards(this.OpenAlert);
+                groups = EmptyClass.GetGuards(this.OpenDetail);
             }
 
             // テンプレートの作成（ImageCell使用）.

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Poomsae.ArtDescPage">
+	<ContentPage.Content>
+		<StackLayout Orientation="Vertical" HorizontalOptions="Center">
+            <Label Text="{Binding Name}" FontSize="Large"/>
+			<Button/>
+                <BoxView HeightRequest="100" WidthRequest="1" BackgroundColor="Black"/>
+	        <Button/>
+			<Image Source="{Binding ImageUri}"/> 
+        	<Label Text="{Binding Desc, StringFormat='Description: {0}'}" />
+        </StackLayout>
+	</ContentPage.Content>
+</ContentPage>

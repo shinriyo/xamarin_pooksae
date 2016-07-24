@@ -3,14 +3,13 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 
-namespace poomsae
+namespace Poomsae
 {
-    public partial class ArtDetailPage : ContentPage
+    public partial class ArtDescPage : ContentPage
     {
-        public ArtDetailPage()
+        public ArtDescPage()
         {
             InitializeComponent();
         }
     }
 }
-
