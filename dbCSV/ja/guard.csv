@@ -1,8 +1,6 @@
-Apchagi, アプチャギ,,
-Tryochagi, トルリョチャギ,
-Neryochagi, ネリョチャギ,
-Yopchagi, ヨプチャギ,
-Tichagi, ティッチャギ,
-Palnbal, パルンバル,
-Tolgechagi, トルゲチャギ,
-
+9, "ソンナルマッキ", "手刀受け", "手刀受け", "VerticalPunch"
+8, "ヤンソンナルマッキ", "両手刀受け", "両手刀受け", "VerticalPunch"
+7, "ヘッチョンマッキ", "両端受け", "両端受け", "VerticalPunch"
+6, "パタンソンマッキ", "両端受け", "両端受け", "VerticalPunch"
+5, "ピットロマッキ", "ひねり受け", "ひねり受け", "VerticalPunch"
+4, "サントゥルマッキ", "上段両受け", "上段両受け", "VerticalPunch"

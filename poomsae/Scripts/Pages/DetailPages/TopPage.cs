@@ -106,7 +106,7 @@ namespace Poomsae
                     }
 
                     // パンチ系ファイル.
-                    var punchUrl = "http://vps6-d.kuku.lu/files/20160725-0850_76c5670ac7458552d240c30110473d63.csv";
+                    var punchUrl = "http://vps6-d.kuku.lu/files/20160726-0053_cd22c32f91d04333262d320a8e49fd40.csv";
                     csvString = httpClient.GetStringAsync(punchUrl).Result;
                     dlLabel.Text += csvString;
 
@@ -131,8 +131,14 @@ namespace Poomsae
                     csv = new CsvReader(new StringReader(csvString));
                     while (csv.Read())
                     {
-                        var records = csv.GetField<string>(0);
-                        Debug.WriteLine("{0} ", records);
+                        var kyu = csv.GetField<int>(0);
+                        var name = csv.GetField<string>(1);
+                        var desc = csv.GetField<string>(2);
+                        var detail = csv.GetField<string>(3);
+                        var picture = csv.GetField<string>(4);
+                        Debug.WriteLine("Kyu:{0}, Name:{1}, Desc:{2}, " +
+                                        "Detail:{3}, Picture{0} ",
+                                        kyu, name, desc, detail, picture);
                     }
 
                     // チョップ系ファイル.
@@ -143,21 +149,33 @@ namespace Poomsae
                     csv = new CsvReader(new StringReader(csvString));
                     while (csv.Read())
                     {
-                        var records = csv.GetField<string>(0);
-                        Debug.WriteLine("{0} ", records);
+                        var kyu = csv.GetField<int>(0);
+                        var name = csv.GetField<string>(1);
+                        var desc = csv.GetField<string>(2);
+                        var detail = csv.GetField<string>(3);
+                        var picture = csv.GetField<string>(4);
+                        Debug.WriteLine("Kyu:{0}, Name:{1}, Desc:{2}, " +
+                                        "Detail:{3}, Picture{0} ",
+                                        kyu, name, desc, detail, picture);
                     }
 
                     // 受け系ファイル.
-                    //var guardUrl = "";
-                    //csvString = httpClient.GetStringAsync(guardUrl).Result;
-                    //dlLabel.Text += csvString;
+                    var guardUrl = "http://vps6-d.kuku.lu/files/20160726-0057_e3d23c791475be2247fa60c3c7de91bd.csv";
+                    csvString = httpClient.GetStringAsync(guardUrl).Result;
+                    dlLabel.Text += csvString;
 
-                    //csv = new CsvReader(new StringReader(kickUrl));
-                    //while (csv.Read())
-                    //{
-                    //    var records = csv.GetField<string>(0);
-                    //    Debug.WriteLine("{0} ", records);
-                    //}
+                    csv = new CsvReader(new StringReader(csvString));
+                    while (csv.Read())
+                    {
+                        var kyu = csv.GetField<int>(0);
+                        var name = csv.GetField<string>(1);
+                        var desc = csv.GetField<string>(2);
+                        var detail = csv.GetField<string>(3);
+                        var picture = csv.GetField<string>(4);
+                        Debug.WriteLine("Kyu:{0}, Name:{1}, Desc:{2}, " +
+                                        "Detail:{3}, Picture{0} ",
+                                        kyu, name, desc, detail, picture);
+                    }
                 }
             };
 
