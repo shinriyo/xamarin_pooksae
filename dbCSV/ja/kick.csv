@@ -1,9 +1,8 @@
 -- Kyu, Name, Desc, Detail, Picture
-Apchagi, アプチャギ,
-Tryochagi, トルリョチャギ
-Neryochagi, ネリョチャギ
-Yopchagi, ヨプチャギ
-Tichagi, ティッチャギ
-Palnbal, パルンバル
-Tolgechagi, トルゲチャギ
-
+1, "アプチャギ", "前に蹴る", "前に蹴る", "VerticalPunch"
+1, "トルリョチャギ", "回して蹴る", "回して蹴る", "VerticalPunch"
+1, "ネリョチャギ", "かかと落とし", "かかと落とし", "VerticalPunch"
+2, "ヨプチャギ", "横蹴り", "横蹴り", "VerticalPunch"
+2, "ティッチャギ", "後ろ蹴り", "後ろ蹴り", "VerticalPunch"
+3, "パルンバル", "前足蹴り", "前足蹴り", "VerticalPunch"
+3, "トルゲチャギ", "回転蹴り", "回転蹴り", "VerticalPunch"

@@ -24,7 +24,11 @@
         /// <value>The key.</value>
         public string Key { get; set; }
 
-        public string Kyu { get; set; }
+        /// <summary>
+        /// 級/段.
+        /// </summary>
+        /// <value>The kyu.</value>
+        public int Kyu { get; set; }
 
         /// <summary>
         /// 実際の文字列の値.

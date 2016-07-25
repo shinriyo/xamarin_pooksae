@@ -81,6 +81,7 @@ namespace Poomsae
             {
                 using (System.Net.Http.HttpClient httpClient = new System.Net.Http.HttpClient())
                 {
+                    // ローカライズファイル.
                     var url = "http://vps6-d.kuku.lu/files/20160619-1533_82a335b14b41d4fb9f72ab726a64a9c6.csv";
                     var csvString = httpClient.GetStringAsync(url).Result;
                     dlLabel.Text = csvString;
@@ -92,9 +93,71 @@ namespace Poomsae
                         Debug.WriteLine("{0} ", records);
                     }
 
+                    // ローカライズファイル.
                     var localizeUrl = "http://vps6-d.kuku.lu/files/20160725-0035_2b21358ee0d5a871860a15789270a433.csv";
                     csvString = httpClient.GetStringAsync(localizeUrl).Result;
                     dlLabel.Text += csvString;
+
+                    csv = new CsvReader(new StringReader(csvString));
+                    while (csv.Read())
+                    {
+                        var records = csv.GetField<string>(0);
+                        Debug.WriteLine("{0} ", records);
+                    }
+
+                    // パンチ系ファイル.
+                    var punchUrl = "http://vps6-d.kuku.lu/files/20160725-0850_76c5670ac7458552d240c30110473d63.csv";
+                    csvString = httpClient.GetStringAsync(punchUrl).Result;
+                    dlLabel.Text += csvString;
+
+                    csv = new CsvReader(new StringReader(csvString));
+                    while (csv.Read())
+                    {
+                        var kyu = csv.GetField<int>(0);
+                        var name = csv.GetField<string>(1);
+                        var desc = csv.GetField<string>(2);
+                        var detail = csv.GetField<string>(3);
+                        var picture = csv.GetField<string>(4);
+                        Debug.WriteLine("Kyu:{0}, Name:{1}, Desc:{2}, " +
+                                        "Detail:{3}, Picture{0} ",
+                                        kyu, name, desc, detail, picture);
+                    }
+
+                    // キック系ファイル.
+                    var kickUrl = "http://vps6-d.kuku.lu/files/20160725-0849_fbca8e210bea1a8b35e5b12ba70b0a14.csv";
+                    csvString = httpClient.GetStringAsync(kickUrl).Result;
+                    dlLabel.Text += csvString;
+
+                    csv = new CsvReader(new StringReader(csvString));
+                    while (csv.Read())
+                    {
+                        var records = csv.GetField<string>(0);
+                        Debug.WriteLine("{0} ", records);
+                    }
+
+                    // チョップ系ファイル.
+                    var chopUrl = "http://vps6-d.kuku.lu/files/20160725-0856_7759c7a4b8b7b3dd5613576968451f6d.csv";
+                    csvString = httpClient.GetStringAsync(chopUrl).Result;
+                    dlLabel.Text += csvString;
+
+                    csv = new CsvReader(new StringReader(csvString));
+                    while (csv.Read())
+                    {
+                        var records = csv.GetField<string>(0);
+                        Debug.WriteLine("{0} ", records);
+                    }
+
+                    // 受け系ファイル.
+                    //var guardUrl = "";
+                    //csvString = httpClient.GetStringAsync(guardUrl).Result;
+                    //dlLabel.Text += csvString;
+
+                    //csv = new CsvReader(new StringReader(kickUrl));
+                    //while (csv.Read())
+                    //{
+                    //    var records = csv.GetField<string>(0);
+                    //    Debug.WriteLine("{0} ", records);
+                    //}
                 }
             };
 
@@ -122,4 +185,3 @@ namespace Poomsae
         }
     }
 }
-

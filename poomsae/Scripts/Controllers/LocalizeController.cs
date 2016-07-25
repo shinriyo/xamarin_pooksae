@@ -1,4 +1,10 @@
-﻿namespace Poomsae
+﻿//-----------------------------------------------------------------------
+// <copyright file="LocalizeController.cs" company="shinriyo">
+//     Company copyright tag.
+// </copyright>
+//-----------------------------------------------------------------------
+
+namespace Poomsae
 {
     using System.Collections.Generic;
     using System.Diagnostics;
