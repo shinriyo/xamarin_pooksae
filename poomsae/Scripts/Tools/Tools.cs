@@ -30,14 +30,36 @@
 
 namespace Poomsae
 {
-    using Realms.Tool;
     using System.Diagnostics;
+    using System.IO;
+    using CsvHelper;
+    using Realms.Tool;
+    using Xamarin.Forms;
 
     /// <summary>
     /// Tools.
     /// </summary>
     public static class Tools
     {
+        public static void LoadCSV(Label dlLabel, System.Net.Http.HttpClient httpClient, string url)
+        {
+            var csvString = httpClient.GetStringAsync(url).Result;
+            dlLabel.Text += csvString;
+
+            var csv = new CsvReader(new StringReader(csvString));
+            while (csv.Read())
+            {
+                var kyu = csv.GetField<int>(0);
+                var name = csv.GetField<string>(1);
+                var desc = csv.GetField<string>(2);
+                var detail = csv.GetField<string>(3);
+                var picture = csv.GetField<string>(4);
+                Debug.WriteLine("Kyu:{0}, Name:{1}, Desc:{2}, " +
+                                "Detail:{3}, Picture{0} ",
+                                kyu, name, desc, detail, picture);
+            }
+        }
+
         /// <summary>
         /// Initializes the db.
         /// </summary>
