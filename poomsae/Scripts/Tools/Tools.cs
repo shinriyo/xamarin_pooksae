@@ -48,6 +48,9 @@ namespace Poomsae
         /// <param name="dlLabel">Dl label.</param>
         public static void DownLoadCSVs(Label dlLabel)
         {
+            // 設定初期化.
+            Tools.InitializeDB();
+
             using (System.Net.Http.HttpClient httpClient = new System.Net.Http.HttpClient())
             {
                 // ローカライズファイル.
@@ -63,24 +66,27 @@ namespace Poomsae
                     Debug.WriteLine("key:{0}, value:{1}", key, value);
                 }
 
+                // 技のテーブル初期化
+                var artModelController = new Controller<ArtModel>();
+                artModelController.DeleteAll();
+
+                string japan = "ja";
+
                 // パンチ系ファイル.
                 var punchUrl = "http://vps6-d.kuku.lu/files/20160726-0053_cd22c32f91d04333262d320a8e49fd40.csv";
-                Tools.LoadCSV(dlLabel, httpClient, punchUrl);
+                Tools.LoadCSV(artModelController, japan, 0, dlLabel, httpClient, punchUrl);
 
                 // キック系ファイル.
                 var kickUrl = "http://vps6-d.kuku.lu/files/20160725-0849_fbca8e210bea1a8b35e5b12ba70b0a14.csv";
-                Tools.LoadCSV(dlLabel, httpClient, kickUrl);
+                Tools.LoadCSV(artModelController, japan, 1, dlLabel, httpClient, kickUrl);
 
                 // チョップ系ファイル.
                 var chopUrl = "http://vps6-d.kuku.lu/files/20160725-0856_7759c7a4b8b7b3dd5613576968451f6d.csv";
-                Tools.LoadCSV(dlLabel, httpClient, chopUrl);
+                Tools.LoadCSV(artModelController, japan, 2, dlLabel, httpClient, chopUrl);
 
                 // 受け系ファイル.
                 var guardUrl = "http://vps6-d.kuku.lu/files/20160726-0057_e3d23c791475be2247fa60c3c7de91bd.csv";
-                Tools.LoadCSV(dlLabel, httpClient, guardUrl);
-
-                // TODO: これを上で同時に.
-                Tools.InitializeDB();
+                Tools.LoadCSV(artModelController, japan, 3, dlLabel, httpClient, guardUrl);
             }
         }
 
@@ -91,7 +97,9 @@ namespace Poomsae
         /// <param name="dlLabel">Dl label.</param>
         /// <param name="httpClient">Http client.</param>
         /// <param name="url">URL.</param>
-        public static void LoadCSV(Label dlLabel, System.Net.Http.HttpClient httpClient, string url)
+        public static void LoadCSV(Controller<ArtModel> artModelController,
+            string lang, int type, Label dlLabel,
+            System.Net.Http.HttpClient httpClient, string url)
         {
             var csvString = httpClient.GetStringAsync(url).Result;
             dlLabel.Text += csvString;
@@ -107,6 +115,18 @@ namespace Poomsae
                 Debug.WriteLine("Kyu:{0}, Name:{1}, Desc:{2}, " +
                                 "Detail:{3}, Picture{0} ",
                                 kyu, name, desc, detail, picture);
+
+                var apchagi = new ArtModel
+                {
+                    Language = lang,
+                    Type = type,
+                    Kyu = kyu,
+                    Name = name,
+                    Desc = desc,
+                    Detail = detail,
+                    Picture = picture
+                };
+                artModelController.Insert(apchagi);
             }
         }
 
@@ -128,29 +148,14 @@ namespace Poomsae
             languageController.Insert(enUS);
             languageController.Insert(kr);
 
-            var sc = new Controller<Setting>();
-            sc.DeleteAll();
+            var settingController = new Controller<Setting>();
+            settingController.DeleteAll();
             var setting = new Setting()
             {
                 language = "ja",
                 version = "0.1"
             };
-            sc.Insert(setting);
-
-            // 技の初期化.
-            // TODO: CSVでやる？.
-            var artModelController = new Controller<ArtModel>();
-
-            var apchagi = new ArtModel
-            {
-                Country = "ja",
-                Kyu = 0,
-                Name = "a",
-                Desc = "b",
-                Detail = "b",
-                Picture = "b"
-            };
-            artModelController.Insert(apchagi);
+            settingController.Insert(setting);
         }
     }
 }

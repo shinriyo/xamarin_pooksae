@@ -13,16 +13,16 @@
         public DateTimeOffset Updated { get; set; }
 
         /// <summary>
-        /// ローカライズの国.
+        /// ローカライズの言語.
         /// </summary>
         /// <value>The country identifier.</value>
-        public string Country { get; set; }
+        public string Language { get; set; }
 
         /// <summary>
-        /// キー.
+        /// 0:パンチ or 1:キック or 2:手刀 or 3:受け.
         /// </summary>
         /// <value>The key.</value>
-        public string Key { get; set; }
+        public int Type { get; set; }
 
         /// <summary>
         /// 級/段.
@@ -56,7 +56,7 @@
 
         public override string ToString()
         {
-            return string.Format("[ArtModel: Id={0}, Created={1}, Updated={2}, Country={3}, Key={4}, Name={5}, Desc={6}, Detail={7}, Picture={8}]", Id, Created, Updated, Country, Key, Name, Desc, Detail, Picture);
+            return string.Format("[ArtModel: Id={0}, Created={1}, Updated={2}, Country={3}, Key={4}, Name={5}, Desc={6}, Detail={7}, Picture={8}]", Id, Created, Updated, Language, Type , Name, Desc, Detail, Picture);
         }
     }
 }
