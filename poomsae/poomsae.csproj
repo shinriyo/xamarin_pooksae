@@ -46,7 +46,6 @@
     <Compile Include="Scripts\Pages\DetailPages\ArtsPage.cs" />
     <Compile Include="Scripts\Models\ArtModel.cs" />
     <Compile Include="Scripts\Pages\DetailPages\EmptyClass.cs" />
-    <Compile Include="Scripts\Tools\UIButtonExtensions.cs" />
     <Compile Include="Scripts\Pages\PoomsaeDetailPages\KyuPoomsaeDetailPage.cs" />
     <Compile Include="Scripts\Pages\PoomsaeDetailPages\DanPoomsaeDetailPage.cs" />
     <Compile Include="Scripts\Pages\VideoPlayerPage.xaml.cs">
