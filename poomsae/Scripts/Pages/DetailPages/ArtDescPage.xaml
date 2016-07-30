@@ -2,11 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Poomsae.ArtDescPage">
 	<ContentPage.Content>
 		<StackLayout HorizontalOptions="FillAndExpand" Padding="2, 10, 2, 10" Spacing="3">
-			<Label Text="{Binding Name}" FontSize="Large" XAlign="Center" />
+			<Label x:Name="valueLabel" Text="{Binding Name}" FontSize="Large" HorizontalTextAlignment="Center" />
 			<BoxView HeightRequest="1" WidthRequest="100" BackgroundColor="Gray" />
 			<Image Source="{Binding Source}" />
 			<Label Text="{Binding Desc, StringFormat='Description: {0}'}" />
-			<Button Text="Click Me!" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Clicked="OnButtonClicked" />
+			<Button Text="Copy" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Clicked="OnButtonClicked" />
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

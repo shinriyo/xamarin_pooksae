@@ -1,6 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿//-----------------------------------------------------------------------
+// <copyright file="PoomsaeOrderPage.cs" company="shinriyo">
+//     Company copyright tag.
+// </copyright>
+//-----------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using Xamarin.Forms;
 
 namespace Poomsae
@@ -13,4 +18,3 @@ namespace Poomsae
         }
     }
 }
-

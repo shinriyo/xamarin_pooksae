@@ -1,4 +1,10 @@
-﻿using System;
+﻿//-----------------------------------------------------------------------
+// <copyright file="ArtDescPage.cs" company="shinriyo">
+//     Company copyright tag.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using System;
 using ClipboardSample.Services;
 using Xamarin.Forms;
 
@@ -13,13 +19,15 @@ namespace Poomsae
 
         async void OnButtonClicked(object sender, EventArgs args)
         {
-            Button button = (Button)sender;
-            await DisplayAlert("Clicked!",
-                "The button labeled '" + button.Text + "' has been clicked",
-                "OK");
+            //Button button = (Button)sender;
+            // 親をとってその子のLabel.
+            var titleLabel = this.FindByName<Label>("valueLabel");
+            var title = "クリップボードにコピー";
+            var message = "クリップボードにコピーしました。";
+            await DisplayAlert(title, message, "OK");
 
-            // TODO: クリップボード.
-            DependencyService.Get<IClipboardService>().CopyToClipboard("あああ");
+            // クリップボードにコピー.
+            DependencyService.Get<IClipboardService>().CopyToClipboard(titleLabel.Text);
         }
     }
 }
