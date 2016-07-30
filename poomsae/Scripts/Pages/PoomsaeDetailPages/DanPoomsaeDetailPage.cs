@@ -35,10 +35,13 @@
         }
 
         /// <summary>
-        /// Creates the data.
+        /// Creates the group.
         /// </summary>
-        /// <returns>The data.</returns>
-        private Group CreateGroup(string title)
+        /// <returns>The group.</returns>
+        /// <param name="title">Title.</param>
+        /// <param name="order">Order.</param>
+        /// <param name="image">Image.</param>
+        private Group CreateGroup(string title, string order, string image)
         {
             return new Group(title)
             {
@@ -49,11 +52,7 @@
                     Picture = "note_icon.png",
                     OnClick = new Command(() =>
                     {
-                        // 順序.
-                        var desc = "キック→パンチ→hoge";
-                        // 順序.
-                        var image = "hoge.png";
-                        this.OpenDetail(title, desc, image);
+                        this.OpenDetail(title, order, image);
                     })
                 },
                 new Data
@@ -77,11 +76,11 @@
             this.Title = "段プンセ詳細"; //ページのタイトル
 
             var ar = new ObservableCollection<Group> {
-                this.CreateGroup("高麗(コウリョ)"),
-                this.CreateGroup("金剛(クンガン)"),
-                this.CreateGroup("太白(テベック)"),
-                this.CreateGroup("平原(ピョンウォン)"),
-                this.CreateGroup("十進(シッチン)"),
+                this.CreateGroup("高麗(コウリョ)", "hoge->bar", "hoge.png"),
+                this.CreateGroup("金剛(クンガン)", "hoge->bar", "hoge.png"),
+                this.CreateGroup("太白(テベック)", "hoge->bar", "hoge.png"),
+                this.CreateGroup("平原(ピョンウォン)", "hoge->bar", "hoge.png"),
+                this.CreateGroup("十進(シッチン)", "hoge->bar", "hoge.png"),
             };
 
             // テンプレートの作成（ImageCell使用）.

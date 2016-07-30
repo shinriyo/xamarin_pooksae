@@ -35,10 +35,13 @@
         }
 
         /// <summary>
-        /// Creates the data.
+        /// Creates the group.
         /// </summary>
-        /// <returns>The data.</returns>
-        private Group CreateGroup(string title)
+        /// <returns>The group.</returns>
+        /// <param name="title">Title.</param>
+        /// <param name="order">Order.</param>
+        /// <param name="image">Image.</param>
+        private Group CreateGroup(string title, string order, string image)
         {
             return new Group(title)
             {
@@ -49,11 +52,7 @@
                     Picture = "note_icon.png",
                     OnClick = new Command(() =>
                     {
-                        // 順序.
-                        var desc = "キック→パンチ→hoge";
-                        // 順序.
-                        var image = "hoge.png";
-                        this.OpenDetail(title, desc, image);
+                        this.OpenDetail(title, order, image);
                     })
                 },
                 new Data
@@ -77,14 +76,14 @@
             this.Title = "級プンセ詳細"; //ページのタイトル
 
             var ar = new ObservableCollection<Group> {
-                this.CreateGroup("太極1章(テグ イルジャン)"),
-                this.CreateGroup("太極2章(テグ イージャン)"),
-                this.CreateGroup("太極3章(テグ サムジャン)"),
-                this.CreateGroup("太極4章(テグ サージャン)"),
-                this.CreateGroup("太極5章(テグ オージャン)"),
-                this.CreateGroup("太極6章(テグ ユッジャン)"),
-                this.CreateGroup("太極7章(テグ チルジャン)"),
-                this.CreateGroup("太極8章(テグ パルジャン)"),
+                this.CreateGroup("太極1章(テグ イルジャン)", "hoge->bar", "hoge.png"),
+                this.CreateGroup("太極2章(テグ イージャン)", "hoge->bar", "hoge.png"),
+                this.CreateGroup("太極3章(テグ サムジャン)", "hoge->bar", "hoge.png"),
+                this.CreateGroup("太極4章(テグ サージャン)", "hoge->bar", "hoge.png"),
+                this.CreateGroup("太極5章(テグ オージャン)", "hoge->bar", "hoge.png"),
+                this.CreateGroup("太極6章(テグ ユッジャン)", "hoge->bar", "hoge.png"),
+                this.CreateGroup("太極7章(テグ チルジャン)", "hoge->bar", "hoge.png"),
+                this.CreateGroup("太極8章(テグ パルジャン)", "hoge->bar", "hoge.png"),
             };
 
             // テンプレートの作成（ImageCell使用）.
