@@ -3,6 +3,7 @@
     using System;
     using System.Collections.ObjectModel;
     using System.Windows.Input;
+    using VideoPlayerSample.Services;
     using Xamarin.Forms;
 
     /// <summary>
@@ -117,6 +118,39 @@
         private void OpenAlert(int id)
         {
             base.DisplayAlert("TODO: タイトル." + id, "TODO: まだ。", "OK");
+
+            // TODO: 動画再生.
+            var uri = "http://download.openbricks.org/sample/H264/big_buck_bunny_1080p_H264_AAC_25fps_7200K.MP4";
+            DependencyService.Get<IVideoPlayerService>().Open(uri); // open in WebBrowser
+        }
+
+        /// <summary>
+        /// Opens the detail.
+        /// </summary>
+        /// <returns>The detail.</returns>
+        /// <param name="name">Name.</param>
+        /// <param name="detail">Detail.</param>
+        /// <param name="image">詳細画像.</param>
+        private void OpenDetail(string name, string detail, string image)
+        {
+            try
+            {
+                // ページを遷移する.
+                // TODO: XAMLは専用のにする.
+                Navigation.PushAsync(new ArtDescPage
+                {
+                    BindingContext = new ArtDescPageViewModel()
+                    {
+                        Name = name,
+                        Source = ImageSource.FromResource(image),
+                        Desc = detail
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
+            }
         }
     }
 }
