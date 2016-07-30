@@ -6,9 +6,6 @@
 
 namespace Poomsae
 {
-    using System.Diagnostics;
-    using System.IO;
-    using CsvHelper;
     using Xamarin.Forms;
 
     /// <summary>
