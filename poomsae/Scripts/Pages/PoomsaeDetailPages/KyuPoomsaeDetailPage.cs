@@ -49,7 +49,11 @@
                     Picture = "note_icon.png",
                     OnClick = new Command(() =>
                     {
-                        this.OpenDetail(title, "キック→パンチ→hoge", "note_icon.png");
+                        // 順序.
+                        var desc = "キック→パンチ→hoge";
+                        // 順序.
+                        var image = "hoge.png";
+                        this.OpenDetail(title, desc, image);
                     })
                 },
                 new Data
@@ -123,7 +127,7 @@
                 // ページを遷移する.
                 Navigation.PushAsync(new PoomsaeOrderPage
                 {
-                    BindingContext = new ArtDescPageViewModel()
+                    BindingContext = new PoomsaeOrderPageViewModel()
                     {
                         Name = name,
                         Source = ImageSource.FromResource(image),

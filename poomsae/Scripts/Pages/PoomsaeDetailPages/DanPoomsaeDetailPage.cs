@@ -49,7 +49,11 @@
                     Picture = "note_icon.png",
                     OnClick = new Command(() =>
                     {
-                        this.OpenAlert(1);
+                        // 順序.
+                        var desc = "キック→パンチ→hoge";
+                        // 順序.
+                        var image = "hoge.png";
+                        this.OpenDetail(title, desc, image);
                     })
                 },
                 new Data
@@ -59,7 +63,7 @@
                     Picture = "movie_icon.png",
                     OnClick = new Command(() =>
                     {
-                        this.OpenAlert(1);
+                        this.PlayMovie(1);
                     })
                 }
             };
@@ -112,20 +116,7 @@
         }
 
         /// <summary>
-        /// Opens the alert.
-        /// </summary>
-        /// <returns>The alert.</returns>
-        private void OpenAlert(int id)
-        {
-            base.DisplayAlert("TODO: タイトル." + id, "TODO: まだ。", "OK");
-
-            // TODO: 動画再生.
-            var uri = "http://download.openbricks.org/sample/H264/big_buck_bunny_1080p_H264_AAC_25fps_7200K.MP4";
-            DependencyService.Get<IVideoPlayerService>().Open(uri); // open in WebBrowser
-        }
-
-        /// <summary>
-        /// Opens the detail.
+        /// プンセの順番.
         /// </summary>
         /// <returns>The detail.</returns>
         /// <param name="name">Name.</param>
@@ -136,10 +127,9 @@
             try
             {
                 // ページを遷移する.
-                // TODO: XAMLは専用のにする.
-                Navigation.PushAsync(new ArtDescPage
+                Navigation.PushAsync(new PoomsaeOrderPage
                 {
-                    BindingContext = new ArtDescPageViewModel()
+                    BindingContext = new PoomsaeOrderPageViewModel()
                     {
                         Name = name,
                         Source = ImageSource.FromResource(image),
@@ -151,6 +141,16 @@
             {
                 System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
+        }
+
+        /// <summary>
+        /// プンセ動画再生.
+        /// </summary>
+        /// <returns>The alert.</returns>
+        private void PlayMovie(int id)
+        {
+            var uri = "http://download.openbricks.org/sample/H264/big_buck_bunny_1080p_H264_AAC_25fps_7200K.MP4";
+            DependencyService.Get<IVideoPlayerService>().Open(uri); // open in WebBrowser
         }
     }
 }
