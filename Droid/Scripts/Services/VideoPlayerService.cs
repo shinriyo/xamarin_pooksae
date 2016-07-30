@@ -13,6 +13,7 @@ namespace VideoPlayerSample.Android
 		public void Open(string uri)
 		{
 			var mediaPlayer = new MediaPlayer();
+			// TODO:
 			mediaPlayer.SetDataSource(uri);
 			mediaPlayer.Prepare();
 			mediaPlayer.Start();

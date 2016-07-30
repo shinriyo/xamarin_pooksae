@@ -147,6 +147,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripts\Services\WebBrowserService.cs" />
     <Compile Include="Scripts\Services\VideoPlayerService.cs" />
+    <Compile Include="Scripts\Services\ClipboardService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
