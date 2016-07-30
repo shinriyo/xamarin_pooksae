@@ -6,11 +6,12 @@
 
 namespace Poomsae
 {
+    using System.Linq;
     using System;
     using System.Collections.ObjectModel;
     using CellTool;
     using Xamarin.Forms;
-
+    using Realms.Tool;
 
     public class EmptyClass
     {
@@ -42,6 +43,20 @@ namespace Poomsae
             string iconImage = "punch_icon.png";
             string detailImageBase = @"poomsae.Resources.Punch.{0}.jpg";
 
+            // 技のテーブル.
+            var artModelController = new Controller<ArtModel>();
+            var res = artModelController.GetResults().Where(d => d.Type == 0);
+            foreach (var item in res)
+            {
+                if (item.Type == 0)
+                {
+                    //item.Kyu,
+                    //item.Name,
+                    //item.Desc,
+                    //item.Picture,
+                }
+            }
+
             // パンチ系.
             var groups = new ObservableCollection<Group>
             {
@@ -61,6 +76,20 @@ namespace Poomsae
         {
             string iconImage = "chop_icon.png";
             string detailImageBase = @"poomsae.Resources.Punch.{0}.jpg";
+
+            // 技のテーブル.
+            var artModelController = new Controller<ArtModel>();
+            var res = artModelController.GetResults().Where(d => d.Type == 3);
+            foreach (var item in res)
+            {
+                if (item.Type == 0)
+                {
+                    //item.Kyu,
+                    //item.Name,
+                    //item.Desc,
+                    //item.Picture,
+                }
+            }
 
             // 手刀系.
             var groups = new ObservableCollection<Group>
