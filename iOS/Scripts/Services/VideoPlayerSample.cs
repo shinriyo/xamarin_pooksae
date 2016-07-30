@@ -15,7 +15,12 @@ namespace VideoPlayerSample.iOS
 		public void Open(string uri)
 		{
 			// TODO:
-			var moviePlayer = new MPMoviePlayerController(NSUrl.FromString(uri));
+			MPMoviePlayerController moviePlayer;
+			moviePlayer = new MPMoviePlayerController(NSUrl.FromFilename(uri));
+			//UIApplication.SharedApplication.Window.RootController.Add(moviePlayer.View);
+			var root = UIApplication.SharedApplication.KeyWindow.RootViewController.NavigationController;
+			//root.Add(moviePlayer.View);
+			moviePlayer.ShouldAutoplay = true;
 			moviePlayer.SetFullscreen(true, true);
 			moviePlayer.Play();
 		}
