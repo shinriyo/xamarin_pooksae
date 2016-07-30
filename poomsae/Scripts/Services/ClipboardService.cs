@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ClipboardSample.Services
+﻿namespace ClipboardSample.Services
 {
     public interface IClipboardService
     {
