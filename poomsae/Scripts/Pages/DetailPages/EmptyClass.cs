@@ -15,6 +15,7 @@ namespace Poomsae
 
     public class EmptyClass
     {
+        private const int initKyu = -1;
         static void HandleAction(string arg1, string arg2, string arg3)
         {
 
@@ -38,43 +39,137 @@ namespace Poomsae
             return data;
         }
 
+        /// <summary>
+        /// Gets the punches.
+        /// </summary>
+        /// <returns>The punches.</returns>
+        /// <param name="action">Action.</param>
         public static ObservableCollection<Group> GetPunches(Action<string, string, string> action)
         {
             string iconImage = "punch_icon.png";
             string detailImageBase = @"poomsae.Resources.Punch.{0}.jpg";
+            var groups = new ObservableCollection<Group>();
 
             // 技のテーブル.
             var artModelController = new Controller<ArtModel>();
             var res = artModelController.GetResults().Where(d => d.Type == 0);
+            Group group = null;
+            // 判定用.
+            int nowKyu = initKyu;
+
             foreach (var item in res)
             {
-                if (item.Type == 0)
+                var kyu = item.Kyu;
+                var name = item.Name;
+                var desc = item.Desc;
+                var detail = item.Detail;
+                var picture = item.Picture;
+                System.Diagnostics.Debug.WriteLine("{0} {1} {2} {3} {4}",
+                                                   kyu, name, desc, detail, picture);
+                // 変わった時または最初.
+                if (nowKyu != kyu || nowKyu == initKyu)
                 {
-                    //item.Kyu,
-                    //item.Name,
-                    //item.Desc,
-                    //item.Picture,
+                    System.Diagnostics.Debug.WriteLine("changed");
+                    group = new Group(string.Format("{0}級", kyu));
                 }
+
+                var data = CreateData(name, desc, detail, iconImage,
+                                      string.Format(detailImageBase, picture), action);
+                group.Add(data);
+
+                // ここはまだ変更時ではないので追加しない.
+                if (kyu != initKyu)
+                {
+                    System.Diagnostics.Debug.WriteLine("not first");
+                    groups.Add(group);
+                }
+
+                nowKyu = kyu; // 更新.
             }
 
             // パンチ系.
-            var groups = new ObservableCollection<Group>
-            {
-                new Group("9級") {
-                    CreateData("チュモクチルギ", "パンチ", "パンチします.", iconImage,
-                               string.Format(detailImageBase, "VerticalPunch"), action),
-                },
-                new Group("8級") {
-                    CreateData("ジョチョチルギ", "両手突き", "両手でパンチします.",
-                               iconImage, string.Format(detailImageBase, "VerticalPunch"), action),
-                }
-            };
+            //var groups = new ObservableCollection<Group>
+            //{
+            //    new Group("9級") {
+            //        CreateData("チュモクチルギ", "パンチ", "パンチします.", iconImage,
+            //                   string.Format(detailImageBase, "VerticalPunch"), action),
+            //    },
+            //    new Group("8級") {
+            //        CreateData("ジョチョチルギ", "両手突き", "両手でパンチします.",
+            //                   iconImage, string.Format(detailImageBase, "VerticalPunch"), action),
+            //    }
+            //};
             return groups;
         }
 
+        /// <summary>
+        /// Gets the chops.
+        /// </summary>
+        /// <returns>The chops.</returns>
+        /// <param name="action">Action.</param>
         public static ObservableCollection<Group> GetChops(Action<string, string, string> action)
         {
             string iconImage = "chop_icon.png";
+            string detailImageBase = @"poomsae.Resources.Punch.{0}.jpg";
+
+            var groups = new ObservableCollection<Group>();
+            // 技のテーブル.
+            var artModelController = new Controller<ArtModel>();
+            var res = artModelController.GetResults().Where(d => d.Type == 3);
+
+            Group group = null;
+            foreach (var item in res)
+            {
+                // 判定用.
+                int nowKyu = -1;
+
+                var kyu = item.Kyu;
+                var name = item.Name;
+                var desc = item.Desc;
+                var detail = item.Detail;
+                var picture = item.Picture;
+
+                if (nowKyu != kyu)
+                {
+                    if (kyu != -1)
+                    {
+                        groups.Add(group);
+                    }
+                    group = new Group(string.Format("{0}級", kyu));
+                }
+
+                var data = CreateData(name, desc, detail, iconImage,
+                                      string.Format(detailImageBase, picture), action);
+                group.Add(data);
+            }
+
+            // 手刀系.
+            //var groups = new ObservableCollection<Group>
+            //{
+            //    new Group("9級") {
+            //        CreateData("ソンナルモクチギ", "手刀受け", "手刀受け", iconImage,
+            //                   string.Format(detailImageBase, "VerticalPunch"), action),
+            //    },
+            //    new Group("8級") {
+            //        CreateData("アギソンモクチギ", "両手刀受け", "両手刀受け", iconImage,
+            //                   string.Format(detailImageBase, "VerticalPunch"), action),
+            //    },
+            //    new Group("7級") {
+            //        CreateData("チェッピブンモクチギ", "両手刀受け", "両手刀受け", iconImage,
+            //                   string.Format(detailImageBase, "VerticalPunch"), action),
+            //    }
+            //};
+            return groups;
+        }
+
+        /// <summary>
+        /// Gets the kicks.
+        /// </summary>
+        /// <returns>The kicks.</returns>
+        /// <param name="action">Action.</param>
+        public static ObservableCollection<Group> GetKicks(Action<string, string, string> action)
+        {
+            string iconImage = "kick_icon.png";
             string detailImageBase = @"poomsae.Resources.Punch.{0}.jpg";
 
             // 技のテーブル.
@@ -90,35 +185,6 @@ namespace Poomsae
                     //item.Picture,
                 }
             }
-
-            // 手刀系.
-            var groups = new ObservableCollection<Group>
-            {
-                new Group("9級") {
-                    CreateData("ソンナルモクチギ", "手刀受け", "手刀受け", iconImage,
-                               string.Format(detailImageBase, "VerticalPunch"), action),
-                },
-                new Group("8級") {
-                    CreateData("アギソンモクチギ", "両手刀受け", "両手刀受け", iconImage,
-                               string.Format(detailImageBase, "VerticalPunch"), action),
-                },
-                new Group("7級") {
-                    CreateData("チェッピブンモクチギ", "両手刀受け", "両手刀受け", iconImage,
-                               string.Format(detailImageBase, "VerticalPunch"), action),
-                }
-            };
-            return groups;
-        }
-
-        /// <summary>
-        /// Gets the kicks.
-        /// </summary>
-        /// <returns>The kicks.</returns>
-        /// <param name="action">Action.</param>
-        public static ObservableCollection<Group> GetKicks(Action<string, string, string> action)
-        {
-            string iconImage = "kick_icon.png";
-            string detailImageBase = @"poomsae.Resources.Punch.{0}.jpg";
 
             // キック系.
             var groups = new ObservableCollection<Group>
@@ -147,6 +213,20 @@ namespace Poomsae
         {
             string iconPng = "guard_icon.png";
             string detailImageBase = @"poomsae.Resources.Punch.{0}.jpg";
+
+            // 技のテーブル.
+            var artModelController = new Controller<ArtModel>();
+            var res = artModelController.GetResults().Where(d => d.Type == 3);
+            foreach (var item in res)
+            {
+                if (item.Type == 0)
+                {
+                    //item.Kyu,
+                    //item.Name,
+                    //item.Desc,
+                    //item.Picture,
+                }
+            }
 
             // 受け系.
             var groups = new ObservableCollection<Group>
