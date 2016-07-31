@@ -13,14 +13,23 @@ namespace Poomsae
     using Xamarin.Forms;
     using Realms.Tool;
 
-    public class EmptyClass
+    /// <summary>
+    /// DBA ccess.
+    /// </summary>
+    public class DBAccess
     {
         private const int initKyu = -1;
-        static void HandleAction(string arg1, string arg2, string arg3)
-        {
 
-        }
-
+        /// <summary>
+        /// Creates the data.
+        /// </summary>
+        /// <returns>The data.</returns>
+        /// <param name="name">Name.</param>
+        /// <param name="desc">Desc.</param>
+        /// <param name="detail">Detail.</param>
+        /// <param name="imageName">Image name.</param>
+        /// <param name="image">Image.</param>
+        /// <param name="action">Action.</param>
         private static Data CreateData(
             string name, string desc, string detail, string imageName,
             string image,

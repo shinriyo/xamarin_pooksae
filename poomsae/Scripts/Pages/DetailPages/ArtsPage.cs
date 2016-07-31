@@ -146,22 +146,22 @@ namespace Poomsae
             if (pageType == 0)
             {
                 // パンチ系.
-                groups = EmptyClass.GetPunches(this.OpenDetail);
+                groups = DBAccess.GetPunches(this.OpenDetail);
             }
             else if (pageType == 1)
             {
                 // キック系.
-                groups = EmptyClass.GetKicks(this.OpenDetail);
+                groups = DBAccess.GetKicks(this.OpenDetail);
             }
             else if (pageType == 2)
             {
                 // 手刀系.
-                groups = EmptyClass.GetChops(this.OpenDetail);
+                groups = DBAccess.GetChops(this.OpenDetail);
             }
             else if (pageType == 3)
             {
                 // 受け系.
-                groups = EmptyClass.GetGuards(this.OpenDetail);
+                groups = DBAccess.GetGuards(this.OpenDetail);
             }
 
             // テンプレートの作成（ImageCell使用）.
