@@ -149,7 +149,7 @@
         private void PlayMovie(int id)
         {
             var uri = "http://download.openbricks.org/sample/H264/big_buck_bunny_1080p_H264_AAC_25fps_7200K.MP4";
-            DependencyService.Get<IVideoPlayerService>().Open(uri); // open in WebBrowser
+            DependencyService.Get<IVideoPlayerService>().Open(uri);
         }
     }
 }

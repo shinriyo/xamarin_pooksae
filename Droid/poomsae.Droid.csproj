@@ -155,7 +155,6 @@
     <None Include="Assets\AboutAssets.txt" />
     <None Include="packages.config" />
     <None Include="FodyWeavers.xml" />
-    <None Include="Xam.Plugins.VideoPlayer.md" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\layout\" />

@@ -111,21 +111,6 @@
     <Reference Include="Xamarin.Forms.Platform">
       <HintPath>..\packages\Xamarin.Forms.2.3.0.107\lib\Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetCross.Memory.Unsafe">
-      <HintPath>..\packages\DotNetCross.Memory.Unsafe.0.2.2\lib\portable-net40+win8+sl4+wp7\DotNetCross.Memory.Unsafe.dll</HintPath>
-    </Reference>
-    <Reference Include="Realm">
-      <HintPath>..\packages\Realm.0.76.1\lib\Xamarin.iOS10\Realm.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="Xam.Plugins.VideoPlayer">
-      <HintPath>..\packages\Xam.Plugins.VideoPlayer.1.0.0-pre07\lib\xamarinios\Xam.Plugins.VideoPlayer.dll</HintPath>
-    </Reference>
-    <Reference Include="Xam.Plugins.VideoPlayer.IOS">
-      <HintPath>..\packages\Xam.Plugins.VideoPlayer.1.0.0-pre07\lib\xamarinios\Xam.Plugins.VideoPlayer.IOS.dll</HintPath>
-    </Reference>
     <Reference Include="PropertyChanged">
       <HintPath>..\packages\PropertyChanged.Fody.1.51.3\Lib\portable-net4+sl4+wp8+win8+wpa81+MonoAndroid16+MonoTouch40\PropertyChanged.dll</HintPath>
     </Reference>
@@ -148,6 +133,15 @@
       <HintPath>..\packages\CsvHelper.2.16.0.0\lib\portable40-net40+sl5+win8+wp8+wpa81\CsvHelper.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib" />
+    <Reference Include="Realm">
+      <HintPath>..\packages\Realm.0.77.1\lib\Xamarin.iOS10\Realm.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.3.4.1\lib\portable-net45+win8+wp8+wpa81+Xamarin.Mac+MonoAndroid10+MonoTouch10+Xamarin.iOS10\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetCross.Memory.Unsafe">
+      <HintPath>..\packages\DotNetCross.Memory.Unsafe.0.2.3.3\lib\portable-net45+win8+wpa81+wp8\DotNetCross.Memory.Unsafe.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\poomsae\poomsae.csproj">
@@ -166,7 +160,6 @@
     <None Include="Entitlements.plist" />
     <None Include="packages.config" />
     <None Include="FodyWeavers.xml" />
-    <None Include="Xam.Plugins.VideoPlayer.md" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -178,8 +171,8 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Fody.1.29.4\build\portable-net+sl+win+wpa+wp\Fody.targets" Condition="Exists('..\packages\Fody.1.29.4\build\portable-net+sl+win+wpa+wp\Fody.targets')" />
   <Import Project="..\packages\Xamarin.Forms.2.3.0.107\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.0.107\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
-  <Import Project="..\packages\Realm.0.76.1\build\Realm.targets" Condition="Exists('..\packages\Realm.0.76.1\build\Realm.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Import Project="..\packages\Realm.0.77.1\build\Realm.targets" Condition="Exists('..\packages\Realm.0.77.1\build\Realm.targets')" />
   <ItemGroup>
     <BundleResource Include="Resources\menu.png" />
     <BundleResource Include="Resources\World_Taekwondo_Federation_Logo.png" />
@@ -189,6 +182,7 @@
     <BundleResource Include="Resources\chop_icon.png" />
     <BundleResource Include="Resources\movie_icon.png" />
     <BundleResource Include="Resources\note_icon.png" />
+    <BundleResource Include="Resources\yuk_jang.mp4" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="rxforxamarin">

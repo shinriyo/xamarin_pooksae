@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Xamarin.Forms;
 
 namespace VideoPlayerSample.Services
 {

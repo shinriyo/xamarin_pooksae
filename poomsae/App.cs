@@ -11,6 +11,7 @@ namespace Poomsae
     using System.Linq;
     using System.Text;
     using Xamarin.Forms;
+    using VideoPlayerSample.Services;
 
     /// <summary>
     /// App.
@@ -25,22 +26,6 @@ namespace Poomsae
             // The root page of your application
             // MasterDetailPageを継承したクラスを生成してMainPageとする
             this.MainPage = new MyMasterDetailPage();
-            //			MainPage = new TabbedPage() {
-            //				Children = {
-            //					new TabbedPageItem("Tab1"),
-            //					new TabbedPageItem("Tab2"),
-            //					new TabbedPageItem("Tab3")
-            //				}
-            //			};
-            // mpeg4のテスト.
-            //try
-            //{
-            //    this.MainPage = new VideoPlayerPage { BindingContext = new VideoPlayerViewModel() };
-            //}
-            //catch (Exception ex)
-            //{
-            //    System.Diagnostics.Debug.WriteLine(ex.ToString());
-            //}
         }
 
         /// <summary>
