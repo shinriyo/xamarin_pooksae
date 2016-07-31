@@ -45,7 +45,7 @@ namespace Poomsae
             {
                 FontSize = 40,
                 HorizontalOptions = LayoutOptions.Center,
-                Text = "Taekwon-Do Dict"
+                Text = "Taekwondo Dict"
             };
 
             layout.Children.Add(titleLabel);

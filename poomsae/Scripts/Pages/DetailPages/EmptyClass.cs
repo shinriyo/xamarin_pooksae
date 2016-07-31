@@ -59,7 +59,7 @@ namespace Poomsae
         /// <param name="iconImage">Icon image.</param>
         /// <param name="detailImageBase">Detail image base.</param>
         /// <param name="action">Action.</param>
-        public static ObservableCollection<Group> Common(int type, string iconImage,
+        private static ObservableCollection<Group> Common(int type, string iconImage,
                                                          string detailImageBase,
                                                          Action<string, string, string> action)
         {

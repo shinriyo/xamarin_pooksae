@@ -1,4 +1,10 @@
-﻿using VideoPlayerSample.Services;
+﻿//-----------------------------------------------------------------------
+// <copyright file="VideoPlayerService.cs" company="shinriyo">
+//     Company copyright tag.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using VideoPlayerSample.Services;
 using VideoPlayerSample.iOS;
 using Xamarin.Forms;
 using Foundation;
