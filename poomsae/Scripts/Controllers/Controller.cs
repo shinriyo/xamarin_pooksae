@@ -1,13 +1,19 @@
-﻿using Realms;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Reflection;
+﻿//-----------------------------------------------------------------------
+// <copyright file="Controller.cs" company="shinriyo">
+//     Company copyright tag.
+// </copyright>
+//-----------------------------------------------------------------------
 
 namespace Realms.Tool
 {
+    using Realms;
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Linq;
+    using System.Reflection;
+
     /// <summary>
     /// Model用インターフェイス.
     /// </summary>

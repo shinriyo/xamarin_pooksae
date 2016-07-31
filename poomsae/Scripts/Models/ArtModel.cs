@@ -1,10 +1,19 @@
-﻿namespace Poomsae
+﻿//-----------------------------------------------------------------------
+// <copyright file="ArtModel.cs" company="shinriyo">
+//     Company copyright tag.
+// </copyright>
+//-----------------------------------------------------------------------
+
+namespace Poomsae
 {
     using Realms;
     using Realms.Tool;
     using System;
     using System.Collections.Generic;
 
+    /// <summary>
+    /// Art model.
+    /// </summary>
     public class ArtModel : RealmObject, IModel
     {
         public enum ArtType
@@ -68,4 +77,3 @@
         }
     }
 }
-
