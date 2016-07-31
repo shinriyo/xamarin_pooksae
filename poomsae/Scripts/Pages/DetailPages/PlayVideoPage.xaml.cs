@@ -15,9 +15,19 @@ namespace Poomsae
             DependencyService.Get<IVideoPlayerService>().Open(uri);
         }
 
-        private void OnButtonClicked(object sender, EventArgs args)
+        private void OnPlayButtonClicked(object sender, EventArgs args)
         {
             DependencyService.Get<IVideoPlayerService>().Play();
+        }
+
+        private void OnStopButtonClicked(object sender, EventArgs args)
+        {
+            DependencyService.Get<IVideoPlayerService>().Stop();
+        }
+
+        private void OnPauseButtonClicked(object sender, EventArgs args)
+        {
+            DependencyService.Get<IVideoPlayerService>().Pause();
         }
     }
 }

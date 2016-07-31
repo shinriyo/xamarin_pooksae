@@ -22,5 +22,13 @@ namespace VideoPlayerSample.Android
 		public void Play()
 		{
 		}
+
+		public void Stop()
+		{
+		}
+
+		public void Pause()
+		{
+		}
 	}
 }

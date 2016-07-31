@@ -12,5 +12,7 @@ namespace VideoPlayerSample.Services
     {
         void Open(string uri);
         void Play();
+        void Stop();
+        void Pause();
     }
 }

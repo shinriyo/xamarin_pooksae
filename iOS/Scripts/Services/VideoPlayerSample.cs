@@ -43,5 +43,15 @@ namespace VideoPlayerSample.iOS
 		{
 			moviePlayer.Play();
 		}
+
+		public void Stop()
+		{
+			moviePlayer.Stop();
+		}
+
+		public void Pause()
+		{
+			moviePlayer.Pause();
+		}
 	}
 }
