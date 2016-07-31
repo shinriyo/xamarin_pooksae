@@ -107,8 +107,8 @@ namespace Poomsae
                 nowKyu = kyu; // 更新.
             }
 
-            // 最初のままループを出てしまったら追加.
-            if (nowKyu == initKyu)
+            // 1つでもあれば最後に追加.
+            if (res.Count() > 0)
             {
                 groups.Add(group);
             }
