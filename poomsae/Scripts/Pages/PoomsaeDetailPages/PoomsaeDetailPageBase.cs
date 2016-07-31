@@ -55,7 +55,7 @@ namespace Poomsae
         {
             var groups = new ObservableCollection<Group>();
             // TODO:
-            var kyuOrDan = (type == 0) ? "級" : "段";
+            var kyuOrDan = (type == (int)PoomsaeModel.KyuOrDan.Kyu) ? "級" : "段";
             string iconImage = "kick_icon.png";
             string detailImageBase = @"poomsae.Resources.Punch.{0}.jpg";
 

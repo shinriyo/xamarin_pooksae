@@ -80,30 +80,43 @@ namespace Poomsae
 
                 // パンチ系ファイル.
                 var punchUrl = "http://vps6-d.kuku.lu/files/20160726-0053_cd22c32f91d04333262d320a8e49fd40.csv";
-                Tools.LoadCSV(artModelController, japan, (int)ArtModel.ArtType.Punch, dlLabel, httpClient, punchUrl);
+                Tools.LoadArtsCSV(artModelController, japan, (int)ArtModel.ArtType.Punch, dlLabel, httpClient, punchUrl);
 
                 // キック系ファイル.
                 var kickUrl = "http://vps6-d.kuku.lu/files/20160725-0849_fbca8e210bea1a8b35e5b12ba70b0a14.csv";
-                Tools.LoadCSV(artModelController, japan, (int)ArtModel.ArtType.Kick, dlLabel, httpClient, kickUrl);
+                Tools.LoadArtsCSV(artModelController, japan, (int)ArtModel.ArtType.Kick, dlLabel, httpClient, kickUrl);
 
                 // チョップ系ファイル.
                 var chopUrl = "http://vps6-d.kuku.lu/files/20160725-0856_7759c7a4b8b7b3dd5613576968451f6d.csv";
-                Tools.LoadCSV(artModelController, japan, (int)ArtModel.ArtType.Chop, dlLabel, httpClient, chopUrl);
+                Tools.LoadArtsCSV(artModelController, japan, (int)ArtModel.ArtType.Chop, dlLabel, httpClient, chopUrl);
 
                 // 受け系ファイル.
                 var guardUrl = "http://vps6-d.kuku.lu/files/20160726-0057_e3d23c791475be2247fa60c3c7de91bd.csv";
-                Tools.LoadCSV(artModelController, japan, (int)ArtModel.ArtType.Guard, dlLabel, httpClient, guardUrl);
+                Tools.LoadArtsCSV(artModelController, japan, (int)ArtModel.ArtType.Guard, dlLabel, httpClient, guardUrl);
+
+                // TODO:
+                // プンセのテーブル初期化
+                var poomsaeModelController = new Controller<PoomsaeModel>();
+                poomsaeModelController.DeleteAll();
+
+                // 級プンセファイル.
+                var kyuPoomsaeUrl = "";
+                Tools.LoadPoomsaeCSV(poomsaeModelController, japan, (int)PoomsaeModel.KyuOrDan.Kyu, dlLabel, httpClient, kyuPoomsaeUrl);
+
+                // 段プンセファイル.
+                var danPoomsaeUrl = "";
+                Tools.LoadPoomsaeCSV(poomsaeModelController, japan, (int)PoomsaeModel.KyuOrDan.Dan, dlLabel, httpClient, danPoomsaeUrl);
             }
         }
 
         /// <summary>
-        /// Loads the csv.
+        /// 技CSVファイルのロード.
         /// </summary>
         /// <returns>The csv.</returns>
         /// <param name="dlLabel">Dl label.</param>
         /// <param name="httpClient">Http client.</param>
         /// <param name="url">URL.</param>
-        public static void LoadCSV(Controller<ArtModel> artModelController,
+        public static void LoadArtsCSV(Controller<ArtModel> artModelController,
             string lang, int type, Label dlLabel,
             System.Net.Http.HttpClient httpClient, string url)
         {
@@ -122,7 +135,7 @@ namespace Poomsae
                                 "Detail:{3}, Picture{0} ",
                                 kyu, name, desc, detail, picture);
 
-                var apchagi = new ArtModel
+                var artModel = new ArtModel
                 {
                     Language = lang,
                     Type = type,
@@ -132,7 +145,47 @@ namespace Poomsae
                     Detail = detail,
                     Picture = picture
                 };
-                artModelController.Insert(apchagi);
+                artModelController.Insert(artModel);
+            }
+        }
+
+        /// <summary>
+        /// プンセCSVファイルのロード.
+        /// </summary>
+        /// <returns>The csv.</returns>
+        /// <param name="dlLabel">Dl label.</param>
+        /// <param name="httpClient">Http client.</param>
+        /// <param name="url">URL.</param>
+        public static void LoadPoomsaeCSV(Controller<PoomsaeModel> poomsaeModelController,
+            string lang, int type, Label dlLabel,
+            System.Net.Http.HttpClient httpClient, string url)
+        {
+            var csvString = httpClient.GetStringAsync(url).Result;
+            dlLabel.Text += csvString;
+
+            var csv = new CsvReader(new StringReader(csvString));
+            while (csv.Read())
+            {
+                var kyu = csv.GetField<int>(0);
+                var name = csv.GetField<string>(1);
+                var desc = csv.GetField<string>(2);
+                var detail = csv.GetField<string>(3);
+                var picture = csv.GetField<string>(4);
+                Debug.WriteLine("Kyu:{0}, Name:{1}, Desc:{2}, " +
+                                "Detail:{3}, Picture{0} ",
+                                kyu, name, desc, detail, picture);
+
+                var poomsaeModel = new PoomsaeModel
+                {
+                    Language = lang,
+                    Type = type,
+                    Kyu = kyu,
+                    Name = name,
+                    Desc = desc,
+                    Detail = detail,
+                    Picture = picture
+                };
+                poomsaeModelController.Insert(poomsaeModel);
             }
         }
 
@@ -143,16 +196,18 @@ namespace Poomsae
         public static void InitializeDB()
         {
             Debug.WriteLine(new string('*', 10));
-            var languageController = new Controller<Localize>();
+
+            // ローカライズ
+            var localizeController = new Controller<Localize>();
             // 一旦消して.
-            languageController.DeleteAll();
+            localizeController.DeleteAll();
 
             var ja = new Localize { Country = "ja" };
             var enUS = new Localize { Country = "en-US" };
             var kr = new Localize { Country = "kr" };
-            languageController.Insert(ja);
-            languageController.Insert(enUS);
-            languageController.Insert(kr);
+            localizeController.Insert(ja);
+            localizeController.Insert(enUS);
+            localizeController.Insert(kr);
 
             var settingController = new Controller<Setting>();
             settingController.DeleteAll();

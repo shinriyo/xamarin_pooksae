@@ -16,12 +16,10 @@ namespace Poomsae
     /// </summary>
     public class PoomsaeModel : RealmObject, IModel
     {
-        public enum ArtType
+        public enum KyuOrDan
         {
-            Punch,
-            Kick,
-            Chop,
-            Guard,
+            Kyu,
+            Dan,
         }
 
         [ObjectId]
@@ -36,7 +34,7 @@ namespace Poomsae
         public string Language { get; set; }
 
         /// <summary>
-        /// 0:パンチ or 1:キック or 2:手刀 or 3:受け.
+        /// 0:級 or 1:段.
         /// </summary>
         /// <value>The key.</value>
         public int Type { get; set; }
