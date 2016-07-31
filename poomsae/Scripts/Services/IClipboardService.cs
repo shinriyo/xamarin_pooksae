@@ -1,15 +1,13 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="IWebBrowserService.cs" company="shinriyo">
+// <copyright file="IClipboardService.cs" company="shinriyo">
 //     Company copyright tag.
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace OpenWebBrowserSample.Services
+namespace ClipboardSample.Services
 {
-    using System;
-
-    public interface IWebBrowserService
+    public interface IClipboardService
     {
-        void Open(Uri uri);
+        void CopyToClipboard(string text);
     }
 }

@@ -37,8 +37,11 @@ namespace VideoPlayerSample.iOS
 
 			// To play full screen
 			moviePlayer.SetFullscreen(true, true);
-			moviePlayer.Play();
+		}
 
+		public void Play()
+		{
+			moviePlayer.Play();
 		}
 	}
 }

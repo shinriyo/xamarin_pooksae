@@ -147,8 +147,26 @@
         private void PlayMovie(int id)
         {
             //var uri = "http://download.openbricks.org/sample/H264/big_buck_bunny_1080p_H264_AAC_25fps_7200K.MP4";
-            var uri = "yuk_jang.mp4";
-            DependencyService.Get<IVideoPlayerService>().Open(uri);
+            //var uri = "yuk_jang.mp4";
+            //DependencyService.Get<IVideoPlayerService>().Open(uri);
+
+            try
+            {
+                // ページを遷移する.
+                Navigation.PushAsync(new PlayVideoPage
+                {
+                    //BindingContext = new PoomsaeOrderPageViewModel()
+                    //{
+                    //    Name = name,
+                    //    Source = ImageSource.FromResource(image),
+                    //    Desc = detail
+                    //}
+                });
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
+            }
         }
     }
 }

@@ -18,5 +18,9 @@ namespace VideoPlayerSample.Android
 			mediaPlayer.Prepare();
 			mediaPlayer.Start();
 		}
+
+		public void Play()
+		{
+		}
 	}
 }
