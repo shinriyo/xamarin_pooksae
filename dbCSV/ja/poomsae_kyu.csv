@@ -1,6 +1,9 @@
--- Dan, Name, Desc, Detail, Picture
-1, "高麗(コウリョ)", "", "hoge->bar", "hoge.png"
-2, "金剛(クンガン)", "", "hoge->bar", "hoge.png"
-3, "太白(テベック)", "", "hoge->bar", "hoge.png"
-4, "平原(ピョンウォン)", "", "hoge->bar", "hoge.png"
-5, "十進(シッチン)", "", "hoge->bar", "hoge.png"
+-- Kyu, Name, Desc, Detail, Picture
+"太極1章(テグ イルジャン)", "", "hoge->bar", "hoge.png",
+"太極2章(テグ イージャン)", "", "hoge->bar", "hoge.png",
+"太極3章(テグ サムジャン)", "", "hoge->bar", "hoge.png",
+"太極4章(テグ サージャン)", "", "hoge->bar", "hoge.png",
+"太極5章(テグ オージャン)", "", "hoge->bar", "hoge.png",
+"太極6章(テグ ユッジャン)", "", "hoge->bar", "hoge.png",
+"太極7章(テグ チルジャン)", "", "hoge->bar", "hoge.png",
+"太極8章(テグ パルジャン)", "", "hoge->bar", "hoge.png",
