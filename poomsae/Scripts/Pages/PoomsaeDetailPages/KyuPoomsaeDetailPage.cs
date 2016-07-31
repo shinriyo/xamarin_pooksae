@@ -1,73 +1,21 @@
-﻿namespace Poomsae
+﻿//-----------------------------------------------------------------------
+// <copyright file="KyuPoomsaeDetailPage.cs" company="shinriyo">
+//     Company copyright tag.
+// </copyright>
+//-----------------------------------------------------------------------
+
+namespace Poomsae
 {
     using System;
     using System.Collections.ObjectModel;
     using System.Windows.Input;
-    using VideoPlayerSample.Services;
     using Xamarin.Forms;
 
     /// <summary>
     /// プンセの詳細 ページクラス.
     /// </summary>
-    class KyuPoomsaeDetailPage : ContentPage
+    class KyuPoomsaeDetailPage : PoomsaeDetailPageBase
     {
-        /// <summary>
-        /// Data.
-        /// </summary>
-        private class Data
-        {
-            public String Name { get; set; }
-            public String Description { get; set; }
-            public String Picture { get; set; }
-            public ICommand OnClick { get; set; }
-        }
-
-        /// <summary>
-        /// Group.
-        /// </summary>
-        private class Group : ObservableCollection<Data>
-        {
-            public string Title { get; private set; }
-            public Group(string title)
-            {
-                Title = title;
-            }
-        }
-
-        /// <summary>
-        /// Creates the group.
-        /// </summary>
-        /// <returns>The group.</returns>
-        /// <param name="title">Title.</param>
-        /// <param name="order">Order.</param>
-        /// <param name="image">Image.</param>
-        private Group CreateGroup(string title, string order, string image)
-        {
-            return new Group(title)
-            {
-                new Data
-                {
-                    Name = "順序",
-                    Description = "順序",
-                    Picture = "note_icon.png",
-                    OnClick = new Command(() =>
-                    {
-                        this.OpenDetail(title, order, image);
-                    })
-                },
-                new Data
-                {
-                    Name = "動画",
-                    Description = "動画再生",
-                    Picture = "movie_icon.png",
-                    OnClick = new Command(() =>
-                    {
-                        this.PlayMovie(1);
-                    })
-                }
-            };
-        }
-
         /// <summary>
         /// Initializes a new instance of the <see cref="T:poomsae.KyuPoomsaeDetailPage"/> class.
         /// </summary>
@@ -76,14 +24,14 @@
             this.Title = "級プンセ詳細"; //ページのタイトル
 
             var ar = new ObservableCollection<Group> {
-                this.CreateGroup("太極1章(テグ イルジャン)", "hoge->bar", "hoge.png"),
-                this.CreateGroup("太極2章(テグ イージャン)", "hoge->bar", "hoge.png"),
-                this.CreateGroup("太極3章(テグ サムジャン)", "hoge->bar", "hoge.png"),
-                this.CreateGroup("太極4章(テグ サージャン)", "hoge->bar", "hoge.png"),
-                this.CreateGroup("太極5章(テグ オージャン)", "hoge->bar", "hoge.png"),
-                this.CreateGroup("太極6章(テグ ユッジャン)", "hoge->bar", "hoge.png"),
-                this.CreateGroup("太極7章(テグ チルジャン)", "hoge->bar", "hoge.png"),
-                this.CreateGroup("太極8章(テグ パルジャン)", "hoge->bar", "hoge.png"),
+                base.CreateGroup("太極1章(テグ イルジャン)", "hoge->bar", "hoge.png"),
+                base.CreateGroup("太極2章(テグ イージャン)", "hoge->bar", "hoge.png"),
+                base.CreateGroup("太極3章(テグ サムジャン)", "hoge->bar", "hoge.png"),
+                base.CreateGroup("太極4章(テグ サージャン)", "hoge->bar", "hoge.png"),
+                base.CreateGroup("太極5章(テグ オージャン)", "hoge->bar", "hoge.png"),
+                base.CreateGroup("太極6章(テグ ユッジャン)", "hoge->bar", "hoge.png"),
+                base.CreateGroup("太極7章(テグ チルジャン)", "hoge->bar", "hoge.png"),
+                base.CreateGroup("太極8章(テグ パルジャン)", "hoge->bar", "hoge.png"),
             };
 
             // テンプレートの作成（ImageCell使用）.
