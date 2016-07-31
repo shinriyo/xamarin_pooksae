@@ -47,7 +47,7 @@ namespace Poomsae
         /// </summary>
         /// <returns>The by key.</returns>
         /// <param name="key">Key.</param>
-        public Localize FindByKey(string key)
+        public string FindByKey(string key)
         {
             if (this.CountByKey(key) == 0)
             {
@@ -55,9 +55,14 @@ namespace Poomsae
             }
 
             var mysertting = this.GetMySetting();
-            return this.realm.All<Localize>()
+            var res = this.realm.All<Localize>()
                        .Where(d => d.Key == key && d.Country == mysertting.language)
-                       .Single();
+                          .FirstOrNull();
+            if (res == null)
+            {
+                return string.Empty;
+            }
+            return res.Key;
         }
 
         /// <summary>
