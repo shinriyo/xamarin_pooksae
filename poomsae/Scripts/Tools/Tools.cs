@@ -51,8 +51,7 @@ namespace Poomsae
         /// Downs the load CSV.
         /// </summary>
         /// <returns>The load CSV.</returns>
-        /// <param name="dlLabel">Dl label.</param>
-        public static void DownLoadCSVs(Label dlLabel)
+        public static void DownLoadCSVs()
         {
             // 設定初期化.
             Tools.InitializeDB();
@@ -62,7 +61,6 @@ namespace Poomsae
                 // ローカライズファイル.
                 var localizeUrl = "http://vps6-d.kuku.lu/files/20160725-0035_2b21358ee0d5a871860a15789270a433.csv";
                 var csvString = httpClient.GetStringAsync(localizeUrl).Result;
-                dlLabel.Text += csvString;
 
                 var csv = new CsvReader(new StringReader(csvString));
                 while (csv.Read())
@@ -80,32 +78,34 @@ namespace Poomsae
 
                 // パンチ系ファイル.
                 var punchUrl = "http://vps6-d.kuku.lu/files/20160726-0053_cd22c32f91d04333262d320a8e49fd40.csv";
-                Tools.LoadArtsCSV(artModelController, japan, (int)ArtModel.ArtType.Punch, dlLabel, httpClient, punchUrl);
+                Tools.LoadArtsCSV(artModelController, japan, (int)ArtModel.ArtType.Punch, httpClient, punchUrl);
 
                 // キック系ファイル.
                 var kickUrl = "http://vps6-d.kuku.lu/files/20160725-0849_fbca8e210bea1a8b35e5b12ba70b0a14.csv";
-                Tools.LoadArtsCSV(artModelController, japan, (int)ArtModel.ArtType.Kick, dlLabel, httpClient, kickUrl);
+                Tools.LoadArtsCSV(artModelController, japan, (int)ArtModel.ArtType.Kick, httpClient, kickUrl);
 
                 // チョップ系ファイル.
                 var chopUrl = "http://vps6-d.kuku.lu/files/20160725-0856_7759c7a4b8b7b3dd5613576968451f6d.csv";
-                Tools.LoadArtsCSV(artModelController, japan, (int)ArtModel.ArtType.Chop, dlLabel, httpClient, chopUrl);
+                Tools.LoadArtsCSV(artModelController, japan, (int)ArtModel.ArtType.Chop, httpClient, chopUrl);
 
                 // 受け系ファイル.
                 var guardUrl = "http://vps6-d.kuku.lu/files/20160726-0057_e3d23c791475be2247fa60c3c7de91bd.csv";
-                Tools.LoadArtsCSV(artModelController, japan, (int)ArtModel.ArtType.Guard, dlLabel, httpClient, guardUrl);
+                Tools.LoadArtsCSV(artModelController, japan, (int)ArtModel.ArtType.Guard, httpClient, guardUrl);
 
-                // TODO:
+                // TODO: CSVがまだ.
+                /*
                 // プンセのテーブル初期化
                 var poomsaeModelController = new Controller<PoomsaeModel>();
                 poomsaeModelController.DeleteAll();
 
                 // 級プンセファイル.
                 var kyuPoomsaeUrl = "";
-                Tools.LoadPoomsaeCSV(poomsaeModelController, japan, (int)PoomsaeModel.KyuOrDan.Kyu, dlLabel, httpClient, kyuPoomsaeUrl);
+                Tools.LoadPoomsaeCSV(poomsaeModelController, japan, (int)PoomsaeModel.KyuOrDan.Kyu, httpClient, kyuPoomsaeUrl);
 
                 // 段プンセファイル.
                 var danPoomsaeUrl = "";
-                Tools.LoadPoomsaeCSV(poomsaeModelController, japan, (int)PoomsaeModel.KyuOrDan.Dan, dlLabel, httpClient, danPoomsaeUrl);
+                Tools.LoadPoomsaeCSV(poomsaeModelController, japan, (int)PoomsaeModel.KyuOrDan.Dan, httpClient, danPoomsaeUrl);
+                */
             }
         }
 
@@ -113,15 +113,12 @@ namespace Poomsae
         /// 技CSVファイルのロード.
         /// </summary>
         /// <returns>The csv.</returns>
-        /// <param name="dlLabel">Dl label.</param>
         /// <param name="httpClient">Http client.</param>
         /// <param name="url">URL.</param>
         public static void LoadArtsCSV(Controller<ArtModel> artModelController,
-            string lang, int type, Label dlLabel,
-            System.Net.Http.HttpClient httpClient, string url)
+            string lang, int type, System.Net.Http.HttpClient httpClient, string url)
         {
             var csvString = httpClient.GetStringAsync(url).Result;
-            dlLabel.Text += csvString;
 
             var csv = new CsvReader(new StringReader(csvString));
             while (csv.Read())
@@ -153,15 +150,12 @@ namespace Poomsae
         /// プンセCSVファイルのロード.
         /// </summary>
         /// <returns>The csv.</returns>
-        /// <param name="dlLabel">Dl label.</param>
         /// <param name="httpClient">Http client.</param>
         /// <param name="url">URL.</param>
         public static void LoadPoomsaeCSV(Controller<PoomsaeModel> poomsaeModelController,
-            string lang, int type, Label dlLabel,
-            System.Net.Http.HttpClient httpClient, string url)
+            string lang, int type, System.Net.Http.HttpClient httpClient, string url)
         {
             var csvString = httpClient.GetStringAsync(url).Result;
-            dlLabel.Text += csvString;
 
             var csv = new CsvReader(new StringReader(csvString));
             while (csv.Read())

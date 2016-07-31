@@ -182,7 +182,6 @@
     <BundleResource Include="Resources\chop_icon.png" />
     <BundleResource Include="Resources\movie_icon.png" />
     <BundleResource Include="Resources\note_icon.png" />
-    <BundleResource Include="Resources\yuk_jang.mp4" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="rxforxamarin">

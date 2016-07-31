@@ -53,12 +53,6 @@ namespace Poomsae
             // TODO: ローカライズ.
             var initializeButton = new Button { Text = "初期化" };
             layout.Children.Add(initializeButton);
-            var dlLabel = new Label
-            {
-                FontSize = 10,
-                HorizontalOptions = LayoutOptions.Center,
-            };
-            layout.Children.Add(dlLabel);
 
             initializeButton.Clicked += async (sender, args) =>
             {
@@ -69,7 +63,7 @@ namespace Poomsae
                 if (result == ok)
                 {
                     // CSVをWebからロードする.
-                    Tools.DownLoadCSVs(dlLabel);
+                    Tools.DownLoadCSVs();
                 }
             };
 
