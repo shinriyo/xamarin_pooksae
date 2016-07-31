@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="EmptyClass.cs" company="shinriyo">
+// <copyright file="DBAccess.cs" company="shinriyo">
 //     Company copyright tag.
 // </copyright>
 //-----------------------------------------------------------------------

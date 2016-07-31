@@ -1,4 +1,10 @@
-﻿namespace CellTool
+﻿//-----------------------------------------------------------------------
+// <copyright file="Tools.cs" company="shinriyo">
+//     Company copyright tag.
+// </copyright>
+//-----------------------------------------------------------------------
+
+namespace CellTool
 {
     using System;
     using System.Collections.ObjectModel;
@@ -74,19 +80,19 @@ namespace Poomsae
 
                 // パンチ系ファイル.
                 var punchUrl = "http://vps6-d.kuku.lu/files/20160726-0053_cd22c32f91d04333262d320a8e49fd40.csv";
-                Tools.LoadCSV(artModelController, japan, 0, dlLabel, httpClient, punchUrl);
+                Tools.LoadCSV(artModelController, japan, (int)ArtModel.ArtType.Punch, dlLabel, httpClient, punchUrl);
 
                 // キック系ファイル.
                 var kickUrl = "http://vps6-d.kuku.lu/files/20160725-0849_fbca8e210bea1a8b35e5b12ba70b0a14.csv";
-                Tools.LoadCSV(artModelController, japan, 1, dlLabel, httpClient, kickUrl);
+                Tools.LoadCSV(artModelController, japan, (int)ArtModel.ArtType.Kick, dlLabel, httpClient, kickUrl);
 
                 // チョップ系ファイル.
                 var chopUrl = "http://vps6-d.kuku.lu/files/20160725-0856_7759c7a4b8b7b3dd5613576968451f6d.csv";
-                Tools.LoadCSV(artModelController, japan, 2, dlLabel, httpClient, chopUrl);
+                Tools.LoadCSV(artModelController, japan, (int)ArtModel.ArtType.Chop, dlLabel, httpClient, chopUrl);
 
                 // 受け系ファイル.
                 var guardUrl = "http://vps6-d.kuku.lu/files/20160726-0057_e3d23c791475be2247fa60c3c7de91bd.csv";
-                Tools.LoadCSV(artModelController, japan, 3, dlLabel, httpClient, guardUrl);
+                Tools.LoadCSV(artModelController, japan, (int)ArtModel.ArtType.Guard, dlLabel, httpClient, guardUrl);
             }
         }
 

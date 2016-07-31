@@ -1,4 +1,10 @@
-﻿namespace Poomsae
+﻿//-----------------------------------------------------------------------
+// <copyright file="DanPoomsaeDetailPage.cs" company="shinriyo">
+//     Company copyright tag.
+// </copyright>
+//-----------------------------------------------------------------------
+
+namespace Poomsae
 {
     using System;
     using System.Collections.ObjectModel;
