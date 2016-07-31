@@ -67,6 +67,7 @@ namespace Poomsae
             var artModelController = new Controller<ArtModel>();
             var res = artModelController.GetResults().Where(d => d.Type == type);
             Group group = null;
+
             // 判定用.
             int nowKyu = initKyu;
 
@@ -79,29 +80,30 @@ namespace Poomsae
                 var picture = item.Picture;
                 System.Diagnostics.Debug.WriteLine("{0} {1} {2} {3} {4}",
                                                    kyu, name, desc, detail, picture);
+                // 変わった時かつ最初ではない前ループのグループを追加.
+                if (nowKyu != kyu && nowKyu != initKyu)
+                {
+                    groups.Add(group);
+                }
+
                 // 変わった時または最初.
                 if (nowKyu != kyu || nowKyu == initKyu)
                 {
-                    System.Diagnostics.Debug.WriteLine("changed");
                     group = new Group(string.Format("{0}級", kyu));
                 }
 
                 var data = CreateData(name, desc, detail, iconImage,
                                       string.Format(detailImageBase, picture), action);
                 group.Add(data);
-
-                // ここはまだ変更時ではないので追加しない.
-                if (kyu != initKyu)
-                {
-                    System.Diagnostics.Debug.WriteLine("not first");
-                    groups.Add(group);
-                }
-
-                System.Diagnostics.Debug.WriteLine("==");
                 nowKyu = kyu; // 更新.
             }
 
-            System.Diagnostics.Debug.WriteLine("1=");
+            // 最初のままループを出てしまったら追加.
+            if (nowKyu == initKyu)
+            {
+                groups.Add(group);
+            }
+
             return groups;
         }
 
@@ -114,7 +116,7 @@ namespace Poomsae
         {
             string iconImage = "punch_icon.png";
             string detailImageBase = @"poomsae.Resources.Punch.{0}.jpg";
-            return Common(0, iconImage, detailImageBase, action);
+            return Common((int)ArtModel.ArtType.Punch, iconImage, detailImageBase, action);
         }
 
         /// <summary>
@@ -126,7 +128,7 @@ namespace Poomsae
         {
             string iconImage = "kick_icon.png";
             string detailImageBase = @"poomsae.Resources.Punch.{0}.jpg";
-            return Common(1, iconImage, detailImageBase, action);
+            return Common((int)ArtModel.ArtType.Kick, iconImage, detailImageBase, action);
         }
 
         /// <summary>
@@ -138,7 +140,7 @@ namespace Poomsae
         {
             string iconImage = "chop_icon.png";
             string detailImageBase = @"poomsae.Resources.Punch.{0}.jpg";
-            return Common(2, iconImage, detailImageBase, action);
+            return Common((int)ArtModel.ArtType.Chop, iconImage, detailImageBase, action);
         }
 
         /// <summary>
@@ -150,7 +152,7 @@ namespace Poomsae
         {
             string iconImage = "guard_icon.png";
             string detailImageBase = @"poomsae.Resources.Punch.{0}.jpg";
-            return Common(3, iconImage, detailImageBase, action);
+            return Common((int)ArtModel.ArtType.Guard, iconImage, detailImageBase, action);
             //手刀下段受け  ソンナルアレマッキ
             //手刀打ち メチュモネリョチギ
             //手刀中段受け  ソンナルモントンマッキ

@@ -7,6 +7,14 @@
 
     public class ArtModel : RealmObject, IModel
     {
+        public enum ArtType
+        {
+            Punch,
+            Kick,
+            Chop,
+            Guard,
+        }
+
         [ObjectId]
         public string Id { get; set; }
         public DateTimeOffset Created { get; set; }
@@ -56,7 +64,7 @@
 
         public override string ToString()
         {
-            return string.Format("[ArtModel: Id={0}, Created={1}, Updated={2}, Country={3}, Key={4}, Name={5}, Desc={6}, Detail={7}, Picture={8}]", Id, Created, Updated, Language, Type , Name, Desc, Detail, Picture);
+            return string.Format("[ArtModel: Id={0}, Created={1}, Updated={2}, Country={3}, Key={4}, Name={5}, Desc={6}, Detail={7}, Picture={8}]", Id, Created, Updated, Language, Type, Name, Desc, Detail, Picture);
         }
     }
 }
