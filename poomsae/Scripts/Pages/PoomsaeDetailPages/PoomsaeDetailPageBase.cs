@@ -88,7 +88,7 @@ namespace Poomsae
                     group = new Group(string.Format("{0}{1}", kyu, kyuOrDan));
                 }
 
-                var data = CreateData(name, desc, detail, iconImage,
+                var data = this.CreateData(name, desc, detail, iconImage,
                                       string.Format(detailImageBase, picture), action);
                 group.Add(data);
                 nowKyu = kyu; // 更新.
@@ -113,7 +113,7 @@ namespace Poomsae
         /// <param name="imageName">Image name.</param>
         /// <param name="image">Image.</param>
         /// <param name="action">Action.</param>
-        private static Data CreateData(
+        private Data CreateData(
             string name, string desc, string detail, string imageName,
             string image,
             Action<string, string, string> action)
