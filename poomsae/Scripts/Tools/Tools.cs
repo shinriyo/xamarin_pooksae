@@ -36,8 +36,10 @@ namespace CellTool
 
 namespace Poomsae
 {
+    using System;
     using System.Diagnostics;
     using System.IO;
+    using System.Threading.Tasks;
     using CsvHelper;
     using Realms.Tool;
     using Xamarin.Forms;
@@ -155,7 +157,17 @@ namespace Poomsae
         public static void LoadPoomsaeCSV(Controller<PoomsaeModel> poomsaeModelController,
             string lang, int type, System.Net.Http.HttpClient httpClient, string url)
         {
-            var csvString = httpClient.GetStringAsync(url).Result;
+            // 取得したいWebページのURI.
+            Uri webUri = new Uri(url);
+
+            // GetWebPageAsyncメソッドを呼び出す
+            Task<string> webTask = httpClient.GetStringAsync(url);
+
+            // Mainメソッドではawaitできないので、処理が完了するまで待機する.
+            webTask.Wait();
+
+            // 結果を取得.
+            var csvString = webTask.Result;
 
             var csv = new CsvReader(new StringReader(csvString));
             while (csv.Read())
