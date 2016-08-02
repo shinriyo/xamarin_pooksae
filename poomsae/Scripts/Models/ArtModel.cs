@@ -7,14 +7,12 @@
 namespace Poomsae
 {
     using Realms;
-    using Realms.Tool;
     using System;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Art model.
     /// </summary>
-    public class ArtModel : RealmObject, IModel
+    public class ArtModel : RealmObject
     {
         public enum ArtType
         {

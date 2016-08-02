@@ -37,12 +37,25 @@ namespace CellTool
 namespace Poomsae
 {
     using System;
+    using System.Collections.Generic;
     using System.Diagnostics;
     using System.IO;
+    using System.Linq;
+    using System.Net.Http;
     using System.Threading.Tasks;
     using CsvHelper;
-    using Realms.Tool;
-    using Xamarin.Forms;
+    using Realms;
+
+    /// <summary>
+    /// メソッド拡張.
+    /// </summary>
+    public static class RealmExtension
+    {
+        public static T FirstOrNull<T>(this IEnumerable<T> values) where T : class
+        {
+            return values.DefaultIfEmpty(null).FirstOrDefault();
+        }
+    }
 
     /// <summary>
     /// Tools.
@@ -50,19 +63,30 @@ namespace Poomsae
     public static class Tools
     {
         /// <summary>
-        /// Downs the load CSV.
+        /// DB初期化やCSVをWebからロード.
         /// </summary>
         /// <returns>The load CSV.</returns>
-        public static void DownLoadCSVs()
+        public static void Initialization()
         {
             // 設定初期化.
             Tools.InitializeDB();
 
-            using (System.Net.Http.HttpClient httpClient = new System.Net.Http.HttpClient())
+            using (var httpClient = new HttpClient())
             {
                 // ローカライズファイル.
                 var localizeUrl = "http://vps6-d.kuku.lu/files/20160725-0035_2b21358ee0d5a871860a15789270a433.csv";
-                var csvString = httpClient.GetStringAsync(localizeUrl).Result;
+
+                // 取得したいWebページのURI.
+                Uri webUri = new Uri(localizeUrl);
+
+                // GetWebPageAsyncメソッドを呼び出す
+                Task<string> webTask = httpClient.GetStringAsync(webUri);
+
+                // Mainメソッドではawaitできないので、処理が完了するまで待機する.
+                webTask.Wait();
+
+                // 結果を取得.
+                var csvString = webTask.Result;
 
                 var csv = new CsvReader(new StringReader(csvString));
                 while (csv.Read())
@@ -72,57 +96,104 @@ namespace Poomsae
                     Debug.WriteLine("key:{0}, value:{1}", key, value);
                 }
 
-                // 技のテーブル初期化
-                var artModelController = new Controller<ArtModel>();
-                artModelController.DeleteAll();
-
                 string japan = "ja";
 
                 // パンチ系ファイル.
                 var punchUrl = "http://vps6-d.kuku.lu/files/20160726-0053_cd22c32f91d04333262d320a8e49fd40.csv";
-                Tools.LoadArtsCSV(artModelController, japan, (int)ArtModel.ArtType.Punch, httpClient, punchUrl);
+                int id = 0;
+                var punchs = Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Punch, httpClient, punchUrl);
 
                 // キック系ファイル.
                 var kickUrl = "http://vps6-d.kuku.lu/files/20160725-0849_fbca8e210bea1a8b35e5b12ba70b0a14.csv";
-                Tools.LoadArtsCSV(artModelController, japan, (int)ArtModel.ArtType.Kick, httpClient, kickUrl);
+                var kicks = Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Kick, httpClient, kickUrl);
 
                 // チョップ系ファイル.
                 var chopUrl = "http://vps6-d.kuku.lu/files/20160725-0856_7759c7a4b8b7b3dd5613576968451f6d.csv";
-                Tools.LoadArtsCSV(artModelController, japan, (int)ArtModel.ArtType.Chop, httpClient, chopUrl);
+                var chops = Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Chop, httpClient, chopUrl);
 
                 // 受け系ファイル.
                 var guardUrl = "http://vps6-d.kuku.lu/files/20160726-0057_e3d23c791475be2247fa60c3c7de91bd.csv";
-                Tools.LoadArtsCSV(artModelController, japan, (int)ArtModel.ArtType.Guard, httpClient, guardUrl);
+                var guards = Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Guard, httpClient, guardUrl);
 
                 // TODO: CSVがまだ.
                 /*
-                // プンセのテーブル初期化
-                var poomsaeModelController = new Controller<PoomsaeModel>();
-                poomsaeModelController.DeleteAll();
-
                 // 級プンセファイル.
                 var kyuPoomsaeUrl = "";
-                Tools.LoadPoomsaeCSV(poomsaeModelController, japan, (int)PoomsaeModel.KyuOrDan.Kyu, httpClient, kyuPoomsaeUrl);
+                var kyuPoomsaes = Tools.LoadPoomsaeCSV(japan, (int)PoomsaeModel.KyuOrDan.Kyu, httpClient, kyuPoomsaeUrl);
 
                 // 段プンセファイル.
                 var danPoomsaeUrl = "";
-                Tools.LoadPoomsaeCSV(poomsaeModelController, japan, (int)PoomsaeModel.KyuOrDan.Dan, httpClient, danPoomsaeUrl);
+                var danPoomsaes = Tools.LoadPoomsaeCSV(japan, (int)PoomsaeModel.KyuOrDan.Dan, httpClient, danPoomsaeUrl);
                 */
+
+                var realm = Realm.GetInstance();
+                using (var transaction = realm.BeginWrite())
+                {
+                    foreach (var punch in punchs)
+                    {
+                        realm.Manage<ArtModel>(punch);
+                    }
+
+                    foreach (var kick in kicks)
+                    {
+                        realm.Manage<ArtModel>(kick);
+                    }
+
+                    foreach (var chop in chops)
+                    {
+                        realm.Manage<ArtModel>(chop);
+                    }
+
+                    foreach (var guard in guards)
+                    {
+                        realm.Manage<ArtModel>(guard);
+                    }
+                     
+                    //foreach (var kyuPoomsae in kyuPoomsaes)
+                    //{
+                    //    realm.Manage<PoomsaeModel>(kyuPoomsae);
+                    //}
+
+                    //foreach (var danPoomsaes in danPoomsaes)
+                    //{
+                    //    realm.Manage<PoomsaeModel>(danPoomsaes);
+                    //}
+
+                    transaction.Commit();
+                }
             }
         }
 
         /// <summary>
-        /// 技CSVファイルのロード.
+        /// 技のCSVをロード.
         /// </summary>
-        /// <returns>The csv.</returns>
+        /// <returns>ArtsModelのリスト.</returns>
+        /// <param name="id">Id.</param>
+        /// <param name="lang">Lang.</param>
+        /// <param name="type">Type.</param>
         /// <param name="httpClient">Http client.</param>
         /// <param name="url">URL.</param>
-        public static void LoadArtsCSV(Controller<ArtModel> artModelController,
-            string lang, int type, System.Net.Http.HttpClient httpClient, string url)
+        private static List<ArtModel> LoadArtsCSV(
+            ref int id,
+            string lang, int type, HttpClient httpClient,
+            string url)
         {
-            var csvString = httpClient.GetStringAsync(url).Result;
+            var artModels = new List<ArtModel>();
 
+            // 取得したいWebページのURI.
+            Uri webUri = new Uri(url);
+
+            // GetWebPageAsyncメソッドを呼び出す
+            Task<string> webTask = httpClient.GetStringAsync(webUri);
+
+            // Mainメソッドではawaitできないので、処理が完了するまで待機する.
+            webTask.Wait();
+
+            // 結果を取得.
+            var csvString = webTask.Result;
             var csv = new CsvReader(new StringReader(csvString));
+            var now = DateTimeOffset.Now;
+
             while (csv.Read())
             {
                 var kyu = csv.GetField<int>(0);
@@ -136,27 +207,38 @@ namespace Poomsae
 
                 var artModel = new ArtModel
                 {
+                    Id = id.ToString(),
                     Language = lang,
                     Type = type,
                     Kyu = kyu,
                     Name = name,
                     Desc = desc,
                     Detail = detail,
-                    Picture = picture
+                    Picture = picture,
+                    Updated = now,
+                    Created = now
                 };
-                artModelController.Insert(artModel);
+
+                id++;
+                artModels.Add(artModel);
             }
+
+            return artModels;
         }
 
         /// <summary>
         /// プンセCSVファイルのロード.
         /// </summary>
-        /// <returns>The csv.</returns>
+        /// <returns>PoomsaeModelのリスト.</returns>
         /// <param name="httpClient">Http client.</param>
         /// <param name="url">URL.</param>
-        public static void LoadPoomsaeCSV(Controller<PoomsaeModel> poomsaeModelController,
-            string lang, int type, System.Net.Http.HttpClient httpClient, string url)
+        public static List<PoomsaeModel> LoadPoomsaeCSV(
+            string lang, int type, HttpClient httpClient,
+            string url
+        )
         {
+            var poomsaeModels = new List<PoomsaeModel>();
+
             // 取得したいWebページのURI.
             Uri webUri = new Uri(url);
 
@@ -168,8 +250,8 @@ namespace Poomsae
 
             // 結果を取得.
             var csvString = webTask.Result;
-
             var csv = new CsvReader(new StringReader(csvString));
+
             while (csv.Read())
             {
                 var kyu = csv.GetField<int>(0);
@@ -191,8 +273,11 @@ namespace Poomsae
                     Detail = detail,
                     Picture = picture
                 };
-                poomsaeModelController.Insert(poomsaeModel);
+
+                poomsaeModels.Add(poomsaeModel);
             }
+
+            return poomsaeModels;
         }
 
         /// <summary>
@@ -203,26 +288,43 @@ namespace Poomsae
         {
             Debug.WriteLine(new string('*', 10));
 
-            // ローカライズ
-            var localizeController = new Controller<Localize>();
-            // 一旦消して.
-            localizeController.DeleteAll();
+            var realm = Realm.GetInstance();
 
-            var ja = new Localize { Country = "ja" };
-            var enUS = new Localize { Country = "en-US" };
-            var kr = new Localize { Country = "kr" };
-            localizeController.Insert(ja);
-            localizeController.Insert(enUS);
-            localizeController.Insert(kr);
+            // トランザクションを開始してオブジェクトを削除します.
+            using (var trans = realm.BeginWrite())
+            {
+                realm.RemoveAll();
+                trans.Commit();
+            }
 
-            var settingController = new Controller<Setting>();
-            settingController.DeleteAll();
+            // ローカライズ.
+            var now = DateTimeOffset.Now;
+            var ja = new Localize { Id = "0", Country = "ja", Updated = now, Created = now };
+            var enUS = new Localize { Id = "1", Country = "en-US", Updated = now, Created = now };
+            var kr = new Localize { Id = "2", Country = "kr", Updated = now, Created = now };
+            var vi = new Localize { Id = "3", Country = "vi", Updated = now, Created = now };
+
+            // 設定.
             var setting = new Setting()
             {
+                Id = "0",
                 language = "ja",
-                version = "0.1"
+                version = "0.1",
+                Updated = now,
+                Created = now
             };
-            settingController.Insert(setting);
+
+            using (var transaction = realm.BeginWrite())
+            {
+                realm.Manage<Localize>(ja);
+                realm.Manage<Localize>(enUS);
+                realm.Manage<Localize>(kr);
+                realm.Manage<Localize>(vi);
+
+                realm.Manage<Setting>(setting);
+
+                transaction.Commit();
+            }
         }
     }
 }

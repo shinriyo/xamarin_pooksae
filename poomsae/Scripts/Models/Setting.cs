@@ -7,14 +7,12 @@
 namespace Poomsae
 {
     using System;
-    using System.Collections.Generic;
     using Realms;
-    using Realms.Tool;
 
     /// <summary>
     /// 現在の設定.
     /// </summary>
-    public class Setting : RealmObject, IModel
+    public class Setting : RealmObject
     {
         /// <summary>
         /// Gets or sets the identifier.

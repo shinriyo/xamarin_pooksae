@@ -10,7 +10,7 @@ namespace Poomsae
     using System.Collections.ObjectModel;
     using System.Linq;
     using System.Windows.Input;
-    using Realms.Tool;
+    using Realms;
     using VideoPlayerSample.Services;
     using Xamarin.Forms;
 
@@ -58,9 +58,8 @@ namespace Poomsae
             var kyuOrDan = (type == (int)PoomsaeModel.KyuOrDan.Kyu) ? "級" : "段";
             string iconImage = "kick_icon.png";
             string detailImageBase = @"poomsae.Resources.Punch.{0}.jpg";
-
-            var poomsaeModelController = new Controller<PoomsaeModel>();
-            var res = poomsaeModelController.GetResults().Where(d => d.Type == type);
+            var realm = Realm.GetInstance();
+            var res = realm.All<PoomsaeModel>().Where(d => d.Type == type);
             Group group = null;
 
             // 判定用.

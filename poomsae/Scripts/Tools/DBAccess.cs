@@ -6,12 +6,12 @@
 
 namespace Poomsae
 {
-    using System.Linq;
     using System;
     using System.Collections.ObjectModel;
+    using System.Linq;
     using CellTool;
+    using Realms;
     using Xamarin.Forms;
-    using Realms.Tool;
 
     /// <summary>
     /// DBA ccess.
@@ -73,8 +73,8 @@ namespace Poomsae
                                                          Action<string, string, string> action)
         {
             var groups = new ObservableCollection<Group>();
-            var artModelController = new Controller<ArtModel>();
-            var res = artModelController.GetResults().Where(d => d.Type == type);
+            var realm = Realm.GetInstance();
+            var res = realm.All<ArtModel>().Where(d => d.Type == type);
             Group group = null;
 
             // 判定用.

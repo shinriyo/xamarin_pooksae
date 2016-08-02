@@ -40,7 +40,6 @@
     <Compile Include="Scripts\Pages\DetailPages\PoomsaePage.cs" />
     <Compile Include="Scripts\Controllers\LocalizeController.cs" />
     <Compile Include="Scripts\Models\Localize.cs" />
-    <Compile Include="Scripts\Controllers\Controller.cs" />
     <Compile Include="Scripts\Models\Setting.cs" />
     <Compile Include="Scripts\Pages\DetailPages\ArtsPage.cs" />
     <Compile Include="Scripts\Models\ArtModel.cs" />

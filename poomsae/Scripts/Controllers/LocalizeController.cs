@@ -6,12 +6,8 @@
 
 namespace Poomsae
 {
-    using System.Collections.Generic;
-    using System.Diagnostics;
     using System.Linq;
-    using System.Threading.Tasks;
     using Realms;
-    using Realms.Tool;
 
     /// <summary>
     /// Localize controller.
@@ -37,8 +33,7 @@ namespace Poomsae
         /// <returns>The my setting.</returns>
         public Setting GetMySetting()
         {
-            var sc = new Controller<Setting>();
-            var setting = sc.FindAll().FirstOrNull();
+            var setting = this.realm.All<Setting>().FirstOrNull();
             return setting;
         }
 

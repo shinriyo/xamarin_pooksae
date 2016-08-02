@@ -7,14 +7,13 @@
 namespace Poomsae
 {
     using Realms;
-    using Realms.Tool;
     using System;
     using System.Collections.Generic;
 
     /// <summary>
     /// Poomsae model.
     /// </summary>
-    public class PoomsaeModel : RealmObject, IModel
+    public class PoomsaeModel : RealmObject
     {
         public enum KyuOrDan
         {

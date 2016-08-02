@@ -7,14 +7,12 @@
 namespace Poomsae
 {
     using System;
-    using System.Collections.Generic;
     using Realms;
-    using Realms.Tool;
 
     /// <summary>
     /// Localize Realm.
     /// </summary>
-    public class Localize : RealmObject, IModel
+    public class Localize : RealmObject
     {
         /// <summary>
         /// Gets or sets the identifier.

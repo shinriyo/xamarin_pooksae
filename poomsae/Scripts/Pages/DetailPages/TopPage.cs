@@ -62,8 +62,8 @@ namespace Poomsae
                 var result = await DisplayActionSheet(message, cancel, ok);
                 if (result == ok)
                 {
-                    // CSVをWebからロードする.
-                    Tools.DownLoadCSVs();
+                    // DB初期化やCSVをWebからロード.
+                    Tools.Initialization();
                 }
             };
 
