@@ -12,7 +12,7 @@ namespace Poomsae
     /// <summary>
     /// 現在の設定.
     /// </summary>
-    public class Setting : RealmObject
+    public class SettingModel : RealmObject
     {
         /// <summary>
         /// Gets or sets the identifier.

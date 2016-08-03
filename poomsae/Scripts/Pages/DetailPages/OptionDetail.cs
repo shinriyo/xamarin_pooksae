@@ -45,6 +45,25 @@ namespace Poomsae
             base.Title = title;
 
             var layout = new StackLayout();
+
+            // ローカライズ系.
+            //this.CreateLocalize(layout);
+
+            // 連絡先系.
+            this.CreateContact(layout);
+
+            // 生成したラベルをこのビューの子要素とする.
+            base.Content = layout;
+        }
+        #endregion
+
+        #region Private Methods
+        /// <summary>
+        /// Creates the localize.
+        /// </summary>
+        /// <param name="layout">Layout.</param>
+        public void CreateLocalize(StackLayout layout)
+        {
             // TODO: ローカライズ.
             var selectTitle = "言語選択";
 
@@ -57,8 +76,8 @@ namespace Poomsae
 
             layout.Children.Add(label);
 
-            var lc = new LocalizeController();
-            var mySetting = lc.GetMySetting();
+            var realm = Realm.GetInstance();
+            var mySetting = realm.All<SettingModel>().FirstOrNull();
 
             // ボタンを生成.
             List<Button> buttons = new List<Button>();
@@ -81,9 +100,12 @@ namespace Poomsae
                 button.Clicked += (s, a) =>
                 {
                     base.DisplayAlert(dialogTitle, language + "に変更されました", "OK");
+                    // トランザクションを開始して、オブジェクトを更新します
                     using (var trans = Realm.GetInstance().BeginWrite())
                     {
-                        // トランザクションがないと怒られる.
+                        // 再度取得が必須.
+                        realm = Realm.GetInstance();
+                        mySetting = realm.All<SettingModel>().FirstOrNull();
                         mySetting.language = language;
                         trans.Commit();
                     }
@@ -96,7 +118,14 @@ namespace Poomsae
                     }
                 };
             }
+        }
 
+        /// <summary>
+        /// Creates the contact.
+        /// </summary>
+        /// <param name="layout">Layout.</param>
+        public void CreateContact(StackLayout layout)
+        {
             var appointmentLabel = new Label()
             {
                 FontSize = 30,
@@ -120,13 +149,7 @@ namespace Poomsae
                 Device.OpenUri(uri);
             };
             layout.Children.Add(appointmentButton);
-
-            // 生成したラベルをこのビューの子要素とする.
-            base.Content = layout;
         }
-        #endregion
-
-        #region Private Methods
         #endregion
     }
 }

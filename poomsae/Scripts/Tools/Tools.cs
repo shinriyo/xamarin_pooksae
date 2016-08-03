@@ -101,19 +101,19 @@ namespace Poomsae
                 // パンチ系ファイル.
                 var punchUrl = "http://vps6-d.kuku.lu/files/20160726-0053_cd22c32f91d04333262d320a8e49fd40.csv";
                 int id = 0;
-                var punchs = Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Punch, httpClient, punchUrl);
+                Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Punch, httpClient, punchUrl);
 
                 // キック系ファイル.
                 var kickUrl = "http://vps6-d.kuku.lu/files/20160725-0849_fbca8e210bea1a8b35e5b12ba70b0a14.csv";
-                var kicks = Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Kick, httpClient, kickUrl);
+                Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Kick, httpClient, kickUrl);
 
                 // チョップ系ファイル.
                 var chopUrl = "http://vps6-d.kuku.lu/files/20160725-0856_7759c7a4b8b7b3dd5613576968451f6d.csv";
-                var chops = Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Chop, httpClient, chopUrl);
+                Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Chop, httpClient, chopUrl);
 
                 // 受け系ファイル.
                 var guardUrl = "http://vps6-d.kuku.lu/files/20160726-0057_e3d23c791475be2247fa60c3c7de91bd.csv";
-                var guards = Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Guard, httpClient, guardUrl);
+                Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Guard, httpClient, guardUrl);
 
                 // TODO: CSVがまだ.
                 /*
@@ -125,61 +125,22 @@ namespace Poomsae
                 var danPoomsaeUrl = "";
                 var danPoomsaes = Tools.LoadPoomsaeCSV(japan, (int)PoomsaeModel.KyuOrDan.Dan, httpClient, danPoomsaeUrl);
                 */
-
-                var realm = Realm.GetInstance();
-                using (var transaction = realm.BeginWrite())
-                {
-                    foreach (var punch in punchs)
-                    {
-                        realm.Manage<ArtModel>(punch);
-                    }
-
-                    foreach (var kick in kicks)
-                    {
-                        realm.Manage<ArtModel>(kick);
-                    }
-
-                    foreach (var chop in chops)
-                    {
-                        realm.Manage<ArtModel>(chop);
-                    }
-
-                    foreach (var guard in guards)
-                    {
-                        realm.Manage<ArtModel>(guard);
-                    }
-                     
-                    //foreach (var kyuPoomsae in kyuPoomsaes)
-                    //{
-                    //    realm.Manage<PoomsaeModel>(kyuPoomsae);
-                    //}
-
-                    //foreach (var danPoomsaes in danPoomsaes)
-                    //{
-                    //    realm.Manage<PoomsaeModel>(danPoomsaes);
-                    //}
-
-                    transaction.Commit();
-                }
             }
         }
 
         /// <summary>
         /// 技のCSVをロード.
         /// </summary>
-        /// <returns>ArtsModelのリスト.</returns>
         /// <param name="id">Id.</param>
         /// <param name="lang">Lang.</param>
         /// <param name="type">Type.</param>
         /// <param name="httpClient">Http client.</param>
         /// <param name="url">URL.</param>
-        private static List<ArtModel> LoadArtsCSV(
+        private static void LoadArtsCSV(
             ref int id,
             string lang, int type, HttpClient httpClient,
             string url)
         {
-            var artModels = new List<ArtModel>();
-
             // 取得したいWebページのURI.
             Uri webUri = new Uri(url);
 
@@ -194,36 +155,40 @@ namespace Poomsae
             var csv = new CsvReader(new StringReader(csvString));
             var now = DateTimeOffset.Now;
 
-            while (csv.Read())
+            var realm = Realm.GetInstance();
+            using (var transaction = realm.BeginWrite())
             {
-                var kyu = csv.GetField<int>(0);
-                var name = csv.GetField<string>(1);
-                var desc = csv.GetField<string>(2);
-                var detail = csv.GetField<string>(3);
-                var picture = csv.GetField<string>(4);
-                Debug.WriteLine("Kyu:{0}, Name:{1}, Desc:{2}, " +
-                                "Detail:{3}, Picture{0} ",
-                                kyu, name, desc, detail, picture);
-
-                var artModel = new ArtModel
+                while (csv.Read())
                 {
-                    Id = id.ToString(),
-                    Language = lang,
-                    Type = type,
-                    Kyu = kyu,
-                    Name = name,
-                    Desc = desc,
-                    Detail = detail,
-                    Picture = picture,
-                    Updated = now,
-                    Created = now
-                };
+                    var kyu = csv.GetField<int>(0);
+                    var name = csv.GetField<string>(1);
+                    var desc = csv.GetField<string>(2);
+                    var detail = csv.GetField<string>(3);
+                    var picture = csv.GetField<string>(4);
+                    Debug.WriteLine("Kyu:{0}, Name:{1}, Desc:{2}, " +
+                                                "Detail:{3}, Picture{0} ",
+                                                kyu, name, desc, detail, picture);
 
-                id++;
-                artModels.Add(artModel);
+                    var artModel = new ArtModel
+                    {
+                        Id = id.ToString(),
+                        Language = lang,
+                        Type = type,
+                        Kyu = kyu,
+                        Name = name,
+                        Desc = desc,
+                        Detail = detail,
+                        Picture = picture,
+                        Updated = now,
+                        Created = now
+                    };
+
+                    realm.Manage<ArtModel>(artModel);
+                    id++;
+                }
+
+                transaction.Commit();
             }
-
-            return artModels;
         }
 
         /// <summary>
@@ -243,7 +208,7 @@ namespace Poomsae
             Uri webUri = new Uri(url);
 
             // GetWebPageAsyncメソッドを呼び出す
-            Task<string> webTask = httpClient.GetStringAsync(url);
+            Task<string> webTask = httpClient.GetStringAsync(webUri);
 
             // Mainメソッドではawaitできないので、処理が完了するまで待機する.
             webTask.Wait();
@@ -305,7 +270,7 @@ namespace Poomsae
             var vi = new Localize { Id = "3", Country = "vi", Updated = now, Created = now };
 
             // 設定.
-            var setting = new Setting()
+            var setting = new SettingModel()
             {
                 Id = "0",
                 language = "ja",
@@ -321,7 +286,7 @@ namespace Poomsae
                 realm.Manage<Localize>(kr);
                 realm.Manage<Localize>(vi);
 
-                realm.Manage<Setting>(setting);
+                realm.Manage<SettingModel>(setting);
 
                 transaction.Commit();
             }
