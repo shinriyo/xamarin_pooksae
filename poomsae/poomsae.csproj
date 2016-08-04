@@ -115,6 +115,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="FodyWeavers.xml" />
+    <None Include="Resources\Punch\NoImage.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scripts\Pages\PoomsaeDetailPages\" />
