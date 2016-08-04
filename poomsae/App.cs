@@ -1,23 +1,24 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="MyMasterDetailPage.cs" company="shinriyo">
+// <copyright file="App.cs" company="shinriyo">
 //     Company copyright tag.
 // </copyright>
 //-----------------------------------------------------------------------
 
 namespace Poomsae
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
     using Xamarin.Forms;
-    using VideoPlayerSample.Services;
 
     /// <summary>
     /// App.
     /// </summary>
     public class App : Application
     {
+        /// <summary>
+        /// The version.
+        /// 今後リリース毎に編集する.
+        /// </summary>
+        public const string version = "0.1";
+
         /// <summary>
         /// Initializes a new instance of the <see cref="T:Poomsae.App"/> class.
         /// </summary>

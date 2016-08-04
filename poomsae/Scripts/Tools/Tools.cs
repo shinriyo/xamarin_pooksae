@@ -274,7 +274,7 @@ namespace Poomsae
             {
                 Id = "0",
                 language = "ja",
-                version = "0.1",
+                version = App.version,
                 Updated = now,
                 Created = now
             };
