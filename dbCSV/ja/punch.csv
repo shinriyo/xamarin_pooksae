@@ -1,3 +1,5 @@
--- Kyu, Name, Desc, Detail, Picture
-1, "チュモクチルギ", "パンチ", "パンチします.", "VerticalPunch"
-2, "ジョチョチルギ", "両手突き", "両手でパンチします.", "VerticalPunch"
+"Kyu", "Name", "Desc", "Detail", "Picture",
+1, "チュモクチルギ", "正拳", "パンチします.", "VerticalPunch",
+1, "トゥンチュモクチギギ", "裏拳", "裏拳パンチします.", "VerticalPunch",
+1, "メェヂュモクチギ", "槌拳", "槌拳パンチします.", "VerticalPunch",
+2, "ジョチョチルギ", "両手突き", "両手でパンチします.", "VerticalPunch",
