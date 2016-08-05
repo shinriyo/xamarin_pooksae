@@ -104,7 +104,9 @@ namespace Poomsae
                 var data = CreateData(name, desc, detail, iconImage,
                                       string.Format(detailImageBase, picture), action);
                 group.Add(data);
-                nowKyu = kyu; // 更新.
+
+                // 更新.
+                nowKyu = kyu;
             }
 
             // 1つでもあれば最後に追加.
