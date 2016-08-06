@@ -140,7 +140,7 @@ namespace Poomsae
         public static ObservableCollection<Group> GetKicks(Action<string, string, string> action)
         {
             string iconImage = "kick_icon.png";
-            string detailImageBase = @"poomsae.Resources.Punch.{0}.jpg";
+            string detailImageBase = @"poomsae.Resources.Kick.{0}.jpg";
             return Common((int)ArtModel.ArtType.Kick, iconImage, detailImageBase, action);
         }
 
@@ -152,7 +152,7 @@ namespace Poomsae
         public static ObservableCollection<Group> GetChops(Action<string, string, string> action)
         {
             string iconImage = "chop_icon.png";
-            string detailImageBase = @"poomsae.Resources.Punch.{0}.jpg";
+            string detailImageBase = @"poomsae.Resources.Chop.{0}.jpg";
             return Common((int)ArtModel.ArtType.Chop, iconImage, detailImageBase, action);
         }
 
@@ -164,14 +164,8 @@ namespace Poomsae
         public static ObservableCollection<Group> GetGuards(Action<string, string, string> action)
         {
             string iconImage = "guard_icon.png";
-            string detailImageBase = @"poomsae.Resources.Punch.{0}.jpg";
+            string detailImageBase = @"poomsae.Resources.Guard.{0}.jpg";
             return Common((int)ArtModel.ArtType.Guard, iconImage, detailImageBase, action);
-            //手刀下段受け  ソンナルアレマッキ
-            //手刀打ち メチュモネリョチギ
-            //手刀中段受け  ソンナルモントンマッキ
-            //貫手縦突き   ピョンソクセオチルギ
-            //拳下段ささえ受け    コドロアレマッキ
-            //拳中段ささえ受け    コドロモントンマッキ
         }
     }
 }

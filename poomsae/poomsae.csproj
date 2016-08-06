@@ -117,6 +117,10 @@
     <None Include="FodyWeavers.xml" />
     <None Include="Resources\Punch\NoImage.jpg" />
     <None Include="Resources\Kick\NoImage.jpg" />
+    <None Include="Resources\KyuPoomsae\NoImage.jpg" />
+    <None Include="Resources\DanPoomsae\NoImage.jpg" />
+    <None Include="Resources\Chop\NoImage.jpg" />
+    <None Include="Resources\Guard\NoImage.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scripts\Pages\PoomsaeDetailPages\" />
@@ -125,6 +129,10 @@
     <Folder Include="Resources\Punch\" />
     <Folder Include="Scripts\Services\" />
     <Folder Include="Resources\Kick\" />
+    <Folder Include="Resources\KyuPoomsae\" />
+    <Folder Include="Resources\DanPoomsae\" />
+    <Folder Include="Resources\Chop\" />
+    <Folder Include="Resources\Guard\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Scripts\Pages\DetailPages\ArtDescPage.xaml">

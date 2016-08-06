@@ -116,7 +116,6 @@ namespace Poomsae
                 Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Guard, httpClient, guardUrl);
 
                 // TODO: CSVがまだ.
-                /*
                 // 級プンセファイル.
                 var kyuPoomsaeUrl = "";
                 var kyuPoomsaes = Tools.LoadPoomsaeCSV(japan, (int)PoomsaeModel.KyuOrDan.Kyu, httpClient, kyuPoomsaeUrl);
@@ -124,7 +123,6 @@ namespace Poomsae
                 // 段プンセファイル.
                 var danPoomsaeUrl = "";
                 var danPoomsaes = Tools.LoadPoomsaeCSV(japan, (int)PoomsaeModel.KyuOrDan.Dan, httpClient, danPoomsaeUrl);
-                */
             }
         }
 
