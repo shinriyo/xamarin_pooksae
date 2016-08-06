@@ -1,9 +1,9 @@
--- Kyu, Name, Desc, Detail, Picture
-"太極1章(テグ イルジャン)", "", "hoge->bar", "hoge.png",
-"太極2章(テグ イージャン)", "", "hoge->bar", "hoge.png",
-"太極3章(テグ サムジャン)", "", "hoge->bar", "hoge.png",
-"太極4章(テグ サージャン)", "", "hoge->bar", "hoge.png",
-"太極5章(テグ オージャン)", "", "hoge->bar", "hoge.png",
-"太極6章(テグ ユッジャン)", "", "hoge->bar", "hoge.png",
-"太極7章(テグ チルジャン)", "", "hoge->bar", "hoge.png",
-"太極8章(テグ パルジャン)", "", "hoge->bar", "hoge.png",
+"Dan", "Name", "Desc", "Detail", "Picture"
+1, "太極1章(テグ イルジャン)", "", "hoge->bar", "NoImage"
+2, "太極2章(テグ イージャン)", "", "hoge->bar", "NoImage"
+3, "太極3章(テグ サムジャン)", "", "hoge->bar", "NoImage"
+4, "太極4章(テグ サージャン)", "", "hoge->bar", "NoImage"
+5, "太極5章(テグ オージャン)", "", "hoge->bar", "NoImage"
+6, "太極6章(テグ ユッジャン)", "", "hoge->bar", "NoImage"
+7, "太極7章(テグ チルジャン)", "", "hoge->bar", "NoImage"
+8, "太極8章(テグ パルジャン)", "", "hoge->bar", "NoImage"

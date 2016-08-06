@@ -1,6 +1,6 @@
--- Dan, Name, Desc, Detail, Picture
-1, "高麗(コウリョ)", "", "hoge->bar", "hoge.png"
-2, "金剛(クンガン)", "", "hoge->bar", "hoge.png"
-3, "太白(テベック)", "", "hoge->bar", "hoge.png"
-4, "平原(ピョンウォン)", "", "hoge->bar", "hoge.png"
-5, "十進(シッチン)", "", "hoge->bar", "hoge.png"
+"Dan", "Name", "Desc", "Detail", "Picture"
+1, "高麗(コウリョ)", "", "hoge->bar", "NoImage"
+2, "金剛(クンガン)", "", "hoge->bar", "NoImage"
+3, "太白(テベック)", "", "hoge->bar", "NoImage"
+4, "平原(ピョンウォン)", "", "hoge->bar", "NoImage"
+5, "十進(シッチン)", "", "hoge->bar", "NoImage"

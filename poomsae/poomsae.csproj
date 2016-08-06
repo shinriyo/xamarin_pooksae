@@ -116,6 +116,7 @@
     <None Include="packages.config" />
     <None Include="FodyWeavers.xml" />
     <None Include="Resources\Punch\NoImage.jpg" />
+    <None Include="Resources\Kick\NoImage.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scripts\Pages\PoomsaeDetailPages\" />
@@ -123,6 +124,7 @@
     <Folder Include="Resources\" />
     <Folder Include="Resources\Punch\" />
     <Folder Include="Scripts\Services\" />
+    <Folder Include="Resources\Kick\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Scripts\Pages\DetailPages\ArtDescPage.xaml">

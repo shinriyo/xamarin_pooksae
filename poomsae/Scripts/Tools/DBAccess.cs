@@ -27,11 +27,11 @@ namespace Poomsae
         /// <param name="name">Name.</param>
         /// <param name="desc">Desc.</param>
         /// <param name="detail">Detail.</param>
-        /// <param name="imageName">Image name.</param>
+        /// <param name="iconImage">Icon Image.</param>
         /// <param name="image">Image.</param>
         /// <param name="action">Action.</param>
         private static Data CreateData(
-            string name, string desc, string detail, string imageName,
+            string name, string desc, string detail, string iconImage,
             string image,
             Action<string, string, string> action)
         {
@@ -39,7 +39,7 @@ namespace Poomsae
             {
                 Name = name,
                 Description = desc,
-                Picture = imageName,
+                Picture = iconImage,
                 OnClick = new Command(() =>
                 {
                     action(name, detail, image);
@@ -87,8 +87,10 @@ namespace Poomsae
                 var desc = item.Desc;
                 var detail = item.Detail;
                 var picture = item.Picture;
-                System.Diagnostics.Debug.WriteLine("{0} {1} {2} {3} {4}",
-                                                   kyu, name, desc, detail, picture);
+                System.Diagnostics.Debug.WriteLine(
+                    "Common Log: kyu:{0} name:{1} desc:{2} detail:{3} :picture:{4}",
+                    kyu, name, desc, detail, picture);
+                
                 // 変わった時かつ最初ではない前ループのグループを追加.
                 if (nowKyu != kyu && nowKyu != initKyu)
                 {

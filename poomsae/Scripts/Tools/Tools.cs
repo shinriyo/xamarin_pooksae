@@ -104,7 +104,6 @@ namespace Poomsae
                 Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Punch, httpClient, punchUrl);
 
                 // キック系ファイル.
-                //var kickUrl = "http://vps6-d.kuku.lu/files/20160725-0849_fbca8e210bea1a8b35e5b12ba70b0a14.csv";
                 var kickUrl = "http://vps6-d.kuku.lu/files/20160805-0857_eadecb10c6bbc69c0b54e2b281359e1b.csv";
                 Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Kick, httpClient, kickUrl);
 
