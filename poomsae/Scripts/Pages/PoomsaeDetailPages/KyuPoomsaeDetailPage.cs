@@ -8,7 +8,9 @@ namespace Poomsae
 {
     using System;
     using System.Collections.ObjectModel;
+    using System.Linq;
     using System.Windows.Input;
+    using Realms;
     using Xamarin.Forms;
 
     /// <summary>
@@ -21,18 +23,33 @@ namespace Poomsae
         /// </summary>
         public KyuPoomsaeDetailPage()
         {
-            this.Title = "級プンセ詳細"; //ページのタイトル
+            // ページのタイトル.
+            this.Title = "級プンセ詳細";
 
-            var ar = new ObservableCollection<Group> {
-                base.CreateGroup("太極1章(テグ イルジャン)", "hoge->bar", "hoge.png"),
-                base.CreateGroup("太極2章(テグ イージャン)", "hoge->bar", "hoge.png"),
-                base.CreateGroup("太極3章(テグ サムジャン)", "hoge->bar", "hoge.png"),
-                base.CreateGroup("太極4章(テグ サージャン)", "hoge->bar", "hoge.png"),
-                base.CreateGroup("太極5章(テグ オージャン)", "hoge->bar", "hoge.png"),
-                base.CreateGroup("太極6章(テグ ユッジャン)", "hoge->bar", "hoge.png"),
-                base.CreateGroup("太極7章(テグ チルジャン)", "hoge->bar", "hoge.png"),
-                base.CreateGroup("太極8章(テグ パルジャン)", "hoge->bar", "hoge.png"),
-            };
+            var groups = new ObservableCollection<Group>();
+            var realm = Realm.GetInstance();
+            var res = realm.All<PoomsaeModel>().Where(d => d.Type == (int)PoomsaeModel.KyuOrDan.Kyu)
+                           .OrderBy(d => d.Kyu);
+
+            foreach (var item in res)
+            {
+                groups.Add(base.CreateGroup(
+                    item.Name,
+                    item.Desc,
+                    item.Picture
+                ));
+            }
+
+            //var ar = new ObservableCollection<Group> {
+            //    base.CreateGroup("太極1章(テグ イルジャン)", "hoge->bar", "hoge.png"),
+            //    base.CreateGroup("太極2章(テグ イージャン)", "hoge->bar", "hoge.png"),
+            //    base.CreateGroup("太極3章(テグ サムジャン)", "hoge->bar", "hoge.png"),
+            //    base.CreateGroup("太極4章(テグ サージャン)", "hoge->bar", "hoge.png"),
+            //    base.CreateGroup("太極5章(テグ オージャン)", "hoge->bar", "hoge.png"),
+            //    base.CreateGroup("太極6章(テグ ユッジャン)", "hoge->bar", "hoge.png"),
+            //    base.CreateGroup("太極7章(テグ チルジャン)", "hoge->bar", "hoge.png"),
+            //    base.CreateGroup("太極8章(テグ パルジャン)", "hoge->bar", "hoge.png"),
+            //};
 
             // テンプレートの作成（ImageCell使用）.
             var cell = new DataTemplate(typeof(ImageCell));
@@ -46,7 +63,7 @@ namespace Poomsae
             // リストビューを生成する.
             var listView = new ListView
             {
-                ItemsSource = ar,
+                ItemsSource = groups,
                 ItemTemplate = cell,
                 IsGroupingEnabled = true,
                 GroupDisplayBinding = new Binding("Title"),

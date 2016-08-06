@@ -8,7 +8,9 @@ namespace Poomsae
 {
     using System;
     using System.Collections.ObjectModel;
+    using System.Linq;
     using System.Windows.Input;
+    using Realms;
     using Xamarin.Forms;
 
     /// <summary>
@@ -21,15 +23,30 @@ namespace Poomsae
         /// </summary>
         public DanPoomsaeDetailPage()
         {
-            this.Title = "段プンセ詳細"; //ページのタイトル
+            // ページのタイトル.
+            this.Title = "段プンセ詳細";
 
-            var ar = new ObservableCollection<Group> {
-                base.CreateGroup("高麗(コウリョ)", "hoge->bar", "hoge.png"),
-                base.CreateGroup("金剛(クンガン)", "hoge->bar", "hoge.png"),
-                base.CreateGroup("太白(テベック)", "hoge->bar", "hoge.png"),
-                base.CreateGroup("平原(ピョンウォン)", "hoge->bar", "hoge.png"),
-                base.CreateGroup("十進(シッチン)", "hoge->bar", "hoge.png"),
-            };
+            var groups = new ObservableCollection<Group>();
+            var realm = Realm.GetInstance();
+            var res = realm.All<PoomsaeModel>().Where(d => d.Type == (int)PoomsaeModel.KyuOrDan.Dan)
+                           .OrderBy(d => d.Kyu);
+
+            foreach (var item in res)
+            {
+                groups.Add(base.CreateGroup(
+                    item.Name,
+                    item.Desc,
+                    item.Picture
+                ));
+            }
+
+            //var ar = new ObservableCollection<Group> {
+            //    base.CreateGroup("高麗(コウリョ)", "hoge->bar", "hoge.png"),
+            //    base.CreateGroup("金剛(クンガン)", "hoge->bar", "hoge.png"),
+            //    base.CreateGroup("太白(テベック)", "hoge->bar", "hoge.png"),
+            //    base.CreateGroup("平原(ピョンウォン)", "hoge->bar", "hoge.png"),
+            //    base.CreateGroup("十進(シッチン)", "hoge->bar", "hoge.png"),
+            //};
 
             // テンプレートの作成（ImageCell使用）.
             var cell = new DataTemplate(typeof(ImageCell));
@@ -43,16 +60,11 @@ namespace Poomsae
             // リストビューを生成する.
             var listView = new ListView
             {
-                ItemsSource = ar,
+                ItemsSource = groups,
                 ItemTemplate = cell,
                 IsGroupingEnabled = true,
                 GroupDisplayBinding = new Binding("Title"),
             };
-
-            // layout.Children.Add(listView);
-
-            // 生成したラベルをこのビューの子要素とする.
-            // base.Content = layout;
 
             base.Content = new StackLayout
             {
