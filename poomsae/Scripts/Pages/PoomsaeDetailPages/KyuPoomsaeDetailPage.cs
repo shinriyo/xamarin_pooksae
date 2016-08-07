@@ -6,10 +6,8 @@
 
 namespace Poomsae
 {
-    using System;
     using System.Collections.ObjectModel;
     using System.Linq;
-    using System.Windows.Input;
     using Realms;
     using Xamarin.Forms;
 
@@ -27,7 +25,8 @@ namespace Poomsae
             this.Title = "級プンセ詳細";
 
             // 詳細画面のパス.
-            string detailImageBase = @"poomsae.Resources.Chop.{0}.jpg";
+            string detailImageBase = @"poomsae.Resources.KyuPoomsae.{0}.jpg";
+            string stepFormat = @"poomsae.Resources.KyuPoomsae.Step.pal{0}.png";
 
             var groups = new ObservableCollection<Group>();
             var realm = Realm.GetInstance();
@@ -38,22 +37,15 @@ namespace Poomsae
             {
                 groups.Add(base.CreateGroup(
                     item.Name,
-                    item.Desc,
-                    //item.Picture
-                    string.Format(detailImageBase, item.Picture)
+                    // パス付き画像.
+                    string.Format(detailImageBase, item.Picture),
+                    // パス付きステップ画像.
+                    string.Format(stepFormat, item.Kyu),
+                    item.Meaning,
+                    item.Order,
+                    item.Detail
                 ));
             }
-
-            //var ar = new ObservableCollection<Group> {
-            //    base.CreateGroup("太極1章(テグ イルジャン)", "hoge->bar", "hoge.png"),
-            //    base.CreateGroup("太極2章(テグ イージャン)", "hoge->bar", "hoge.png"),
-            //    base.CreateGroup("太極3章(テグ サムジャン)", "hoge->bar", "hoge.png"),
-            //    base.CreateGroup("太極4章(テグ サージャン)", "hoge->bar", "hoge.png"),
-            //    base.CreateGroup("太極5章(テグ オージャン)", "hoge->bar", "hoge.png"),
-            //    base.CreateGroup("太極6章(テグ ユッジャン)", "hoge->bar", "hoge.png"),
-            //    base.CreateGroup("太極7章(テグ チルジャン)", "hoge->bar", "hoge.png"),
-            //    base.CreateGroup("太極8章(テグ パルジャン)", "hoge->bar", "hoge.png"),
-            //};
 
             // テンプレートの作成（ImageCell使用）.
             var cell = new DataTemplate(typeof(ImageCell));

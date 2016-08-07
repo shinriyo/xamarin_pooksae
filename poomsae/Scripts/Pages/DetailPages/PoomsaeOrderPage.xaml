@@ -4,8 +4,12 @@
 		<StackLayout HorizontalOptions="FillAndExpand" Padding="2, 10, 2, 10" Spacing="3">
 			<Label Text="{Binding Name}" FontSize="Large" HorizontalTextAlignment="Center" />
 			<BoxView HeightRequest="1" WidthRequest="100" BackgroundColor="Gray" />
+			<Label Text="{Binding Hangl, StringFormat='[ハングル: {0}]'}" />
 			<Image Source="{Binding Image}" />
-			<Label Text="{Binding Desc, StringFormat='Description: {0}'}" />
+			<Image Source="{Binding ActionStep}" />
+			<Label Text="{Binding Meaning, StringFormat='意味: {0}'}" />
+			<Label Text="{Binding Order, StringFormat='順序: {0}'}" />
+			<Label Text="{Binding Detail, StringFormat='詳細: {0}'}" />
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

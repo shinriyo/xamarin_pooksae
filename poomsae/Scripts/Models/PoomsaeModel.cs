@@ -51,10 +51,22 @@ namespace Poomsae
         public string Name { get; set; }
 
         /// <summary>
-        /// 説明.
+        /// ハングル.
         /// </summary>
         /// <value>The value.</value>
-        public string Desc { get; set; }
+        public string Hangl { get; set; }
+
+        /// <summary>
+        /// 意味.
+        /// </summary>
+        /// <value>The meaning.</value>
+        public string Meaning { get; set; }
+
+        /// <summary>
+        /// 順序.
+        /// </summary>
+        /// <value>The value.</value>
+        public string Order { get; set; }
 
         /// <summary>
         /// 詳細.
@@ -68,16 +80,9 @@ namespace Poomsae
         /// <value>The value.</value>
         public string Picture { get; set; }
 
-        // 型の形.
-        //public string ShapePicture { get; set; }
-
-        // 意味.
-        //public string Meaning { get; set; }
-
         public override string ToString()
         {
-            return string.Format("[ArtModel: Id={0}, Created={1}, Updated={2}, Country={3}, Key={4}, Name={5}, Desc={6}, Detail={7}, Picture={8}]", Id, Created, Updated, Language, Type, Name, Desc, Detail, Picture);
+            return string.Format("[PoomsaeModel: Id={0}, Created={1}, Updated={2}, Language={3}, Type={4}, Kyu={5}, Name={6}, Hangl={7}, Meaning={8}, Order={9}, Detail={10}, Picture={11}]", Id, Created, Updated, Language, Type, Kyu, Name, Hangl, Meaning, Order, Detail, Picture);
         }
     }
 }
-

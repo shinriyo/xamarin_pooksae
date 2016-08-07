@@ -116,6 +116,9 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="FodyWeavers.xml" />
+    <None Include="Scripts\Pages\DetailPages\PlayVideoPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scripts\Pages\PoomsaeDetailPages\" />
@@ -132,6 +135,8 @@
     <Folder Include="Resources\Stances\" />
     <Folder Include="Resources\Pushes\" />
     <Folder Include="Resources\Jump\" />
+    <Folder Include="Resources\DanPoomsae\Step\" />
+    <Folder Include="Resources\KyuPoomsae\Step\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Scripts\Pages\DetailPages\ArtDescPage.xaml">
@@ -139,9 +144,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Punch\VerticalPunch.jpg" />
     <EmbeddedResource Include="Scripts\Pages\DetailPages\PoomsaeOrderPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Scripts\Pages\DetailPages\PlayVideoPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Punch\NoImage.jpg" />
@@ -154,6 +156,14 @@
     <EmbeddedResource Include="Resources\DanPoomsae\NoImage.jpg" />
     <EmbeddedResource Include="Resources\Chop\NoImage.jpg" />
     <EmbeddedResource Include="Resources\Stances\NoImage.jpg" />
+    <EmbeddedResource Include="Resources\KyuPoomsae\Step\pal1.png" />
+    <EmbeddedResource Include="Resources\KyuPoomsae\Step\pal2.png" />
+    <EmbeddedResource Include="Resources\KyuPoomsae\Step\pal3.png" />
+    <EmbeddedResource Include="Resources\KyuPoomsae\Step\pal5.png" />
+    <EmbeddedResource Include="Resources\KyuPoomsae\Step\pal4.png" />
+    <EmbeddedResource Include="Resources\KyuPoomsae\Step\pal7.png" />
+    <EmbeddedResource Include="Resources\KyuPoomsae\Step\pal6.png" />
+    <EmbeddedResource Include="Resources\KyuPoomsae\Step\pal8.png" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

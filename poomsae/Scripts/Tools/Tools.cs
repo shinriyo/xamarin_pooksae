@@ -104,28 +104,28 @@ namespace Poomsae
                 string japan = "ja";
 
                 // パンチ系ファイル.
-                var punchUrl = "https://docs.google.com/spreadsheets/d/1PRKvYmOza7H6U7qtgpz-ZmR7JZIwIzQ1ExUthnvrvXc/pub?gid=1793064789&single=true&output=csv";
+                var punchUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/punch.csv";
                 int id = 0;
                 Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Punch, httpClient, punchUrl);
 
                 // キック系ファイル.
-                var kickUrl = "https://docs.google.com/spreadsheets/d/1Cq5AwGlCaiDrX6tIN2SFn5ERl8bMIoxfRv8u1SQBEd0/pub?gid=405743383&single=true&output=csv";
+                var kickUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/kick.csv";
                 Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Kick, httpClient, kickUrl);
 
                 // チョップ系ファイル.
-                var chopUrl = "https://docs.google.com/spreadsheets/d/1Om6NobK24YPRqS1h9DycO3VjmCg6kJpJI1gZNCtwSz8/pub?gid=857550099&single=true&output=csv";
+                var chopUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/chop.csv";
                 Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Chop, httpClient, chopUrl);
 
                 // 受け系ファイル.
-                var guardUrl = "https://docs.google.com/spreadsheets/d/15Mm0Wv8H6m0x5oWZ6aKdrZmIaMRPJMOYJTrky-g-6S4/pub?gid=2086855982&single=true&output=csv";
+                var guardUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/guard.csv";
                 Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Guard, httpClient, guardUrl);
 
                 // 級プンセファイル.
-                var kyuPoomsaeUrl = "https://docs.google.com/spreadsheets/d/17yOM2QBAWozdLA27qOhXePZyV6KxHsD-tsA0A3IkZlo/pub?gid=1480111765&single=true&output=csv";
+                var kyuPoomsaeUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/poomsae_kyu.csv";
                 Tools.LoadPoomsaeCSV(japan, (int)PoomsaeModel.KyuOrDan.Kyu, httpClient, kyuPoomsaeUrl);
 
                 // 段プンセファイル.
-                var danPoomsaeUrl = "https://docs.google.com/spreadsheets/d/1MEN6zNT4ULM67KCAOBMGigt3iojb8PSFU4yLmLTIqvM/pub?gid=1578289894&single=true&output=csv";
+                var danPoomsaeUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/poomsae_dan.csv";
                 Tools.LoadPoomsaeCSV(japan, (int)PoomsaeModel.KyuOrDan.Dan, httpClient, danPoomsaeUrl);
             }
 
@@ -227,12 +227,16 @@ namespace Poomsae
                 {
                     var kyu = csv.GetField<int>(0);
                     var name = csv.GetField<string>(1);
-                    var desc = csv.GetField<string>(2);
-                    var detail = csv.GetField<string>(3);
-                    var picture = csv.GetField<string>(4);
-                    Debug.WriteLine("Kyu:{0}, Name:{1}, Desc:{2}, " +
-                                    "Detail:{3}, Picture:{4} ",
-                                    kyu, name, desc, detail, picture);
+                    var hangl = csv.GetField<string>(2);
+                    var meaning  = csv.GetField<string>(3);
+                    var order = csv.GetField<string>(4);
+                    var detail = csv.GetField<string>(5);
+                    var picture = csv.GetField<string>(6);
+                    Debug.WriteLine("Kyu:{0}, Name:{1}, Hangl:{2}, " +
+                                    "Meaning:{3}, Order:{4}, Detail:{5}, " +
+                                    "Picture:{6}",
+                                    kyu, name, hangl, meaning, order, detail,
+                                    picture);
 
                     var poomsaeModel = new PoomsaeModel
                     {
@@ -240,7 +244,9 @@ namespace Poomsae
                         Type = type,
                         Kyu = kyu,
                         Name = name,
-                        Desc = desc,
+                        Hangl = hangl,
+                        Meaning = meaning,
+                        Order = order,
                         Detail = detail,
                         Picture = picture
                     };

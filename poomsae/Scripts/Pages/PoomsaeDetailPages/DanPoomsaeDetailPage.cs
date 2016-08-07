@@ -27,7 +27,8 @@ namespace Poomsae
             this.Title = "段プンセ詳細";
 
             // 詳細画面のパス.
-            string detailImageBase = @"poomsae.Resources.Chop.{0}.jpg";
+            string detailImageBase = @"poomsae.Resources.DanPoomsae.{0}.jpg";
+            string stepFormat = @"poomsae.Resources.DanPoomsae.Step.pal{0}.png";
 
             var groups = new ObservableCollection<Group>();
             var realm = Realm.GetInstance();
@@ -38,9 +39,13 @@ namespace Poomsae
             {
                 groups.Add(base.CreateGroup(
                     item.Name,
-                    item.Desc,
-                    //item.Picture
-                    string.Format(detailImageBase, item.Picture)
+                    // パス付き画像.
+                    string.Format(detailImageBase, item.Picture),
+                    // パス付きステップ画像.
+                    string.Format(stepFormat, item.Kyu),
+                    item.Meaning,
+                    item.Order,
+                    item.Detail
                 ));
             }
 

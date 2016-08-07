@@ -15,6 +15,10 @@ namespace Poomsae
     {
         public string Name { get; set; }
         public ImageSource Image { get; set; }
-        public string Desc { get; set; }
+        public string Hangl { get; set; }
+        public ImageSource ActionStep { get; set; }
+        public string Meaning { get; set; }
+        public string Order { get; set; }
+        public string Detail { get; set; }
     }
 }
