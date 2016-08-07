@@ -5,6 +5,9 @@ Overview
 
 ## Description
 
+これをみるといい
+http://www.taekwon.net/mks/position_intro
+
 ## Demo
 
 ## VS. 
