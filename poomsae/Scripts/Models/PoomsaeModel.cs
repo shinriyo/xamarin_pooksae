@@ -68,6 +68,12 @@ namespace Poomsae
         /// <value>The value.</value>
         public string Picture { get; set; }
 
+        // 型の形.
+        //public string ShapePicture { get; set; }
+
+        // 意味.
+        //public string Meaning { get; set; }
+
         public override string ToString()
         {
             return string.Format("[ArtModel: Id={0}, Created={1}, Updated={2}, Country={3}, Key={4}, Name={5}, Desc={6}, Detail={7}, Picture={8}]", Id, Created, Updated, Language, Type, Name, Desc, Detail, Picture);

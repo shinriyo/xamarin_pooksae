@@ -99,29 +99,28 @@ namespace Poomsae
                 string japan = "ja";
 
                 // パンチ系ファイル.
-                var punchUrl = "http://vps6-d.kuku.lu/files/20160726-0053_cd22c32f91d04333262d320a8e49fd40.csv";
+                var punchUrl = "https://docs.google.com/spreadsheets/d/1PRKvYmOza7H6U7qtgpz-ZmR7JZIwIzQ1ExUthnvrvXc/pub?gid=1793064789&single=true&output=csv";
                 int id = 0;
                 Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Punch, httpClient, punchUrl);
 
                 // キック系ファイル.
-                var kickUrl = "http://vps6-d.kuku.lu/files/20160805-0857_eadecb10c6bbc69c0b54e2b281359e1b.csv";
+                var kickUrl = "https://docs.google.com/spreadsheets/d/1Cq5AwGlCaiDrX6tIN2SFn5ERl8bMIoxfRv8u1SQBEd0/pub?gid=405743383&single=true&output=csv";
                 Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Kick, httpClient, kickUrl);
 
                 // チョップ系ファイル.
-                var chopUrl = "http://vps6-d.kuku.lu/files/20160725-0856_7759c7a4b8b7b3dd5613576968451f6d.csv";
+                var chopUrl = "https://docs.google.com/spreadsheets/d/1Om6NobK24YPRqS1h9DycO3VjmCg6kJpJI1gZNCtwSz8/pub?gid=857550099&single=true&output=csv";
                 Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Chop, httpClient, chopUrl);
 
                 // 受け系ファイル.
-                var guardUrl = "http://vps6-d.kuku.lu/files/20160726-0057_e3d23c791475be2247fa60c3c7de91bd.csv";
+                var guardUrl = "https://docs.google.com/spreadsheets/d/15Mm0Wv8H6m0x5oWZ6aKdrZmIaMRPJMOYJTrky-g-6S4/pub?gid=2086855982&single=true&output=csv";
                 Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Guard, httpClient, guardUrl);
 
-                // TODO: CSVがまだ.
                 // 級プンセファイル.
-                var kyuPoomsaeUrl = "";
+                var kyuPoomsaeUrl = "https://docs.google.com/spreadsheets/d/17yOM2QBAWozdLA27qOhXePZyV6KxHsD-tsA0A3IkZlo/pub?gid=1480111765&single=true&output=csv";
                 var kyuPoomsaes = Tools.LoadPoomsaeCSV(japan, (int)PoomsaeModel.KyuOrDan.Kyu, httpClient, kyuPoomsaeUrl);
 
                 // 段プンセファイル.
-                var danPoomsaeUrl = "";
+                var danPoomsaeUrl = "https://docs.google.com/spreadsheets/d/1MEN6zNT4ULM67KCAOBMGigt3iojb8PSFU4yLmLTIqvM/pub?gid=1578289894&single=true&output=csv";
                 var danPoomsaes = Tools.LoadPoomsaeCSV(japan, (int)PoomsaeModel.KyuOrDan.Dan, httpClient, danPoomsaeUrl);
             }
         }
