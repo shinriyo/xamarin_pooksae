@@ -8,9 +8,7 @@ using System;
 using ClipboardSample.Services;
 using ClipboardSample.iOS;
 using Xamarin.Forms;
-using Foundation;
 using UIKit;
-using MediaPlayer;
 
 [assembly: Dependency(typeof(ClipboardService))]
 

@@ -40,14 +40,6 @@ namespace Poomsae
                 ));
             }
 
-            //var ar = new ObservableCollection<Group> {
-            //    base.CreateGroup("高麗(コウリョ)", "hoge->bar", "hoge.png"),
-            //    base.CreateGroup("金剛(クンガン)", "hoge->bar", "hoge.png"),
-            //    base.CreateGroup("太白(テベック)", "hoge->bar", "hoge.png"),
-            //    base.CreateGroup("平原(ピョンウォン)", "hoge->bar", "hoge.png"),
-            //    base.CreateGroup("十進(シッチン)", "hoge->bar", "hoge.png"),
-            //};
-
             // テンプレートの作成（ImageCell使用）.
             var cell = new DataTemplate(typeof(ImageCell));
             cell.SetBinding(ImageCell.TextProperty, "Name");

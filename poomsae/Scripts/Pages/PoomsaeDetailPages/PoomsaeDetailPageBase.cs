@@ -198,8 +198,13 @@ namespace Poomsae
         /// <returns>The alert.</returns>
         private void PlayMovie(int id)
         {
-            var uri = "http://download.openbricks.org/sample/H264/big_buck_bunny_1080p_H264_AAC_25fps_7200K.MP4";
-            DependencyService.Get<IVideoPlayerService>().Open(uri);
+            var title = "未完成";
+            var message = "動画再生はまだできません。";
+            base.DisplayAlert(title, message, "OK");
+            return;
+
+            //var uri = "http://download.openbricks.org/sample/H264/big_buck_bunny_1080p_H264_AAC_25fps_7200K.MP4";
+            //DependencyService.Get<IVideoPlayerService>().Open(uri);
         }
     }
 }

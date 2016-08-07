@@ -148,6 +148,7 @@
     <Compile Include="Scripts\Services\WebBrowserService.cs" />
     <Compile Include="Scripts\Services\VideoPlayerService.cs" />
     <Compile Include="Scripts\Services\ClipboardService.cs" />
+    <Compile Include="Scripts\Services\LoadingMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

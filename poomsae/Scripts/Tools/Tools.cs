@@ -44,7 +44,9 @@ namespace Poomsae
     using System.Net.Http;
     using System.Threading.Tasks;
     using CsvHelper;
+    using LoadingMessageSample.Services;
     using Realms;
+    using Xamarin.Forms;
 
     /// <summary>
     /// メソッド拡張.
@@ -68,6 +70,9 @@ namespace Poomsae
         /// <returns>The load CSV.</returns>
         public static void Initialization()
         {
+            // ローディング開始.
+            DependencyService.Get<ILoadingMessage>().Show("ローディング....");
+
             // 設定初期化.
             Tools.InitializeDB();
 
@@ -117,12 +122,15 @@ namespace Poomsae
 
                 // 級プンセファイル.
                 var kyuPoomsaeUrl = "https://docs.google.com/spreadsheets/d/17yOM2QBAWozdLA27qOhXePZyV6KxHsD-tsA0A3IkZlo/pub?gid=1480111765&single=true&output=csv";
-                var kyuPoomsaes = Tools.LoadPoomsaeCSV(japan, (int)PoomsaeModel.KyuOrDan.Kyu, httpClient, kyuPoomsaeUrl);
+                Tools.LoadPoomsaeCSV(japan, (int)PoomsaeModel.KyuOrDan.Kyu, httpClient, kyuPoomsaeUrl);
 
                 // 段プンセファイル.
                 var danPoomsaeUrl = "https://docs.google.com/spreadsheets/d/1MEN6zNT4ULM67KCAOBMGigt3iojb8PSFU4yLmLTIqvM/pub?gid=1578289894&single=true&output=csv";
-                var danPoomsaes = Tools.LoadPoomsaeCSV(japan, (int)PoomsaeModel.KyuOrDan.Dan, httpClient, danPoomsaeUrl);
+                Tools.LoadPoomsaeCSV(japan, (int)PoomsaeModel.KyuOrDan.Dan, httpClient, danPoomsaeUrl);
             }
+
+            // ローディング閉じる.
+            DependencyService.Get<ILoadingMessage>().Hide();
         }
 
         /// <summary>
@@ -194,13 +202,11 @@ namespace Poomsae
         /// <returns>PoomsaeModelのリスト.</returns>
         /// <param name="httpClient">Http client.</param>
         /// <param name="url">URL.</param>
-        public static List<PoomsaeModel> LoadPoomsaeCSV(
+        public static void LoadPoomsaeCSV(
             string lang, int type, HttpClient httpClient,
             string url
         )
         {
-            var poomsaeModels = new List<PoomsaeModel>();
-
             // 取得したいWebページのURI.
             Uri webUri = new Uri(url);
 
@@ -214,32 +220,36 @@ namespace Poomsae
             var csvString = webTask.Result;
             var csv = new CsvReader(new StringReader(csvString));
 
-            while (csv.Read())
+            var realm = Realm.GetInstance();
+            using (var transaction = realm.BeginWrite())
             {
-                var kyu = csv.GetField<int>(0);
-                var name = csv.GetField<string>(1);
-                var desc = csv.GetField<string>(2);
-                var detail = csv.GetField<string>(3);
-                var picture = csv.GetField<string>(4);
-                Debug.WriteLine("Kyu:{0}, Name:{1}, Desc:{2}, " +
-                                "Detail:{3}, Picture:{4} ",
-                                kyu, name, desc, detail, picture);
-
-                var poomsaeModel = new PoomsaeModel
+                while (csv.Read())
                 {
-                    Language = lang,
-                    Type = type,
-                    Kyu = kyu,
-                    Name = name,
-                    Desc = desc,
-                    Detail = detail,
-                    Picture = picture
-                };
+                    var kyu = csv.GetField<int>(0);
+                    var name = csv.GetField<string>(1);
+                    var desc = csv.GetField<string>(2);
+                    var detail = csv.GetField<string>(3);
+                    var picture = csv.GetField<string>(4);
+                    Debug.WriteLine("Kyu:{0}, Name:{1}, Desc:{2}, " +
+                                    "Detail:{3}, Picture:{4} ",
+                                    kyu, name, desc, detail, picture);
 
-                poomsaeModels.Add(poomsaeModel);
+                    var poomsaeModel = new PoomsaeModel
+                    {
+                        Language = lang,
+                        Type = type,
+                        Kyu = kyu,
+                        Name = name,
+                        Desc = desc,
+                        Detail = detail,
+                        Picture = picture
+                    };
+
+                    realm.Manage<PoomsaeModel>(poomsaeModel);
+                }
+
+                transaction.Commit();
             }
-
-            return poomsaeModels;
         }
 
         /// <summary>
@@ -248,8 +258,6 @@ namespace Poomsae
         /// <returns>The db.</returns>
         public static void InitializeDB()
         {
-            Debug.WriteLine(new string('*', 10));
-
             var realm = Realm.GetInstance();
 
             // トランザクションを開始してオブジェクトを削除します.
