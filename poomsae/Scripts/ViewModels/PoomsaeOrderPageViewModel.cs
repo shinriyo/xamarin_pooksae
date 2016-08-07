@@ -14,7 +14,7 @@ namespace Poomsae
     public class PoomsaeOrderPageViewModel
     {
         public string Name { get; set; }
-        public ImageSource Source { get; set; }
+        public ImageSource Image { get; set; }
         public string Desc { get; set; }
     }
 }

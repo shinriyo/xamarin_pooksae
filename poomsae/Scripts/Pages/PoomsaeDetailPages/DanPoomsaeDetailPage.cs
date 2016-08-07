@@ -26,6 +26,9 @@ namespace Poomsae
             // ページのタイトル.
             this.Title = "段プンセ詳細";
 
+            // 詳細画面のパス.
+            string detailImageBase = @"poomsae.Resources.Chop.{0}.jpg";
+
             var groups = new ObservableCollection<Group>();
             var realm = Realm.GetInstance();
             var res = realm.All<PoomsaeModel>().Where(d => d.Type == (int)PoomsaeModel.KyuOrDan.Dan)
@@ -36,15 +39,20 @@ namespace Poomsae
                 groups.Add(base.CreateGroup(
                     item.Name,
                     item.Desc,
-                    item.Picture
+                    //item.Picture
+                    string.Format(detailImageBase, item.Picture)
                 ));
             }
 
             // テンプレートの作成（ImageCell使用）.
             var cell = new DataTemplate(typeof(ImageCell));
+
+            // PoomsaeDetailPageBase.Dataに対応.
             cell.SetBinding(ImageCell.TextProperty, "Name");
             cell.SetBinding(ImageCell.DetailProperty, "Description");
-            cell.SetBinding(ImageCell.ImageSourceProperty, "Picture");
+
+            // これはアイコン.
+            cell.SetBinding(ImageCell.ImageSourceProperty, "IconImage");
 
             // クリックの対応.
             cell.SetBinding(ImageCell.CommandProperty, "OnClick");

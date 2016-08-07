@@ -28,7 +28,7 @@ namespace Poomsae
         {
             public String Name { get; set; }
             public String Description { get; set; }
-            public String Picture { get; set; }
+            public String IconImage { get; set; }
             public ICommand OnClick { get; set; }
         }
 
@@ -44,6 +44,7 @@ namespace Poomsae
             }
         }
 
+        /*
         /// <summary>
         /// Creates the groups.
         /// </summary>
@@ -57,6 +58,7 @@ namespace Poomsae
             // TODO:
             var kyuOrDan = (type == (int)PoomsaeModel.KyuOrDan.Kyu) ? "級" : "段";
             string iconImage = "kick_icon.png";
+            // これはあとでResourcesの中で.
             string detailImageBase = @"poomsae.Resources.Punch.{0}.jpg";
             var realm = Realm.GetInstance();
             var res = realm.All<PoomsaeModel>().Where(d => d.Type == type);
@@ -121,7 +123,7 @@ namespace Poomsae
             {
                 Name = name,
                 Description = desc,
-                Picture = imageName,
+                IconImage = imageName,
                 OnClick = new Command(() =>
                 {
                     action(name, detail, image);
@@ -129,6 +131,7 @@ namespace Poomsae
             };
             return data;
         }
+        */
 
         /// <summary>
         /// Creates the group.
@@ -139,13 +142,17 @@ namespace Poomsae
         /// <param name="image">Image.</param>
         protected Group CreateGroup(string title, string order, string image)
         {
+            System.Diagnostics.Debug.WriteLine("======");
+            System.Diagnostics.Debug.WriteLine(image);
+
+
             return new Group(title)
             {
                 new Data
                 {
                     Name = "順序",
                     Description = "順序",
-                    Picture = "note_icon.png",
+                    IconImage = "note_icon.png",
                     OnClick = new Command(() =>
                     {
                         this.OpenDetail(title, order, image);
@@ -155,7 +162,7 @@ namespace Poomsae
                 {
                     Name = "動画",
                     Description = "動画再生",
-                    Picture = "movie_icon.png",
+                    IconImage = "movie_icon.png",
                     OnClick = new Command(() =>
                     {
                         this.PlayMovie(1);
@@ -181,7 +188,7 @@ namespace Poomsae
                     BindingContext = new PoomsaeOrderPageViewModel()
                     {
                         Name = name,
-                        Source = ImageSource.FromResource(image),
+                        Image = ImageSource.FromResource(image),
                         Desc = detail
                     }
                 });
