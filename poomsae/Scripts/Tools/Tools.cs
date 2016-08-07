@@ -120,13 +120,31 @@ namespace Poomsae
                 var guardUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/guard.csv";
                 Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Guard, httpClient, guardUrl);
 
+                // 肘系ファァイル.
+                var elbowdUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/elbowd.csv";
+                Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Elbow, httpClient, elbowdUrl);
+
+                // 構え系ファイル.
+                var stanceUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/stance.csv";
+                Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Stance, httpClient, stanceUrl);
+
+                // 押し系ファイル.
+                var pushUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/push.csv";
+                Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Push, httpClient, pushUrl);
+
+                // 跳び系ファイル.
+                var jumpUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/jump.csv";
+                Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Jump, httpClient, jumpUrl);
+
+                int poomsaeId = 0;
+
                 // 級プンセファイル.
                 var kyuPoomsaeUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/poomsae_kyu.csv";
-                Tools.LoadPoomsaeCSV(japan, (int)PoomsaeModel.KyuOrDan.Kyu, httpClient, kyuPoomsaeUrl);
+                Tools.LoadPoomsaeCSV(ref poomsaeId, japan, (int)PoomsaeModel.KyuOrDan.Kyu, httpClient, kyuPoomsaeUrl);
 
                 // 段プンセファイル.
                 var danPoomsaeUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/poomsae_dan.csv";
-                Tools.LoadPoomsaeCSV(japan, (int)PoomsaeModel.KyuOrDan.Dan, httpClient, danPoomsaeUrl);
+                Tools.LoadPoomsaeCSV(ref poomsaeId , japan, (int)PoomsaeModel.KyuOrDan.Dan, httpClient, danPoomsaeUrl);
             }
 
             // ローディング閉じる.
@@ -199,10 +217,13 @@ namespace Poomsae
         /// <summary>
         /// プンセCSVファイルのロード.
         /// </summary>
-        /// <returns>PoomsaeModelのリスト.</returns>
+        /// <param name="id">Identifier.</param>
+        /// <param name="lang">Lang.</param>
+        /// <param name="type">Type.</param>
         /// <param name="httpClient">Http client.</param>
         /// <param name="url">URL.</param>
         public static void LoadPoomsaeCSV(
+            ref int id,
             string lang, int type, HttpClient httpClient,
             string url
         )
@@ -240,6 +261,7 @@ namespace Poomsae
 
                     var poomsaeModel = new PoomsaeModel
                     {
+                        Id = id.ToString(),
                         Language = lang,
                         Type = type,
                         Kyu = kyu,
@@ -252,6 +274,7 @@ namespace Poomsae
                     };
 
                     realm.Manage<PoomsaeModel>(poomsaeModel);
+                    id++;
                 }
 
                 transaction.Commit();
