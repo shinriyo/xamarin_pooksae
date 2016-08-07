@@ -17,7 +17,7 @@ namespace CellTool
     {
         public String Name { get; set; }
         public String Description { get; set; }
-        public String Picture { get; set; }
+        public String IconImage { get; set; }
         public ICommand OnClick { get; set; }
     }
 

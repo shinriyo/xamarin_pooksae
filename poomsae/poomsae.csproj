@@ -116,12 +116,6 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="FodyWeavers.xml" />
-    <None Include="Resources\Punch\NoImage.jpg" />
-    <None Include="Resources\Kick\NoImage.jpg" />
-    <None Include="Resources\KyuPoomsae\NoImage.jpg" />
-    <None Include="Resources\DanPoomsae\NoImage.jpg" />
-    <None Include="Resources\Chop\NoImage.jpg" />
-    <None Include="Resources\Guard\NoImage.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scripts\Pages\PoomsaeDetailPages\" />
@@ -134,6 +128,10 @@
     <Folder Include="Resources\DanPoomsae\" />
     <Folder Include="Resources\Chop\" />
     <Folder Include="Resources\Guard\" />
+    <Folder Include="Resources\Elbow\" />
+    <Folder Include="Resources\Stances\" />
+    <Folder Include="Resources\Pushes\" />
+    <Folder Include="Resources\Jump\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Scripts\Pages\DetailPages\ArtDescPage.xaml">
@@ -146,6 +144,16 @@
     <EmbeddedResource Include="Scripts\Pages\DetailPages\PlayVideoPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Punch\NoImage.jpg" />
+    <EmbeddedResource Include="Resources\Pushes\NoImage.jpg" />
+    <EmbeddedResource Include="Resources\KyuPoomsae\NoImage.jpg" />
+    <EmbeddedResource Include="Resources\Kick\NoImage.jpg" />
+    <EmbeddedResource Include="Resources\Jump\NoImage.jpg" />
+    <EmbeddedResource Include="Resources\Guard\NoImage.jpg" />
+    <EmbeddedResource Include="Resources\Elbow\NoImage.jpg" />
+    <EmbeddedResource Include="Resources\DanPoomsae\NoImage.jpg" />
+    <EmbeddedResource Include="Resources\Chop\NoImage.jpg" />
+    <EmbeddedResource Include="Resources\Stances\NoImage.jpg" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

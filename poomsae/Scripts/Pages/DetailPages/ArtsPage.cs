@@ -59,13 +59,13 @@ namespace Poomsae
                 "蹴り(차기)",
                 "手刀系",
                 "受け(막기)",
-                //"肘打ち(치기)",
-                //"構え(서기)",
-                //"밀기",
-                //"跳び(뛰기)",
+                "肘打ち(치기)",
+                "構え(서기)",
+                "밀기",
+                "跳び(뛰기)",
             };
 
-            int i = 0;
+            int index = 0;
 
             // ボタンを生成.
             foreach (var artType in artTypes)
@@ -76,16 +76,16 @@ namespace Poomsae
                 };
 
                 // 詳細がどれか.
-                int detailType = i;
-                string name = artTypes[i];
+                int pageType = index;
+                string name = artTypes[index];
 
                 // ボタンクリック時の処理.
                 button.Clicked += async (s, a) =>
                 {
                     // ページを遷移する.
-                    await Navigation.PushAsync(new ArtDetailPage(detailType, name));
+                    await Navigation.PushAsync(new ArtDetailPage(pageType, name));
                 };
-                i++;
+                index++;
                 layout.Children.Add(button);
             }
 
@@ -122,8 +122,9 @@ namespace Poomsae
                 {
                     BindingContext = new ArtDescPageViewModel()
                     {
+                        // この変数はXAMLと同じBidingになっていること.
                         Name = name,
-                        Source = ImageSource.FromResource(image),
+                        Picture = ImageSource.FromResource(image),
                         Desc = detail
                     }
                 });
@@ -137,7 +138,7 @@ namespace Poomsae
         /// <summary>
         /// Initializes a new instance of the <see cref="T:poomsae.ArtDetailPage"/> class.
         /// </summary>
-        /// <param name="i">The index.</param>
+        /// <param name="i">ページタイプ.</param>
         /// <param name="name">Name.</param>
         public ArtDetailPage(int i, string name)
         {
@@ -167,14 +168,36 @@ namespace Poomsae
                 // 受け系.
                 groups = DBAccess.GetGuards(this.OpenDetail);
             }
+            else if (pageType == 4)
+            {
+                // 肘打ち(치기).
+                groups = DBAccess.GetElbows(this.OpenDetail);
+            }
+            else if (pageType == 5)
+            {
+                // 構え(서기).
+                groups = DBAccess.GetStances(this.OpenDetail);
+            }
+            else if (pageType == 6)
+            {
+                // 밀기.
+                groups = DBAccess.GetPushes(this.OpenDetail);
+            }
+            else if (pageType == 7)
+            {
+                // 跳び(뛰기).
+                groups = DBAccess.GetJumps(this.OpenDetail);
+            }
 
             // テンプレートの作成（ImageCell使用）.
             var cell = new DataTemplate(typeof(ImageCell));
 
-            // Dataの中のプロパティに対応した文字.
+            // "Tools.Data"の中のプロパティに対応した文字をそれぞれバインド.
             cell.SetBinding(ImageCell.TextProperty, "Name");
             cell.SetBinding(ImageCell.DetailProperty, "Description");
-            cell.SetBinding(ImageCell.ImageSourceProperty, "Picture");
+
+            // これはアイコン.
+            cell.SetBinding(ImageCell.ImageSourceProperty, "IconImage");
             cell.SetBinding(ImageCell.CommandProperty, "OnClick");
 
             // リストビューを生成する.

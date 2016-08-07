@@ -20,6 +20,10 @@ namespace Poomsae
             Kick,
             Chop,
             Guard,
+            Elbow,
+            Stance,
+            Push,
+            Jump,
         }
 
         [ObjectId]
