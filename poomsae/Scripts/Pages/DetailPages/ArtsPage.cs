@@ -180,7 +180,7 @@ namespace Poomsae
             }
             else if (pageType == 6)
             {
-                // 밀기.
+                // 밀기(押し系).
                 groups = DBAccess.GetPushes(this.OpenDetail);
             }
             else if (pageType == 7)
