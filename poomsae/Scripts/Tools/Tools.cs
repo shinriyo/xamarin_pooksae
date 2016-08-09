@@ -144,11 +144,58 @@ namespace Poomsae
 
                 // 段プンセファイル.
                 var danPoomsaeUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/poomsae_dan.csv";
-                Tools.LoadPoomsaeCSV(ref poomsaeId , japan, (int)PoomsaeModel.KyuOrDan.Dan, httpClient, danPoomsaeUrl);
+                Tools.LoadPoomsaeCSV(ref poomsaeId, japan, (int)PoomsaeModel.KyuOrDan.Dan, httpClient, danPoomsaeUrl);
             }
 
             // ローディング閉じる.
             DependencyService.Get<ILoadingMessage>().Hide();
+        }
+
+        /// <summary>
+        /// Gets the web page async.
+        /// </summary>
+        /// <returns>The web page async.</returns>
+        /// <param name="uri">URI.</param>
+        static async Task<string> GetWebPageAsync(Uri uri)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                // ユーザーエージェント文字列をセット（オプション）
+                client.DefaultRequestHeaders.Add(
+                    "User-Agent",
+                    "Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko");
+
+                // 受け入れ言語をセット（オプション）
+                client.DefaultRequestHeaders.Add("Accept-Language", "ja-JP");
+
+                // タイムアウトをセット（オプション）
+                client.Timeout = TimeSpan.FromSeconds(10.0);
+
+                try
+                {
+                    // Webページを取得するのは、事実上この1行だけ
+                    return await client.GetStringAsync(uri);
+                }
+                catch (HttpRequestException e)
+                {
+                    // 404エラーや、名前解決失敗など
+                    Debug.WriteLine("\n例外発生!");
+                    // InnerExceptionも含めて、再帰的に例外メッセージを表示する
+                    Exception ex = e;
+                    while (ex != null)
+                    {
+                        Debug.WriteLine("例外メッセージ: {0} ", ex.Message);
+                        ex = ex.InnerException;
+                    }
+                }
+                catch (TaskCanceledException e)
+                {
+                    // タスクがキャンセルされたとき（一般的にタイムアウト）
+                    Debug.WriteLine("\nタイムアウト!");
+                    Debug.WriteLine("例外メッセージ: {0} ", e.Message);
+                }
+                return null;
+            }
         }
 
         /// <summary>
@@ -249,7 +296,7 @@ namespace Poomsae
                     var kyu = csv.GetField<int>(0);
                     var name = csv.GetField<string>(1);
                     var hangl = csv.GetField<string>(2);
-                    var meaning  = csv.GetField<string>(3);
+                    var meaning = csv.GetField<string>(3);
                     var order = csv.GetField<string>(4);
                     var detail = csv.GetField<string>(5);
                     var picture = csv.GetField<string>(6);
