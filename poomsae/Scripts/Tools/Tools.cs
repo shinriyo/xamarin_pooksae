@@ -44,7 +44,6 @@ namespace Poomsae
     using System.Net.Http;
     using System.Threading.Tasks;
     using CsvHelper;
-    using LoadingMessageSample.Services;
     using Realms;
     using Xamarin.Forms;
 
@@ -64,15 +63,15 @@ namespace Poomsae
     /// </summary>
     public static class Tools
     {
+        private static int id = 0;
+
         /// <summary>
         /// DB初期化やCSVをWebからロード.
         /// </summary>
         /// <returns>The load CSV.</returns>
-        public static void Initialization()
+        public static async Task<string> Initialization()
+        //public static void Initialization()
         {
-            // ローディング開始.
-            DependencyService.Get<ILoadingMessage>().Show("ローディング....");
-
             // 設定初期化.
             Tools.InitializeDB();
 
@@ -85,13 +84,14 @@ namespace Poomsae
                 Uri webUri = new Uri(localizeUrl);
 
                 // GetWebPageAsyncメソッドを呼び出す
-                Task<string> webTask = httpClient.GetStringAsync(webUri);
+                // Task<string> webTask = httpClient.GetStringAsync(webUri);
+                var csvString = await GetWebPageAsync(webUri);
 
                 // Mainメソッドではawaitできないので、処理が完了するまで待機する.
-                webTask.Wait();
+                //webTask.Wait();
 
                 // 結果を取得.
-                var csvString = webTask.Result;
+                //var csvString = webTask.Result;
 
                 var csv = new CsvReader(new StringReader(csvString));
                 while (csv.Read())
@@ -105,36 +105,35 @@ namespace Poomsae
 
                 // パンチ系ファイル.
                 var punchUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/punch.csv";
-                int id = 0;
-                Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Punch, httpClient, punchUrl);
+                Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Punch, httpClient, punchUrl);
 
                 // キック系ファイル.
                 var kickUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/kick.csv";
-                Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Kick, httpClient, kickUrl);
+                Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Kick, httpClient, kickUrl);
 
                 // チョップ系ファイル.
                 var chopUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/chop.csv";
-                Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Chop, httpClient, chopUrl);
+                Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Chop, httpClient, chopUrl);
 
                 // 受け系ファイル.
                 var guardUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/guard.csv";
-                Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Guard, httpClient, guardUrl);
+                Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Guard, httpClient, guardUrl);
 
                 // 肘系ファァイル.
                 var elbowdUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/elbowd.csv";
-                Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Elbow, httpClient, elbowdUrl);
+                Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Elbow, httpClient, elbowdUrl);
 
                 // 構え系ファイル.
                 var stanceUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/stance.csv";
-                Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Stance, httpClient, stanceUrl);
+                Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Stance, httpClient, stanceUrl);
 
                 // 押し系ファイル.
                 var pushUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/push.csv";
-                Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Push, httpClient, pushUrl);
+                Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Push, httpClient, pushUrl);
 
                 // 跳び系ファイル.
                 var jumpUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/jump.csv";
-                Tools.LoadArtsCSV(ref id, japan, (int)ArtModel.ArtType.Jump, httpClient, jumpUrl);
+                Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Jump, httpClient, jumpUrl);
 
                 int poomsaeId = 0;
 
@@ -147,8 +146,7 @@ namespace Poomsae
                 Tools.LoadPoomsaeCSV(ref poomsaeId, japan, (int)PoomsaeModel.KyuOrDan.Dan, httpClient, danPoomsaeUrl);
             }
 
-            // ローディング閉じる.
-            DependencyService.Get<ILoadingMessage>().Hide();
+            return "";
         }
 
         /// <summary>
@@ -201,13 +199,11 @@ namespace Poomsae
         /// <summary>
         /// 技のCSVをロード.
         /// </summary>
-        /// <param name="id">Id.</param>
         /// <param name="lang">Lang.</param>
         /// <param name="type">Type.</param>
         /// <param name="httpClient">Http client.</param>
         /// <param name="url">URL.</param>
         private static void LoadArtsCSV(
-            ref int id,
             string lang, int type, HttpClient httpClient,
             string url)
         {

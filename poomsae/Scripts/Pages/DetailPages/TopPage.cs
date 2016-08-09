@@ -6,6 +6,7 @@
 
 namespace Poomsae
 {
+    using LoadingMessageSample.Services;
     using Xamarin.Forms;
 
     /// <summary>
@@ -62,8 +63,14 @@ namespace Poomsae
                 var result = await DisplayActionSheet(message, cancel, ok);
                 if (result == ok)
                 {
+                    // ローディング開始.
+                    DependencyService.Get<ILoadingMessage>().Show("ローディング....");
+
                     // DB初期化やCSVをWebからロード.
-                    Tools.Initialization();
+                    await Tools.Initialization();
+
+                    // ローディング閉じる.
+                    DependencyService.Get<ILoadingMessage>().Hide();
                 }
             };
 
