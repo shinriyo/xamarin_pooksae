@@ -1,5 +1,11 @@
-﻿using System;
-using Android.Media;
+﻿//-----------------------------------------------------------------------
+// <copyright file="ClipboardService.cs" company="shinriyo">
+//     Company copyright tag.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using System;
+using Android.Content;
 using ClipboardSample.Android;
 using ClipboardSample.Services;
 using Xamarin.Forms;
@@ -12,8 +18,14 @@ namespace ClipboardSample.Android
 	{
 		public void CopyToClipboard(String text)
 		{
-			// TODO:
-			//LaunchActivity.AndroidClipboardManager.Text = text;
+			// Get the Clipboard Manager
+			var clipboardManager = (ClipboardManager)Forms.Context.GetSystemService(Context.ClipboardService);
+
+			// Create a new Clip
+			ClipData clip = ClipData.NewPlainText("xxx_title", text);
+
+			// Copy the text
+			clipboardManager.PrimaryClip = clip;
 		}
 	}
 }

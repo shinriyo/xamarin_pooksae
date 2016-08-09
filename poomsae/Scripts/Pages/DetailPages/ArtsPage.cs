@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="PoomsaePage.cs" company="shinriyo">
+// <copyright file="ArtsPage.cs" company="shinriyo">
 //     Company copyright tag.
 // </copyright>
 //-----------------------------------------------------------------------

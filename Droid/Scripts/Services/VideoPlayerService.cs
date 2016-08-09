@@ -1,4 +1,10 @@
-﻿using System;
+﻿//-----------------------------------------------------------------------
+// <copyright file="VideoPlayerService.cs" company="shinriyo">
+//     Company copyright tag.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using System;
 using Android.Media;
 using VideoPlayerSample.Android;
 using VideoPlayerSample.Services;

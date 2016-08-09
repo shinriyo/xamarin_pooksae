@@ -1,4 +1,10 @@
-﻿using System;
+﻿//-----------------------------------------------------------------------
+// <copyright file="WebBrowserService.cs" company="shinriyo">
+//     Company copyright tag.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using System;
 using Android.Content;
 using OpenWebBrowserSample.Android;
 using OpenWebBrowserSample.Services;
@@ -15,6 +21,11 @@ namespace OpenWebBrowserSample.Android
 			Forms.Context.StartActivity(
 				new Intent(Intent.ActionView,
 					global::Android.Net.Uri.Parse(uri.AbsoluteUri)));
+		}
+
+		public string Get()
+		{
+			return "file:///android_asset/Content/";
 		}
 	}
 }

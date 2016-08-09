@@ -1,4 +1,10 @@
-﻿using Android.App;
+﻿//-----------------------------------------------------------------------
+// <copyright file="LoadingMessage.cs" company="shinriyo">
+//     Company copyright tag.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using Android.App;
 using LoadingMessageSample.Android;
 using LoadingMessageSample.Services;
 using Xamarin.Forms;
