@@ -72,7 +72,8 @@ namespace Poomsae
                     IconImage = "movie_icon.png",
                     OnClick = new Command(() =>
                     {
-                        this.PlayMovie(1);
+                        // TODO:
+                        this.PlayMovie("");
                     })
                 }
             };
@@ -80,7 +81,6 @@ namespace Poomsae
 
         /// <summary>
         /// プンセの詳細を開く.
-        /// </summary>
         /// </summary>
         /// <param name="name">Name.</param>
         /// <param name="image">Image.</param>
@@ -116,36 +116,22 @@ namespace Poomsae
         /// <summary>
         /// プンセ動画再生.
         /// </summary>
-        /// <returns>The alert.</returns>
-        private void PlayMovie(int id)
+        /// <param name="youtubeUrl">Youtube URL.</param>
+        private void PlayMovie(string youtubeUrl)
         {
             //var title = "未完成";
             //var message = "動画再生はまだできません。";
             //base.DisplayAlert(title, message, "OK");
-
-            var htmlSource = @"<!DOCTYPE html>
-             <html>
-              <body>
-              <video src = ""http://www.myserver.com/video1.mp4"" controls height = ""150"" width = ""150"">
-              </body>
-              </html>";
-
-            var html = new HtmlWebViewSource
+            try
             {
-                Html = htmlSource,
-                // 今後パスを取る時.
-                //BaseUrl = DependencyService.Get<IWebBrowserService>().Get(),
-            };
-
-            var webView = new WebView
+                YouTubePage.youtubeUrl = youtubeUrl;
+                // ページを遷移する.
+                Navigation.PushAsync(new YouTubePage());
+            }
+            catch (Exception ex)
             {
-                Source = html
-            };
-
-            Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
-            Content = webView;
-            //var uri = "http://download.openbricks.org/sample/H264/big_buck_bunny_1080p_H264_AAC_25fps_7200K.MP4";
-            //DependencyService.Get<IVideoPlayerService>().Open(uri);
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
+            }
         }
     }
 }

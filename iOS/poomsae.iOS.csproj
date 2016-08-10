@@ -183,6 +183,8 @@
     <BundleResource Include="Resources\chop_icon.png" />
     <BundleResource Include="Resources\movie_icon.png" />
     <BundleResource Include="Resources\note_icon.png" />
+    <BundleResource Include="Resources\Content\css\mediaelementplayer.css" />
+    <BundleResource Include="Resources\Content\js\mediaelement-and-player.min.js" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="rxforxamarin">
@@ -193,5 +195,8 @@
   <ItemGroup>
     <Folder Include="Scripts\" />
     <Folder Include="Scripts\Services\" />
+    <Folder Include="Resources\Content\" />
+    <Folder Include="Resources\Content\css\" />
+    <Folder Include="Resources\Content\js\" />
   </ItemGroup>
 </Project>
