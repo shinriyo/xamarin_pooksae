@@ -21,10 +21,10 @@ namespace Poomsae
             var baseHtml = @"<!DOCTYPE html>
             <html>
             <head>
-              <script src=""jquery.js""></script>
+              <script src=""js/jquery.js""></script>
               <script src=""js/mediaelement-and-player.min.js""></script>
               <link rel=""stylesheet"" href=""css/mediaelementplayer.css"" />
-              <video width=""640"" height=""360"" id=""player1"" preload=""none"">
+              <video width=""320"" height=""180"" id=""player1"" preload=""none"">
                 <source type=""video/youtube""
                 src=""{0}"" />
               </video>

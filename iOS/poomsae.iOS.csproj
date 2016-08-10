@@ -185,6 +185,7 @@
     <BundleResource Include="Resources\note_icon.png" />
     <BundleResource Include="Resources\Content\css\mediaelementplayer.css" />
     <BundleResource Include="Resources\Content\js\mediaelement-and-player.min.js" />
+    <BundleResource Include="Resources\Content\js\jquery.js" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="rxforxamarin">

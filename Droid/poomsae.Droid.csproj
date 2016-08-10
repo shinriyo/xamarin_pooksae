@@ -156,12 +156,18 @@
     <None Include="Assets\AboutAssets.txt" />
     <None Include="packages.config" />
     <None Include="FodyWeavers.xml" />
+    <None Include="Assets\Content\js\jquery.js" />
+    <None Include="Assets\Content\js\mediaelement-and-player.min.js" />
+    <None Include="Assets\Content\css\mediaelementplayer.css" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\layout\" />
     <Folder Include="Resources\values\" />
     <Folder Include="Scripts\" />
     <Folder Include="Scripts\Services\" />
+    <Folder Include="Assets\Content\" />
+    <Folder Include="Assets\Content\css\" />
+    <Folder Include="Assets\Content\js\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />
