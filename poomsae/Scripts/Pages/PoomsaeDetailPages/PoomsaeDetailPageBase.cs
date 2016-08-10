@@ -119,11 +119,31 @@ namespace Poomsae
         /// <returns>The alert.</returns>
         private void PlayMovie(int id)
         {
-            var title = "未完成";
-            var message = "動画再生はまだできません。";
-            base.DisplayAlert(title, message, "OK");
-            return;
+            //var title = "未完成";
+            //var message = "動画再生はまだできません。";
+            //base.DisplayAlert(title, message, "OK");
 
+            var htmlSource = @"<!DOCTYPE html>
+             <html>
+              <body>
+              <video src = ""http://www.myserver.com/video1.mp4"" controls height = ""150"" width = ""150"">
+              </body>
+              </html>";
+
+            var html = new HtmlWebViewSource
+            {
+                Html = htmlSource,
+                // 今後パスを取る時.
+                //BaseUrl = DependencyService.Get<IWebBrowserService>().Get(),
+            };
+
+            var webView = new WebView
+            {
+                Source = html
+            };
+
+            Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
+            Content = webView;
             //var uri = "http://download.openbricks.org/sample/H264/big_buck_bunny_1080p_H264_AAC_25fps_7200K.MP4";
             //DependencyService.Get<IVideoPlayerService>().Open(uri);
         }
