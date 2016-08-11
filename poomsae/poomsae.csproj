@@ -133,8 +133,8 @@
     <Folder Include="Resources\Chop\" />
     <Folder Include="Resources\Guard\" />
     <Folder Include="Resources\Elbow\" />
-    <Folder Include="Resources\Stances\" />
-    <Folder Include="Resources\Pushes\" />
+    <Folder Include="Resources\Stance\" />
+    <Folder Include="Resources\Pushe\" />
     <Folder Include="Resources\Jump\" />
     <Folder Include="Resources\DanPoomsae\Step\" />
     <Folder Include="Resources\KyuPoomsae\Step\" />
@@ -148,7 +148,7 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Punch\NoImage.jpg" />
-    <EmbeddedResource Include="Resources\Pushes\NoImage.jpg" />
+    <EmbeddedResource Include="Resources\Pushe\NoImage.jpg" />
     <EmbeddedResource Include="Resources\KyuPoomsae\NoImage.jpg" />
     <EmbeddedResource Include="Resources\Kick\NoImage.jpg" />
     <EmbeddedResource Include="Resources\Jump\NoImage.jpg" />
@@ -156,7 +156,7 @@
     <EmbeddedResource Include="Resources\Elbow\NoImage.jpg" />
     <EmbeddedResource Include="Resources\DanPoomsae\NoImage.jpg" />
     <EmbeddedResource Include="Resources\Chop\NoImage.jpg" />
-    <EmbeddedResource Include="Resources\Stances\NoImage.jpg" />
+    <EmbeddedResource Include="Resources\Stance\NoImage.jpg" />
     <EmbeddedResource Include="Resources\KyuPoomsae\Step\pal1.png" />
     <EmbeddedResource Include="Resources\KyuPoomsae\Step\pal2.png" />
     <EmbeddedResource Include="Resources\KyuPoomsae\Step\pal3.png" />

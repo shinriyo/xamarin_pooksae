@@ -176,7 +176,7 @@ namespace Poomsae
 
                 await Task.Run(() =>
                 {
-                    Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Elbow, csvString);
+                    Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Stance, csvString);
                 });
 
                 // 押し系ファイル.

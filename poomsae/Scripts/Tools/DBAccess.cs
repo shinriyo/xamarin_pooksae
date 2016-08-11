@@ -188,7 +188,7 @@ namespace Poomsae
         public static ObservableCollection<Group> GetStances(Action<string, string, string> action)
         {
             string iconImage = "stance_icon.png";
-            string detailImageBase = @"poomsae.Resources.Stances.{0}.jpg";
+            string detailImageBase = @"poomsae.Resources.Stance.{0}.jpg";
             return Common((int)ArtModel.ArtType.Stance, iconImage, detailImageBase, action);
         }
 
@@ -200,7 +200,7 @@ namespace Poomsae
         public static ObservableCollection<Group> GetPushes(Action<string, string, string> action)
         {
             string iconImage = "push_icon.png";
-            string detailImageBase = @"poomsae.Resources.Pushes.{0}.jpg";
+            string detailImageBase = @"poomsae.Resources.Pushe.{0}.jpg";
             return Common((int)ArtModel.ArtType.Push, iconImage, detailImageBase, action);
         }
 
@@ -212,7 +212,7 @@ namespace Poomsae
         public static ObservableCollection<Group> GetJumps(Action<string, string, string> action)
         {
             string iconImage = "jump_icon.png";
-            string detailImageBase = @"poomsae.Resources.Jumps.{0}.jpg";
+            string detailImageBase = @"poomsae.Resources.Jump.{0}.jpg";
             return Common((int)ArtModel.ArtType.Jump, iconImage, detailImageBase, action);
         }
     }
