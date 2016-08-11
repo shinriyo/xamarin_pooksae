@@ -125,7 +125,7 @@ namespace Poomsae
                         // この変数はXAMLと同じBidingになっていること.
                         Name = name,
                         Picture = ImageSource.FromResource(image),
-                        Desc = detail
+                        Desc = detail.Replace("<br />", Environment.NewLine)
                     }
                 });
             }
