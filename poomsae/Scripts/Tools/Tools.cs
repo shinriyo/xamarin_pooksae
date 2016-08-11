@@ -74,11 +74,11 @@ namespace Poomsae
             // 設定初期化.
             Tools.InitializeDB();
 
-            // ローカライズファイル.
-            var localizeUrl = "http://vps6-d.kuku.lu/files/20160725-0035_2b21358ee0d5a871860a15789270a433.csv";
+            //// ローカライズファイル.
+            //var localizeUrl = "";
 
-            // 取得したいWebページのURI.
-            Uri webUri = new Uri(localizeUrl);
+            //// 取得したいWebページのURI.
+            //Uri webUri = new Uri(localizeUrl);
 
             // GetWebPageAsyncメソッドを呼び出す
             //var csvString = await GetWebPageAsync(webUri);
@@ -97,45 +97,61 @@ namespace Poomsae
 
                 // パンチ系ファイル.
                 var punchUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/punch.csv";
-                Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Punch, httpClient, punchUrl);
+                Uri webUri = new Uri(punchUrl);
+                var csvString = await GetWebPageAsync(webUri);
+                Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Punch, httpClient, csvString);
 
                 // キック系ファイル.
                 var kickUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/kick.csv";
-                Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Kick, httpClient, kickUrl);
+                webUri = new Uri(punchUrl);
+                csvString = await GetWebPageAsync(webUri);
+                Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Kick, httpClient, csvString);
 
                 // チョップ系ファイル.
                 var chopUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/chop.csv";
-                Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Chop, httpClient, chopUrl);
+                webUri = new Uri(chopUrl);
+                csvString = await GetWebPageAsync(webUri);
+                Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Chop, httpClient, csvString);
 
                 // 受け系ファイル.
                 var guardUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/guard.csv";
-                Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Guard, httpClient, guardUrl);
+                webUri = new Uri(guardUrl);
+                csvString = await GetWebPageAsync(webUri);
+                Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Guard, httpClient, csvString);
 
                 // 肘系ファァイル.
                 var elbowdUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/elbowd.csv";
+                webUri = new Uri(elbowdUrl);
+                csvString = await GetWebPageAsync(webUri);
                 Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Elbow, httpClient, elbowdUrl);
 
                 // 構え系ファイル.
                 var stanceUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/stance.csv";
-                Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Stance, httpClient, stanceUrl);
+                webUri = new Uri(stanceUrl);
+                csvString = await GetWebPageAsync(webUri);
+                Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Stance, httpClient, csvString);
 
                 // 押し系ファイル.
                 var pushUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/push.csv";
-                Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Push, httpClient, pushUrl);
+                webUri = new Uri(pushUrl);
+                csvString = await GetWebPageAsync(webUri);
+                Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Push, httpClient, csvString);
 
                 // 跳び系ファイル.
                 var jumpUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/jump.csv";
-                Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Jump, httpClient, jumpUrl);
+                webUri = new Uri(jumpUrl);
+                csvString = await GetWebPageAsync(webUri);
+                Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Jump, httpClient, csvString);
 
-                int poomsaeId = 0;
+                //int poomsaeId = 0;
 
-                // 級プンセファイル.
-                var kyuPoomsaeUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/poomsae_kyu.csv";
-                Tools.LoadPoomsaeCSV(ref poomsaeId, japan, (int)PoomsaeModel.KyuOrDan.Kyu, httpClient, kyuPoomsaeUrl);
+                //// 級プンセファイル.
+                //var kyuPoomsaeUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/poomsae_kyu.csv";
+                //Tools.LoadPoomsaeCSV(ref poomsaeId, japan, (int)PoomsaeModel.KyuOrDan.Kyu, httpClient, kyuPoomsaeUrl);
 
-                // 段プンセファイル.
-                var danPoomsaeUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/poomsae_dan.csv";
-                Tools.LoadPoomsaeCSV(ref poomsaeId, japan, (int)PoomsaeModel.KyuOrDan.Dan, httpClient, danPoomsaeUrl);
+                //// 段プンセファイル.
+                //var danPoomsaeUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/poomsae_dan.csv";
+                //Tools.LoadPoomsaeCSV(ref poomsaeId, japan, (int)PoomsaeModel.KyuOrDan.Dan, httpClient, danPoomsaeUrl);
             }
         }
 
@@ -192,22 +208,11 @@ namespace Poomsae
         /// <param name="lang">Lang.</param>
         /// <param name="type">Type.</param>
         /// <param name="httpClient">Http client.</param>
-        /// <param name="url">URL.</param>
+        /// <param name="csvString">csvからとった文字.</param>
         private static void LoadArtsCSV(
-            string lang, int type, HttpClient httpClient,
-            string url)
+            string lang, int type, HttpClient httpClient, string csvString)
         {
-            // 取得したいWebページのURI.
-            Uri webUri = new Uri(url);
-
-            // GetWebPageAsyncメソッドを呼び出す
-            Task<string> webTask = httpClient.GetStringAsync(webUri);
-
-            // Mainメソッドではawaitできないので、処理が完了するまで待機する.
-            webTask.Wait();
-
             // 結果を取得.
-            var csvString = webTask.Result;
             var csv = new CsvReader(new StringReader(csvString));
             var now = DateTimeOffset.Now;
 
