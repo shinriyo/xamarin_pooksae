@@ -37,7 +37,6 @@ namespace Poomsae
         public PoomsaePage()
         {
             // ページのタイトル.
-            // TODO: Poomsae.
             this.Title = "プンセ";
 
             var layout = new StackLayout();
@@ -74,15 +73,6 @@ namespace Poomsae
                 // ページを遷移する.
                 await Navigation.PushAsync(new DanPoomsaeDetailPage());
             };
-
-            // TODO: Reactive待ち.
-            //button2.ClickAsObservable()
-            //    .Publish(_ =>
-            //        Button2.ClickAsObservable()
-            //        .Amb(
-            //            Button3.ClickAsObservable()))
-            //    .Subscribe(btnName => InvokeOnMainThread(() =>
-            //        Label1.Text = btnName + " Clicked"));
 
             layout.Children.Add(button2);
         }

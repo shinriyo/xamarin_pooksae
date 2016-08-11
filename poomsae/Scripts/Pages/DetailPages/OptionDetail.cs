@@ -40,7 +40,6 @@ namespace Poomsae
         /// </summary>
         public OptionDetail()
         {
-            // TODO: ローカライズ.
             var title = "オプション";
             base.Title = title;
 

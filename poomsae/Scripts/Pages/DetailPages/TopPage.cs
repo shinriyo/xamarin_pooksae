@@ -52,7 +52,6 @@ namespace Poomsae
 
             layout.Children.Add(titleLabel);
 
-            // TODO: ローカライズ.
             var initializeButton = new Button { Text = "初期化" };
             layout.Children.Add(initializeButton);
 

@@ -52,7 +52,6 @@ namespace Poomsae
 
             layout.Children.Add(label);
 
-            // TODO: ローカライズ.
             var artTypes = new string[]
             {
                 "パンチ(지르기)",
@@ -142,7 +141,6 @@ namespace Poomsae
         /// <param name="name">Name.</param>
         public ArtDetailPage(int i, string name)
         {
-            // TODO: ローカライズ.
             this.Title = string.Format("技詳細:{0}", name);
             ObservableCollection<Group> groups = null;
             int pageType = i;
