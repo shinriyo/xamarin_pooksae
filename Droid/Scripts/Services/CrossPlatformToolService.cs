@@ -37,6 +37,16 @@ namespace CrossPlatformToolSample.Android
 		}
 
 		/// <summary>
+		/// Directories the exists.
+		/// </summary>
+		/// <returns><c>true</c>, if exists was directoryed, <c>false</c> otherwise.</returns>
+		/// <param name="path">Path.</param>
+		public bool DirectoryExists(string path)
+		{
+			return Directory.Exists(path);
+		}
+
+		/// <summary>
 		/// Gets the special folder path.
 		/// </summary>
 		/// <returns>The special folder path.</returns>
@@ -47,13 +57,32 @@ namespace CrossPlatformToolSample.Android
 		}
 
 		/// <summary>
-		/// Directories the exists.
+		/// Deletes the directory.
 		/// </summary>
-		/// <returns><c>true</c>, if exists was directoryed, <c>false</c> otherwise.</returns>
 		/// <param name="path">Path.</param>
-		public bool DirectoryExists(string path)
+		/// <param name="recursive">If set to <c>true</c> recursive.</param>
+		public void DeleteDirectory(string path, bool recursive = false)
 		{
-			return Directory.Exists(path);
+			System.IO.Directory.Delete(path, recursive);
+		}
+
+		/// <summary>
+		/// Files the exists.
+		/// </summary>
+		/// <returns><c>true</c>, if exists was filed, <c>false</c> otherwise.</returns>
+		/// <param name="path">Path.</param>
+		public bool FileExists(string path)
+		{
+			return System.IO.File.Exists(path);
+		}
+
+		/// <summary>
+		/// Deletes the file.
+		/// </summary>
+		/// <param name="path">Path.</param>
+		public void DeleteFile(string path)
+		{
+			System.IO.File.Delete(path);
 		}
 	}
 }

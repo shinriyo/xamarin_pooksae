@@ -43,6 +43,7 @@ namespace Poomsae
     using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
+    using CrossPlatformToolSample.Services;
     using CsvHelper;
     using Realms;
     using Xamarin.Forms;
@@ -355,14 +356,32 @@ namespace Poomsae
         /// <returns>The db.</returns>
         public static void InitializeDB()
         {
+            var ds = DependencyService.Get<ICrossPlatformToolService>();
+            var documentsPath = ds.GetSpecialFolderPath();
+            var path = Path.Combine(documentsPath, App.realmFile);
+            Debug.WriteLine("realmのpath: {0}", path);
+
+            if (ds.FileExists(path))
+            {
+                Debug.WriteLine("存在するので消す.");
+                ds.DeleteFile(path);
+
+                // 関連ファイルも消す.
+                ds.DeleteFile(path + ".lock");
+            }
+            else
+            {
+                Debug.WriteLine("存在しない.");
+            }
+
             var realm = Realm.GetInstance(App.realmFile);
 
             // トランザクションを開始してオブジェクトを削除します.
-            using (var trans = realm.BeginWrite())
-            {
-                realm.RemoveAll();
-                trans.Commit();
-            }
+            //using (var trans = realm.BeginWrite())
+            //{
+            //    realm.RemoveAll();
+            //    trans.Commit();
+            //}
 
             // ローカライズ.
             var now = DateTimeOffset.Now;
