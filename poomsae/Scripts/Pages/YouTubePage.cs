@@ -14,7 +14,11 @@ namespace Poomsae
     /// </summary>
     public class YouTubePage : ContentPage
     {
-        public static string youtubeUrl { get; set; }
+        /// <summary>
+        /// Gets or sets TouTube URL.
+        /// </summary>
+        /// <value>You tube URL.</value>
+        public static string youTubeUrl { get; set; }
 
         public YouTubePage()
         {
@@ -25,8 +29,7 @@ namespace Poomsae
               <script src=""js/mediaelement-and-player.min.js""></script>
               <link rel=""stylesheet"" href=""css/mediaelementplayer.css"" />
               <video width=""320"" height=""180"" id=""player1"" preload=""none"">
-                <source type=""video/youtube""
-                src=""{0}"" />
+                <source type=""video/youtube"" src=""{0}"" />
               </video>
               <script>
                 var player = new MediaElementPlayer('#player1');
@@ -36,7 +39,7 @@ namespace Poomsae
             </body>
             </html>";
 
-            var htmlSource = string.Format(baseHtml, youtubeUrl);
+            var htmlSource = string.Format(baseHtml, youTubeUrl);
             var html = new HtmlWebViewSource
             {
                 Html = htmlSource,

@@ -6,6 +6,7 @@
 			<BoxView HeightRequest="1" WidthRequest="100" BackgroundColor="Gray" />
 			<Label Text="{Binding Hangl, StringFormat='[ハングル: {0}]'}" />
 			<Image Source="{Binding Image}" />
+			<Label Text="[動作の動き]" FontSize="Large" HorizontalTextAlignment="Center" />
 			<Image Source="{Binding ActionStep}" />
 			<Label Text="{Binding Meaning, StringFormat='意味: {0}'}" />
 			<Label Text="{Binding Order, StringFormat='順序: {0}'}" />

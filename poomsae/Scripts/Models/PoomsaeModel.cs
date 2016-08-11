@@ -75,6 +75,12 @@ namespace Poomsae
         public string Detail { get; set; }
 
         /// <summary>
+        /// YouTubeのURL.
+        /// </summary>
+        /// <value>You tube URL.</value>
+        public string YouTubeURL { get; set; }
+
+        /// <summary>
         /// 画像.
         /// </summary>
         /// <value>The value.</value>
@@ -82,7 +88,7 @@ namespace Poomsae
 
         public override string ToString()
         {
-            return string.Format("[PoomsaeModel: Id={0}, Created={1}, Updated={2}, Language={3}, Type={4}, Kyu={5}, Name={6}, Hangl={7}, Meaning={8}, Order={9}, Detail={10}, Picture={11}]", Id, Created, Updated, Language, Type, Kyu, Name, Hangl, Meaning, Order, Detail, Picture);
+            return string.Format("[PoomsaeModel: Id={0}, Created={1}, Updated={2}, Language={3}, Type={4}, Kyu={5}, Name={6}, Hangl={7}, Meaning={8}, Order={9}, Detail={10}, YouTubeURL={11}, Picture={12}]", Id, Created, Updated, Language, Type, Kyu, Name, Hangl, Meaning, Order, Detail, YouTubeURL, Picture);
         }
     }
 }

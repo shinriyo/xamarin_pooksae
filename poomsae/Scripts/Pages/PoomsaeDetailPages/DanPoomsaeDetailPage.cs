@@ -39,13 +39,15 @@ namespace Poomsae
             {
                 groups.Add(base.CreateGroup(
                     item.Name,
+                    item.Hangl,
                     // パス付き画像.
                     string.Format(detailImageBase, item.Picture),
                     // パス付きステップ画像.
                     string.Format(stepFormat, item.Kyu),
                     item.Meaning,
                     item.Order,
-                    item.Detail
+                    item.Detail,
+                    item.YouTubeURL
                 ));
             }
 

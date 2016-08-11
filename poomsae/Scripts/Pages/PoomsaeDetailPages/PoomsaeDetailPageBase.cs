@@ -49,8 +49,10 @@ namespace Poomsae
         /// <param name="meaning">Meaning.</param>
         /// <param name="order">Order.</param>
         /// <param name="detail">Detail.</param>
-        protected Group CreateGroup(string title, string image, string stepImage,
-                                    string meaning, string order, string detail)
+        protected Group CreateGroup(string title, string hangl, string image,
+                                    string stepImage, string meaning,
+                                    string order, string detail,
+                                    string youTubeUrl)
         {
             return new Group(title)
             {
@@ -61,7 +63,7 @@ namespace Poomsae
                     IconImage = "note_icon.png",
                     OnClick = new Command(() =>
                     {
-                        this.OpenDetail(title, image, stepImage,
+                        this.OpenDetail(title, hangl, image, stepImage,
                                         meaning, order, detail);
                     })
                 },
@@ -72,8 +74,7 @@ namespace Poomsae
                     IconImage = "movie_icon.png",
                     OnClick = new Command(() =>
                     {
-                        // TODO:
-                        this.PlayMovie("");
+                        this.PlayMovie(youTubeUrl);
                     })
                 }
             };
@@ -88,8 +89,9 @@ namespace Poomsae
         /// <param name="meaning">Meaning.</param>
         /// <param name="order">Order.</param>
         /// <param name="detail">Detail.</param>
-        private void OpenDetail(string name, string image, string stepImage,
-                                string meaning, string order, string detail)
+        private void OpenDetail(string name, string hangl, string image,
+                                string stepImage, string meaning, string order,
+                                string detail)
         {
             try
             {
@@ -99,6 +101,7 @@ namespace Poomsae
                     BindingContext = new PoomsaeOrderPageViewModel()
                     {
                         Name = name,
+                        Hangl = hangl,
                         Image = ImageSource.FromResource(image),
                         ActionStep = ImageSource.FromResource(stepImage),
                         Meaning = meaning,
@@ -116,15 +119,16 @@ namespace Poomsae
         /// <summary>
         /// プンセ動画再生.
         /// </summary>
-        /// <param name="youtubeUrl">Youtube URL.</param>
-        private void PlayMovie(string youtubeUrl)
+        /// <param name="youTubeUrl">YouTubeのURL.</param>
+        private void PlayMovie(string youTubeUrl)
         {
             //var title = "未完成";
             //var message = "動画再生はまだできません。";
             //base.DisplayAlert(title, message, "OK");
             try
             {
-                YouTubePage.youtubeUrl = youtubeUrl;
+                YouTubePage.youTubeUrl = youTubeUrl;
+
                 // ページを遷移する.
                 Navigation.PushAsync(new YouTubePage());
             }
