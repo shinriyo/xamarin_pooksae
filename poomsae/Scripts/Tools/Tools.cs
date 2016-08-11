@@ -137,7 +137,7 @@ namespace Poomsae
                     Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Chop, csvString);
                 });
 
-                //// 受け系ファイル.
+                // 受け系ファイル.
                 csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/guard.csv";
                 webUri = new Uri(csvUrl);
                 var guardCsvString = await GetWebPageAsync(webUri);
@@ -151,7 +151,7 @@ namespace Poomsae
                     Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Guard, csvString);
                 });
 
-                //// 肘系ファァイル.
+                // 肘系ファァイル.
                 csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/elbow.csv";
                 webUri = new Uri(csvUrl);
                 csvString = await GetWebPageAsync(webUri);
@@ -165,7 +165,7 @@ namespace Poomsae
                     Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Elbow, csvString);
                 });
 
-                //// 構え系ファイル.
+                // 構え系ファイル.
                 csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/stance.csv";
                 webUri = new Uri(csvUrl);
                 csvString = await GetWebPageAsync(webUri);
@@ -209,7 +209,7 @@ namespace Poomsae
 
                 int poomsaeId = 0;
 
-                //// 級プンセファイル.
+                // 級プンセファイル.
                 var kyuPoomsaeUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/poomsae_kyu.csv";
                 webUri = new Uri(kyuPoomsaeUrl);
                 csvString = await GetWebPageAsync(webUri);
@@ -223,7 +223,7 @@ namespace Poomsae
                     Tools.LoadPoomsaeCSV(ref poomsaeId, japan, (int)PoomsaeModel.KyuOrDan.Kyu, csvString);
                 });
 
-                //// 段プンセファイル.
+                // 段プンセファイル.
                 csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/poomsae_dan.csv";
                 webUri = new Uri(csvUrl);
                 csvString = await GetWebPageAsync(webUri);
