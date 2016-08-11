@@ -159,6 +159,7 @@
     <None Include="Assets\Content\js\jquery.js" />
     <None Include="Assets\Content\js\mediaelement-and-player.min.js" />
     <None Include="Assets\Content\css\mediaelementplayer.css" />
+    <None Include="Assets\Content\css\main.css" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\layout\" />

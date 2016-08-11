@@ -161,6 +161,7 @@
     <None Include="Entitlements.plist" />
     <None Include="packages.config" />
     <None Include="FodyWeavers.xml" />
+    <None Include="Resources\Content\css\main.css" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />

@@ -18,7 +18,7 @@ namespace Poomsae
         /// Gets or sets TouTube URL.
         /// </summary>
         /// <value>You tube URL.</value>
-        public static string youTubeUrl { get; set; }
+        public static string youTubeUrl { private get; set; }
 
         public YouTubePage()
         {
@@ -28,14 +28,15 @@ namespace Poomsae
               <script src=""js/jquery.js""></script>
               <script src=""js/mediaelement-and-player.min.js""></script>
               <link rel=""stylesheet"" href=""css/mediaelementplayer.css"" />
-              <video width=""320"" height=""180"" id=""player1"" preload=""none"">
+              <video width=""100%"" id=""player1"" preload=""none"">
                 <source type=""video/youtube"" src=""{0}"" />
               </video>
               <script>
                 var player = new MediaElementPlayer('#player1');
               </script>
             </head>
-            <body>
+            <body style=""background:#000;color:#fff"">
+            動画をタップで再生してください.
             </body>
             </html>";
 
