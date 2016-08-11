@@ -19,6 +19,8 @@ namespace Poomsae
         /// </summary>
         public const string version = "0.1";
 
+        public const string realmFile = "poomsae.realm";
+
         /// <summary>
         /// Initializes a new instance of the <see cref="T:Poomsae.App"/> class.
         /// </summary>

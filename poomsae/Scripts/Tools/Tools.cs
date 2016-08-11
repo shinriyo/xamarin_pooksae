@@ -262,7 +262,7 @@ namespace Poomsae
             var csv = new CsvReader(new StringReader(csvString));
             var now = DateTimeOffset.Now;
 
-            var realm = Realm.GetInstance();
+            var realm = Realm.GetInstance(App.realmFile);
             using (var transaction = realm.BeginWrite())
             {
                 while (csv.Read())
@@ -307,7 +307,7 @@ namespace Poomsae
         {
             var csv = new CsvReader(new StringReader(csvString));
 
-            var realm = Realm.GetInstance();
+            var realm = Realm.GetInstance(App.realmFile);
             using (var transaction = realm.BeginWrite())
             {
                 while (csv.Read())
@@ -355,7 +355,7 @@ namespace Poomsae
         /// <returns>The db.</returns>
         public static void InitializeDB()
         {
-            var realm = Realm.GetInstance();
+            var realm = Realm.GetInstance(App.realmFile);
 
             // トランザクションを開始してオブジェクトを削除します.
             using (var trans = realm.BeginWrite())

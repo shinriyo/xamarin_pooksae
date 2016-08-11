@@ -73,7 +73,7 @@ namespace Poomsae
                                                          Action<string, string, string> action)
         {
             var groups = new ObservableCollection<Group>();
-            var realm = Realm.GetInstance();
+            var realm = Realm.GetInstance(App.realmFile);
             var res = realm.All<ArtModel>().Where(d => d.Type == type);
             Group group = null;
 

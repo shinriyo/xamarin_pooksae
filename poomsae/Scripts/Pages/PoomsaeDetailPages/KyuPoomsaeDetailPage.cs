@@ -31,7 +31,7 @@ namespace Poomsae
             string stepFormat = @"poomsae.Resources.KyuPoomsae.Step.pal{0}.png";
 
             var groups = new ObservableCollection<Group>();
-            var realm = Realm.GetInstance();
+            var realm = Realm.GetInstance(App.realmFile);
             var res = realm.All<PoomsaeModel>().Where(d => d.Type == (int)PoomsaeModel.KyuOrDan.Kyu)
                            .OrderBy(d => d.Kyu);
 
