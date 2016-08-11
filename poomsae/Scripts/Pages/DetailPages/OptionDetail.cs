@@ -59,72 +59,10 @@ namespace Poomsae
 
         #region Private Methods
         /// <summary>
-        /// Creates the localize.
-        /// </summary>
-        /// <param name="layout">Layout.</param>
-        public void CreateLocalize(StackLayout layout)
-        {
-            // TODO: ローカライズ.
-            var selectTitle = "言語選択";
-
-            var label = new Label()
-            {
-                FontSize = 30,
-                HorizontalTextAlignment = TextAlignment.Center,
-                Text = selectTitle
-            };
-
-            layout.Children.Add(label);
-
-            var realm = Realm.GetInstance();
-            var mySetting = realm.All<SettingModel>().FirstOrNull();
-
-            // ボタンを生成.
-            List<Button> buttons = new List<Button>();
-            var languageNames = new string[] { "ja", "kr", "en", "vi" };
-            foreach (var language in languageNames)
-            {
-                string myLang = mySetting == null ? "ja" : mySetting.language;
-                bool isEnable = (myLang != language);
-
-                var button = new Button
-                {
-                    Text = language,
-                    IsEnabled = isEnable
-                };
-                buttons.Add(button);
-
-                layout.Children.Add(button);
-                // TODO: ローカライズ.
-                var dialogTitle = "変更完了";
-                button.Clicked += (s, a) =>
-                {
-                    base.DisplayAlert(dialogTitle, language + "に変更されました", "OK");
-                    // トランザクションを開始して、オブジェクトを更新します
-                    using (var trans = Realm.GetInstance().BeginWrite())
-                    {
-                        // 再度取得が必須.
-                        realm = Realm.GetInstance();
-                        mySetting = realm.All<SettingModel>().FirstOrNull();
-                        mySetting.language = language;
-                        trans.Commit();
-                    }
-
-                    // ON/OFF切り替え.
-                    foreach (var itemBtn in buttons)
-                    {
-                        bool isSelected = (itemBtn.Text == language);
-                        itemBtn.IsEnabled = !isSelected;
-                    }
-                };
-            }
-        }
-
-        /// <summary>
         /// Creates the contact.
         /// </summary>
         /// <param name="layout">Layout.</param>
-        public void CreateContact(StackLayout layout)
+        private void CreateContact(StackLayout layout)
         {
             var appointmentLabel = new Label()
             {

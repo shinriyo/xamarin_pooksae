@@ -74,31 +74,14 @@ namespace Poomsae
             // 設定初期化.
             Tools.InitializeDB();
 
-            //// ローカライズファイル.
-            //var localizeUrl = "";
-
-            //// 取得したいWebページのURI.
-            //Uri webUri = new Uri(localizeUrl);
-
-            // GetWebPageAsyncメソッドを呼び出す
-            //var csvString = await GetWebPageAsync(webUri);
-
-            //var csv = new CsvReader(new StringReader(csvString));
-            //while (csv.Read())
-            //{
-            //    var key = csv.GetField<string>(0);
-            //    var value = csv.GetField<string>(1);
-            //    Debug.WriteLine("key:{0}, value:{1}", key, value);
-            //}
-
-            string japan = "ja";
-
             try
             {
+                string japan = "ja";
+
                 // パンチ系ファイル.
-                var csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/punch.csv";
+                string csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/punch.csv";
                 Uri webUri = new Uri(csvUrl);
-                var csvString = await GetWebPageAsync(webUri);
+                string csvString = await GetWebPageAsync(webUri);
                 if (string.IsNullOrEmpty(csvString))
                 {
                     return false;
@@ -183,7 +166,8 @@ namespace Poomsae
 
                 Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Jump, csvString);
 
-                int poomsaeId = 0;
+                // プンセ系は別idなので.
+                id = 0;
 
                 // 級プンセファイル.
                 var kyuPoomsaeUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/poomsae_kyu.csv";
@@ -194,7 +178,7 @@ namespace Poomsae
                     return false;
                 }
 
-                Tools.LoadPoomsaeCSV(ref poomsaeId, japan, (int)PoomsaeModel.KyuOrDan.Kyu, csvString);
+                Tools.LoadPoomsaeCSV(japan, (int)PoomsaeModel.KyuOrDan.Kyu, csvString);
 
                 // 段プンセファイル.
                 csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/poomsae_dan.csv";
@@ -205,7 +189,7 @@ namespace Poomsae
                     return false;
                 }
 
-                Tools.LoadPoomsaeCSV(ref poomsaeId, japan, (int)PoomsaeModel.KyuOrDan.Dan, csvString);
+                Tools.LoadPoomsaeCSV(japan, (int)PoomsaeModel.KyuOrDan.Dan, csvString);
 
                 webUri = null;
                 csvUrl = string.Empty;
@@ -322,12 +306,11 @@ namespace Poomsae
         /// <summary>
         /// プンセCSVファイルのロード.
         /// </summary>
-        /// <param name="id">Identifier.</param>
         /// <param name="lang">Lang.</param>
         /// <param name="type">Type.</param>
         /// <param name="csvString">csvからとった文字.</param>
         public static void LoadPoomsaeCSV(
-            ref int id, string lang, int type, string csvString
+            string lang, int type, string csvString
         )
         {
             var csv = new CsvReader(new StringReader(csvString));
@@ -371,6 +354,7 @@ namespace Poomsae
                 }
 
                 transaction.Commit();
+                GC.Collect();
             }
         }
 
@@ -391,10 +375,6 @@ namespace Poomsae
 
             // ローカライズ.
             var now = DateTimeOffset.Now;
-            var ja = new Localize { Id = "0", Country = "ja", Updated = now, Created = now };
-            var enUS = new Localize { Id = "1", Country = "en-US", Updated = now, Created = now };
-            var kr = new Localize { Id = "2", Country = "kr", Updated = now, Created = now };
-            var vi = new Localize { Id = "3", Country = "vi", Updated = now, Created = now };
 
             // 設定.
             var setting = new SettingModel()
@@ -408,11 +388,6 @@ namespace Poomsae
 
             using (var transaction = realm.BeginWrite())
             {
-                realm.Manage<Localize>(ja);
-                realm.Manage<Localize>(enUS);
-                realm.Manage<Localize>(kr);
-                realm.Manage<Localize>(vi);
-
                 realm.Manage<SettingModel>(setting);
 
                 transaction.Commit();
