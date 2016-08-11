@@ -24,7 +24,7 @@ namespace Poomsae
         public DanPoomsaeDetailPage()
         {
             // ページのタイトル.
-            this.Title = "段プンセ詳細";
+            this.Title = "有段者の型・詳細";
 
             // 詳細画面のパス.
             string detailImageBase = @"poomsae.Resources.DanPoomsae.{0}.jpg";

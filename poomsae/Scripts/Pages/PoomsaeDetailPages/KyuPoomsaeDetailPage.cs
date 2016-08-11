@@ -22,7 +22,7 @@ namespace Poomsae
         public KyuPoomsaeDetailPage()
         {
             // ページのタイトル.
-            this.Title = "級プンセ詳細";
+            this.Title = "有級者の型・詳細";
 
             // 詳細画面のパス.
             string detailImageBase = @"poomsae.Resources.KyuPoomsae.{0}.jpg";
