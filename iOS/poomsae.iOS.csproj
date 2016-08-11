@@ -151,6 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Contents.json" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
@@ -186,6 +187,15 @@
     <BundleResource Include="Resources\Content\css\mediaelementplayer.css" />
     <BundleResource Include="Resources\Content\js\mediaelement-and-player.min.js" />
     <BundleResource Include="Resources\Content\js\jquery.js" />
+    <BundleResource Include="Resources\Images\AppIcons\Default.png" />
+    <BundleResource Include="Resources\Images\AppIcons\Default%402x.png" />
+    <BundleResource Include="Resources\Images\AppIcons\Default-568h%402x.png" />
+    <BundleResource Include="Resources\Images\AppIcons\Icon-114.png" />
+    <BundleResource Include="Resources\Images\AppIcons\Icon-120.png" />
+    <BundleResource Include="Resources\Images\AppIcons\Icon-29.png" />
+    <BundleResource Include="Resources\Images\AppIcons\Icon-57.png" />
+    <BundleResource Include="Resources\Images\AppIcons\Icon-58.png" />
+    <BundleResource Include="Resources\Images\AppIcons\Icon-80.png" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="rxforxamarin">
@@ -199,5 +209,7 @@
     <Folder Include="Resources\Content\" />
     <Folder Include="Resources\Content\css\" />
     <Folder Include="Resources\Content\js\" />
+    <Folder Include="Resources\Images\" />
+    <Folder Include="Resources\Images\AppIcons\" />
   </ItemGroup>
 </Project>
