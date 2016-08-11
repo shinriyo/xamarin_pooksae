@@ -80,6 +80,7 @@ namespace Poomsae
             {
                 FontSize = 20,
                 HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.End,
                 Text = "(c)shinriyo"
             };
             layout.Children.Add(campanyLabel);

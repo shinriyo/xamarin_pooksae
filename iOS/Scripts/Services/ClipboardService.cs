@@ -1,21 +1,28 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="ClipboardService.cs" company="shinriyo">
+// <copyright file="CrossPlatformToolService.cs" company="shinriyo">
 //     Company copyright tag.
 // </copyright>
 //-----------------------------------------------------------------------
 
 using System;
-using ClipboardSample.Services;
-using ClipboardSample.iOS;
+using CrossPlatformToolSample.Services;
+using CrossPlatformToolSample.iOS;
 using Xamarin.Forms;
 using UIKit;
 
-[assembly: Dependency(typeof(ClipboardService))]
+[assembly: Dependency(typeof(CrossPlatformToolService))]
 
-namespace ClipboardSample.iOS
+namespace CrossPlatformToolSample.iOS
 {
-	public class ClipboardService : IClipboardService
+	/// <summary>
+	/// クロスプラットフォームで使いそうなものツール.
+	/// </summary>
+	public class CrossPlatformToolService : ICrossPlatformToolService
 	{
+		/// <summary>
+		/// クリップボードにコピー.
+		/// </summary>
+		/// <param name="text">Text.</param>
 		public void CopyToClipboard(String text)
 		{
 			UIPasteboard clipboard = UIPasteboard.General;

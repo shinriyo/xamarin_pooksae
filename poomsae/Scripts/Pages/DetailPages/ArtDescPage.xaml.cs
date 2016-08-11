@@ -5,7 +5,7 @@
 //-----------------------------------------------------------------------
 
 using System;
-using ClipboardSample.Services;
+using CrossPlatformToolSample.Services;
 using Xamarin.Forms;
 
 namespace Poomsae
@@ -27,7 +27,7 @@ namespace Poomsae
             await DisplayAlert(title, message, "OK");
 
             // クリップボードにコピー.
-            DependencyService.Get<IClipboardService>().CopyToClipboard(titleLabel.Text);
+            DependencyService.Get<ICrossPlatformToolService>().CopyToClipboard(titleLabel.Text);
         }
     }
 }

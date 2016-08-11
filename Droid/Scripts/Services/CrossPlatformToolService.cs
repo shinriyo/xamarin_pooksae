@@ -1,21 +1,28 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="ClipboardService.cs" company="shinriyo">
+// <copyright file="CrossPlatformToolService.cs" company="shinriyo">
 //     Company copyright tag.
 // </copyright>
 //-----------------------------------------------------------------------
 
 using System;
 using Android.Content;
-using ClipboardSample.Android;
-using ClipboardSample.Services;
+using CrossPlatformToolSample.Android;
+using CrossPlatformToolSample.Services;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(ClipboardService))]
+[assembly: Dependency(typeof(CrossPlatformToolService))]
 
-namespace ClipboardSample.Android
+namespace CrossPlatformToolSample.Android
 {
-	public class ClipboardService : IClipboardService
+	/// <summary>
+	/// Cross platform tool service.
+	/// </summary>
+	public class CrossPlatformToolService : ICrossPlatformToolService
 	{
+		/// <summary>
+		/// クリップボードにコピー.
+		/// </summary>
+		/// <param name="text">Text.</param>
 		public void CopyToClipboard(String text)
 		{
 			// Get the Clipboard Manager

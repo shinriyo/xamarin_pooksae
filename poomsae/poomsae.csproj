@@ -49,7 +49,7 @@
     <Compile Include="Scripts\ViewModels\ArtDescPageViewModel.cs" />
     <Compile Include="Scripts\Services\IWebBrowserService.cs" />
     <Compile Include="Scripts\Services\IVideoPlayerService.cs" />
-    <Compile Include="Scripts\Services\IClipboardService.cs" />
+    <Compile Include="Scripts\Services\ICrossPlatformToolService.cs" />
     <Compile Include="Scripts\Pages\DetailPages\PoomsaeOrderPage.xaml.cs">
       <DependentUpon>PoomsaeOrderPage.xaml</DependentUpon>
     </Compile>
