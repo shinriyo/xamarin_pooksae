@@ -69,38 +69,30 @@ namespace Poomsae
         /// DB初期化やCSVをWebからロード.
         /// </summary>
         /// <returns>The load CSV.</returns>
-        public static async Task<string> Initialization()
-        //public static void Initialization()
+        public static async Task Initialization()
         {
             // 設定初期化.
             Tools.InitializeDB();
 
+            // ローカライズファイル.
+            var localizeUrl = "http://vps6-d.kuku.lu/files/20160725-0035_2b21358ee0d5a871860a15789270a433.csv";
+
+            // 取得したいWebページのURI.
+            Uri webUri = new Uri(localizeUrl);
+
+            // GetWebPageAsyncメソッドを呼び出す
+            //var csvString = await GetWebPageAsync(webUri);
+
+            //var csv = new CsvReader(new StringReader(csvString));
+            //while (csv.Read())
+            //{
+            //    var key = csv.GetField<string>(0);
+            //    var value = csv.GetField<string>(1);
+            //    Debug.WriteLine("key:{0}, value:{1}", key, value);
+            //}
+
             using (var httpClient = new HttpClient())
             {
-                // ローカライズファイル.
-                var localizeUrl = "http://vps6-d.kuku.lu/files/20160725-0035_2b21358ee0d5a871860a15789270a433.csv";
-
-                // 取得したいWebページのURI.
-                Uri webUri = new Uri(localizeUrl);
-
-                // GetWebPageAsyncメソッドを呼び出す
-                // Task<string> webTask = httpClient.GetStringAsync(webUri);
-                var csvString = await GetWebPageAsync(webUri);
-
-                // Mainメソッドではawaitできないので、処理が完了するまで待機する.
-                //webTask.Wait();
-
-                // 結果を取得.
-                //var csvString = webTask.Result;
-
-                var csv = new CsvReader(new StringReader(csvString));
-                while (csv.Read())
-                {
-                    var key = csv.GetField<string>(0);
-                    var value = csv.GetField<string>(1);
-                    Debug.WriteLine("key:{0}, value:{1}", key, value);
-                }
-
                 string japan = "ja";
 
                 // パンチ系ファイル.
@@ -145,8 +137,6 @@ namespace Poomsae
                 var danPoomsaeUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_pooksae/master/dbCSV/ja/poomsae_dan.csv";
                 Tools.LoadPoomsaeCSV(ref poomsaeId, japan, (int)PoomsaeModel.KyuOrDan.Dan, httpClient, danPoomsaeUrl);
             }
-
-            return "";
         }
 
         /// <summary>
