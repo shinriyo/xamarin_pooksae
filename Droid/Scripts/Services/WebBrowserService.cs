@@ -14,8 +14,15 @@ using Xamarin.Forms;
 
 namespace OpenWebBrowserSample.Android
 {
+	/// <summary>
+	/// Web browser service.
+	/// </summary>
 	public class WebBrowserService : IWebBrowserService
 	{
+		/// <summary>
+		/// Open the specified uri.
+		/// </summary>
+		/// <param name="uri">URI.</param>
 		public void Open(Uri uri)
 		{
 			Forms.Context.StartActivity(
@@ -23,6 +30,9 @@ namespace OpenWebBrowserSample.Android
 					global::Android.Net.Uri.Parse(uri.AbsoluteUri)));
 		}
 
+		/// <summary>
+		/// Get this instance.
+		/// </summary>
 		public string Get()
 		{
 			return "file:///android_asset/Content/";
