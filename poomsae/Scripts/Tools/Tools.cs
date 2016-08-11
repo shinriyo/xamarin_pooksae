@@ -76,8 +76,6 @@ namespace Poomsae
 
             try
             {
-                string japan = "ja";
-
                 // パンチ系ファイル.
                 string csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/punch.csv";
                 Uri webUri = new Uri(csvUrl);
@@ -87,7 +85,7 @@ namespace Poomsae
                     return false;
                 }
 
-                Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Punch, csvString);
+                Tools.LoadArtsCSV((int)ArtModel.ArtType.Punch, csvString);
 
                 // キック系ファイル.
                 csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/kick.csv";
@@ -98,7 +96,7 @@ namespace Poomsae
                     return false;
                 }
 
-                Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Kick, csvString);
+                Tools.LoadArtsCSV((int)ArtModel.ArtType.Kick, csvString);
 
                 // チョップ系ファイル.
                 csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/chop.csv";
@@ -109,7 +107,7 @@ namespace Poomsae
                     return false;
                 }
 
-                Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Chop, csvString);
+                Tools.LoadArtsCSV((int)ArtModel.ArtType.Chop, csvString);
 
                 // 受け系ファイル.
                 csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/guard.csv";
@@ -120,7 +118,7 @@ namespace Poomsae
                     return false;
                 }
 
-                Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Guard, csvString);
+                Tools.LoadArtsCSV((int)ArtModel.ArtType.Guard, csvString);
 
                 // 肘系ファァイル.
                 csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/elbow.csv";
@@ -131,7 +129,7 @@ namespace Poomsae
                     return false;
                 }
 
-                Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Elbow, csvString);
+                Tools.LoadArtsCSV((int)ArtModel.ArtType.Elbow, csvString);
 
                 // 構え系ファイル.
                 csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/stance.csv";
@@ -142,7 +140,7 @@ namespace Poomsae
                     return false;
                 }
 
-                Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Stance, csvString);
+                Tools.LoadArtsCSV((int)ArtModel.ArtType.Stance, csvString);
 
                 // 押し系ファイル.
                 csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/push.csv";
@@ -153,7 +151,7 @@ namespace Poomsae
                     return false;
                 }
 
-                Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Push, csvString);
+                Tools.LoadArtsCSV((int)ArtModel.ArtType.Push, csvString);
 
                 // 跳び系ファイル.
                 var jumpUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/jump.csv";
@@ -164,7 +162,7 @@ namespace Poomsae
                     return false;
                 }
 
-                Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Jump, csvString);
+                Tools.LoadArtsCSV((int)ArtModel.ArtType.Jump, csvString);
 
                 // プンセ系は別idなので.
                 id = 0;
@@ -178,7 +176,7 @@ namespace Poomsae
                     return false;
                 }
 
-                Tools.LoadPoomsaeCSV(japan, (int)PoomsaeModel.KyuOrDan.Kyu, csvString);
+                Tools.LoadPoomsaeCSV((int)PoomsaeModel.KyuOrDan.Kyu, csvString);
 
                 // 段プンセファイル.
                 csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/poomsae_dan.csv";
@@ -189,7 +187,7 @@ namespace Poomsae
                     return false;
                 }
 
-                Tools.LoadPoomsaeCSV(japan, (int)PoomsaeModel.KyuOrDan.Dan, csvString);
+                Tools.LoadPoomsaeCSV((int)PoomsaeModel.KyuOrDan.Dan, csvString);
 
                 webUri = null;
                 csvUrl = string.Empty;
@@ -256,11 +254,9 @@ namespace Poomsae
         /// <summary>
         /// 技のCSVをロード.
         /// </summary>
-        /// <param name="lang">Lang.</param>
         /// <param name="type">Type.</param>
         /// <param name="csvString">csvからとった文字.</param>
-        private static void LoadArtsCSV(
-            string lang, int type, string csvString)
+        private static void LoadArtsCSV(int type, string csvString)
         {
             // 結果を取得.
             var csv = new CsvReader(new StringReader(csvString));
@@ -283,7 +279,6 @@ namespace Poomsae
                     var artModel = new ArtModel
                     {
                         Id = id.ToString(),
-                        Language = lang,
                         Type = type,
                         Kyu = kyu,
                         Name = name,
@@ -306,12 +301,9 @@ namespace Poomsae
         /// <summary>
         /// プンセCSVファイルのロード.
         /// </summary>
-        /// <param name="lang">Lang.</param>
         /// <param name="type">Type.</param>
         /// <param name="csvString">csvからとった文字.</param>
-        public static void LoadPoomsaeCSV(
-            string lang, int type, string csvString
-        )
+        public static void LoadPoomsaeCSV(int type, string csvString)
         {
             var csv = new CsvReader(new StringReader(csvString));
 
@@ -337,7 +329,6 @@ namespace Poomsae
                     var poomsaeModel = new PoomsaeModel
                     {
                         Id = id.ToString(),
-                        Language = lang,
                         Type = type,
                         Kyu = kyu,
                         Name = name,
@@ -380,7 +371,6 @@ namespace Poomsae
             var setting = new SettingModel()
             {
                 Id = "0",
-                language = "ja",
                 version = App.version,
                 Updated = now,
                 Created = now

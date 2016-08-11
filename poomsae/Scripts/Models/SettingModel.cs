@@ -33,12 +33,6 @@ namespace Poomsae
         public DateTimeOffset Updated { get; set; }
 
         /// <summary>
-        /// Gets or sets the country.
-        /// </summary>
-        /// <value>The country.</value>
-        public string language { get; set; }
-
-        /// <summary>
         /// Gets or sets the version.
         /// </summary>
         /// <value>The version.</value>

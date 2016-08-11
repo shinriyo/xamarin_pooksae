@@ -31,7 +31,6 @@ namespace Poomsae
         public DateTimeOffset Created { get; set; }
         public DateTimeOffset Updated { get; set; }
 
-        /// <summary>
         /// ローカライズの言語.
         /// </summary>
         /// <value>The country identifier.</value>
