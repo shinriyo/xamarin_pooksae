@@ -99,43 +99,73 @@ namespace Poomsae
                 var punchUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/punch.csv";
                 Uri webUri = new Uri(punchUrl);
                 var punchCsvString = await GetWebPageAsync(webUri);
-
-                return true;
+                if (string.IsNullOrEmpty(punchCsvString))
+                {
+                    return false;
+                }
 
                 // キック系ファイル.
                 var kickUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/kick.csv";
                 webUri = new Uri(kickUrl);
                 var kickCsvString = await GetWebPageAsync(webUri);
+                if (string.IsNullOrEmpty(kickCsvString))
+                {
+                    return false;
+                }
 
                 // チョップ系ファイル.
                 var chopUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/chop.csv";
                 webUri = new Uri(chopUrl);
                 var chopCsvString = await GetWebPageAsync(webUri);
+                if (string.IsNullOrEmpty(chopCsvString))
+                {
+                    return false;
+                }
 
                 // 受け系ファイル.
                 var guardUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/guard.csv";
                 webUri = new Uri(guardUrl);
                 var guardCsvString = await GetWebPageAsync(webUri);
+                if (string.IsNullOrEmpty(guardCsvString))
+                {
+                    return false;
+                }
 
                 // 肘系ファァイル.
                 var elbowUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/elbow.csv";
                 webUri = new Uri(elbowUrl);
                 var elbowCsvString = await GetWebPageAsync(webUri);
+                if (string.IsNullOrEmpty(elbowCsvString))
+                {
+                    return false;
+                }
 
                 // 構え系ファイル.
                 var stanceUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/stance.csv";
                 webUri = new Uri(stanceUrl);
                 var stanceCsvString = await GetWebPageAsync(webUri);
+                if (string.IsNullOrEmpty(stanceCsvString))
+                {
+                    return false;
+                }
 
                 // 押し系ファイル.
                 var pushUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/push.csv";
                 webUri = new Uri(pushUrl);
                 var pushCsvString = await GetWebPageAsync(webUri);
+                if (string.IsNullOrEmpty(pushCsvString))
+                {
+                    return false;
+                }
 
                 // 跳び系ファイル.
                 var jumpUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/jump.csv";
                 webUri = new Uri(jumpUrl);
                 var jumpCsvString = await GetWebPageAsync(webUri);
+                if (string.IsNullOrEmpty(jumpCsvString))
+                {
+                    return false;
+                }
 
                 // 各csvをRealmにInsert.
                 Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Punch, punchCsvString);
