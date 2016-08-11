@@ -1,12 +1,12 @@
--- Key, Value
-"title", "Taekwon-Do Dict"
-"run", "実行"
-"cancel", "キャンセル"
-"init-ask", "初期化しますがよろしいですか"
-"arts-dict", "技辞典"
-"aets-desc", 技の解説
-"about-punch", "パンチ系"
-"about-kick", "キック系"
-"about-chop", "手刀系"
-"about-guard", "受け系"
-"arts-detail","技詳細"
+Key, Value
+title, Taekwon-Do Dict
+run, 実行
+cancel, キャンセル
+init-ask, 初期化しますがよろしいですか
+arts-dict, 技辞典
+aets-desc, 技の解説
+about-punch, パンチ系
+about-kick, キック系
+about-chop, 手刀系
+about-guard, 受け系
+arts-detail,技詳細

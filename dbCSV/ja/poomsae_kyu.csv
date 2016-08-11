@@ -1,9 +1,9 @@
-"Dan", "Name", "Hangl", "Meaning", "Order", "Detail", "Picture", "YouTubeURL"
-1, "太極1章(テグ イルジャン)", "태극일장", "八卦の「乾（けん）」", "hoge->bar", "乾は宇宙万物の根源の始初を意味する。つまり太極一章はテコンドーの型の根源をなす", "NoImage", "https://www.youtube.com/watch?v=gbmVpqINAr4"
-2, "太極2章(テグ イージャン)", "태극일장", "八卦の「兌（だ）」", "hoge->bar", "兌とは内側には強く、外側には柔らかいという意味である。したがって太極二章の型は、柔かでありながらも強い攻撃ができるようになっている。", "NoImage", "https://www.youtube.com/watch?v=H5AHW-cysy4"
-3, "太極3章(テグ サムジャン)", "태극삼장", "八卦の「離（り）」", "hoge->bar", "離とは、「火」のように熱く明るいという意味である。したがって太極三章の型は、活気ある動作を意味し、太極一章と太極二章に比べて多様な技で構成されている。", "NoImage", "https://www.youtube.com/watch?v=xxXoZvPOau0"
-4, "太極4章(テグ サージャン)", "태극사장", "八卦の「震（しん）」", "hoge->bar", "震とは、警戒心を持たせる、敬虔な態度と毅然とした権威を持つ、という意味である。", "NoImage", "https://www.youtube.com/watch?v=nG0FXKgewUM"
-5, "太極5章(テグ オージャン)", "태극오장", "八卦の「巽（そん）」", "hoge->bar", "巽は風を意味する。風は微風と強風に分け、微風は静けさを、強風は威勢を意味する。太極5章の型もそうした意味を持ち、演武も単調で静かに進行するが、後半は強いものになる。", "NoImage", "https://www.youtube.com/watch?v=CttTzw2AJsw"
-6, "太極6章(テグ ユッジャン)", "태극역장", "八卦の「坎（かん）」", "hoge->bar", "坎は水のように柔軟であることを意味するつまり太極六章は柔らかい動作で演武される型である。手刀上段受けや体をねじる動作、上段前廻し蹴り等の技も入ってくる。", "NoImage", "https://www.youtube.com/watch?v=NZhIK3jj5Xw"
-7, "太極7章(テグ チルジャン)", "태극칠장", "八卦の「艮（ごん）」", "hoge->bar", "艮は山を象徴し、山は重厚さを意味する。したがってこの型は重厚な力をもって一つ一つの動作を節度を守りながら演武することが大切である。", "NoImage", "https://www.youtube.com/watch?v=Nv0Jn7wyDro"
-8, "太極8章(テグ パルジャン)", "태극팔장", "八卦の「坤（こん）」", "hoge->bar", "坤は大地を意味する。大地は万物を成長する根源となる。この型は有級者として最後過程であり、または有段者として大一歩の型である。この型は多様な動作で構成されている。", "NoImage", "https://www.youtube.com/watch?v=wWVSI7vpRv0"
+Dan,Name,Hangl,Meaning,Order,Detail,Picture,YouTubeURL
+1,太極1章(テグ イルジャン),태극일장,八卦の「乾（けん）」,hoge->bar,乾は宇宙万物の根源の始初を意味する。つまり太極一章はテコンドーの型の根源をなす,NoImage,https://www.youtube.com/watch?v=gbmVpqINAr4
+2,太極2章(テグ イージャン),태극일장,八卦の「兌（だ）」,hoge->bar,兌とは内側には強く、外側には柔らかいという意味である。したがって太極二章の型は、柔かでありながらも強い攻撃ができるようになっている。,NoImage,https://www.youtube.com/watch?v=H5AHW-cysy4
+3,太極3章(テグ サムジャン),태극삼장,八卦の「離（り）」,hoge->bar,離とは、「火」のように熱く明るいという意味である。したがって太極三章の型は、活気ある動作を意味し、太極一章と太極二章に比べて多様な技で構成されている。,NoImage,https://www.youtube.com/watch?v=xxXoZvPOau0
+4,太極4章(テグ サージャン),태극사장,八卦の「震（しん）」,hoge->bar,震とは、警戒心を持たせる、敬虔な態度と毅然とした権威を持つ、という意味である。,NoImage,https://www.youtube.com/watch?v=nG0FXKgewUM
+5,太極5章(テグ オージャン),태극오장,八卦の「巽（そん）」,hoge->bar,巽は風を意味する。風は微風と強風に分け、微風は静けさを、強風は威勢を意味する。太極5章の型もそうした意味を持ち、演武も単調で静かに進行するが、後半は強いものになる。,NoImage,https://www.youtube.com/watch?v=CttTzw2AJsw
+6,太極6章(テグ ユッジャン),태극역장,八卦の「坎（かん）」,hoge->bar,坎は水のように柔軟であることを意味するつまり太極六章は柔らかい動作で演武される型である。手刀上段受けや体をねじる動作、上段前廻し蹴り等の技も入ってくる。,NoImage,https://www.youtube.com/watch?v=NZhIK3jj5Xw
+7,太極7章(テグ チルジャン),태극칠장,八卦の「艮（ごん）」,hoge->bar,艮は山を象徴し、山は重厚さを意味する。したがってこの型は重厚な力をもって一つ一つの動作を節度を守りながら演武することが大切である。,NoImage,https://www.youtube.com/watch?v=Nv0Jn7wyDro
+8,太極8章(テグ パルジャン),태극팔장,八卦の「坤（こん）」,hoge->bar,坤は大地を意味する。大地は万物を成長する根源となる。この型は有級者として最後過程であり、または有段者として大一歩の型である。この型は多様な動作で構成されている。,NoImage,https://www.youtube.com/watch?v=wWVSI7vpRv0

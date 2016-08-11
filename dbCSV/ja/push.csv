@@ -1,8 +1,8 @@
-"Kyu", "Name", "Desc", "Detail", "Picture"
-2, "コドロチギ(xxx)", "거들어치기", "xxx", "NoImage"
-2, "ネルゲピョギ(xxx)", "날개펴기", "xxx", "NoImage"
-2, "ミロネギ(xxx)", "밀어내기", "xxx", "NoImage"
-2, "ミルチョネゲ(xxx)", "밀쳐내기", "xxx", "NoImage"
-2, "バウォミルギ(xxx)", "바위밀기", "xxx", "NoImage"
-2, "テサンミルギ(xxx)", "태산밀기", "xxx", "NoImage"
-2, "トンミルギ(xxx)", "통밀기", "xxx", "NoImage"
+Kyu,Name,Desc,Detail,Picture
+2,コドロチギ(xxx),거들어치기,xxx,NoImage
+2,ネルゲピョギ(xxx),날개펴기,xxx,NoImage
+2,ミロネギ(xxx),밀어내기,xxx,NoImage
+2,ミルチョネゲ(xxx),밀쳐내기,xxx,NoImage
+2,バウォミルギ(xxx),바위밀기,xxx,NoImage
+2,テサンミルギ(xxx),태산밀기,xxx,NoImage
+2,トンミルギ(xxx),통밀기,xxx,NoImage

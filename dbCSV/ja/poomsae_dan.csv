@@ -1,10 +1,10 @@
-"Dan", "Name", "Hangl", "Meaning", "Order", "Detail", "Picture", "YouTubeURL"
-1, "高麗(コリョ)", "고려", "士", "hoge->bar", "hoge", "NoImage", "https://www.youtube.com/watch?v=UcV6bDGXjKg"
-2, "金剛(クムガン)", "금강", "山", "hoge->bar", "hoge", "NoImage", "https://www.youtube.com/watch?v=tqia850YrvM"
-3, "太白(テベク)", "태백", "工", "hoge->bar", "hoge", "NoImage", "https://www.youtube.com/watch?v=O1p7gNA66WA"
-4, "平原(ピョンウォン)", "평원", "一", "hoge->bar", "hoge","NoImage", "https://www.youtube.com/watch?v=jW0Myt4RDvQ"
-5, "十進(シップジン)", "십진", "十", "hoge->bar", "hoge","NoImage", "https://www.youtube.com/watch?v=taU-9HUbUNg"
-6, "地跆(チテ)", "지태", "⊥", "hoge->bar", "hoge","NoImage", "https://www.youtube.com/watch?v=toRh_-njvTo"
-7, "天拳(チョングォン)", "천권", "Ｔ", "hoge->bar", "hoge","NoImage", "https://www.youtube.com/watch?v=JpfkO1t4Wg"
-8, "漢水(ハンス)", "한수", "水", "hoge->bar", "hoge","NoImage", "https://www.youtube.com/watch?v=8Ko3o3BtGWM"
-9, "一如(イリョ)", "일여", "卍", "hoge->bar", "hoge", "NoImage", "https://www.youtube.com/watch?v=wGxJ9VBu1bU"
+Dan,Name,Hangl,Meaning,Order,Detail,Picture,YouTubeURL
+1,高麗(コリョ),고려,士,hoge->bar,hoge,NoImage,https://www.youtube.com/watch?v=UcV6bDGXjKg
+2,金剛(クムガン),금강,山,hoge->bar,hoge,NoImage,https://www.youtube.com/watch?v=tqia850YrvM
+3,太白(テベク),태백,工,hoge->bar,hoge,NoImage,https://www.youtube.com/watch?v=O1p7gNA66WA
+4,平原(ピョンウォン),평원,一,hoge->bar,hoge,NoImage,https://www.youtube.com/watch?v=jW0Myt4RDvQ
+5,十進(シップジン),십진,十,hoge->bar,hoge,NoImage,https://www.youtube.com/watch?v=taU-9HUbUNg
+6,地跆(チテ),지태,⊥,hoge->bar,hoge,NoImage,https://www.youtube.com/watch?v=toRh_-njvTo
+7,天拳(チョングォン),천권,Ｔ,hoge->bar,hoge,NoImage,https://www.youtube.com/watch?v=JpfkO1t4Wg
+8,漢水(ハンス),한수,水,hoge->bar,hoge,NoImage,https://www.youtube.com/watch?v=8Ko3o3BtGWM
+9,一如(イリョ),일여,卍,hoge->bar,hoge,NoImage,https://www.youtube.com/watch?v=wGxJ9VBu1bU
