@@ -34,5 +34,15 @@ namespace CrossPlatformToolSample.Android
 			// Copy the text
 			clipboardManager.PrimaryClip = clip;
 		}
+
+		/// <summary>
+		/// Gets the special folder path.
+		/// </summary>
+		/// <returns>The special folder path.</returns>
+		public string GetSpecialFolderPath()
+		{
+			var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+			return documentsPath;
+		}
 	}
 }

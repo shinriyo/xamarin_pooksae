@@ -16,5 +16,11 @@ namespace CrossPlatformToolSample.Services
         /// </summary>
         /// <param name="text">Text.</param>
         void CopyToClipboard(string text);
+
+        /// <summary>
+        /// Gets the special folder path.
+        /// </summary>
+        /// <returns>The special folder path.</returns>
+        string GetSpecialFolderPath();
     }
 }

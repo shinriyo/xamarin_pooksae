@@ -28,5 +28,15 @@ namespace CrossPlatformToolSample.iOS
 			UIPasteboard clipboard = UIPasteboard.General;
 			clipboard.String = text;
 		}
+
+		/// <summary>
+		/// Gets the special folder path.
+		/// </summary>
+		/// <returns>The special folder path.</returns>
+		public string GetSpecialFolderPath()
+		{ 
+			var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+			return documentsPath;
+		}
 	}
 }

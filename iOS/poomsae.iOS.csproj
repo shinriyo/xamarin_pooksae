@@ -167,7 +167,7 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Scripts\Services\WebBrowserService.cs" />
     <Compile Include="Scripts\Services\VideoPlayerSample.cs" />
-    <Compile Include="Scripts\Services\ClipboardService.cs" />
+    <Compile Include="Scripts\Services\CrossPlatformToolService.cs" />
     <Compile Include="Scripts\Services\LoadingMessage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
