@@ -106,35 +106,35 @@ namespace Poomsae
 
                 await Task.Run(() =>
                 {
-                    Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Punch, punchCsvString);
+                    Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Punch, csvString);
                 });
 
                 // キック系ファイル.
                 var kickUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/kick.csv";
                 webUri = new Uri(kickUrl);
-                var kickCsvString = await GetWebPageAsync(webUri);
-                if (string.IsNullOrEmpty(kickCsvString))
+                csvString = await GetWebPageAsync(webUri);
+                if (string.IsNullOrEmpty(csvString))
                 {
                     return false;
                 }
 
                 await Task.Run(() =>
                 {
-                    Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Kick, kickCsvString);
+                    Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Kick, csvString);
                 });
 
                 // チョップ系ファイル.
                 var chopUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/chop.csv";
                 webUri = new Uri(chopUrl);
-                var chopCsvString = await GetWebPageAsync(webUri);
-                if (string.IsNullOrEmpty(chopCsvString))
+                csvString = await GetWebPageAsync(webUri);
+                if (string.IsNullOrEmpty(csvString))
                 {
                     return false;
                 }
 
                 await Task.Run(() =>
                 {
-                    Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Chop, chopCsvString);
+                    Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Chop, csvString);
                 });
 
                 //// 受け系ファイル.
@@ -148,74 +148,95 @@ namespace Poomsae
 
                 await Task.Run(() =>
                 {
-                    Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Guard, guardCsvString);
+                    Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Guard, csvString);
                 });
 
                 //// 肘系ファァイル.
                 var elbowUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/elbow.csv";
                 webUri = new Uri(elbowUrl);
-                var elbowCsvString = await GetWebPageAsync(webUri);
-                if (string.IsNullOrEmpty(elbowCsvString))
+                csvString = await GetWebPageAsync(webUri);
+                if (string.IsNullOrEmpty(csvString))
                 {
                     return false;
                 }
 
                 await Task.Run(() =>
                 {
-                    Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Elbow, elbowCsvString);
+                    Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Elbow, csvString);
                 });
 
                 //// 構え系ファイル.
                 var stanceUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/stance.csv";
                 webUri = new Uri(stanceUrl);
-                var stanceCsvString = await GetWebPageAsync(webUri);
-                if (string.IsNullOrEmpty(stanceCsvString))
+                csvString = await GetWebPageAsync(webUri);
+                if (string.IsNullOrEmpty(csvString))
                 {
                     return false;
                 }
 
                 await Task.Run(() =>
                 {
-                    Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Elbow, stanceCsvString);
+                    Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Elbow, csvString);
                 });
 
                 // 押し系ファイル.
                 var pushUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/push.csv";
                 webUri = new Uri(pushUrl);
-                var pushCsvString = await GetWebPageAsync(webUri);
-                if (string.IsNullOrEmpty(pushCsvString))
+                csvString = await GetWebPageAsync(webUri);
+                if (string.IsNullOrEmpty(csvString))
                 {
                     return false;
                 }
 
                 await Task.Run(() =>
                 {
-                    Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Push, pushCsvString);
+                    Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Push, csvString);
                 });
 
                 // 跳び系ファイル.
                 var jumpUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/jump.csv";
                 webUri = new Uri(jumpUrl);
-                var jumpCsvString = await GetWebPageAsync(webUri);
-                if (string.IsNullOrEmpty(jumpCsvString))
+                csvString = await GetWebPageAsync(webUri);
+                if (string.IsNullOrEmpty(csvString))
                 {
                     return false;
                 }
 
                 await Task.Run(() =>
                 {
-                    Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Jump, jumpCsvString);
+                    Tools.LoadArtsCSV(japan, (int)ArtModel.ArtType.Jump, csvString);
                 });
 
-                //int poomsaeId = 0;
+                int poomsaeId = 0;
 
                 //// 級プンセファイル.
-                //var kyuPoomsaeUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/poomsae_kyu.csv";
-                //Tools.LoadPoomsaeCSV(ref poomsaeId, japan, (int)PoomsaeModel.KyuOrDan.Kyu, httpClient, kyuPoomsaeUrl);
+                var kyuPoomsaeUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/poomsae_kyu.csv";
+                webUri = new Uri(kyuPoomsaeUrl);
+                csvString = await GetWebPageAsync(webUri);
+                if (string.IsNullOrEmpty(csvString))
+                {
+                    return false;
+                }
+
+                await Task.Run(() =>
+                {
+                    Tools.LoadPoomsaeCSV(ref poomsaeId, japan, (int)PoomsaeModel.KyuOrDan.Kyu, csvString);
+                });
 
                 //// 段プンセファイル.
-                //var danPoomsaeUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/poomsae_dan.csv";
-                //Tools.LoadPoomsaeCSV(ref poomsaeId, japan, (int)PoomsaeModel.KyuOrDan.Dan, httpClient, danPoomsaeUrl);
+                var danPoomsaeUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/poomsae_dan.csv";
+                webUri = new Uri(danPoomsaeUrl);
+                csvString = await GetWebPageAsync(webUri);
+                if (string.IsNullOrEmpty(csvString))
+                {
+                    return false;
+                }
+
+                await Task.Run(() =>
+                {
+                    Tools.LoadPoomsaeCSV(ref poomsaeId, japan, (int)PoomsaeModel.KyuOrDan.Dan, csvString);
+                });
+
                 return true;
             }
             catch (Exception ex)
@@ -329,25 +350,11 @@ namespace Poomsae
         /// <param name="id">Identifier.</param>
         /// <param name="lang">Lang.</param>
         /// <param name="type">Type.</param>
-        /// <param name="httpClient">Http client.</param>
-        /// <param name="url">URL.</param>
+        /// <param name="csvString">csvからとった文字.</param>
         public static void LoadPoomsaeCSV(
-            ref int id,
-            string lang, int type, HttpClient httpClient,
-            string url
+            ref int id, string lang, int type, string csvString
         )
         {
-            // 取得したいWebページのURI.
-            Uri webUri = new Uri(url);
-
-            // GetWebPageAsyncメソッドを呼び出す
-            Task<string> webTask = httpClient.GetStringAsync(webUri);
-
-            // Mainメソッドではawaitできないので、処理が完了するまで待機する.
-            webTask.Wait();
-
-            // 結果を取得.
-            var csvString = webTask.Result;
             var csv = new CsvReader(new StringReader(csvString));
 
             var realm = Realm.GetInstance();
