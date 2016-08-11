@@ -35,8 +35,10 @@ namespace Poomsae
                 var player = new MediaElementPlayer('#player1');
               </script>
             </head>
-            <body style=""background:#000;color:#fff"">
-            動画をタップで再生してください.
+            <body>
+            <hr />
+            上の動画をタップすると最大画面で動画が再生されます。<br />
+			左上のボタンを押下で動画を閉じられます。
             </body>
             </html>";
 

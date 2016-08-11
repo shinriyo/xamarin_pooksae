@@ -59,7 +59,7 @@ namespace Poomsae
                 new Data
                 {
                     Name = "順序",
-                    Description = "順序",
+                    Description = "詳細な説明や順序",
                     IconImage = "note_icon.png",
                     OnClick = new Command(() =>
                     {
@@ -70,7 +70,7 @@ namespace Poomsae
                 new Data
                 {
                     Name = "動画",
-                    Description = "動画再生",
+                    Description = "動画を再生します",
                     IconImage = "movie_icon.png",
                     OnClick = new Command(() =>
                     {

@@ -314,7 +314,8 @@ namespace Poomsae
                         Meaning = meaning,
                         Order = order,
                         Detail = detail,
-                        Picture = picture
+                        Picture = picture,
+                        YouTubeURL = youTubeUrl
                     };
 
                     realm.Manage<PoomsaeModel>(poomsaeModel);
