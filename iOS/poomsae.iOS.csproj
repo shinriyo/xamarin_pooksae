@@ -187,15 +187,15 @@
     <BundleResource Include="Resources\Content\css\mediaelementplayer.css" />
     <BundleResource Include="Resources\Content\js\mediaelement-and-player.min.js" />
     <BundleResource Include="Resources\Content\js\jquery.js" />
-    <BundleResource Include="Resources\Images\AppIcons\Default.png" />
-    <BundleResource Include="Resources\Images\AppIcons\Default%402x.png" />
-    <BundleResource Include="Resources\Images\AppIcons\Default-568h%402x.png" />
     <BundleResource Include="Resources\Images\AppIcons\Icon-114.png" />
     <BundleResource Include="Resources\Images\AppIcons\Icon-120.png" />
     <BundleResource Include="Resources\Images\AppIcons\Icon-29.png" />
     <BundleResource Include="Resources\Images\AppIcons\Icon-57.png" />
     <BundleResource Include="Resources\Images\AppIcons\Icon-58.png" />
     <BundleResource Include="Resources\Images\AppIcons\Icon-80.png" />
+    <BundleResource Include="Resources\Images\LaunchImage\Default.png" />
+    <BundleResource Include="Resources\Images\LaunchImage\Default%402x.png" />
+    <BundleResource Include="Resources\Images\LaunchImage\Default-568h%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="rxforxamarin">
@@ -211,5 +211,6 @@
     <Folder Include="Resources\Content\js\" />
     <Folder Include="Resources\Images\" />
     <Folder Include="Resources\Images\AppIcons\" />
+    <Folder Include="Resources\Images\LaunchImage\" />
   </ItemGroup>
 </Project>
