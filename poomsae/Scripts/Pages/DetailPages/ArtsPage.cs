@@ -211,7 +211,7 @@ namespace Poomsae
 
             base.Content = new StackLayout
             {
-                // iOSのみ上部にマージンをとる.
+                // iPhoneにおいて、ステータスバーとの重なりを防ぐためパディングを調整する.
                 Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0),
                 Children = { listView }
             };

@@ -55,6 +55,7 @@ namespace Poomsae
                 Source = html
             };
 
+            // iPhoneにおいて、ステータスバーとの重なりを防ぐためパディングを調整する.
             Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
             Content = webView;
         }

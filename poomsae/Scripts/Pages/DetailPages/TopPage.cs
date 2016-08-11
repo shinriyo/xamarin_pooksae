@@ -28,7 +28,8 @@ namespace Poomsae
         /// </summary>
         public TopPage()
         {
-            base.Title = "TOP"; //ページのタイトル
+            // ページのタイトル.
+            base.Title = "TOP";
 
             // iPhoneにおいて、ステータスバーとの重なりを防ぐためパディングを調整する.
             base.Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
