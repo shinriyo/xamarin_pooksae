@@ -67,7 +67,8 @@ namespace Poomsae
                     DependencyService.Get<ILoadingMessage>().Show("ローディング....");
 
                     // DB初期化やCSVをWebからロード.
-                    await Tools.Initialization();
+                    bool isSuccess = await Tools.Initialization();
+                    this.ShowResultDialog(isSuccess);
 
                     // ローディング閉じる.
                     DependencyService.Get<ILoadingMessage>().Hide();
@@ -85,6 +86,23 @@ namespace Poomsae
 
             // 生成したラベルをこのビューの子要素とする
             base.Content = layout;
+        }
+
+        /// <summary>
+        /// DL結果のダイアログ.
+        /// </summary>
+        /// <param name="isSuccess">If set to <c>true</c> is success.</param>
+        public void ShowResultDialog(bool isSuccess)
+        {
+            if (isSuccess)
+            {
+                DisplayAlert("成功", "初期化に成功しました。", "OK");
+            }
+            else
+            {
+                DisplayAlert("エラー", "初期化に失敗しました。", "閉じる。");
+            }
+            System.Diagnostics.Debug.WriteLine(isSuccess);
         }
 
         /// <summary>
