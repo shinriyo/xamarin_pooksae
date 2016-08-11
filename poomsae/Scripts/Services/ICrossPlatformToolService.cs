@@ -22,5 +22,12 @@ namespace CrossPlatformToolSample.Services
         /// </summary>
         /// <returns>The special folder path.</returns>
         string GetSpecialFolderPath();
+
+        /// <summary>
+        /// Directories the exists.
+        /// </summary>
+        /// <returns><c>true</c>, if exists was directoryed, <c>false</c> otherwise.</returns>
+        /// <param name="path">Path.</param>
+        bool DirectoryExists(string path);
     }
 }

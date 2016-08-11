@@ -5,6 +5,7 @@
 //-----------------------------------------------------------------------
 
 using System;
+using System.IO;
 using Android.Content;
 using CrossPlatformToolSample.Android;
 using CrossPlatformToolSample.Services;
@@ -43,6 +44,16 @@ namespace CrossPlatformToolSample.Android
 		{
 			var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 			return documentsPath;
+		}
+
+		/// <summary>
+		/// Directories the exists.
+		/// </summary>
+		/// <returns><c>true</c>, if exists was directoryed, <c>false</c> otherwise.</returns>
+		/// <param name="path">Path.</param>
+		public bool DirectoryExists(string path)
+		{
+			return Directory.Exists(path);
 		}
 	}
 }

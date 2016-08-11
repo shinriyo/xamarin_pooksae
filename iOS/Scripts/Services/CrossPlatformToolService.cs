@@ -5,10 +5,11 @@
 //-----------------------------------------------------------------------
 
 using System;
-using CrossPlatformToolSample.Services;
+using System.IO;
 using CrossPlatformToolSample.iOS;
-using Xamarin.Forms;
+using CrossPlatformToolSample.Services;
 using UIKit;
+using Xamarin.Forms;
 
 [assembly: Dependency(typeof(CrossPlatformToolService))]
 
@@ -37,6 +38,16 @@ namespace CrossPlatformToolSample.iOS
 		{ 
 			var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 			return documentsPath;
+		}
+
+		/// <summary>
+		/// Directories the exists.
+		/// </summary>
+		/// <returns><c>true</c>, if exists was directoryed, <c>false</c> otherwise.</returns>
+		/// <param name="path">Path.</param>
+		public bool DirectoryExists(string path)
+		{
+			return Directory.Exists(path);
 		}
 	}
 }
