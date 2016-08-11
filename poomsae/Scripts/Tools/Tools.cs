@@ -96,8 +96,8 @@ namespace Poomsae
             try
             {
                 // パンチ系ファイル.
-                var punchUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/punch.csv";
-                Uri webUri = new Uri(punchUrl);
+                var csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/punch.csv";
+                Uri webUri = new Uri(csvUrl);
                 var csvString = await GetWebPageAsync(webUri);
                 if (string.IsNullOrEmpty(csvString))
                 {
@@ -110,8 +110,8 @@ namespace Poomsae
                 });
 
                 // キック系ファイル.
-                var kickUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/kick.csv";
-                webUri = new Uri(kickUrl);
+                csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/kick.csv";
+                webUri = new Uri(csvUrl);
                 csvString = await GetWebPageAsync(webUri);
                 if (string.IsNullOrEmpty(csvString))
                 {
@@ -124,8 +124,8 @@ namespace Poomsae
                 });
 
                 // チョップ系ファイル.
-                var chopUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/chop.csv";
-                webUri = new Uri(chopUrl);
+                csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/chop.csv";
+                webUri = new Uri(csvUrl);
                 csvString = await GetWebPageAsync(webUri);
                 if (string.IsNullOrEmpty(csvString))
                 {
@@ -138,8 +138,8 @@ namespace Poomsae
                 });
 
                 //// 受け系ファイル.
-                var guardUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/guard.csv";
-                webUri = new Uri(guardUrl);
+                csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/guard.csv";
+                webUri = new Uri(csvUrl);
                 var guardCsvString = await GetWebPageAsync(webUri);
                 if (string.IsNullOrEmpty(guardCsvString))
                 {
@@ -152,8 +152,8 @@ namespace Poomsae
                 });
 
                 //// 肘系ファァイル.
-                var elbowUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/elbow.csv";
-                webUri = new Uri(elbowUrl);
+                csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/elbow.csv";
+                webUri = new Uri(csvUrl);
                 csvString = await GetWebPageAsync(webUri);
                 if (string.IsNullOrEmpty(csvString))
                 {
@@ -166,8 +166,8 @@ namespace Poomsae
                 });
 
                 //// 構え系ファイル.
-                var stanceUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/stance.csv";
-                webUri = new Uri(stanceUrl);
+                csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/stance.csv";
+                webUri = new Uri(csvUrl);
                 csvString = await GetWebPageAsync(webUri);
                 if (string.IsNullOrEmpty(csvString))
                 {
@@ -180,8 +180,8 @@ namespace Poomsae
                 });
 
                 // 押し系ファイル.
-                var pushUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/push.csv";
-                webUri = new Uri(pushUrl);
+                csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/push.csv";
+                webUri = new Uri(csvUrl);
                 csvString = await GetWebPageAsync(webUri);
                 if (string.IsNullOrEmpty(csvString))
                 {
@@ -224,8 +224,8 @@ namespace Poomsae
                 });
 
                 //// 段プンセファイル.
-                var danPoomsaeUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/poomsae_dan.csv";
-                webUri = new Uri(danPoomsaeUrl);
+                csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/ja/poomsae_dan.csv";
+                webUri = new Uri(csvUrl);
                 csvString = await GetWebPageAsync(webUri);
                 if (string.IsNullOrEmpty(csvString))
                 {
@@ -236,6 +236,10 @@ namespace Poomsae
                 {
                     Tools.LoadPoomsaeCSV(ref poomsaeId, japan, (int)PoomsaeModel.KyuOrDan.Dan, csvString);
                 });
+
+                webUri = null;
+                csvUrl = string.Empty;
+                csvString = string.Empty;
 
                 return true;
             }
