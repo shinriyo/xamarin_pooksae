@@ -66,6 +66,9 @@ namespace Poomsae
 
             int index = 0;
 
+            var blue = "3396D7";
+            var red = "E62465";
+
             // ボタンを生成.
             foreach (var artType in artTypes)
             {
@@ -74,8 +77,8 @@ namespace Poomsae
                     Text = artType,
                     FontSize = 16,
                     // 奇数偶数で交互.
-                    BackgroundColor = Color.FromHex(index % 2 == 0 ? "33B9FF" : "9999FF"),
-                    TextColor = Color.FromHex(index % 2 == 0 ? "9999FF" : "33B9FF"),
+                    BackgroundColor = Color.FromHex(index % 2 == 0 ? red : blue),
+                    TextColor = Color.FromHex(index % 2 == 0 ? blue : red),
                 };
 
                 // 詳細がどれか.
