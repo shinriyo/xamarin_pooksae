@@ -51,9 +51,15 @@ namespace Poomsae
             layout.Children.Add(label);
 
             // ボタンを生成.
-            var button1 = new Button { Text = "有級者の型" };
+            var button1 = new Button
+            {
+                Text = "有級者の型",
+                FontSize = 16,
+                BackgroundColor = Color.FromHex("33B9FF"),
+                TextColor = Color.FromHex("FFFFFF"),
+            };
 
-            //ボタンクリック時の処理
+            // ボタンクリック時の処理.
             button1.Clicked += async (s, a) =>
             {
                 // ページを遷移する.
@@ -65,9 +71,15 @@ namespace Poomsae
             this.Content = layout;
 
             // ボタンを生成.
-            var button2 = new Button { Text = "有段者の型" };
+            var button2 = new Button
+            {
+                Text = "有段者の型",
+                FontSize = 16,
+                BackgroundColor = Color.FromHex("33B9FF"),
+                TextColor = Color.FromHex("000000"),
+            };
 
-            //ボタンクリック時の処理
+            // ボタンクリック時の処理.
             button2.Clicked += async (s, a) =>
             {
                 // ページを遷移する.

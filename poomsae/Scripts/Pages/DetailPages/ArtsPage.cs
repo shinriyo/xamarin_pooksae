@@ -71,7 +71,11 @@ namespace Poomsae
             {
                 var button = new Button
                 {
-                    Text = artType
+                    Text = artType,
+                    FontSize = 16,
+                    // 奇数偶数で交互.
+                    BackgroundColor = Color.FromHex(index % 2 == 0 ? "33B9FF" : "9999FF"),
+                    TextColor = Color.FromHex(index % 2 == 0 ? "9999FF" : "33B9FF"),
                 };
 
                 // 詳細がどれか.

@@ -35,25 +35,36 @@ namespace Poomsae
             base.Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
 
             var layout = new StackLayout();
-            var logoImage = new Image()
-            {
-                Aspect = Aspect.AspectFit,
-                Source = ImageSource.FromFile("World_Taekwondo_Federation_Logo.png")
-            };
-            layout.Children.Add(logoImage);
 
             // ラベルを１つ生成.
             var titleLabel = new Label
             {
                 FontSize = 40,
                 HorizontalOptions = LayoutOptions.Center,
-                Text = "Taekwondo Dict"
+                Text = "Taekwondo Dict",
+                FontAttributes = FontAttributes.Bold | FontAttributes.Italic,
             };
 
             layout.Children.Add(titleLabel);
 
-            var initializeButton = new Button { Text = "初期化" };
-            layout.Children.Add(initializeButton);
+            // 下のレイアウト.
+            var bottomLayout = new StackLayout()
+            {
+                Orientation = StackOrientation.Vertical,
+                VerticalOptions = LayoutOptions.EndAndExpand,
+                // 下から上げる.
+                Padding = new Thickness(0, 0, 0, 20),
+            };
+
+            var initializeButton = new Button
+            {
+                Text = "初期化",
+                FontSize = 22,
+                BackgroundColor = Color.FromHex("34B9FF"),
+                TextColor = Color.FromHex("000000"),
+                FontAttributes = FontAttributes.Bold | FontAttributes.Italic,
+            };
+            bottomLayout.Children.Add(initializeButton);
 
             initializeButton.Clicked += async (sender, args) =>
             {
@@ -75,15 +86,26 @@ namespace Poomsae
                 }
             };
 
+            var logoImage = new Image()
+            {
+                WidthRequest = 120,
+                HorizontalOptions = LayoutOptions.End,
+                Aspect = Aspect.AspectFit,
+                Source = ImageSource.FromFile("World_Taekwondo_Federation_Logo.png")
+            };
+            bottomLayout.Children.Add(logoImage);
+
             // ラベルを１つ生成.
             var campanyLabel = new Label
             {
-                FontSize = 20,
+                FontSize = 18,
                 HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.End,
+                HorizontalTextAlignment = TextAlignment.End,
                 Text = "(c)shinriyo"
             };
-            layout.Children.Add(campanyLabel);
+            bottomLayout.Children.Add(campanyLabel);
+
+            layout.Children.Add(bottomLayout);
 
             // 生成したラベルをこのビューの子要素とする
             base.Content = layout;
