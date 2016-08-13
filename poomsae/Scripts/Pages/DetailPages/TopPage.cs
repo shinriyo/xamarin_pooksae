@@ -47,6 +47,13 @@ namespace Poomsae
 
             layout.Children.Add(titleLabel);
 
+            var titleLogoImage = new Image()
+            {
+                Aspect = Aspect.AspectFit,
+                Source = ImageSource.FromResource("poomsae.Resources.titleLogoImage.png")
+            };
+            layout.Children.Add(titleLogoImage);
+
             // 下のレイアウト.
             var bottomLayout = new StackLayout()
             {

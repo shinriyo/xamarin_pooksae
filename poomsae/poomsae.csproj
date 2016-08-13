@@ -164,6 +164,7 @@
     <EmbeddedResource Include="Resources\KyuPoomsae\Step\pal7.png" />
     <EmbeddedResource Include="Resources\KyuPoomsae\Step\pal6.png" />
     <EmbeddedResource Include="Resources\KyuPoomsae\Step\pal8.png" />
+    <EmbeddedResource Include="Resources\titleLogoImage.png" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>
