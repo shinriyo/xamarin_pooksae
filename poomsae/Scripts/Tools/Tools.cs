@@ -290,7 +290,9 @@ namespace Poomsae
                         Created = now
                     };
 
-                    realm.Manage<ArtModel>(artModel);
+                    //realm.Manage<ArtModel>(artModel);
+                    realm.Add<ArtModel>(artModel);
+                    //realm.Manage(artModel);
                     id++;
                 }
 
@@ -341,7 +343,9 @@ namespace Poomsae
                         YouTubeURL = youTubeUrl
                     };
 
-                    realm.Manage<PoomsaeModel>(poomsaeModel);
+                    //realm.Manage<PoomsaeModel>(poomsaeModel);
+                    realm.Add<PoomsaeModel>(poomsaeModel);
+                    //realm.Manage(poomsaeModel);
                     id++;
                 }
 
@@ -397,7 +401,9 @@ namespace Poomsae
 
             using (var transaction = realm.BeginWrite())
             {
-                realm.Manage<SettingModel>(setting);
+                //realm.Manage<SettingModel>(setting);
+                realm.Add<SettingModel>(setting);
+                //realm.Manage(setting);
 
                 transaction.Commit();
             }
