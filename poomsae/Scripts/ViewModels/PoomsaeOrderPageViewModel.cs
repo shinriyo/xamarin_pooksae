@@ -11,7 +11,7 @@ namespace Poomsae
     /// <summary>
     /// PoomsaeOrderPage.xmlに対応したもの.
     /// </summary>
-    public class PoomsaeOrderPageViewModel
+    public sealed class PoomsaeOrderPageViewModel
     {
         public string Name { get; set; }
         public ImageSource Image { get; set; }

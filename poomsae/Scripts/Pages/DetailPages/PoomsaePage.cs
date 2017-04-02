@@ -11,7 +11,7 @@ namespace Poomsae
     /// <summary>
     /// ナビゲーション.
     /// </summary>
-    class PoomsaePage : ContentPage, IDetail
+    public sealed class PoomsaePage : ContentPage, IDetail
     {
         /// <summary>
         /// Returns a <see cref="System.String"/> that represents the current <see cref="Poomsae.DetailObject"/>.

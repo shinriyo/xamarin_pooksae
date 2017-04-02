@@ -14,7 +14,7 @@ namespace Poomsae
     /// <summary>
     /// Arts page.
     /// </summary>
-    public class ArtsPage : ContentPage, IDetail
+    public sealed class ArtsPage : ContentPage, IDetail
     {
         /// <summary>
         /// Returns a <see cref="System.String"/> that represents the current <see cref="Poomsae.DetailObject"/>.

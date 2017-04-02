@@ -14,7 +14,7 @@ namespace Poomsae
     /// <summary>
     /// プンセの詳細 ページクラス.
     /// </summary>
-    sealed class KyuPoomsaeDetailPage : PoomsaeDetailPageBase
+    public sealed class KyuPoomsaeDetailPage : PoomsaeDetailPageBase
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="T:poomsae.KyuPoomsaeDetailPage"/> class.

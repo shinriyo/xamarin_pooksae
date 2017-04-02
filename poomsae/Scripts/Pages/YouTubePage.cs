@@ -12,7 +12,7 @@ namespace Poomsae
     /// <summary>
     /// You tube page.
     /// </summary>
-    public class YouTubePage : ContentPage
+    public sealed class YouTubePage : ContentPage
     {
         /// <summary>
         /// Gets or sets TouTube URL.

@@ -13,7 +13,7 @@ namespace Poomsae
     /// メイン.
     /// My content page.
     /// </summary>
-    class TopPage : ContentPage, IDetail
+    public sealed class TopPage : ContentPage, IDetail
     {
         /// <summary>
         /// Init this instance.

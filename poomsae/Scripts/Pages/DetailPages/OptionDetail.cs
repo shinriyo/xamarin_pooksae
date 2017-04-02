@@ -14,7 +14,7 @@ namespace Poomsae
     /// <summary>
     /// Option detail.
     /// </summary>
-    public class OptionDetail : ContentPage, IDetail
+    public sealed class OptionDetail : ContentPage, IDetail
     {
         #region Public Methods
         /// <summary>

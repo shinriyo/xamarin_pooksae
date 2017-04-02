@@ -11,7 +11,7 @@ namespace Poomsae
     /// <summary>
     /// ArtDescPage.xmlに対応したもの.
     /// </summary>
-    public class ArtDescPageViewModel
+    public sealed class ArtDescPageViewModel
     {
         public string Name { get; set; }
         public ImageSource Picture { get; set; }
