@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Poomsae.PoomsaeOrderPage">
 	<ContentPage.Content>
 		<StackLayout HorizontalOptions="FillAndExpand" Padding="2, 10, 2, 10" Spacing="3">
@@ -11,6 +11,7 @@
 			<Label Text="{Binding Meaning, StringFormat='意味: {0}'}" />
 			<Label Text="{Binding Order, StringFormat='順序: {0}'}" />
 			<Label Text="{Binding Detail, StringFormat='詳細: {0}'}" />
+			<Label Text="{Binding NewArts, StringFormat='このプンセで習得する技: {0}'}" />
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

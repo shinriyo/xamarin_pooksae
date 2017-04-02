@@ -13,7 +13,7 @@ namespace Poomsae
     /// <summary>
     /// Poomsae model.
     /// </summary>
-    public class PoomsaeModel : RealmObject
+    public sealed class PoomsaeModel : RealmObject
     {
         public enum KyuOrDan
         {
@@ -62,6 +62,12 @@ namespace Poomsae
         public string Meaning { get; set; }
 
         /// <summary>
+        /// 新たに覚える技.
+        /// </summary>
+        /// <value>The new arts.</value>
+        public string NewArts { get; set; }
+
+        /// <summary>
         /// 順序.
         /// </summary>
         /// <value>The value.</value>
@@ -87,7 +93,9 @@ namespace Poomsae
 
         public override string ToString()
         {
-            return string.Format("[PoomsaeModel: Id={0}, Created={1}, Updated={2}, Language={3}, Type={4}, Kyu={5}, Name={6}, Hangl={7}, Meaning={8}, Order={9}, Detail={10}, YouTubeURL={11}, Picture={12}]", Id, Created, Updated, Language, Type, Kyu, Name, Hangl, Meaning, Order, Detail, YouTubeURL, Picture);
+            return string.Format("[PoomsaeModel: Id={0}, Created={1}, Updated={2}, Language={3}, Type={4}, Kyu={5}, Name={6}, Hangl={7}, Meaning={8}, Order={9}, Detail={10}, Detail={11}, YouTubeURL={12}, Picture={13}]",
+                                 Id, Created, Updated, Language, Type, Kyu, Name, Hangl, Meaning, Order, Detail, NewArts, YouTubeURL, Picture
+            );
         }
     }
 }

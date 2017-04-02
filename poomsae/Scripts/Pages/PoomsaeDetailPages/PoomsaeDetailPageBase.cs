@@ -44,14 +44,17 @@ namespace Poomsae
         /// </summary>
         /// <returns>The group.</returns>
         /// <param name="title">Title.</param>
+        /// <param name="hangl">Hangl.</param>
         /// <param name="image">Image.</param>
         /// <param name="stepImage">Step image.</param>
         /// <param name="meaning">Meaning.</param>
         /// <param name="order">Order.</param>
         /// <param name="detail">Detail.</param>
+        /// <param name="newArts">New arts.</param>
+        /// <param name="youTubeUrl">You tube URL.</param>
         protected Group CreateGroup(string title, string hangl, string image,
                                     string stepImage, string meaning,
-                                    string order, string detail,
+                                    string order, string detail, string newArts,
                                     string youTubeUrl)
         {
             return new Group(title)
@@ -64,7 +67,7 @@ namespace Poomsae
                     OnClick = new Command(() =>
                     {
                         this.OpenDetail(title, hangl, image, stepImage,
-                                        meaning, order, detail);
+                                        meaning, order, detail, newArts);
                     })
                 },
                 new Data
@@ -91,7 +94,7 @@ namespace Poomsae
         /// <param name="detail">Detail.</param>
         private void OpenDetail(string name, string hangl, string image,
                                 string stepImage, string meaning, string order,
-                                string detail)
+                                string detail, string newArts)
         {
             try
             {
@@ -106,7 +109,8 @@ namespace Poomsae
                         ActionStep = ImageSource.FromResource(stepImage),
                         Meaning = meaning,
                         Order = order,
-                        Detail = detail
+                        Detail = detail,
+                        NewArts = newArts
                     }
                 });
             }

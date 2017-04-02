@@ -20,5 +20,6 @@ namespace Poomsae
         public string Meaning { get; set; }
         public string Order { get; set; }
         public string Detail { get; set; }
+        public string NewArts { get; set; }
     }
 }

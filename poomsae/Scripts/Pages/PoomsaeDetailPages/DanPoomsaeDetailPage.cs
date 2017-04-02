@@ -47,6 +47,7 @@ namespace Poomsae
                     item.Meaning,
                     item.Order,
                     item.Detail,
+                    item.NewArts,
                     item.YouTubeURL
                 ));
             }

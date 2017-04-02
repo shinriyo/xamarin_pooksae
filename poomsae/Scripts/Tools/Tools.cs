@@ -321,13 +321,14 @@ namespace Poomsae
                     var meaning = csv.GetField<string>(3);
                     var order = csv.GetField<string>(4);
                     var detail = csv.GetField<string>(5);
-                    var picture = csv.GetField<string>(6);
-                    var youTubeUrl = csv.GetField<string>(7);
+                    var newArts = csv.GetField<string>(6);
+                    var picture = csv.GetField<string>(7);
+                    var youTubeUrl = csv.GetField<string>(8);
                     Debug.WriteLine("Kyu:{0}, Name:{1}, Hangl:{2}, " +
                                     "Meaning:{3}, Order:{4}, Detail:{5}, " +
-                                    "Picture:{6}, YouTubeURL:{7}",
+                                    "NewArts:{6}, Picture:{7}, YouTubeURL:{8}",
                                     kyu, name, hangl, meaning, order, detail,
-                                    picture, youTubeUrl);
+                                    newArts, picture, youTubeUrl);
 
                     var poomsaeModel = new PoomsaeModel
                     {
@@ -337,6 +338,7 @@ namespace Poomsae
                         Name = name,
                         Hangl = hangl,
                         Meaning = meaning,
+                        NewArts = newArts,
                         Order = order,
                         Detail = detail,
                         Picture = picture,
