@@ -19,7 +19,7 @@ namespace Poomsae
 
         async void OnButtonClicked(object sender, EventArgs args)
         {
-            //Button button = (Button)sender;
+            // Button button = (Button)sender;
             // 親をとってその子のLabel.
             var titleLabel = this.FindByName<Label>("valueLabel");
             var title = "クリップボードにコピー";

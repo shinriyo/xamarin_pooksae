@@ -4,6 +4,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using System;
+using CrossPlatformToolSample.Services;
 using Xamarin.Forms;
 
 namespace Poomsae
@@ -13,6 +15,19 @@ namespace Poomsae
         public PoomsaeOrderPage()
         {
             InitializeComponent();
+        }
+
+        async void OnButtonClicked(object sender, EventArgs args)
+        {
+            // Button button = (Button)sender;
+            // 親をとってその子のLabel.
+            var titleLabel = this.FindByName<Label>("valueLabel");
+            var title = "クリップボードにコピー";
+            var message = "クリップボードにコピーしました。";
+            await DisplayAlert(title, message, "OK");
+
+            // クリップボードにコピー.
+            DependencyService.Get<ICrossPlatformToolService>().CopyToClipboard(titleLabel.Text);
         }
     }
 }
