@@ -13,7 +13,7 @@ namespace Poomsae
     /// My master detail page.
     /// トップページ.
     /// </summary>
-    public class MyMasterDetailPage : MasterDetailPage
+    sealed public class MyMasterDetailPage : MasterDetailPage
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Poomsae.MyMasterDetailPage"/> class.

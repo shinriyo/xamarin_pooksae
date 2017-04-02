@@ -16,7 +16,7 @@ namespace Poomsae
     /// <summary>
     /// プンセの詳細 ページクラス.
     /// </summary>
-    class DanPoomsaeDetailPage : PoomsaeDetailPageBase
+    sealed class DanPoomsaeDetailPage : PoomsaeDetailPageBase
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="T:poomsae.DanPoomsaeDetailPage"/> class.
