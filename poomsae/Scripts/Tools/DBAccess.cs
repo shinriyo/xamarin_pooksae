@@ -32,8 +32,7 @@ namespace Poomsae
         /// <param name="action">Action.</param>
         private static Data CreateData(
             string name, string desc, string detail, string iconImage,
-            string image,
-            Action<string, string, string> action)
+            string image, Action<string, string, string, string> action)
         {
             var data = new Data
             {
@@ -42,7 +41,7 @@ namespace Poomsae
                 IconImage = iconImage,
                 OnClick = new Command(() =>
                 {
-                    action(name, detail, image);
+                    action(name, detail, image, desc);
                 })
             };
             return data;
@@ -70,7 +69,7 @@ namespace Poomsae
         /// <param name="action">Action.</param>
         private static ObservableCollection<Group> Common(int type, string iconImage,
                                                          string detailImageBase,
-                                                         Action<string, string, string> action)
+                                                         Action<string, string, string, string> action)
         {
             var groups = new ObservableCollection<Group>();
             var realm = Realm.GetInstance(App.realmFile);
@@ -104,7 +103,8 @@ namespace Poomsae
                 }
 
                 var data = CreateData(name, desc, detail, iconImage,
-                                      string.Format(detailImageBase, picture), action);
+                                      string.Format(detailImageBase, picture),
+                                      action);
                 group.Add(data);
 
                 // 更新.
@@ -125,7 +125,8 @@ namespace Poomsae
         /// </summary>
         /// <returns>The punches.</returns>
         /// <param name="action">Action.</param>
-        public static ObservableCollection<Group> GetPunches(Action<string, string, string> action)
+        public static ObservableCollection<Group> GetPunches(
+            Action<string, string, string, string> action)
         {
             string iconImage = "punch_icon.png";
             string detailImageBase = @"poomsae.Resources.Punch.{0}.jpg";
@@ -137,7 +138,8 @@ namespace Poomsae
         /// </summary>
         /// <returns>The kicks.</returns>
         /// <param name="action">Action.</param>
-        public static ObservableCollection<Group> GetKicks(Action<string, string, string> action)
+        public static ObservableCollection<Group> GetKicks(
+            Action<string, string, string, string> action)
         {
             string iconImage = "kick_icon.png";
             string detailImageBase = @"poomsae.Resources.Kick.{0}.jpg";
@@ -149,7 +151,8 @@ namespace Poomsae
         /// </summary>
         /// <returns>The chops.</returns>
         /// <param name="action">Action.</param>
-        public static ObservableCollection<Group> GetChops(Action<string, string, string> action)
+        public static ObservableCollection<Group> GetChops(
+            Action<string, string, string, string> action)
         {
             string iconImage = "chop_icon.png";
             string detailImageBase = @"poomsae.Resources.Chop.{0}.jpg";
@@ -161,7 +164,8 @@ namespace Poomsae
         /// </summary>
         /// <returns>The guards.</returns>
         /// <param name="action">Action.</param>
-        public static ObservableCollection<Group> GetGuards(Action<string, string, string> action)
+        public static ObservableCollection<Group> GetGuards(
+            Action<string, string, string, string> action)
         {
             string iconImage = "guard_icon.png";
             string detailImageBase = @"poomsae.Resources.Guard.{0}.jpg";
@@ -173,7 +177,8 @@ namespace Poomsae
         /// </summary>
         /// <returns>The elbows.</returns>
         /// <param name="action">Action.</param>
-        public static ObservableCollection<Group> GetElbows(Action<string, string, string> action)
+        public static ObservableCollection<Group> GetElbows(
+            Action<string, string, string, string> action)
         {
             string iconImage = "elbow_icon.png";
             string detailImageBase = @"poomsae.Resources.Elbow.{0}.jpg";
@@ -185,7 +190,8 @@ namespace Poomsae
         /// </summary>
         /// <returns>The stances.</returns>
         /// <param name="action">Action.</param>
-        public static ObservableCollection<Group> GetStances(Action<string, string, string> action)
+        public static ObservableCollection<Group> GetStances(
+            Action<string, string, string, string> action)
         {
             string iconImage = "stance_icon.png";
             string detailImageBase = @"poomsae.Resources.Stance.{0}.jpg";
@@ -197,7 +203,8 @@ namespace Poomsae
         /// </summary>
         /// <returns>The pushes.</returns>
         /// <param name="action">Action.</param>
-        public static ObservableCollection<Group> GetPushes(Action<string, string, string> action)
+        public static ObservableCollection<Group> GetPushes(
+            Action<string, string, string, string> action)
         {
             string iconImage = "push_icon.png";
             string detailImageBase = @"poomsae.Resources.Pushe.{0}.jpg";
@@ -209,7 +216,8 @@ namespace Poomsae
         /// </summary>
         /// <returns>The jumps.</returns>
         /// <param name="action">Action.</param>
-        public static ObservableCollection<Group> GetJumps(Action<string, string, string> action)
+        public static ObservableCollection<Group> GetJumps(
+            Action<string, string, string, string> action)
         {
             string iconImage = "jump_icon.png";
             string detailImageBase = @"poomsae.Resources.Jump.{0}.jpg";

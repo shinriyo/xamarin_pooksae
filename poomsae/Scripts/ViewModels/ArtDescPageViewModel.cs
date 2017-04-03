@@ -16,5 +16,6 @@ namespace Poomsae
         public string Name { get; set; }
         public ImageSource Picture { get; set; }
         public string Desc { get; set; }
+        public string KoreanName { get; set; }
     }
 }

@@ -119,7 +119,7 @@ namespace Poomsae
         /// <param name="name">Name.</param>
         /// <param name="detail">Detail.</param>
         /// <param name="image">詳細画像.</param>
-        private void OpenDetail(string name, string detail, string image)
+        private void OpenDetail(string name, string detail, string image, string koreanName)
         {
             try
             {
@@ -131,7 +131,8 @@ namespace Poomsae
                         // この変数はXAMLと同じBidingになっていること.
                         Name = name,
                         Picture = ImageSource.FromResource(image),
-                        Desc = detail.Replace("<br />", Environment.NewLine)
+                        Desc = detail.Replace("<br />", Environment.NewLine),
+                        KoreanName = koreanName
                     }
                 });
             }

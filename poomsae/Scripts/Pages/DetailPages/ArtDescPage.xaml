@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Poomsae.ArtDescPage">
 	<ContentPage.Content>
 		<StackLayout HorizontalOptions="FillAndExpand" Padding="2, 10, 2, 10" Spacing="3">
@@ -7,6 +7,8 @@
 			<Image Source="{Binding Picture}" />
 			<Label Text="{Binding Desc, StringFormat='Description: {0}'}" />
 			<Button Text="技名をコピー" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Clicked="OnButtonClicked" />
+			<Label x:Name="koreanValueLabel" Text="{Binding KoreanName, StringFormat='ハングル: {0}'}" />
+			<Button Text="ハングル技名をコピー" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Clicked="OnKoreanButtonClicked" />
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

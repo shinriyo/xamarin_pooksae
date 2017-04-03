@@ -29,5 +29,18 @@ namespace Poomsae
             // クリップボードにコピー.
             DependencyService.Get<ICrossPlatformToolService>().CopyToClipboard(titleLabel.Text);
         }
+
+        async void OnKoreanButtonClicked(object sender, EventArgs args)
+        {
+            // Button button = (Button)sender;
+            // 親をとってその子のLabel.
+            var titleLabel = this.FindByName<Label>("koreanValueLabel");
+            var title = "クリップボードにコピー";
+            var message = "クリップボードにコピーしました。";
+            await DisplayAlert(title, message, "OK");
+
+            // クリップボードにコピー.
+            DependencyService.Get<ICrossPlatformToolService>().CopyToClipboard(titleLabel.Text);
+        }
     }
 }
