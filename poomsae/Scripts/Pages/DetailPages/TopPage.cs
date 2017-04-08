@@ -41,7 +41,7 @@ namespace Poomsae
             {
                 FontSize = 40,
                 HorizontalOptions = LayoutOptions.Center,
-                Text = "Taekwondo Dict",
+                Text = "TaekwonDict",
                 FontAttributes = FontAttributes.Bold | FontAttributes.Italic,
             };
 
@@ -113,6 +113,11 @@ namespace Poomsae
             bottomLayout.Children.Add(campanyLabel);
 
             layout.Children.Add(bottomLayout);
+
+            // Admob
+            var banner = new Xamarinos.AdMob.Forms.AdBanner();
+            banner.AdID = "ca-app-pub-0808805008177805/7436471671";
+            bottomLayout.Children.Add(banner);
 
             // 生成したラベルをこのビューの子要素とする
             base.Content = layout;
