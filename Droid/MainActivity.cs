@@ -10,16 +10,22 @@ using Android.OS;
 
 namespace Poomsae.Droid
 {
-	[Activity (Label = "poomsae.Droid", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+	[Activity(Label = "poomsae.Droid", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
 	{
-		protected override void OnCreate (Bundle bundle)
+		protected override void OnCreate(Bundle bundle)
 		{
-			base.OnCreate (bundle);
+			// バナー用
+			Xamarinos.AdMob.Forms.Android.AdBannerRenderer.Init();
 
-			global::Xamarin.Forms.Forms.Init (this, bundle);
+			// インターステイシャル用
+			//Xamarinos.AdMob.Forms.CrossAdmobManager.Init(”広告ユニットID”);
 
-			LoadApplication (new App ());
+			base.OnCreate(bundle);
+
+			global::Xamarin.Forms.Forms.Init(this, bundle);
+
+			LoadApplication(new App());
 		}
 	}
 }
