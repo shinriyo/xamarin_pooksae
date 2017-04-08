@@ -36,7 +36,7 @@
 		<true/>
 	</dict>
 	<key>CFBundleName</key>
-	<string>Taekwondo Dict</string>
+	<string>TaekwonDict</string>
 	<key>XSAppIconAssets</key>
 	<string>Resources/Images.xcassets/AppIcons.appiconset</string>
 	<key>XSLaunchImageAssets</key>
