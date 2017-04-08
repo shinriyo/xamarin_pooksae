@@ -113,8 +113,8 @@ namespace Poomsae
                 // 受け系ファイル.
                 csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/guard.csv";
                 webUri = new Uri(csvUrl);
-                var guardCsvString = await GetWebPageAsync(webUri);
-                if (string.IsNullOrEmpty(guardCsvString))
+                csvString = await GetWebPageAsync(webUri);
+                if (string.IsNullOrEmpty(csvString))
                 {
                     return false;
                 }
