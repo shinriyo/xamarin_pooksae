@@ -146,6 +146,24 @@
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\packages\Xamarin.Forms.2.3.4.221-pre6\lib\MonoAndroid10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.GooglePlayServices.Base">
+      <HintPath>..\packages\Xamarin.GooglePlayServices.Base.26.0.0.0\lib\MonoAndroid41\Xamarin.GooglePlayServices.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.GooglePlayServices.Analytics">
+      <HintPath>..\packages\Xamarin.GooglePlayServices.Analytics.26.0.0.0\lib\MonoAndroid41\Xamarin.GooglePlayServices.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.GooglePlayServices.AppIndexing">
+      <HintPath>..\packages\Xamarin.GooglePlayServices.AppIndexing.26.0.0.0\lib\MonoAndroid41\Xamarin.GooglePlayServices.AppIndexing.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.GooglePlayServices.Ads">
+      <HintPath>..\packages\Xamarin.GooglePlayServices.Ads.26.0.0.0\lib\MonoAndroid41\Xamarin.GooglePlayServices.Ads.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarinos.AdMob.Forms.Abstractions">
+      <HintPath>..\packages\Xamarinos.AdMob.FormsPlugin.1.0.8\lib\MonoAndroid10\Xamarinos.AdMob.Forms.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarinos.AdMob.Forms.Android">
+      <HintPath>..\packages\Xamarinos.AdMob.FormsPlugin.1.0.8\lib\MonoAndroid10\Xamarinos.AdMob.Forms.Android.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\poomsae\poomsae.csproj">

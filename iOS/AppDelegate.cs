@@ -7,21 +7,27 @@ using UIKit;
 
 namespace Poomsae.iOS
 {
-	[Register ("AppDelegate")]
+	[Register("AppDelegate")]
 	public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
 	{
-		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
+		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
-			global::Xamarin.Forms.Forms.Init ();
+			global::Xamarin.Forms.Forms.Init();
+
+			// バナー用
+			Xamarinos.AdMob.Forms.iOS.AdBannerRenderer.Init();
+
+			// インターステイシャル用
+			// Xamarinos.AdMob.Forms.CrossAdmobManager.Init(”広告ユニットID”);
 
 			// Code for starting up the Xamarin Test Cloud Agent
-			#if ENABLE_TEST_CLOUD
+#if ENABLE_TEST_CLOUD
 			Xamarin.Calabash.Start();
-			#endif
+#endif
 
-			LoadApplication (new App ());
+			LoadApplication(new App());
 
-			return base.FinishedLaunching (app, options);
+			return base.FinishedLaunching(app, options);
 		}
 	}
 }

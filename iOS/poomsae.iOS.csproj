@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Xamarin.Build.Download.0.4.3\build\Xamarin.Build.Download.props" Condition="Exists('..\packages\Xamarin.Build.Download.0.4.3\build\Xamarin.Build.Download.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
@@ -21,8 +22,6 @@
     <ConsolePause>false</ConsolePause>
     <MtouchArch>i386, x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
-    <MtouchUseRefCounting>true</MtouchUseRefCounting>
-    <MtouchUseSGen>true</MtouchUseSGen>
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>iPhone Developer: shinriyo@gmail.com (43P8B7FAK3)</CodesignKey>
     <MtouchFastDev>true</MtouchFastDev>
@@ -37,9 +36,7 @@
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchFloat32>true</MtouchFloat32>
-    <MtouchUseSGen>true</MtouchUseSGen>
     <CodesignKey>iPhone Developer</CodesignKey>
-    <MtouchUseRefCounting>true</MtouchUseRefCounting>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
@@ -50,9 +47,7 @@
     <ConsolePause>false</ConsolePause>
     <MtouchArch>i386</MtouchArch>
     <MtouchLink>None</MtouchLink>
-    <MtouchUseRefCounting>true</MtouchUseRefCounting>
     <CodesignKey>iPhone Developer</CodesignKey>
-    <MtouchUseSGen>true</MtouchUseSGen>
     <RunWithWarnings>true</RunWithWarnings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
@@ -67,11 +62,9 @@
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchFloat32>true</MtouchFloat32>
-    <MtouchUseRefCounting>true</MtouchUseRefCounting>
     <MtouchDebug>true</MtouchDebug>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <CodesignKey>iPhone Developer: shinriyo@gmail.com (43P8B7FAK3)</CodesignKey>
-    <MtouchUseSGen>true</MtouchUseSGen>
     <MtouchLink>None</MtouchLink>
   </PropertyGroup>
   <ItemGroup>
@@ -152,6 +145,15 @@
     <Reference Include="Realm.Sync">
       <HintPath>..\packages\Realm.1.1.1\lib\Xamarin.iOS10\Realm.Sync.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarinos.AdMob.Forms.Abstractions">
+      <HintPath>..\packages\Xamarinos.AdMob.FormsPlugin.1.0.8\lib\Xamarin.iOS10\Xamarinos.AdMob.Forms.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarinos.AdMob.Forms.iOS">
+      <HintPath>..\packages\Xamarinos.AdMob.FormsPlugin.1.0.8\lib\Xamarin.iOS10\Xamarinos.AdMob.Forms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.MobileAds">
+      <HintPath>..\packages\Xamarin.Google.iOS.MobileAds.7.16.0\lib\Xamarin.iOS10\Google.MobileAds.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\poomsae\poomsae.csproj">
@@ -229,4 +231,6 @@
   <Import Project="..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
   <Import Project="..\packages\Realm.Database.1.1.1\build\Realm.Database.targets" Condition="Exists('..\packages\Realm.Database.1.1.1\build\Realm.Database.targets')" />
   <Import Project="..\packages\Realm.1.1.1\build\Realm.targets" Condition="Exists('..\packages\Realm.1.1.1\build\Realm.targets')" />
+  <Import Project="..\packages\Xamarin.Build.Download.0.4.3\build\Xamarin.Build.Download.targets" Condition="Exists('..\packages\Xamarin.Build.Download.0.4.3\build\Xamarin.Build.Download.targets')" />
+  <Import Project="..\packages\Xamarin.Google.iOS.MobileAds.7.16.0\build\Xamarin.Google.iOS.MobileAds.targets" Condition="Exists('..\packages\Xamarin.Google.iOS.MobileAds.7.16.0\build\Xamarin.Google.iOS.MobileAds.targets')" />
 </Project>
