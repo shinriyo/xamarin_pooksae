@@ -99,16 +99,16 @@ namespace Poomsae
 
                 Tools.LoadArtsCSV((int)ArtModel.ArtType.Kick, csvString);
 
-                // チョップ系ファイル.
-                csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/chop.csv";
-                webUri = new Uri(csvUrl);
-                csvString = await GetWebPageAsync(webUri);
-                if (string.IsNullOrEmpty(csvString))
-                {
-                    return false;
-                }
+                //// チョップ系ファイル.
+                //csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/chop.csv";
+                //webUri = new Uri(csvUrl);
+                //csvString = await GetWebPageAsync(webUri);
+                //if (string.IsNullOrEmpty(csvString))
+                //{
+                //    return false;
+                //}
 
-                Tools.LoadArtsCSV((int)ArtModel.ArtType.Chop, csvString);
+                //Tools.LoadArtsCSV((int)ArtModel.ArtType.Chop, csvString);
 
                 // 受け系ファイル.
                 csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/guard.csv";

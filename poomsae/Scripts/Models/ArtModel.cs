@@ -16,14 +16,25 @@ namespace Poomsae
     {
         public enum ArtType
         {
-            Punch,
-            Kick,
-            Chop,
-            Guard,
-            Elbow,
-            Stance,
-            Push,
-            Jump,
+            None = 0,
+            Throw, // 꺾기.
+            Down, // 넘기기.
+            Stamp, // 딛기.
+            Jump, // 뛰기.
+            Guard, // 막기
+            Push, // 밀기.
+            Back, // 빼기.
+            Stance, // 서기.
+            Grab, // 잡기.
+            Prepare, // 준비자세.
+            Punch, // 지르기.
+            Attack, // 찌르기.
+            Cut, // 찍기.
+            Kick, // 차기.
+            Elbow, // 치기.
+            Dodge, // 피하기.
+            Special, // 특수품.
+            Part // 사용부위.
         }
 
         [PrimaryKey]

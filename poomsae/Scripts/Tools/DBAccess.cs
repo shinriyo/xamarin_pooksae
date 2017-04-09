@@ -147,19 +147,6 @@ namespace Poomsae
         }
 
         /// <summary>
-        /// 手刀系.
-        /// </summary>
-        /// <returns>The chops.</returns>
-        /// <param name="action">Action.</param>
-        public static ObservableCollection<Group> GetChops(
-            Action<string, string, string, string> action)
-        {
-            string iconImage = "chop_icon.png";
-            string detailImageBase = @"poomsae.Resources.Chop.{0}.jpg";
-            return Common((int)ArtModel.ArtType.Chop, iconImage, detailImageBase, action);
-        }
-
-        /// <summary>
         /// 受け系.
         /// </summary>
         /// <returns>The guards.</returns>

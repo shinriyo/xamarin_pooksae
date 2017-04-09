@@ -7,6 +7,7 @@
 namespace Poomsae
 {
     using System;
+    using System.Linq;
     using CellTool;
     using System.Collections.ObjectModel;
     using Xamarin.Forms;
@@ -54,24 +55,42 @@ namespace Poomsae
 
             var artTypes = new string[]
             {
-                "パンチ(지르기)",
-                "蹴り(차기)",
-                "手刀系",
-                "受け(막기)",
-                "肘打ち(치기)",
-                "構え(서기)",
-                "押し系(밀기)",
+                "DUMMY",
+                "꺾기",
+                "넘기기",
+                "딛기",
                 "跳び(뛰기)",
+                "受け(막기)",
+                "押し系(밀기)",
+                "(빼기)",
+                "構え(서기)",
+                "(잡기)",
+                "준비자세",
+                "パンチ(지르기)",
+                "(찌르기)",
+                "(찍기)",
+                "蹴り(차기)",
+                "肘打ち(치기)",
+                "手刀系",
+                "(피하기)",
+                "(특수품)",
+                "(사용부위)"
             };
-
-            int index = 0;
 
             var blue = "3396D7";
             var red = "E62465";
 
             // ボタンを生成.
-            foreach (var artType in artTypes)
+            foreach (var it in artTypes.Select((x, i) => new { Value = x, Index = i }))
             {
+                var artType = it.Value;
+                var index = it.Index;
+                if (index == 0)
+                {
+                    // 0はダミーなのでスキップ.
+                    continue;
+                }
+
                 var button = new Button
                 {
                     Text = artType,
@@ -87,11 +106,11 @@ namespace Poomsae
 
                 // ボタンクリック時の処理.
                 button.Clicked += async (s, a) =>
-                {
-                    // ページを遷移する.
-                    await Navigation.PushAsync(new ArtDetailPage(pageType, name));
-                };
-                index++;
+                        {
+                            // ページを遷移する.
+                            await Navigation.PushAsync(new ArtDetailPage(pageType, name));
+                        };
+
                 layout.Children.Add(button);
             }
 
@@ -154,42 +173,37 @@ namespace Poomsae
             int pageType = i;
 
             // http://www.buildinsider.net/mobile/xamarintips/0038
-            if (pageType == 0)
+            if (pageType == (int)ArtModel.ArtType.Punch)
             {
                 // パンチ系.
                 groups = DBAccess.GetPunches(this.OpenDetail);
             }
-            else if (pageType == 1)
+            else if (pageType == (int)ArtModel.ArtType.Kick)
             {
                 // キック系.
                 groups = DBAccess.GetKicks(this.OpenDetail);
             }
-            else if (pageType == 2)
-            {
-                // 手刀系.
-                groups = DBAccess.GetChops(this.OpenDetail);
-            }
-            else if (pageType == 3)
+            else if (pageType == (int)ArtModel.ArtType.Guard)
             {
                 // 受け系.
                 groups = DBAccess.GetGuards(this.OpenDetail);
             }
-            else if (pageType == 4)
+            else if (pageType == (int)ArtModel.ArtType.Elbow)
             {
                 // 肘打ち(치기).
                 groups = DBAccess.GetElbows(this.OpenDetail);
             }
-            else if (pageType == 5)
+            else if (pageType == (int)ArtModel.ArtType.Stance)
             {
                 // 構え(서기).
                 groups = DBAccess.GetStances(this.OpenDetail);
             }
-            else if (pageType == 6)
+            else if (pageType == (int)ArtModel.ArtType.Push)
             {
                 // 밀기(押し系).
                 groups = DBAccess.GetPushes(this.OpenDetail);
             }
-            else if (pageType == 7)
+            else if (pageType == (int)ArtModel.ArtType.Jump)
             {
                 // 跳び(뛰기).
                 groups = DBAccess.GetJumps(this.OpenDetail);
