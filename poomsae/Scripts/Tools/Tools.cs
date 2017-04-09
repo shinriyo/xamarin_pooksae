@@ -80,14 +80,15 @@ namespace Poomsae
                 string csvUrl = string.Empty;
                 Uri webUri = null;
                 string csvString = string.Empty;
+                string urlBaseFormat = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/{0}.csv";
 
                 // Throw, // 꺾기.
                 // Down, // 넘기기.
                 // Stamp, // 딛기.
 
                 // 跳び系ファイル.
-                var jumpUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/jump.csv";
-                webUri = new Uri(jumpUrl);
+                csvUrl = string.Format(urlBaseFormat, "jump");
+                webUri = new Uri(csvUrl);
                 csvString = await GetWebPageAsync(webUri);
                 if (string.IsNullOrEmpty(csvString))
                 {
@@ -97,7 +98,7 @@ namespace Poomsae
                 Tools.LoadArtsCSV((int)ArtModel.ArtType.Jump, csvString);
 
                 // 受け系ファイル.
-                csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/guard.csv";
+                csvUrl = string.Format(urlBaseFormat, "guard");
                 webUri = new Uri(csvUrl);
                 csvString = await GetWebPageAsync(webUri);
                 if (string.IsNullOrEmpty(csvString))
@@ -108,7 +109,7 @@ namespace Poomsae
                 Tools.LoadArtsCSV((int)ArtModel.ArtType.Guard, csvString);
 
                 // 押し系ファイル.
-                csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/push.csv";
+                csvUrl = string.Format(urlBaseFormat, "push");
                 webUri = new Uri(csvUrl);
                 csvString = await GetWebPageAsync(webUri);
                 if (string.IsNullOrEmpty(csvString))
@@ -121,7 +122,7 @@ namespace Poomsae
                 // Back, // 빼기.
 
                 // 構え系ファイル.
-                csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/stance.csv";
+                csvUrl = string.Format(urlBaseFormat, "stance");
                 webUri = new Uri(csvUrl);
                 csvString = await GetWebPageAsync(webUri);
                 if (string.IsNullOrEmpty(csvString))
@@ -132,10 +133,20 @@ namespace Poomsae
                 Tools.LoadArtsCSV((int)ArtModel.ArtType.Stance, csvString);
 
                 // Grab, // 잡기.
+
                 // Prepare, // 준비자세.
+                csvUrl = string.Format(urlBaseFormat, "prepare");
+                webUri = new Uri(csvUrl);
+                csvString = await GetWebPageAsync(webUri);
+                if (string.IsNullOrEmpty(csvString))
+                {
+                    return false;
+                }
+
+                Tools.LoadArtsCSV((int)ArtModel.ArtType.Kick, csvString);
 
                 // パンチ系ファイル.
-                csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/punch.csv";
+                csvUrl = string.Format(urlBaseFormat, "punch");
                 webUri = new Uri(csvUrl);
                 csvString = await GetWebPageAsync(webUri);
                 if (string.IsNullOrEmpty(csvString))
@@ -146,7 +157,7 @@ namespace Poomsae
                 Tools.LoadArtsCSV((int)ArtModel.ArtType.Punch, csvString);
 
                 // Attack, // 찌르기.
-                csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/attack.csv";
+                csvUrl = string.Format(urlBaseFormat, "attack");
                 webUri = new Uri(csvUrl);
                 csvString = await GetWebPageAsync(webUri);
                 if (string.IsNullOrEmpty(csvString))
@@ -159,7 +170,7 @@ namespace Poomsae
                 // Cut, // 찍기.
 
                 // キック系ファイル.
-                csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/kick.csv";
+                csvUrl = string.Format(urlBaseFormat, "kick");
                 webUri = new Uri(csvUrl);
                 csvString = await GetWebPageAsync(webUri);
                 if (string.IsNullOrEmpty(csvString))
@@ -169,8 +180,8 @@ namespace Poomsae
 
                 Tools.LoadArtsCSV((int)ArtModel.ArtType.Kick, csvString);
 
-                // 肘系ファァイル.
-                csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/elbow.csv";
+                // 手刀/肘系ファァイル.
+                csvUrl = string.Format(urlBaseFormat, "elbow");
                 webUri = new Uri(csvUrl);
                 csvString = await GetWebPageAsync(webUri);
                 if (string.IsNullOrEmpty(csvString))
@@ -188,8 +199,8 @@ namespace Poomsae
                 id = 0;
 
                 // 級プンセファイル.
-                var kyuPoomsaeUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/poomsae_kyu.csv";
-                webUri = new Uri(kyuPoomsaeUrl);
+                csvUrl = string.Format(urlBaseFormat, "poomsae_kyu");
+                webUri = new Uri(csvUrl);
                 csvString = await GetWebPageAsync(webUri);
                 if (string.IsNullOrEmpty(csvString))
                 {
@@ -199,7 +210,7 @@ namespace Poomsae
                 Tools.LoadPoomsaeCSV((int)PoomsaeModel.KyuOrDan.Kyu, csvString);
 
                 // 段プンセファイル.
-                csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/poomsae_dan.csv";
+                csvUrl = string.Format(urlBaseFormat, "poomsae_dan");
                 webUri = new Uri(csvUrl);
                 csvString = await GetWebPageAsync(webUri);
                 if (string.IsNullOrEmpty(csvString))
