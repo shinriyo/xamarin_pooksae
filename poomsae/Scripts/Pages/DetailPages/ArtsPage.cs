@@ -41,9 +41,12 @@ namespace Poomsae
         public ArtsPage()
         {
             base.Title = "技辞典"; // ページのタイトル.
+            var parent = new StackLayout();
+            var scroll = new ScrollView();
             var layout = new StackLayout();
+            scroll.Content = layout;
             layout.HorizontalOptions = LayoutOptions.FillAndExpand;
-            //HorizontalOptions="FillAndExpand"
+            layout.VerticalOptions = LayoutOptions.CenterAndExpand;
 
             var subTitle = "技の解説";
             var label = new Label()
@@ -53,27 +56,28 @@ namespace Poomsae
                 Text = subTitle
             };
 
-            layout.Children.Add(label);
+            // タイトルは親に直置き
+            parent.Children.Add(label);
+            parent.Children.Add(scroll);
 
             var artTypes = new string[]
             {
                 "DUMMY",
-                "꺾기",
-                "넘기기",
-                "딛기",
+                "(꺾기)",
+                "(넘기기)",
+                "(딛기)",
                 "跳び(뛰기)",
                 "受け(막기)",
                 "押し系(밀기)",
                 "(빼기)",
                 "構え(서기)",
                 "(잡기)",
-                "준비자세",
+                "(준비자세)",
                 "パンチ(지르기)",
                 "(찌르기)",
                 "(찍기)",
                 "蹴り(차기)",
-                "肘打ち(치기)",
-                "手刀系",
+                "肘打ち&手刀系(치기)",
                 "(피하기)",
                 "(특수품)",
                 "(사용부위)"
@@ -116,8 +120,7 @@ namespace Poomsae
                 layout.Children.Add(button);
             }
 
-            // 生成したラベルをこのビューの子要素とする.
-            base.Content = layout;
+            base.Content = parent;
         }
     }
 
