@@ -146,13 +146,13 @@ namespace Poomsae
                 Tools.LoadArtsCSV((int)ArtModel.ArtType.Punch, csvString);
 
                 // Attack, // 찌르기.
-                //csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/attck.csv";
-                //webUri = new Uri(csvUrl);
-                //csvString = await GetWebPageAsync(webUri);
-                //if (string.IsNullOrEmpty(csvString))
-                //{
-                //    return false;
-                //}
+                csvUrl = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/attck.csv";
+                webUri = new Uri(csvUrl);
+                csvString = await GetWebPageAsync(webUri);
+                if (string.IsNullOrEmpty(csvString))
+                {
+                    return false;
+                }
 
                 //Tools.LoadArtsCSV((int)ArtModel.ArtType.Attack, csvString);
 
