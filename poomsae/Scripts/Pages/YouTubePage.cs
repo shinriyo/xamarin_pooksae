@@ -56,7 +56,7 @@ namespace Poomsae
             };
 
             // iPhoneにおいて、ステータスバーとの重なりを防ぐためパディングを調整する.
-            Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
+            Padding = new Thickness(0, Tools.GetPlatformPaddingSize(), 0, 0);
             Content = webView;
         }
     }

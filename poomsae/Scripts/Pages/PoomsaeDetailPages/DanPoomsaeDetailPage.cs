@@ -77,7 +77,7 @@ namespace Poomsae
             base.Content = new StackLayout
             {
                 // iPhoneにおいて、ステータスバーとの重なりを防ぐためパディングを調整する.
-                Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0),
+                Padding = new Thickness(0, Tools.GetPlatformPaddingSize(), 0, 0),
                 Children = { listView }
             };
         }

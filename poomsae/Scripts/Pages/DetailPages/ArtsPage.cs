@@ -42,6 +42,8 @@ namespace Poomsae
         {
             base.Title = "技辞典"; // ページのタイトル.
             var layout = new StackLayout();
+            layout.HorizontalOptions = LayoutOptions.FillAndExpand;
+            //HorizontalOptions="FillAndExpand"
 
             var subTitle = "技の解説";
             var label = new Label()
@@ -232,7 +234,7 @@ namespace Poomsae
             base.Content = new StackLayout
             {
                 // iPhoneにおいて、ステータスバーとの重なりを防ぐためパディングを調整する.
-                Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0),
+                Padding = new Thickness(0, Tools.GetPlatformPaddingSize(), 0, 0),
                 Children = { listView }
             };
         }

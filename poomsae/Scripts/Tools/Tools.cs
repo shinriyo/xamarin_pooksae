@@ -410,5 +410,27 @@ namespace Poomsae
                 transaction.Commit();
             }
         }
+
+        /// <summary>
+        /// Device.OnPlatform(20, 0, 0)の代わりに使う.
+        /// </summary>
+        /// <returns>The platform padding size.</returns>
+        public static int GetPlatformPaddingSize()
+        {
+            int paddingSize = 0;
+            switch (Device.RuntimePlatform)
+            {
+                case Device.iOS:
+                paddingSize = 20;
+                break;
+                case Device.Android:
+                case Device.WinPhone:
+                case Device.Windows:
+                paddingSize = 0;
+                break;
+            }
+
+            return paddingSize;
+        }
     }
 }

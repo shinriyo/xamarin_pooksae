@@ -41,8 +41,8 @@ namespace Poomsae
                 BackgroundColor = Color.FromRgba(0.86, 0.91, 0.94, 0.5),
 
                 // iPhoneにおいて、ステータスバーとの重なりを防ぐためパディングを調整する.
-                Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0),
-                Title = "Master", // 必須
+                Padding = new Thickness(0, Tools.GetPlatformPaddingSize(), 0, 0),
+                Title = "Master", // 必須.
                 Icon = "menu.png",
                 Content = listView
             };
