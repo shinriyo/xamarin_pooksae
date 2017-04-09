@@ -121,29 +121,61 @@ namespace Poomsae
         }
 
         /// <summary>
-        /// Gets the punches.
+        /// Gets the throws.
         /// </summary>
-        /// <returns>The punches.</returns>
+        /// <returns>The throws.</returns>
         /// <param name="action">Action.</param>
-        public static ObservableCollection<Group> GetPunches(
+        public static ObservableCollection<Group> GetThrows(
             Action<string, string, string, string> action)
         {
-            string iconImage = "punch_icon.png";
-            string detailImageBase = @"poomsae.Resources.Punch.{0}.jpg";
-            return Common((int)ArtModel.ArtType.Punch, iconImage, detailImageBase, action);
+            // TODO:
+            string iconImage = "kick_icon.png";
+            // TODO:
+            string detailImageBase = @"poomsae.Resources.Kick.{0}.jpg";
+            return Common((int)ArtModel.ArtType.Throw, iconImage, detailImageBase, action);
         }
 
         /// <summary>
-        /// Gets the kicks.
+        /// Gets the downs.
         /// </summary>
-        /// <returns>The kicks.</returns>
+        /// <returns>The downs.</returns>
         /// <param name="action">Action.</param>
-        public static ObservableCollection<Group> GetKicks(
+        public static ObservableCollection<Group> GetDowns(
             Action<string, string, string, string> action)
         {
+            // TODO:
             string iconImage = "kick_icon.png";
+            // TODO:
             string detailImageBase = @"poomsae.Resources.Kick.{0}.jpg";
-            return Common((int)ArtModel.ArtType.Kick, iconImage, detailImageBase, action);
+            return Common((int)ArtModel.ArtType.Down, iconImage, detailImageBase, action);
+        }
+
+        /// <summary>
+        /// Gets the stamps.
+        /// </summary>
+        /// <returns>The stamps.</returns>
+        /// <param name="action">Action.</param>
+        public static ObservableCollection<Group> GetStamps(
+            Action<string, string, string, string> action)
+        {
+            // TODO:
+            string iconImage = "kick_icon.png";
+            // TODO:
+            string detailImageBase = @"poomsae.Resources.Kick.{0}.jpg";
+            return Common((int)ArtModel.ArtType.Stamp, iconImage, detailImageBase, action);
+        }
+
+        /// <summary>
+        /// 跳び系.
+        /// </summary>
+        /// <returns>The jumps.</returns>
+        /// <param name="action">Action.</param>
+        public static ObservableCollection<Group> GetJumps(
+            Action<string, string, string, string> action)
+        {
+            string iconImage = "jump_icon.png";
+            string detailImageBase = @"poomsae.Resources.Jump.{0}.jpg";
+            return Common((int)ArtModel.ArtType.Jump, iconImage, detailImageBase, action);
         }
 
         /// <summary>
@@ -160,16 +192,29 @@ namespace Poomsae
         }
 
         /// <summary>
-        /// 肘系.
+        /// 押し系.
         /// </summary>
-        /// <returns>The elbows.</returns>
+        /// <returns>The pushes.</returns>
         /// <param name="action">Action.</param>
-        public static ObservableCollection<Group> GetElbows(
+        public static ObservableCollection<Group> GetPushes(
             Action<string, string, string, string> action)
         {
-            string iconImage = "elbow_icon.png";
-            string detailImageBase = @"poomsae.Resources.Elbow.{0}.jpg";
-            return Common((int)ArtModel.ArtType.Elbow, iconImage, detailImageBase, action);
+            string iconImage = "push_icon.png";
+            string detailImageBase = @"poomsae.Resources.Pushe.{0}.jpg";
+            return Common((int)ArtModel.ArtType.Push, iconImage, detailImageBase, action);
+        }
+
+        /// <summary>
+        /// Gets the backs.
+        /// </summary>
+        /// <returns>The backs.</returns>
+        /// <param name="action">Action.</param>
+        public static ObservableCollection<Group> GetBacks(
+            Action<string, string, string, string> action)
+        {
+            string iconImage = "push_icon.png";
+            string detailImageBase = @"poomsae.Resources.Pushe.{0}.jpg";
+            return Common((int)ArtModel.ArtType.Back, iconImage, detailImageBase, action);
         }
 
         /// <summary>
@@ -186,29 +231,117 @@ namespace Poomsae
         }
 
         /// <summary>
-        /// 押し系.
+        /// Gets the punches.
         /// </summary>
-        /// <returns>The pushes.</returns>
+        /// <returns>The punches.</returns>
         /// <param name="action">Action.</param>
-        public static ObservableCollection<Group> GetPushes(
+        public static ObservableCollection<Group> GetPunches(
             Action<string, string, string, string> action)
         {
-            string iconImage = "push_icon.png";
-            string detailImageBase = @"poomsae.Resources.Pushe.{0}.jpg";
-            return Common((int)ArtModel.ArtType.Push, iconImage, detailImageBase, action);
+            string iconImage = "punch_icon.png";
+            string detailImageBase = @"poomsae.Resources.Punch.{0}.jpg";
+            return Common((int)ArtModel.ArtType.Punch, iconImage, detailImageBase, action);
         }
 
         /// <summary>
-        /// 跳び系.
+        /// Gets the attacks.
         /// </summary>
-        /// <returns>The jumps.</returns>
+        /// <returns>The attacks.</returns>
         /// <param name="action">Action.</param>
-        public static ObservableCollection<Group> GetJumps(
+        public static ObservableCollection<Group> GetAttacks(
             Action<string, string, string, string> action)
         {
-            string iconImage = "jump_icon.png";
-            string detailImageBase = @"poomsae.Resources.Jump.{0}.jpg";
-            return Common((int)ArtModel.ArtType.Jump, iconImage, detailImageBase, action);
+            // TODO:
+            string iconImage = "kick_icon.png";
+            // TODO:
+            string detailImageBase = @"poomsae.Resources.Kick.{0}.jpg";
+            return Common((int)ArtModel.ArtType.Attack, iconImage, detailImageBase, action);
+        }
+
+        /// <summary>
+        /// Gets the cuts.
+        /// </summary>
+        /// <returns>The cuts.</returns>
+        /// <param name="action">Action.</param>
+        public static ObservableCollection<Group> GetCuts(
+            Action<string, string, string, string> action)
+        {
+            // TODO:
+            string iconImage = "kick_icon.png";
+            // TODO:
+            string detailImageBase = @"poomsae.Resources.Kick.{0}.jpg";
+            return Common((int)ArtModel.ArtType.Cut, iconImage, detailImageBase, action);
+        }
+
+        /// <summary>
+        /// Gets the kicks.
+        /// </summary>
+        /// <returns>The kicks.</returns>
+        /// <param name="action">Action.</param>
+        public static ObservableCollection<Group> GetKicks(
+            Action<string, string, string, string> action)
+        {
+            string iconImage = "kick_icon.png";
+            string detailImageBase = @"poomsae.Resources.Kick.{0}.jpg";
+            return Common((int)ArtModel.ArtType.Kick, iconImage, detailImageBase, action);
+        }
+
+        /// <summary>
+        /// 肘系.
+        /// </summary>
+        /// <returns>The elbows.</returns>
+        /// <param name="action">Action.</param>
+        public static ObservableCollection<Group> GetElbows(
+            Action<string, string, string, string> action)
+        {
+            string iconImage = "elbow_icon.png";
+            string detailImageBase = @"poomsae.Resources.Elbow.{0}.jpg";
+            return Common((int)ArtModel.ArtType.Elbow, iconImage, detailImageBase, action);
+        }
+
+        /// <summary>
+        /// Gets the dodges.
+        /// </summary>
+        /// <returns>The dodges.</returns>
+        /// <param name="action">Action.</param>
+        public static ObservableCollection<Group> GetDodges(
+            Action<string, string, string, string> action)
+        {
+            // TODO:
+            string iconImage = "kick_icon.png";
+            // TODO:
+            string detailImageBase = @"poomsae.Resources.Kick.{0}.jpg";
+            return Common((int)ArtModel.ArtType.Dodge, iconImage, detailImageBase, action);
+        }
+
+        /// <summary>
+        /// Gets the specials.
+        /// </summary>
+        /// <returns>The specials.</returns>
+        /// <param name="action">Action.</param>
+        public static ObservableCollection<Group> GetSpecials(
+            Action<string, string, string, string> action)
+        {
+            // TODO:
+            string iconImage = "kick_icon.png";
+            // TODO:
+            string detailImageBase = @"poomsae.Resources.Kick.{0}.jpg";
+            return Common((int)ArtModel.ArtType.Special, iconImage, detailImageBase, action);
+        }
+
+        /// <summary>
+        /// Gets the parts.
+        /// </summary>
+        /// <returns>The parts.</returns>
+        /// <param name="action">Action.</param>
+        public static ObservableCollection<Group> GetParts(
+        Action<string, string, string, string> action)
+        {
+            // TODO:
+            string iconImage = "kick_icon.png";
+            // TODO:
+            string detailImageBase = @"poomsae.Resources.Kick.{0}.jpg";
+            return Common((int)ArtModel.ArtType.Part, iconImage, detailImageBase, action);
         }
     }
 }
