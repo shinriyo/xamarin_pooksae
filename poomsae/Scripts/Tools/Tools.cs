@@ -241,7 +241,26 @@ namespace Poomsae
                 Tools.LoadPoomsaeCSV((int)ArtModel.ArtType.Dodge, csvString);
 
                 // Special, // 특수품.
+                csvUrl = string.Format(urlBaseFormat, "special");
+                webUri = new Uri(csvUrl);
+                csvString = await GetWebPageAsync(webUri);
+                if (string.IsNullOrEmpty(csvString))
+                {
+                    return false;
+                }
+
+                Tools.LoadPoomsaeCSV((int)ArtModel.ArtType.Special, csvString);
+
                 // Part // 사용부위.
+                csvUrl = string.Format(urlBaseFormat, "part");
+                webUri = new Uri(csvUrl);
+                csvString = await GetWebPageAsync(webUri);
+                if (string.IsNullOrEmpty(csvString))
+                {
+                    return false;
+                }
+
+                Tools.LoadPoomsaeCSV((int)ArtModel.ArtType.Part, csvString);
 
                 // プンセ系は別idなので.
                 id = 0;
