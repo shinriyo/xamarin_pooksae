@@ -105,6 +105,15 @@ namespace Poomsae
                 Tools.LoadArtsCSV((int)ArtModel.ArtType.Down, csvString);
 
                 // Stamp, // 딛기.
+                csvUrl = string.Format(urlBaseFormat, "stamp");
+                webUri = new Uri(csvUrl);
+                csvString = await GetWebPageAsync(webUri);
+                if (string.IsNullOrEmpty(csvString))
+                {
+                    return false;
+                }
+
+                Tools.LoadArtsCSV((int)ArtModel.ArtType.Stamp, csvString);
 
                 // 跳び系ファイル.
                 csvUrl = string.Format(urlBaseFormat, "jump");
