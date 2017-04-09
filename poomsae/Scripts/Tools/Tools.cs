@@ -223,7 +223,7 @@ namespace Poomsae
                     return false;
                 }
 
-                Tools.LoadPoomsaeCSV((int)ArtModel.ArtType.Cut, csvString);
+                Tools.LoadArtsCSV((int)ArtModel.ArtType.Cut, csvString);
 
                 // キック系ファイル.
                 csvUrl = string.Format(urlBaseFormat, "kick");
@@ -256,7 +256,7 @@ namespace Poomsae
                     return false;
                 }
 
-                Tools.LoadPoomsaeCSV((int)ArtModel.ArtType.Dodge, csvString);
+                Tools.LoadArtsCSV((int)ArtModel.ArtType.Dodge, csvString);
 
                 // Special, // 특수품.
                 csvUrl = string.Format(urlBaseFormat, "special");
@@ -267,7 +267,7 @@ namespace Poomsae
                     return false;
                 }
 
-                Tools.LoadPoomsaeCSV((int)ArtModel.ArtType.Special, csvString);
+                Tools.LoadArtsCSV((int)ArtModel.ArtType.Special, csvString);
 
                 // Part // 사용부위.
                 csvUrl = string.Format(urlBaseFormat, "part");
@@ -278,7 +278,7 @@ namespace Poomsae
                     return false;
                 }
 
-                Tools.LoadPoomsaeCSV((int)ArtModel.ArtType.Part, csvString);
+                Tools.LoadArtsCSV((int)ArtModel.ArtType.Part, csvString);
 
                 // プンセ系は別idなので.
                 id = 0;
