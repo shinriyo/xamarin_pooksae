@@ -83,6 +83,15 @@ namespace Poomsae
                 string urlBaseFormat = "https://raw.githubusercontent.com/shinriyo/xamarin_poomsae/master/dbCSV/{0}.csv";
 
                 // Throw, // 꺾기.
+                csvUrl = string.Format(urlBaseFormat, "throw");
+                webUri = new Uri(csvUrl);
+                csvString = await GetWebPageAsync(webUri);
+                if (string.IsNullOrEmpty(csvString))
+                {
+                    return false;
+                }
+
+                Tools.LoadArtsCSV((int)ArtModel.ArtType.Throw, csvString);
 
                 // Down, // 넘기기.
                 csvUrl = string.Format(urlBaseFormat, "down");
