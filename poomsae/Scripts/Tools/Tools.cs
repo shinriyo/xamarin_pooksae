@@ -168,15 +168,15 @@ namespace Poomsae
                 Tools.LoadArtsCSV((int)ArtModel.ArtType.Attack, csvString);
 
                 // Cut, // 찍기.
-                //csvUrl = string.Format(urlBaseFormat, "cut");
-                //webUri = new Uri(csvUrl);
-                //csvString = await GetWebPageAsync(webUri);
-                //if (string.IsNullOrEmpty(csvString))
-                //{
-                //    return false;
-                //}
+                csvUrl = string.Format(urlBaseFormat, "cut");
+                webUri = new Uri(csvUrl);
+                csvString = await GetWebPageAsync(webUri);
+                if (string.IsNullOrEmpty(csvString))
+                {
+                    return false;
+                }
 
-                //Tools.LoadPoomsaeCSV((int)ArtModel.ArtType.Cut, csvString);
+                Tools.LoadPoomsaeCSV((int)ArtModel.ArtType.Cut, csvString);
 
                 // キック系ファイル.
                 csvUrl = string.Format(urlBaseFormat, "kick");
