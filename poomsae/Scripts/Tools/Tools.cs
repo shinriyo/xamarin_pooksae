@@ -149,6 +149,15 @@ namespace Poomsae
                 Tools.LoadArtsCSV((int)ArtModel.ArtType.Push, csvString);
 
                 // Back, // 빼기.
+                csvUrl = string.Format(urlBaseFormat, "back");
+                webUri = new Uri(csvUrl);
+                csvString = await GetWebPageAsync(webUri);
+                if (string.IsNullOrEmpty(csvString))
+                {
+                    return false;
+                }
+
+                Tools.LoadArtsCSV((int)ArtModel.ArtType.Back, csvString);
 
                 // 構え系ファイル.
                 csvUrl = string.Format(urlBaseFormat, "stance");
@@ -162,6 +171,15 @@ namespace Poomsae
                 Tools.LoadArtsCSV((int)ArtModel.ArtType.Stance, csvString);
 
                 // Grab, // 잡기.
+                csvUrl = string.Format(urlBaseFormat, "grab");
+                webUri = new Uri(csvUrl);
+                csvString = await GetWebPageAsync(webUri);
+                if (string.IsNullOrEmpty(csvString))
+                {
+                    return false;
+                }
+
+                Tools.LoadArtsCSV((int)ArtModel.ArtType.Grab, csvString);
 
                 // Prepare, // 준비자세.
                 csvUrl = string.Format(urlBaseFormat, "prepare");
