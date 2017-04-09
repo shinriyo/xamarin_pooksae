@@ -231,6 +231,37 @@ namespace Poomsae
         }
 
         /// <summary>
+        /// Gets the grabs.
+        /// </summary>
+        /// <returns>The grabs.</returns>
+        /// <param name="action">Action.</param>
+        public static ObservableCollection<Group> GetGrabs(
+            Action<string, string, string, string> action)
+        {
+            string iconImage = "stance_icon.png";
+            // TODO:
+            string detailImageBase = @"poomsae.Resources.Stance.{0}.jpg";
+            // TODO:
+            return Common((int)ArtModel.ArtType.Grab, iconImage, detailImageBase, action);
+        }
+
+        /// <summary>
+        /// Gets the prepares.
+        /// </summary>
+        /// <returns>The prepares.</returns>
+        /// <param name="action">Action.</param>
+        public static ObservableCollection<Group> GetPrepares(
+            Action<string, string, string, string> action)
+        {
+            string iconImage = "stance_icon.png";
+            // TODO:
+            string detailImageBase = @"poomsae.Resources.Stance.{0}.jpg";
+            // TODO:
+            return Common((int)ArtModel.ArtType.Prepare, iconImage, detailImageBase, action);
+        }
+
+
+        /// <summary>
         /// Gets the punches.
         /// </summary>
         /// <returns>The punches.</returns>

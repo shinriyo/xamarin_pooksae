@@ -190,7 +190,7 @@ namespace Poomsae
                     return false;
                 }
 
-                Tools.LoadArtsCSV((int)ArtModel.ArtType.Kick, csvString);
+                Tools.LoadArtsCSV((int)ArtModel.ArtType.Prepare, csvString);
 
                 // パンチ系ファイル.
                 csvUrl = string.Format(urlBaseFormat, "punch");

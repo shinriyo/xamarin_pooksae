@@ -63,24 +63,24 @@ namespace Poomsae
             var artTypes = new string[]
             {
                 "DUMMY",
-                "(꺾기)",
-                "(넘기기)",
-                "(딛기)",
+                "投げ(꺾기)",
+                "倒し(넘기기)",
+                "踏み(딛기)",
                 "跳び(뛰기)",
                 "受け(막기)",
-                "押し系(밀기)",
-                "(빼기)",
+                "押し(밀기)",
+                "避け(빼기)",
                 "構え(서기)",
                 "(잡기)",
                 "準備姿勢(준비자세)",
                 "パンチ(지르기)",
                 "突き(찌르기)",
-                "(찍기)",
+                "切り(찍기)",
                 "蹴り(차기)",
                 "肘打ち&手刀系(치기)",
                 "避け(피하기)",
-                "(특수품)",
-                "(사용부위)"
+                "特殊(특수품)",
+                "使用部位(사용부위)"
             };
 
             var blue = "3396D7";
@@ -178,40 +178,96 @@ namespace Poomsae
             int pageType = i;
 
             // http://www.buildinsider.net/mobile/xamarintips/0038
-            if (pageType == (int)ArtModel.ArtType.Punch)
+
+            if (pageType == (int)ArtModel.ArtType.Throw)
             {
-                // パンチ系.
-                groups = DBAccess.GetPunches(this.OpenDetail);
+                // 꺾기
+                groups = DBAccess.GetThrows(this.OpenDetail);
             }
-            else if (pageType == (int)ArtModel.ArtType.Kick)
+            else if (pageType == (int)ArtModel.ArtType.Down)
             {
-                // キック系.
-                groups = DBAccess.GetKicks(this.OpenDetail);
+                // 넘기기
+                groups = DBAccess.GetThrows(this.OpenDetail);
+            }
+            else if (pageType == (int)ArtModel.ArtType.Stamp)
+            {
+                // 딛기
+                groups = DBAccess.GetStamps(this.OpenDetail);
+            }
+            else if (pageType == (int)ArtModel.ArtType.Jump)
+            {
+                // 뛰기
+                groups = DBAccess.GetJumps(this.OpenDetail);
             }
             else if (pageType == (int)ArtModel.ArtType.Guard)
             {
-                // 受け系.
+                // 막기
                 groups = DBAccess.GetGuards(this.OpenDetail);
+            }
+            else if (pageType == (int)ArtModel.ArtType.Push)
+            {
+                // 밀기
+                groups = DBAccess.GetPushes(this.OpenDetail);
+            }
+            else if (pageType == (int)ArtModel.ArtType.Back)
+            {
+                // 빼기
+                groups = DBAccess.GetBacks(this.OpenDetail);
+            }
+            else if (pageType == (int)ArtModel.ArtType.Stance)
+            {
+                // 서기
+                groups = DBAccess.GetStances(this.OpenDetail);
+            }
+            else if (pageType == (int)ArtModel.ArtType.Grab)
+            {
+                // 잡기
+                groups = DBAccess.GetGrabs(this.OpenDetail);
+            }
+            else if (pageType == (int)ArtModel.ArtType.Prepare)
+            {
+                // 준비자세
+                groups = DBAccess.GetPrepares(this.OpenDetail);
+            }
+            else if (pageType == (int)ArtModel.ArtType.Punch)
+            {
+                // 지르기
+                groups = DBAccess.GetPunches(this.OpenDetail);
+            }
+            else if (pageType == (int)ArtModel.ArtType.Attack)
+            {
+                // 찌르기
+                groups = DBAccess.GetAttacks(this.OpenDetail);
+            }
+            else if (pageType == (int)ArtModel.ArtType.Cut)
+            {
+                // 찍기
+                groups = DBAccess.GetCuts(this.OpenDetail);
+            }
+            else if (pageType == (int)ArtModel.ArtType.Kick)
+            {
+                // 차기 キック系.
+                groups = DBAccess.GetKicks(this.OpenDetail);
             }
             else if (pageType == (int)ArtModel.ArtType.Elbow)
             {
                 // 肘打ち(치기).
                 groups = DBAccess.GetElbows(this.OpenDetail);
             }
-            else if (pageType == (int)ArtModel.ArtType.Stance)
+            else if (pageType == (int)ArtModel.ArtType.Dodge)
             {
-                // 構え(서기).
-                groups = DBAccess.GetStances(this.OpenDetail);
+                // 피하기
+                groups = DBAccess.GetDodges(this.OpenDetail);
             }
-            else if (pageType == (int)ArtModel.ArtType.Push)
+            else if (pageType == (int)ArtModel.ArtType.Special)
             {
-                // 밀기(押し系).
-                groups = DBAccess.GetPushes(this.OpenDetail);
+                // 특수품
+                groups = DBAccess.GetSpecials(this.OpenDetail);
             }
-            else if (pageType == (int)ArtModel.ArtType.Jump)
+            else if (pageType == (int)ArtModel.ArtType.Part)
             {
-                // 跳び(뛰기).
-                groups = DBAccess.GetJumps(this.OpenDetail);
+                // 사용부위
+                groups = DBAccess.GetParts(this.OpenDetail);
             }
 
             // テンプレートの作成（ImageCell使用）.
@@ -238,7 +294,8 @@ namespace Poomsae
             {
                 // iPhoneにおいて、ステータスバーとの重なりを防ぐためパディングを調整する.
                 Padding = new Thickness(0, Tools.GetPlatformPaddingSize(), 0, 0),
-                Children = { listView }
+                Children = { listView
+}
             };
         }
 
