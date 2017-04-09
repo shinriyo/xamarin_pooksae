@@ -187,7 +187,7 @@ namespace Poomsae
             else if (pageType == (int)ArtModel.ArtType.Down)
             {
                 // 넘기기
-                groups = DBAccess.GetThrows(this.OpenDetail);
+                groups = DBAccess.GetDowns(this.OpenDetail);
             }
             else if (pageType == (int)ArtModel.ArtType.Stamp)
             {
