@@ -15,6 +15,8 @@ namespace Poomsae
         public ArtDescPage()
         {
             InitializeComponent();
+            var label = this.FindByName<Label>("koreanValueLabel");
+            label.FontFamily = "SourceHanSerifKR-Bold";
         }
 
         async void OnButtonClicked(object sender, EventArgs args)

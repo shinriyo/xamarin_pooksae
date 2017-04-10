@@ -217,6 +217,7 @@
     <BundleResource Include="Resources\Images\LaunchImage\Default.png" />
     <BundleResource Include="Resources\Images\LaunchImage\Default%402x.png" />
     <BundleResource Include="Resources\Images\LaunchImage\Default-568h%402x.png" />
+    <BundleResource Include="Resources\SourceHanSerifKR-Bold.otf" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="rxforxamarin">
