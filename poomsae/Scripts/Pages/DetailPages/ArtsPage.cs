@@ -1,4 +1,4 @@
-﻿//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
 // <copyright file="ArtsPage.cs" company="shinriyo">
 //     Company copyright tag.
 // </copyright>
@@ -190,10 +190,10 @@ namespace Poomsae
                 // 넘기기
                 groups = DBAccess.GetDowns(this.OpenDetail);
             }
-            else if (pageType == (int)ArtModel.ArtType.Stamp)
+            else if (pageType == (int)ArtModel.ArtType.Step)
             {
                 // 딛기
-                groups = DBAccess.GetStamps(this.OpenDetail);
+                groups = DBAccess.GetSteps(this.OpenDetail);
             }
             else if (pageType == (int)ArtModel.ArtType.Jump)
             {

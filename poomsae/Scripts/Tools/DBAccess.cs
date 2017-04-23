@@ -151,18 +151,18 @@ namespace Poomsae
         }
 
         /// <summary>
-        /// Gets the stamps.
+        /// Gets the steps.
         /// </summary>
-        /// <returns>The stamps.</returns>
+        /// <returns>The steps.</returns>
         /// <param name="action">Action.</param>
-        public static ObservableCollection<Group> GetStamps(
+        public static ObservableCollection<Group> GetSteps(
             Action<string, string, string, string> action)
         {
             // TODO:
             string iconImage = "kick_icon.png";
             // TODO:
             string detailImageBase = @"poomsae.Resources.Kick.{0}.jpg";
-            return Common((int)ArtModel.ArtType.Stamp, iconImage, detailImageBase, action);
+            return Common((int)ArtModel.ArtType.Step, iconImage, detailImageBase, action);
         }
 
         /// <summary>

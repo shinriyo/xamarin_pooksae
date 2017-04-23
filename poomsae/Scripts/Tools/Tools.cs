@@ -1,4 +1,4 @@
-﻿//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
 // <copyright file="Tools.cs" company="shinriyo">
 //     Company copyright tag.
 // </copyright>
@@ -104,8 +104,8 @@ namespace Poomsae
 
                 Tools.LoadArtsCSV((int)ArtModel.ArtType.Down, csvString);
 
-                // Stamp, // 딛기.
-                csvUrl = string.Format(urlBaseFormat, "stamp");
+                // Step, // 딛기.
+                csvUrl = string.Format(urlBaseFormat, "step");
                 webUri = new Uri(csvUrl);
                 csvString = await GetWebPageAsync(webUri);
                 if (string.IsNullOrEmpty(csvString))
@@ -113,7 +113,7 @@ namespace Poomsae
                     return false;
                 }
 
-                Tools.LoadArtsCSV((int)ArtModel.ArtType.Stamp, csvString);
+                Tools.LoadArtsCSV((int)ArtModel.ArtType.Step, csvString);
 
                 // 跳び系ファイル.
                 csvUrl = string.Format(urlBaseFormat, "jump");

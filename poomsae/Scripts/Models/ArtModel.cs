@@ -19,7 +19,7 @@ namespace Poomsae
             None = 0,
             Throw, // 꺾기.
             Down, // 넘기기.
-            Stamp, // 딛기.
+            Step, // 딛기.
             Jump, // 뛰기.
             Guard, // 막기
             Push, // 밀기.
