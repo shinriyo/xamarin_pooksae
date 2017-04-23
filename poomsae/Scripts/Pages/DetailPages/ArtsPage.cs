@@ -143,6 +143,7 @@ namespace Poomsae
         /// <param name="name">Name.</param>
         /// <param name="detail">Detail.</param>
         /// <param name="image">詳細画像.</param>
+        /// <param name="koreanName">韓国名.</param>
         private void OpenDetail(string name, string detail, string image, string koreanName)
         {
             try
@@ -294,8 +295,7 @@ namespace Poomsae
             {
                 // iPhoneにおいて、ステータスバーとの重なりを防ぐためパディングを調整する.
                 Padding = new Thickness(0, Tools.GetPlatformPaddingSize(), 0, 0),
-                Children = { listView
-}
+                Children = { listView }
             };
         }
 
