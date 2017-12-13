@@ -381,6 +381,9 @@ namespace Poomsae
             var realm = Realm.GetInstance(App.realmFile);
             using (var transaction = realm.BeginWrite())
             {
+                // 1行目のヘッダ部分を空ロード.
+                csv.Read();
+
                 while (csv.Read())
                 {
                     var kyu = csv.GetField<int>(0);
@@ -428,6 +431,9 @@ namespace Poomsae
             var realm = Realm.GetInstance(App.realmFile);
             using (var transaction = realm.BeginWrite())
             {
+                // 1行目のヘッダ部分を空ロード.
+                csv.Read();
+
                 while (csv.Read())
                 {
                     var kyu = csv.GetField<int>(0);
@@ -540,7 +546,7 @@ namespace Poomsae
                 break;
                 case Device.Android:
                 case Device.WinPhone:
-                case Device.Windows:
+                //case Device.Windows:
                 paddingSize = 0;
                 break;
             }
