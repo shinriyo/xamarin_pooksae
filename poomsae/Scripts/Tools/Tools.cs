@@ -374,7 +374,7 @@ namespace Poomsae
         /// <param name="csvString">csvからとった文字.</param>
         private static void LoadArtsCSV(int type, string csvString)
         {
-            // 結果を取得.
+            // 結果を取得(CsvHelperを使う).
             var csv = new CsvReader(new StringReader(csvString));
             var now = DateTimeOffset.Now;
 
@@ -384,6 +384,9 @@ namespace Poomsae
                 // 1行目のヘッダ部分を空ロード.
                 csv.Read();
 
+                // TODO:Reference Mapという機能を使えば、indexを使わなくなるので.
+                // 今後リファクタリング.
+                // http://spacekey.info/blog/archives/884
                 while (csv.Read())
                 {
                     var kyu = csv.GetField<int>(0);
@@ -426,6 +429,7 @@ namespace Poomsae
         /// <param name="csvString">csvからとった文字.</param>
         public static void LoadPoomsaeCSV(int type, string csvString)
         {
+            // 結果を取得(CsvHelperを使う).
             var csv = new CsvReader(new StringReader(csvString));
 
             var realm = Realm.GetInstance(App.realmFile);

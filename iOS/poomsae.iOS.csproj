@@ -37,7 +37,8 @@
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchFloat32>true</MtouchFloat32>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: shinriyo@gmail.com (43P8B7FAK3)</CodesignKey>
+    <CodesignProvision>iOS Team Provisioning Profile: com.shinriyo.poomsae</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
@@ -61,12 +62,13 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
-    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignEntitlements></CodesignEntitlements>
     <MtouchFloat32>true</MtouchFloat32>
     <MtouchDebug>true</MtouchDebug>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <CodesignKey>iPhone Developer: shinriyo@gmail.com (43P8B7FAK3)</CodesignKey>
     <MtouchLink>None</MtouchLink>
+    <CodesignProvision>iOS Team Provisioning Profile: com.shinriyo.poomsae</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

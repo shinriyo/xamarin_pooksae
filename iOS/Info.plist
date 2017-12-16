@@ -7,7 +7,7 @@
 		<string>SourceHanSerifKR-Bold.otf</string>
 	</array>
 	<key>CFBundleIdentifier</key>
-	<string>com.shinriyo.mrubypluginproject</string>
+	<string>com.shinriyo.poomsae</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
